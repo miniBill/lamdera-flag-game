@@ -1,0 +1,4 @@
+- From country to flag
+- Difficulty levels
+- From flag to country
+- Historical variants
