@@ -1,4 +1,4 @@
-module Types exposing (BackendModel, BackendMsg(..), Card, CardKind(..), Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToBackend(..), ToFrontend(..))
+module Types exposing (BackendModel, BackendMsg(..), Card, CardKind(..), Context, Difficulty(..), FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToBackend(..), ToFrontend(..))
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
@@ -75,6 +75,12 @@ type CardKind
     | GuessName
 
 
+type Difficulty
+    = Easy
+    | Normal
+    | Hard
+
+
 type alias BackendModel =
     {}
 
@@ -82,7 +88,7 @@ type alias BackendModel =
 type FrontendMsg
     = UrlClicked UrlRequest
     | UrlChanged Url
-    | Play CardKind
+    | Play CardKind Difficulty
     | Seed Random.Seed
     | Pick CountryCode
     | Next

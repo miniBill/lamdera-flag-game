@@ -2,7 +2,8 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Element.WithContext as Element exposing (alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, px, rgb, rgb255, text, width)
+import Dict exposing (diff)
+import Element.WithContext as Element exposing (alignBottom, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, px, rgb, rgb255, shrink, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -36,7 +37,7 @@ import Lamdera
 import List.Extra
 import Random
 import Theme exposing (Attribute, Element)
-import Types exposing (CardKind(..), Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToFrontend(..))
+import Types exposing (CardKind(..), Context, Difficulty(..), FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToFrontend(..))
 import Url
 
 
@@ -98,8 +99,8 @@ update msg model =
         Seed seed ->
             ( { model | seed = seed }, Cmd.none )
 
-        Play kind ->
-            case allCards kind model.seed of
+        Play kind difficulty ->
+            case allCards kind difficulty model.seed of
                 ( [], _ ) ->
                     ( model, Cmd.none )
 
@@ -209,29 +210,15 @@ innerView model =
 
 viewHomepage : Element FrontendMsg
 viewHomepage =
-    Theme.column
+    el
         [ centerX
         , centerY
         ]
-        [ Theme.button
-            [ Font.center
-            , width fill
-            ]
-            { label = text "GUESS NAMES"
-            , onPress = Just <| Play GuessName
-            }
-        , Theme.button
-            [ Font.center
-            , width fill
-            ]
-            { label = text "GUESS FLAGS"
-            , onPress = Just <| Play GuessFlag
-            }
-        ]
+        startButtons
 
 
 viewPlaying : PlayingModel -> Element FrontendMsg
-viewPlaying { score, total, current, picked } =
+viewPlaying ({ score, total, current, picked } as model) =
     el
         [ width fill
         , height fill
@@ -253,91 +240,40 @@ viewPlaying { score, total, current, picked } =
                         , Font.size 50
                         ]
                         (viewCountryName current.guessing)
-            , current.options
-                |> List.map
-                    (\countryCode ->
-                        case current.kind of
-                            GuessName ->
-                                let
-                                    common : List (Attribute msg)
-                                    common =
-                                        [ width fill ]
+            , case current.kind of
+                GuessName ->
+                    Element.table [ width fill, Theme.spacing ]
+                        { data =
+                            current.options
+                                |> List.map (viewNameButton model)
+                                |> List.Extra.greedyGroupsOf 2
+                        , columns =
+                            [ { header = Element.none
+                              , view =
+                                    \lst ->
+                                        lst
+                                            |> List.head
+                                            |> Maybe.withDefault Element.none
+                              , width = fill
+                              }
+                            , { header = Element.none
+                              , view =
+                                    \lst ->
+                                        lst
+                                            |> List.drop 1
+                                            |> List.head
+                                            |> Maybe.withDefault Element.none
+                              , width = fill
+                              }
+                            ]
+                        }
 
-                                    attrs : List (Attribute msg)
-                                    attrs =
-                                        if picked /= Nothing && countryCode == current.guessing then
-                                            Background.color (rgb 0.8 0.9 0.8) :: common
-
-                                        else if Just countryCode == picked then
-                                            Background.color (rgb 0.9 0.7 0.7) :: common
-
-                                        else
-                                            common
-                                in
-                                Theme.button
-                                    attrs
-                                    { onPress =
-                                        if picked == Nothing then
-                                            Just <| Pick countryCode
-
-                                        else
-                                            Nothing
-                                    , label =
-                                        case current.kind of
-                                            GuessName ->
-                                                viewCountryName countryCode
-
-                                            GuessFlag ->
-                                                viewFlag countryCode
-                                    }
-
-                            GuessFlag ->
-                                if picked == Nothing then
-                                    Input.button
-                                        [ width fill
-                                        , Theme.padding
-                                        ]
-                                        { onPress = Just <| Pick countryCode
-                                        , label = viewFlag countryCode
-                                        }
-
-                                else
-                                    el
-                                        [ width fill
-                                        , Theme.padding
-                                        , inFront <|
-                                            if countryCode == current.guessing then
-                                                el
-                                                    [ Font.size 80
-                                                    , centerX
-                                                    , centerY
-                                                    , Font.color <| rgb 1 1 1
-                                                    , Background.color <| rgb 0.2 0.6 0.2
-                                                    , Border.rounded 9999
-                                                    , Theme.padding
-                                                    ]
-                                                    (text "✓")
-
-                                            else if Just countryCode == picked then
-                                                el
-                                                    [ Font.size 80
-                                                    , centerX
-                                                    , centerY
-                                                    , Font.color <| rgb 1 1 1
-                                                    , Background.color <| rgb 0.6 0.2 0.2
-                                                    , Border.rounded 9999
-                                                    , Theme.padding
-                                                    ]
-                                                    (text "✗")
-
-                                            else
-                                                Element.none
-                                        ]
-                                        (viewFlag countryCode)
-                    )
-                |> List.Extra.greedyGroupsOf 2
-                |> List.map (\group -> Theme.wrappedRow [] group)
-                |> Theme.column [ width fill ]
+                GuessFlag ->
+                    current.options
+                        |> List.map (viewFlagButton model)
+                        |> List.Extra.greedyGroupsOf 2
+                        |> List.map (\group -> Theme.row [ width fill ] group)
+                        |> Theme.column [ width fill ]
             , Theme.button
                 (if picked == Nothing then
                     [ Background.color <| rgb 0.7 0.7 0.7
@@ -358,6 +294,88 @@ viewPlaying { score, total, current, picked } =
             ]
 
 
+viewNameButton : PlayingModel -> CountryCode -> Element FrontendMsg
+viewNameButton { current, picked } countryCode =
+    let
+        common : List (Attribute msg)
+        common =
+            [ width fill ]
+
+        attrs : List (Attribute msg)
+        attrs =
+            if picked /= Nothing && countryCode == current.guessing then
+                Background.color (rgb 0.8 0.9 0.8) :: common
+
+            else if Just countryCode == picked then
+                Background.color (rgb 0.9 0.7 0.7) :: common
+
+            else
+                common
+    in
+    Theme.button
+        attrs
+        { onPress =
+            if picked == Nothing then
+                Just <| Pick countryCode
+
+            else
+                Nothing
+        , label =
+            case current.kind of
+                GuessName ->
+                    viewCountryName countryCode
+
+                GuessFlag ->
+                    viewFlag countryCode
+        }
+
+
+viewFlagButton : PlayingModel -> CountryCode -> Element FrontendMsg
+viewFlagButton { picked, current } countryCode =
+    if picked == Nothing then
+        Input.button
+            [ width fill
+            , Theme.padding
+            ]
+            { onPress = Just <| Pick countryCode
+            , label = viewFlag countryCode
+            }
+
+    else
+        el
+            [ width fill
+            , Theme.padding
+            , inFront <|
+                if countryCode == current.guessing then
+                    el
+                        [ Font.size 80
+                        , centerX
+                        , centerY
+                        , Font.color <| rgb 1 1 1
+                        , Background.color <| rgb 0.2 0.6 0.2
+                        , Border.rounded 9999
+                        , Theme.padding
+                        ]
+                        (text "✓")
+
+                else if Just countryCode == picked then
+                    el
+                        [ Font.size 80
+                        , centerX
+                        , centerY
+                        , Font.color <| rgb 1 1 1
+                        , Background.color <| rgb 0.6 0.2 0.2
+                        , Border.rounded 9999
+                        , Theme.padding
+                        ]
+                        (text "✗")
+
+                else
+                    Element.none
+            ]
+            (viewFlag countryCode)
+
+
 viewFinished : { score : Int, total : Int } -> Element FrontendMsg
 viewFinished finished =
     Theme.column
@@ -371,21 +389,49 @@ viewFinished finished =
                     ++ "/"
                     ++ String.fromInt finished.total
         , el [ width fill, Font.center ] <| text "Play again"
-        , Theme.button
-            [ Font.center
-            , width fill
-            ]
-            { label = text "GUESS NAMES"
-            , onPress = Just <| Play GuessName
-            }
-        , Theme.button
-            [ Font.center
-            , width fill
-            ]
-            { label = text "GUESS FLAGS"
-            , onPress = Just <| Play GuessFlag
-            }
+        , startButtons
         ]
+
+
+startButtons : Element FrontendMsg
+startButtons =
+    Element.table [ Theme.spacing ]
+        { data =
+            [ ( "Easy", Easy )
+            , ( "Normal", Normal )
+            , ( "Hard", Hard )
+            ]
+        , columns =
+            [ { header = Element.none
+              , width = shrink
+              , view = \( label, _ ) -> el [ centerY ] <| text label
+              }
+            , { header = Element.none
+              , width = fill
+              , view =
+                    \( _, difficulty ) ->
+                        Theme.button
+                            [ Font.center
+                            , width fill
+                            ]
+                            { label = text "GUESS NAMES"
+                            , onPress = Just <| Play GuessName difficulty
+                            }
+              }
+            , { header = Element.none
+              , width = fill
+              , view =
+                    \( _, difficulty ) ->
+                        Theme.button
+                            [ Font.center
+                            , width fill
+                            ]
+                            { label = text "GUESS FLAGS"
+                            , onPress = Just <| Play GuessFlag difficulty
+                            }
+              }
+            ]
+        }
 
 
 viewScore : Int -> Int -> Element msg

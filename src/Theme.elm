@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, button, column, padding, rythm, wrappedRow)
+module Theme exposing (Attribute, Element, button, column, padding, row, rythm, spacing)
 
 import Element.WithContext as Element exposing (rgb255)
 import Element.WithContext.Background as Background
@@ -56,6 +56,6 @@ column attrs children =
     Element.column (spacing :: attrs) children
 
 
-wrappedRow : List (Attribute msg) -> List (Element msg) -> Element msg
-wrappedRow attrs children =
-    Element.wrappedRow (spacing :: attrs) children
+row : List (Attribute msg) -> List (Element msg) -> Element msg
+row attrs children =
+    Element.row (spacing :: attrs) children
