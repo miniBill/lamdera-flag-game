@@ -1,8 +1,9 @@
 module Theme exposing (Attribute, Element, button, column, padding, rythm, wrappedRow)
 
-import Element.WithContext as Element exposing (rgb)
+import Element.WithContext as Element exposing (rgb255)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
+import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Types exposing (Context)
 
@@ -42,7 +43,9 @@ button attrs config =
         (Border.width 1
             :: padding
             :: Border.rounded rythm
-            :: Background.color (rgb 0.7 0.7 0.9)
+            :: Background.color (rgb255 0xD9 0xB9 0x9B)
+            :: Font.color (rgb255 (0xD9 // 2) (0xB9 // 2) (0x9B // 2))
+            :: Element.mouseOver [ Background.color <| rgb255 0xD9 0x4B 0x4B ]
             :: attrs
         )
         config

@@ -1,4 +1,7 @@
-- From country to flag
 - Difficulty levels
-- From flag to country
 - Historical variants
+- Grab ALL the SVGs
+
+- Change font
+- Add grain to the background
+- Green for homepage buttons?
