@@ -489,6 +489,11 @@ viewFlag countryCode =
         [ width fill
         , Font.center
         , Font.size 200
+        , Font.shadow
+            { offset = ( 8, 8 )
+            , blur = 4
+            , color = rgb 0 0 0
+            }
         ]
         (text <| toFlag countryCode)
 
