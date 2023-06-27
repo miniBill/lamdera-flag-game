@@ -3,19 +3,20 @@ module Flags exposing (allCards)
 import Iso3166 exposing (CountryCode)
 import Random
 import Random.List
-import Types exposing (Card, CardKind(..))
+import Types exposing (Card, CardKind)
 
 
-allCards : Random.Seed -> ( List Card, Random.Seed )
-allCards seed =
+allCards : CardKind -> Random.Seed -> ( List Card, Random.Seed )
+allCards kind seed =
     let
         ( finalSeed, result ) =
             Iso3166.all
+                |> List.take 5
                 |> List.foldl
                     (\code ( seedAcc, acc ) ->
                         let
                             ( card, newSeed ) =
-                                toCard code seedAcc
+                                toCard kind code seedAcc
                         in
                         ( newSeed, card :: acc )
                     )
@@ -24,8 +25,8 @@ allCards seed =
     Random.step (Random.List.shuffle result) finalSeed
 
 
-toCard : CountryCode -> Random.Seed -> ( Card, Random.Seed )
-toCard countryCode seed =
+toCard : CardKind -> CountryCode -> Random.Seed -> ( Card, Random.Seed )
+toCard kind countryCode seed =
     let
         generator : Random.Generator Card
         generator =
@@ -39,7 +40,7 @@ toCard countryCode seed =
                                 (\options ->
                                     { guessing = countryCode
                                     , options = options
-                                    , kind = GuessName
+                                    , kind = kind
                                     }
                                 )
                     )

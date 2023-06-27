@@ -32,9 +32,10 @@ import Iso3166.Spanish
 import Iso3166.Thai
 import Iso3166.Ukrainian
 import Lamdera
+import List.Extra
 import Random
-import Theme exposing (Element)
-import Types exposing (Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), ToFrontend(..))
+import Theme exposing (Attribute, Element)
+import Types exposing (CardKind(..), Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToFrontend(..))
 import Url
 
 
@@ -96,17 +97,18 @@ update msg model =
         Seed seed ->
             ( { model | seed = seed }, Cmd.none )
 
-        Play ->
-            case allCards model.seed of
+        Play kind ->
+            case allCards kind model.seed of
                 ( [], _ ) ->
                     ( model, Cmd.none )
 
                 ( head :: tail, newSeed ) ->
                     ( { model
                         | inner =
-                            Picking
+                            Playing
                                 { current = head
                                 , queue = tail
+                                , picked = Nothing
                                 , score = 0
                                 , total = 1 + List.length tail
                                 }
@@ -117,20 +119,18 @@ update msg model =
 
         Pick countryCode ->
             case model.inner of
-                Picking picking ->
+                Playing playing ->
                     ( { model
                         | inner =
-                            Picked
-                                { current = picking.current
-                                , picked = countryCode
-                                , queue = picking.queue
-                                , score =
-                                    if countryCode == picking.current.guessing then
-                                        picking.score + 1
+                            Playing
+                                { playing
+                                    | picked = Just countryCode
+                                    , score =
+                                        if countryCode == playing.current.guessing then
+                                            playing.score + 1
 
-                                    else
-                                        picking.score
-                                , total = picking.total
+                                        else
+                                            playing.score
                                 }
                       }
                     , Cmd.none
@@ -141,14 +141,14 @@ update msg model =
 
         Next ->
             case model.inner of
-                Picked picked ->
-                    case picked.queue of
+                Playing playing ->
+                    case playing.queue of
                         [] ->
                             ( { model
                                 | inner =
                                     Finished
-                                        { score = picked.score
-                                        , total = picked.total
+                                        { score = playing.score
+                                        , total = playing.total
                                         }
                               }
                             , Cmd.none
@@ -157,11 +157,11 @@ update msg model =
                         head :: tail ->
                             ( { model
                                 | inner =
-                                    Picking
-                                        { current = head
-                                        , queue = tail
-                                        , score = picked.score
-                                        , total = picked.total
+                                    Playing
+                                        { playing
+                                            | current = head
+                                            , queue = tail
+                                            , picked = Nothing
                                         }
                               }
                             , Cmd.none
@@ -194,82 +194,22 @@ innerView : InnerModel -> Element FrontendMsg
 innerView model =
     case model of
         Homepage ->
-            Theme.button [ centerX, centerY ]
-                { label = text "Play"
-                , onPress = Just Play
-                }
-
-        Picking { current, score, total } ->
-            el
-                [ width fill
-                , height fill
-                , inFront <| viewScore score total
+            Theme.column
+                [ centerX
+                , centerY
                 ]
-            <|
-                Theme.column
-                    [ centerX
-                    , centerY
-                    ]
-                    [ viewFlag current.guessing
-                    , current.options
-                        |> List.map
-                            (\countryCode ->
-                                Theme.button [ width fill ]
-                                    { onPress = Just <| Pick countryCode
-                                    , label = viewCountryName countryCode
-                                    }
-                            )
-                        |> Theme.column [ width fill ]
-                    , Theme.button
-                        [ width fill
-                        , Background.color <| rgb 0.8 0.8 0.8
-                        ]
-                        { label = text "Next"
-                        , onPress = Nothing
-                        }
-                    ]
-
-        Picked { current, picked, score, total } ->
-            el
-                [ width fill
-                , height fill
-                , inFront <| viewScore score total
+                [ Theme.button [ width fill ]
+                    { label = text "Guess names"
+                    , onPress = Just <| Play GuessName
+                    }
+                , Theme.button [ width fill ]
+                    { label = text "Guess flags"
+                    , onPress = Just <| Play GuessFlag
+                    }
                 ]
-            <|
-                Theme.column
-                    [ centerX
-                    , centerY
-                    ]
-                    [ viewFlag current.guessing
-                    , current.options
-                        |> List.map
-                            (\countryCode ->
-                                let
-                                    common =
-                                        [ width fill ]
 
-                                    attrs =
-                                        if countryCode == current.guessing then
-                                            Background.color (rgb 0.8 0.9 0.8) :: common
-
-                                        else if countryCode == picked then
-                                            Background.color (rgb 0.9 0.7 0.7) :: common
-
-                                        else
-                                            common
-                                in
-                                Theme.button
-                                    attrs
-                                    { onPress = Nothing
-                                    , label = viewCountryName countryCode
-                                    }
-                            )
-                        |> Theme.column [ width fill ]
-                    , Theme.button [ width fill ]
-                        { label = text "Next"
-                        , onPress = Just Next
-                        }
-                    ]
+        Playing playing ->
+            viewPlaying playing
 
         Finished { score, total } ->
             Theme.column
@@ -277,11 +217,98 @@ innerView model =
                 , centerY
                 ]
                 [ text <| "Final score: " ++ String.fromInt score ++ "/" ++ String.fromInt total
-                , Theme.button [ centerX ]
-                    { label = text "Play again"
-                    , onPress = Just Play
+                , Theme.button [ width fill ]
+                    { label = text "Play again, guess names"
+                    , onPress = Just <| Play GuessName
+                    }
+                , Theme.button [ width fill ]
+                    { label = text "Play again, guess flags"
+                    , onPress = Just <| Play GuessFlag
                     }
                 ]
+
+
+viewPlaying : PlayingModel -> Element FrontendMsg
+viewPlaying { score, total, current, picked } =
+    el
+        [ width fill
+        , height fill
+        , inFront <| viewScore score total
+        ]
+    <|
+        Theme.column
+            [ centerX
+            , centerY
+            ]
+            [ case current.kind of
+                GuessName ->
+                    viewFlag current.guessing
+
+                GuessFlag ->
+                    el
+                        [ Font.center
+                        , Theme.padding
+                        , width fill
+                        , Border.width 1
+                        ]
+                        (viewCountryName current.guessing)
+            , current.options
+                |> List.map
+                    (\countryCode ->
+                        let
+                            common : List (Attribute msg)
+                            common =
+                                [ width fill ]
+
+                            attrs : List (Attribute msg)
+                            attrs =
+                                if picked /= Nothing && countryCode == current.guessing then
+                                    Background.color (rgb 0.8 0.9 0.8) :: common
+
+                                else if Just countryCode == picked then
+                                    Background.color (rgb 0.9 0.7 0.7) :: common
+
+                                else
+                                    common
+                        in
+                        Theme.button
+                            attrs
+                            { onPress =
+                                if picked == Nothing then
+                                    Just <| Pick countryCode
+
+                                else
+                                    Nothing
+                            , label =
+                                case current.kind of
+                                    GuessName ->
+                                        viewCountryName countryCode
+
+                                    GuessFlag ->
+                                        viewFlag countryCode
+                            }
+                    )
+                |> List.Extra.greedyGroupsOf 2
+                |> List.map (\group -> Theme.wrappedRow [] group)
+                |> Theme.column [ width fill ]
+            , Theme.button
+                (if picked == Nothing then
+                    [ Background.color <| rgb 0.7 0.7 0.7
+                    , width fill
+                    ]
+
+                 else
+                    [ width fill ]
+                )
+                { label = text "Next"
+                , onPress =
+                    if picked == Nothing then
+                        Nothing
+
+                    else
+                        Just Next
+                }
+            ]
 
 
 viewScore : Int -> Int -> Element msg

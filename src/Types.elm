@@ -1,4 +1,4 @@
-module Types exposing (BackendModel, BackendMsg(..), Card, CardKind(..), Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), ToBackend(..), ToFrontend(..))
+module Types exposing (BackendModel, BackendMsg(..), Card, CardKind(..), Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToBackend(..), ToFrontend(..))
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
@@ -47,23 +47,20 @@ type alias FrontendModel =
 
 type InnerModel
     = Homepage
-    | Picking
-        { current : Card
-        , queue : List Card
-        , score : Int
-        , total : Int
-        }
-    | Picked
-        { current : Card
-        , picked : CountryCode
-        , queue : List Card
-        , score : Int
-        , total : Int
-        }
+    | Playing PlayingModel
     | Finished
         { score : Int
         , total : Int
         }
+
+
+type alias PlayingModel =
+    { current : Card
+    , picked : Maybe CountryCode
+    , queue : List Card
+    , score : Int
+    , total : Int
+    }
 
 
 type alias Card =
@@ -85,7 +82,7 @@ type alias BackendModel =
 type FrontendMsg
     = UrlClicked UrlRequest
     | UrlChanged Url
-    | Play
+    | Play CardKind
     | Seed Random.Seed
     | Pick CountryCode
     | Next
