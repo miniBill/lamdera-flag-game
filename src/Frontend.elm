@@ -2,7 +2,6 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Dict
 import Element.WithContext as Element exposing (alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, px, rgb, rgb255, shrink, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border

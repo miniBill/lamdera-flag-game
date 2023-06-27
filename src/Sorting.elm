@@ -1,6 +1,6 @@
 module Sorting exposing (view)
 
-import Element.WithContext as Element exposing (alignTop, el, fill, height, paragraph, px, text, width)
+import Element.WithContext as Element exposing (alignTop, el, fill, height, px, text, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
