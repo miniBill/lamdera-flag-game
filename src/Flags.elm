@@ -294,10 +294,10 @@ toCard kind difficulty ( countryCode, similar, continent ) seed =
                     4
 
                 Normal ->
-                    4
+                    6
 
                 Hard ->
-                    6
+                    8
 
         listGenerator : Random.Generator (List CountryCode)
         listGenerator =
