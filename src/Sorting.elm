@@ -1,10 +1,11 @@
 module Sorting exposing (view)
 
-import Element.WithContext exposing (alignTop, el, fill, height, paragraph, px, text, textColumn, width)
+import Element.WithContext as Element exposing (alignTop, el, fill, height, paragraph, px, text, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags
+import Html
 import Iso3166 exposing (CountryCode)
 import List.Extra
 import Theme exposing (Element)
@@ -31,12 +32,12 @@ viewGroup { selected } index codes =
                     |> List.sortBy (\( first, _ ) -> Flags.continentToString <| toContinent first)
                     |> List.map
                         (\( first, rest ) ->
-                            Theme.column [ alignTop ]
+                            Theme.column [ alignTop, width fill ]
                                 [ text <| Flags.continentToString <| toContinent first
                                 , Theme.wrappedRow [] <| List.map viewFlag (first :: rest)
                                 ]
                         )
-                    |> Theme.wrappedRow []
+                    |> Theme.row []
     in
     case selected of
         Nothing ->
@@ -86,21 +87,24 @@ toText groups =
             )
         |> List.sortBy (Iso3166.toAlpha2 << Tuple.first)
         |> List.map groupToText
-        |> textColumn []
+        |> String.join "\n    , "
+        |> (\l -> "    [ " ++ l)
+        |> Html.text
+        |> List.singleton
+        |> Html.pre []
+        |> Element.html
+        |> el []
 
 
-groupToText : ( CountryCode, List CountryCode ) -> Element msg
+groupToText : ( CountryCode, List CountryCode ) -> String
 groupToText ( first, group ) =
-    paragraph []
-        [ text <|
-            "( "
-                ++ toUpper first
-                ++ ", ["
-                ++ String.join ", " (List.map toUpper group)
-                ++ "], "
-                ++ String.replace " " "" (Flags.continentToString <| toContinent first)
-                ++ ")"
-        ]
+    "( "
+        ++ toUpper first
+        ++ ", ["
+        ++ String.join ", " (List.map toUpper group)
+        ++ "], "
+        ++ String.replace " " "" (Flags.continentToString <| toContinent first)
+        ++ ")"
 
 
 toContinent : CountryCode -> Flags.Continent
