@@ -1,4 +1,4 @@
-module Types exposing (BackendModel, BackendMsg(..), Card, CardKind(..), Context, Difficulty(..), FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToBackend(..), ToFrontend(..))
+module Types exposing (BackendModel, BackendMsg(..), Card, CardKind(..), Context, Difficulty(..), FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, SortingModel, ToBackend(..), ToFrontend(..))
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
@@ -52,6 +52,13 @@ type InnerModel
         { score : Int
         , total : Int
         }
+    | Sorting SortingModel
+
+
+type alias SortingModel =
+    { groups : List (List CountryCode)
+    , selected : Maybe CountryCode
+    }
 
 
 type alias PlayingModel =
@@ -92,6 +99,8 @@ type FrontendMsg
     | Seed Random.Seed
     | Pick CountryCode
     | Next
+    | Move CountryCode Int
+    | SelectForMove CountryCode
 
 
 type ToBackend

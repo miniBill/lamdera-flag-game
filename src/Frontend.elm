@@ -2,8 +2,8 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Dict exposing (diff)
-import Element.WithContext as Element exposing (alignBottom, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, px, rgb, rgb255, shrink, text, width)
+import Dict
+import Element.WithContext as Element exposing (alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, px, rgb, rgb255, shrink, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -36,6 +36,8 @@ import Iso3166.Ukrainian
 import Lamdera
 import List.Extra
 import Random
+import Set
+import Sorting
 import Theme exposing (Attribute, Element)
 import Types exposing (CardKind(..), Context, Difficulty(..), FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToFrontend(..))
 import Url
@@ -63,7 +65,7 @@ app =
 
 
 init : Url.Url -> Nav.Key -> ( FrontendModel, Cmd FrontendMsg )
-init _ key =
+init url key =
     let
         context : Context
         context =
@@ -71,7 +73,31 @@ init _ key =
     in
     ( { key = key
       , context = context
-      , inner = Homepage
+      , inner =
+            if url.path == "/sort" then
+                Sorting
+                    { groups =
+                        Flags.all
+                            |> List.foldl
+                                (\( countryCode, similar, _ ) ( acc, setAcc ) ->
+                                    if Set.member (Iso3166.toAlpha2 countryCode) setAcc then
+                                        ( acc, setAcc )
+
+                                    else
+                                        ( (countryCode :: similar) :: acc
+                                        , (countryCode :: similar)
+                                            |> List.map Iso3166.toAlpha2
+                                            |> Set.fromList
+                                            |> Set.union setAcc
+                                        )
+                                )
+                                ( [], Set.empty )
+                            |> Tuple.first
+                    , selected = Nothing
+                    }
+
+            else
+                Homepage
       , seed = Random.initialSeed 0
       }
     , Random.generate Seed Random.independentSeed
@@ -172,6 +198,45 @@ update msg model =
                 _ ->
                     ( model, Cmd.none )
 
+        SelectForMove countryCode ->
+            case model.inner of
+                Sorting sorting ->
+                    ( { model
+                        | inner =
+                            Sorting
+                                { sorting
+                                    | selected = Just countryCode
+                                }
+                      }
+                    , Cmd.none
+                    )
+
+                _ ->
+                    ( model, Cmd.none )
+
+        Move countryCode index ->
+            case model.inner of
+                Sorting sorting ->
+                    ( { model
+                        | inner =
+                            Sorting
+                                { selected = Nothing
+                                , groups =
+                                    sorting.groups
+                                        |> List.map (List.Extra.remove countryCode)
+                                        |> (::) []
+                                        |> List.Extra.updateAt index ((::) countryCode)
+                                        |> List.Extra.filterNot List.isEmpty
+                                        |> List.sortBy List.length
+                                        |> List.map (List.sortBy Iso3166.toAlpha2)
+                                }
+                      }
+                    , Cmd.none
+                    )
+
+                _ ->
+                    ( model, Cmd.none )
+
 
 updateFromBackend : ToFrontend -> FrontendModel -> ( FrontendModel, Cmd FrontendMsg )
 updateFromBackend msg model =
@@ -206,6 +271,9 @@ innerView model =
 
         Finished finished ->
             viewFinished finished
+
+        Sorting groups ->
+            Sorting.view groups
 
 
 viewHomepage : Element FrontendMsg
@@ -541,16 +609,7 @@ viewFlag countryCode =
             , color = rgb 0 0 0
             }
         ]
-        (text <| toFlag countryCode)
-
-
-toFlag : CountryCode -> String
-toFlag countryCode =
-    countryCode
-        |> Iso3166.toAlpha2
-        |> String.toList
-        |> List.map (\c -> Char.fromCode <| Char.toCode c - Char.toCode 'a' + 0x0001F1E6)
-        |> String.fromList
+        (text <| Flags.toEmoji countryCode)
 
 
 subscriptions : FrontendModel -> Sub FrontendMsg
