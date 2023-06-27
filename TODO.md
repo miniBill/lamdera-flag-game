@@ -1,4 +1,3 @@
-- Difficulty levels
 - Historical variants
 - Grab ALL the SVGs
 
