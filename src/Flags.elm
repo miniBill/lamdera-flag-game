@@ -11,7 +11,6 @@ allCards kind seed =
     let
         ( finalSeed, result ) =
             Iso3166.all
-                |> List.take 5
                 |> List.foldl
                     (\code ( seedAcc, acc ) ->
                         let
@@ -22,7 +21,11 @@ allCards kind seed =
                     )
                     ( seed, [] )
     in
-    Random.step (Random.List.shuffle result) finalSeed
+    Random.step
+        (Random.List.shuffle result
+            |> Random.map (List.take 20)
+        )
+        finalSeed
 
 
 toCard : CardKind -> CountryCode -> Random.Seed -> ( Card, Random.Seed )
