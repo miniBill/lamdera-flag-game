@@ -87,6 +87,8 @@ type FrontendMsg
     | UrlChanged Url
     | Play
     | Seed Random.Seed
+    | Pick CountryCode
+    | Next
 
 
 type ToBackend

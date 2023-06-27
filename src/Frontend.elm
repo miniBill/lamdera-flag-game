@@ -115,6 +115,61 @@ update msg model =
                     , Cmd.none
                     )
 
+        Pick countryCode ->
+            case model.inner of
+                Picking picking ->
+                    ( { model
+                        | inner =
+                            Picked
+                                { current = picking.current
+                                , picked = countryCode
+                                , queue = picking.queue
+                                , score =
+                                    if countryCode == picking.current.guessing then
+                                        picking.score + 1
+
+                                    else
+                                        picking.score
+                                , total = picking.total
+                                }
+                      }
+                    , Cmd.none
+                    )
+
+                _ ->
+                    ( model, Cmd.none )
+
+        Next ->
+            case model.inner of
+                Picked picked ->
+                    case picked.queue of
+                        [] ->
+                            ( { model
+                                | inner =
+                                    Finished
+                                        { score = picked.score
+                                        , total = picked.total
+                                        }
+                              }
+                            , Cmd.none
+                            )
+
+                        head :: tail ->
+                            ( { model
+                                | inner =
+                                    Picking
+                                        { current = head
+                                        , queue = tail
+                                        , score = picked.score
+                                        , total = picked.total
+                                        }
+                              }
+                            , Cmd.none
+                            )
+
+                _ ->
+                    ( model, Cmd.none )
+
 
 allCards : Random.Seed -> ( List Card, Random.Seed )
 allCards seed =
@@ -201,14 +256,21 @@ innerView model =
                         |> List.map
                             (\countryCode ->
                                 Theme.button [ width fill ]
-                                    { onPress = Nothing
+                                    { onPress = Just <| Pick countryCode
                                     , label = viewCountryName countryCode
                                     }
                             )
                         |> Theme.column [ width fill ]
+                    , Theme.button
+                        [ width fill
+                        , Background.color <| rgb 0.8 0.8 0.8
+                        ]
+                        { label = text "Next"
+                        , onPress = Nothing
+                        }
                     ]
 
-        Picked { current, score, total } ->
+        Picked { current, picked, score, total } ->
             el
                 [ width fill
                 , height fill
@@ -223,16 +285,44 @@ innerView model =
                     , current.options
                         |> List.map
                             (\countryCode ->
-                                Theme.button [ width fill ]
+                                let
+                                    common =
+                                        [ width fill ]
+
+                                    attrs =
+                                        if countryCode == current.guessing then
+                                            Background.color (rgb 0.8 0.9 0.8) :: common
+
+                                        else if countryCode == picked then
+                                            Background.color (rgb 0.9 0.7 0.7) :: common
+
+                                        else
+                                            common
+                                in
+                                Theme.button
+                                    attrs
                                     { onPress = Nothing
                                     , label = viewCountryName countryCode
                                     }
                             )
                         |> Theme.column [ width fill ]
+                    , Theme.button [ width fill ]
+                        { label = text "Next"
+                        , onPress = Just Next
+                        }
                     ]
 
         Finished { score, total } ->
-            text <| "Final score: " ++ String.fromInt score ++ "/" ++ String.fromInt total
+            Theme.column
+                [ centerX
+                , centerY
+                ]
+                [ text <| "Final score: " ++ String.fromInt score ++ "/" ++ String.fromInt total
+                , Theme.button [ centerX ]
+                    { label = text "Play again"
+                    , onPress = Just Play
+                    }
+                ]
 
 
 viewScore : Int -> Int -> Element msg
@@ -332,7 +422,12 @@ viewCountryName countryCode =
 
 viewFlag : CountryCode -> Element msg
 viewFlag countryCode =
-    el [ Font.size 200 ] <| text <| toFlag countryCode
+    el
+        [ width fill
+        , Font.center
+        , Font.size 200
+        ]
+        (text <| toFlag countryCode)
 
 
 toFlag : CountryCode -> String
