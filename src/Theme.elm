@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, button, column, padding, rythm, spacing)
+module Theme exposing (Attribute, Element, button, column, rythm)
 
 import Element.WithContext as Element exposing (rgb)
 import Element.WithContext.Background as Background

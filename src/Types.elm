@@ -1,4 +1,4 @@
-module Types exposing (..)
+module Types exposing (BackendModel, BackendMsg(..), Card, CardKind(..), Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), ToBackend(..), ToFrontend(..))
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)

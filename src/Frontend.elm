@@ -6,6 +6,7 @@ import Element.WithContext as Element exposing (alignRight, alignTop, centerX, c
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
+import Flags exposing (allCards)
 import Iso3166 exposing (CountryCode)
 import Iso3166.Arabic
 import Iso3166.Chinese
@@ -32,9 +33,8 @@ import Iso3166.Thai
 import Iso3166.Ukrainian
 import Lamdera
 import Random
-import Random.List
 import Theme exposing (Element)
-import Types exposing (Card, CardKind(..), Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), ToFrontend(..))
+import Types exposing (Context, FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), ToFrontend(..))
 import Url
 
 
@@ -169,47 +169,6 @@ update msg model =
 
                 _ ->
                     ( model, Cmd.none )
-
-
-allCards : Random.Seed -> ( List Card, Random.Seed )
-allCards seed =
-    let
-        ( finalSeed, result ) =
-            Iso3166.all
-                |> List.foldl
-                    (\code ( seedAcc, acc ) ->
-                        let
-                            ( card, newSeed ) =
-                                toCard code seedAcc
-                        in
-                        ( newSeed, card :: acc )
-                    )
-                    ( seed, [] )
-    in
-    Random.step (Random.List.shuffle result) finalSeed
-
-
-toCard : CountryCode -> Random.Seed -> ( Card, Random.Seed )
-toCard countryCode seed =
-    let
-        generator : Random.Generator Card
-        generator =
-            Iso3166.all
-                |> List.filter ((/=) countryCode)
-                |> Random.List.choices 3
-                |> Random.andThen
-                    (\( others, _ ) ->
-                        Random.List.shuffle (countryCode :: others)
-                            |> Random.map
-                                (\options ->
-                                    { guessing = countryCode
-                                    , options = options
-                                    , kind = GuessName
-                                    }
-                                )
-                    )
-    in
-    Random.step generator seed
 
 
 updateFromBackend : ToFrontend -> FrontendModel -> ( FrontendModel, Cmd FrontendMsg )
