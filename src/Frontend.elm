@@ -2,7 +2,7 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgb255, rgba, scrollbarY, text, width)
+import Element.WithContext as Element exposing (Color, alignBottom, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgb255, rgba, scrollbarY, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -472,12 +472,14 @@ viewFlagButton { picked, current } countryCode =
             , text " "
             ]
     in
-    case picked of
-        Nothing ->
-            Theme.column
-                [ width fill
-                , Theme.padding
-                ]
+    Theme.column
+        [ width fill
+        , height fill
+        , Theme.padding
+        ]
+    <|
+        case picked of
+            Nothing ->
                 [ Input.button
                     [ width fill
                     ]
@@ -492,35 +494,32 @@ viewFlagButton { picked, current } countryCode =
                 , paragraph
                     [ Font.center
                     , Font.color <| rgba 0 0 0 0
+                    , alignBottom
                     ]
                     (badge " " (rgba 0 0 0 0)
                         ++ [ viewCountryName countryCode ]
                     )
                 ]
 
-        Just pickedCountryCode ->
-            let
-                maybeBadge : List (Element msg)
-                maybeBadge =
-                    if countryCode == current.guessing then
-                        badge "✓" <| rgb 0.2 0.6 0.2
+            Just pickedCountryCode ->
+                let
+                    maybeBadge : List (Element msg)
+                    maybeBadge =
+                        if countryCode == current.guessing then
+                            badge "✓" <| rgb 0.2 0.6 0.2
 
-                    else if countryCode == pickedCountryCode then
-                        badge "✗" <| rgb 0.6 0.2 0.2
+                        else if countryCode == pickedCountryCode then
+                            badge "✗" <| rgb 0.6 0.2 0.2
 
-                    else
-                        badge "-" <| rgb 0.9 0.9 0.9
-            in
-            Theme.column
-                [ width fill
-                , Theme.padding
-                ]
+                        else
+                            badge "-" <| rgb 0.9 0.9 0.9
+                in
                 [ el [ centerX ] <|
                     viewFlag
                         { countryCode = countryCode
                         , width = 150
                         }
-                , paragraph [ Font.center ]
+                , paragraph [ Font.center, alignBottom ]
                     (maybeBadge
                         ++ [ viewCountryName countryCode ]
                     )
