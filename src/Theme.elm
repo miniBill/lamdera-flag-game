@@ -1,11 +1,12 @@
 module Theme exposing (Attribute, Element, button, colors, column, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, image, px, rgb255, shrink, width)
+import Element.WithContext as Element exposing (Color, Length, centerX, fill, height, image, px, rgb255, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Iso3166 exposing (CountryCode)
+import List.Extra
 import Types exposing (Context)
 
 
@@ -79,8 +80,14 @@ wrappedRow attrs children =
     Element.wrappedRow (spacing :: attrs) children
 
 
-grid : List (Attribute msg) -> List (List (Element msg)) -> Element msg
-grid attrs elements =
+grid :
+    List (Attribute msg)
+    ->
+        { widths : List Length
+        , elements : List (List (Element msg))
+        }
+    -> Element msg
+grid attrs { widths, elements } =
     let
         columnCount =
             List.map List.length elements
@@ -91,11 +98,14 @@ grid attrs elements =
             List.map
                 (\i ->
                     { header = Element.none
-                    , width = shrink
+                    , width =
+                        widths
+                            |> List.Extra.getAt i
+                            |> Maybe.withDefault shrink
                     , view =
                         \elementsRow ->
-                            List.drop i elementsRow
-                                |> List.head
+                            elementsRow
+                                |> List.Extra.getAt i
                                 |> Maybe.withDefault Element.none
                     }
                 )
@@ -116,7 +126,11 @@ viewFlag config =
         src =
             "/" ++ Iso3166.toAlpha2 config.countryCode ++ ".svg"
     in
-    image [ width <| px config.width ]
+    image
+        [ width <| px config.width
+        , height <| Element.maximum (2 * config.width // 3) shrink
+        , centerX
+        ]
         { src = src
         , description = "A country flag"
         }

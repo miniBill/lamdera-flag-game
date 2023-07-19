@@ -2,12 +2,13 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Element.WithContext as Element exposing (Color, alignBottom, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgb255, rgba, scrollbarY, text, width)
+import Element.WithContext as Element exposing (Color, alignBottom, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgb255, rgba, scrollbarY, shrink, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags exposing (allCards)
+import Html.Attributes
 import Iso3166 exposing (CountryCode)
 import Iso3166.Arabic
 import Iso3166.Chinese
@@ -357,6 +358,7 @@ viewPlaying ({ options, score, current, picked } as model) =
         Theme.column
             [ centerX
             , centerY
+            , Theme.padding
             ]
             [ case current.guessFrom of
                 Flag ->
@@ -367,12 +369,12 @@ viewPlaying ({ options, score, current, picked } as model) =
                             }
 
                 Name ->
-                    el
+                    paragraph
                         [ Font.center
                         , width fill
                         , Font.size 50
                         ]
-                        (viewCountryName current.guessing)
+                        [ viewCountryName current.guessing ]
             , case current.guessTo of
                 Name ->
                     Element.table [ width fill, Theme.spacing ]
@@ -405,7 +407,13 @@ viewPlaying ({ options, score, current, picked } as model) =
                     current.answers
                         |> List.map (viewFlagButton model)
                         |> List.Extra.greedyGroupsOf 2
-                        |> List.map (\group -> Theme.row [ width fill ] group)
+                        |> List.map
+                            (\group ->
+                                Theme.grid [ width fill ]
+                                    { elements = List.Extra.transpose group
+                                    , widths = [ fill, fill ]
+                                    }
+                            )
                         |> Theme.column [ width fill ]
             , Theme.button
                 (if picked == Nothing then
@@ -453,77 +461,86 @@ viewNameButton { current, picked } countryCode =
 
             else
                 Nothing
-        , label = viewCountryName countryCode
+        , label =
+            paragraph []
+                [ viewCountryName countryCode ]
         }
 
 
-viewFlagButton : PlayingModel -> CountryCode -> Element FrontendMsg
+viewFlagButton : PlayingModel -> CountryCode -> List (Element FrontendMsg)
 viewFlagButton { picked, current } countryCode =
     let
         badge : String -> Color -> List (Element msg)
         badge label color =
             [ el
-                [ Font.color <| rgb 1 1 1
-                , Background.color color
-                , Border.rounded 9999
-                , paddingXY 6 2
-                ]
+                (if picked == Nothing then
+                    [ Border.rounded 9999
+                    , paddingXY 6 2
+                    ]
+
+                 else
+                    [ Font.color <| rgb 1 1 1
+                    , Background.color color
+                    , Border.rounded 9999
+                    , paddingXY 6 2
+                    ]
+                )
                 (text label)
             , text " "
             ]
-    in
-    Theme.column
-        [ width fill
-        , height fill
-        , Theme.padding
-        ]
-    <|
-        case picked of
-            Nothing ->
-                [ Input.button
-                    [ width fill
-                    ]
-                    { onPress = Just <| Pick countryCode
-                    , label =
-                        el [ centerX ] <|
-                            viewFlag
-                                { countryCode = countryCode
-                                , width = 150
-                                }
-                    }
-                , paragraph
+
+        maybeBadge : List (Element msg)
+        maybeBadge =
+            if countryCode == current.guessing then
+                badge "✓" <| rgb 0.2 0.6 0.2
+
+            else if Just countryCode == picked then
+                badge "✗" <| rgb 0.6 0.2 0.2
+
+            else
+                badge "-" <| rgb 0.9 0.9 0.9
+
+        nameAndBadge =
+            paragraph
+                (if picked == Nothing then
                     [ Font.center
                     , Font.color <| rgba 0 0 0 0
-                    , alignBottom
                     ]
-                    (badge " " (rgba 0 0 0 0)
-                        ++ [ viewCountryName countryCode ]
-                    )
+
+                 else
+                    [ Font.center ]
+                )
+                (maybeBadge
+                    ++ [ viewCountryName countryCode ]
+                )
+
+        flag : Element msg
+        flag =
+            el
+                [ centerX
+                , width shrink
+                , alignBottom
+                , Element.htmlAttribute <| Html.Attributes.id "flag"
                 ]
+            <|
+                viewFlag
+                    { countryCode = countryCode
+                    , width = 150
+                    }
+    in
+    case picked of
+        Nothing ->
+            [ Input.button [ centerX, alignBottom ]
+                { onPress = Just <| Pick countryCode
+                , label = flag
+                }
+            , nameAndBadge
+            ]
 
-            Just pickedCountryCode ->
-                let
-                    maybeBadge : List (Element msg)
-                    maybeBadge =
-                        if countryCode == current.guessing then
-                            badge "✓" <| rgb 0.2 0.6 0.2
-
-                        else if countryCode == pickedCountryCode then
-                            badge "✗" <| rgb 0.6 0.2 0.2
-
-                        else
-                            badge "-" <| rgb 0.9 0.9 0.9
-                in
-                [ el [ centerX ] <|
-                    viewFlag
-                        { countryCode = countryCode
-                        , width = 150
-                        }
-                , paragraph [ Font.center, alignBottom ]
-                    (maybeBadge
-                        ++ [ viewCountryName countryCode ]
-                    )
-                ]
+        Just _ ->
+            [ flag
+            , nameAndBadge
+            ]
 
 
 viewFinished : { options : GameOptions, score : Int, total : Int } -> Element FrontendMsg
@@ -632,7 +649,7 @@ startButtons options =
                 config.all
             )
 
-        optionsGrid : Element FrontendMsg
+        optionsGrid : List (List (Element FrontendMsg))
         optionsGrid =
             [ radios "Difficulty"
                 { toLabel = difficultyToString
@@ -670,10 +687,12 @@ startButtons options =
                         el [ centerY ] (text label)
                             :: cells
                     )
-                |> Theme.grid []
     in
     Theme.column []
-        [ optionsGrid
+        [ Theme.grid []
+            { elements = optionsGrid
+            , widths = [ shrink ]
+            }
         , Theme.button [ centerX ]
             { label = text "Play"
             , onPress = Just Play
