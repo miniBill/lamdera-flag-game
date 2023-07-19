@@ -1,14 +1,10 @@
 ## Needed
 
 - Remove small countries and duplicates
-- Grab SVG versions of the flags
 - Check Taiwan's situation
 
 ## Tweaks
 
-- Move checkmarks off the flag
-- Show all names after reveal
-- How many do you want to play for
 - Have continent option
 
 - Mobile layout
@@ -18,7 +14,6 @@
 
 ## Nice to have
 
-- Mixed mode
 - In easy mode show only obvious countries
 - Share button
 - Map mode
