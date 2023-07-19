@@ -1,4 +1,4 @@
-module Flags exposing (Continent(..), all, allCards, continentToString, toEmoji)
+module Flags exposing (Continent(..), all, allCards, continentToString)
 
 import Iso3166 exposing (CountryCode(..))
 import List.Extra
@@ -381,15 +381,6 @@ type Continent
     | NorthAmerica
     | Oceania
     | SouthAmerica
-
-
-toEmoji : CountryCode -> String
-toEmoji countryCode =
-    countryCode
-        |> Iso3166.toAlpha2
-        |> String.toList
-        |> List.map (\c -> Char.fromCode <| Char.toCode c - Char.toCode 'a' + 0x0001F1E6)
-        |> String.fromList
 
 
 continentToString : Continent -> String

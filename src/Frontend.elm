@@ -37,7 +37,7 @@ import List.Extra
 import Random
 import Set
 import Sorting
-import Theme exposing (Attribute, Element)
+import Theme exposing (Attribute, Element, viewFlag)
 import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), Language(..), PlayingModel, Property(..), ToFrontend(..))
 import Url
 
@@ -359,7 +359,11 @@ viewPlaying ({ options, score, current, picked } as model) =
             ]
             [ case current.guessFrom of
                 Flag ->
-                    viewFlag current.guessing
+                    el [ centerX ] <|
+                        viewFlag
+                            { countryCode = current.guessing
+                            , width = 200
+                            }
 
                 Name ->
                     el
@@ -460,7 +464,11 @@ viewFlagButton { picked, current } countryCode =
             , Theme.padding
             ]
             { onPress = Just <| Pick countryCode
-            , label = viewFlag countryCode
+            , label =
+                viewFlag
+                    { countryCode = countryCode
+                    , width = 150
+                    }
             }
 
     else
@@ -495,7 +503,11 @@ viewFlagButton { picked, current } countryCode =
                 else
                     Element.none
             ]
-            (viewFlag countryCode)
+            (viewFlag
+                { countryCode = countryCode
+                , width = 150
+                }
+            )
 
 
 viewFinished : { options : GameOptions, score : Int, total : Int } -> Element FrontendMsg
@@ -759,21 +771,6 @@ viewCountryName countryCode =
 
                 Ukrainian ->
                     text <| Iso3166.Ukrainian.toName countryCode
-
-
-viewFlag : CountryCode -> Element msg
-viewFlag countryCode =
-    el
-        [ width fill
-        , Font.center
-        , Font.size 200
-        , Font.shadow
-            { offset = ( 8, 8 )
-            , blur = 4
-            , color = rgb 0 0 0
-            }
-        ]
-        (text <| Flags.toEmoji countryCode)
 
 
 subscriptions : FrontendModel -> Sub FrontendMsg

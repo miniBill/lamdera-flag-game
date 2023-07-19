@@ -1,11 +1,13 @@
-module Theme exposing (Attribute, Element, button, colors, column, grid, padding, row, rythm, spacing, wrappedRow)
+module Theme exposing (Attribute, Element, button, colors, column, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, rgb255, shrink)
+import Element.WithContext as Element exposing (Color, image, px, rgb255, shrink, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
+import Iso3166 exposing (CountryCode)
 import Types exposing (Context)
+import Url.Builder
 
 
 type alias Element msg =
@@ -103,4 +105,23 @@ grid attrs elements =
     Element.table (spacing :: attrs)
         { data = elements
         , columns = columns
+        }
+
+
+viewFlag :
+    { countryCode : CountryCode, width : Int }
+    -> Element msg
+viewFlag config =
+    let
+        src : String
+        src =
+            Url.Builder.absolute
+                [ "public"
+                , Iso3166.toAlpha2 config.countryCode ++ ".svg"
+                ]
+                []
+    in
+    image [ width <| px config.width ]
+        { src = src
+        , description = "A country flag"
         }

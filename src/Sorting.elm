@@ -69,7 +69,10 @@ viewFlag countryCode =
                 [ width fill
                 , Font.center
                 ]
-                [ el [ Font.size 80 ] <| text <| Flags.toEmoji countryCode
+                [ Theme.viewFlag
+                    { countryCode = countryCode
+                    , width = 50
+                    }
                 , el [ Font.center, width fill ] <| text <| Iso3166.toAlpha2 countryCode
                 ]
         , onPress = Just <| SelectForMove countryCode
