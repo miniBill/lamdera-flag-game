@@ -1,6 +1,6 @@
 module Theme exposing (Attribute, Element, button, colors, column, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, Length, centerX, fill, height, image, px, rgb255, shrink, width)
+import Element.WithContext as Element exposing (Color, Length, centerX, height, image, px, rgb255, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
