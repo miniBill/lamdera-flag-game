@@ -1,13 +1,14 @@
 module Flags exposing (Continent(..), all, allCards, continentToString, toEmoji)
 
 import Iso3166 exposing (CountryCode(..))
+import List.Extra
 import Random
 import Random.List
-import Types exposing (Card, CardKind, Difficulty(..))
+import Types exposing (Card, Difficulty(..), GameOptions, Property(..))
 
 
-allCards : CardKind -> Difficulty -> Random.Seed -> ( List Card, Random.Seed )
-allCards kind difficulty seed =
+allCards : GameOptions -> Random.Seed -> ( List Card, Random.Seed )
+allCards options seed =
     let
         ( finalSeed, result ) =
             all
@@ -15,7 +16,7 @@ allCards kind difficulty seed =
                     (\input ( seedAcc, acc ) ->
                         let
                             ( card, newSeed ) =
-                                toCard kind difficulty input seedAcc
+                                toCard options input seedAcc
                         in
                         ( newSeed, card :: acc )
                     )
@@ -284,24 +285,20 @@ all =
     ]
 
 
-toCard : CardKind -> Difficulty -> ( CountryCode, List CountryCode, Continent ) -> Random.Seed -> ( Card, Random.Seed )
-toCard kind difficulty ( countryCode, similar, continent ) seed =
+toCard :
+    GameOptions
+    -> ( CountryCode, List CountryCode, Continent )
+    -> Random.Seed
+    -> ( Card, Random.Seed )
+toCard options ( countryCode, similar, continent ) seed =
     let
-        count : number
+        count : Int
         count =
-            case difficulty of
-                Easy ->
-                    4
-
-                Normal ->
-                    6
-
-                Hard ->
-                    8
+            options.answersCount
 
         listGenerator : Random.Generator (List CountryCode)
         listGenerator =
-            case difficulty of
+            case options.difficulty of
                 Easy ->
                     all
                         |> List.filter
@@ -346,20 +343,34 @@ toCard kind difficulty ( countryCode, similar, continent ) seed =
 
         generator : Random.Generator Card
         generator =
-            listGenerator
-                |> Random.andThen
-                    (\others ->
-                        Random.List.shuffle (countryCode :: others)
-                            |> Random.map
-                                (\options ->
-                                    { guessing = countryCode
-                                    , options = options
-                                    , kind = kind
-                                    }
-                                )
-                    )
+            Random.map2
+                (\( guessFrom, guessTo ) countries ->
+                    { guessing = countryCode
+                    , answers = countries
+                    , guessFrom = guessFrom
+                    , guessTo = guessTo
+                    }
+                )
+                (propertyGenerator options)
+                (Random.andThen Random.List.shuffle <| Random.map ((::) countryCode) listGenerator)
     in
     Random.step generator seed
+
+
+propertyGenerator : GameOptions -> Random.Generator ( Property, Property )
+propertyGenerator { guessFrom, guessTo } =
+    let
+        pairs : List ( Property, Property )
+        pairs =
+            List.Extra.lift2 Tuple.pair guessFrom guessTo
+                |> List.filter (\( f, t ) -> f /= t)
+    in
+    case pairs of
+        [] ->
+            Random.uniform ( Flag, Name ) [ ( Name, Flag ) ]
+
+        phead :: ptail ->
+            Random.uniform phead ptail
 
 
 type Continent

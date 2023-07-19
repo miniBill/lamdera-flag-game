@@ -2,7 +2,7 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Element.WithContext as Element exposing (alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, px, rgb, rgb255, shrink, text, width)
+import Element.WithContext as Element exposing (alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, px, rgb, rgb255, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -38,7 +38,7 @@ import Random
 import Set
 import Sorting
 import Theme exposing (Attribute, Element)
-import Types exposing (CardKind(..), Context, Difficulty(..), FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, ToFrontend(..))
+import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), Language(..), PlayingModel, Property(..), ToFrontend(..))
 import Url
 
 
@@ -96,11 +96,21 @@ init url key =
                     }
 
             else
-                Homepage
+                Homepage defaultGameOptions
       , seed = Random.initialSeed 0
       }
     , Random.generate Seed Random.independentSeed
     )
+
+
+defaultGameOptions : GameOptions
+defaultGameOptions =
+    { count = 20
+    , difficulty = Normal
+    , answersCount = 6
+    , guessFrom = Types.allProperties
+    , guessTo = Types.allProperties
+    }
 
 
 update : FrontendMsg -> FrontendModel -> ( FrontendModel, Cmd FrontendMsg )
@@ -124,25 +134,59 @@ update msg model =
         Seed seed ->
             ( { model | seed = seed }, Cmd.none )
 
-        Play kind difficulty ->
-            case allCards kind difficulty model.seed of
-                ( [], _ ) ->
-                    ( model, Cmd.none )
+        ChangeOptions options ->
+            ( { model
+                | inner =
+                    case model.inner of
+                        Finished finished ->
+                            Finished { finished | options = options }
 
-                ( head :: tail, newSeed ) ->
-                    ( { model
-                        | inner =
-                            Playing
-                                { current = head
-                                , queue = tail
-                                , picked = Nothing
-                                , score = 0
-                                , total = 1 + List.length tail
-                                }
-                        , seed = newSeed
-                      }
-                    , Cmd.none
-                    )
+                        Homepage _ ->
+                            Homepage options
+
+                        Playing _ ->
+                            -- Can't change options while playing
+                            model.inner
+
+                        Sorting _ ->
+                            model.inner
+              }
+            , Cmd.none
+            )
+
+        Play ->
+            let
+                maybeOptions : Maybe GameOptions
+                maybeOptions =
+                    getGameOptions model.inner
+            in
+            case maybeOptions of
+                Just options ->
+                    case allCards options model.seed of
+                        ( [], _ ) ->
+                            ( model, Cmd.none )
+
+                        ( head :: tail, newSeed ) ->
+                            let
+                                playingModel : PlayingModel
+                                playingModel =
+                                    { options = options
+                                    , current = head
+                                    , queue = tail
+                                    , picked = Nothing
+                                    , score = 0
+                                    }
+                            in
+                            ( { model
+                                | inner =
+                                    Playing playingModel
+                                , seed = newSeed
+                              }
+                            , Cmd.none
+                            )
+
+                Nothing ->
+                    ( model, Cmd.none )
 
         Pick countryCode ->
             case model.inner of
@@ -174,8 +218,9 @@ update msg model =
                             ( { model
                                 | inner =
                                     Finished
-                                        { score = playing.score
-                                        , total = playing.total
+                                        { options = playing.options
+                                        , score = playing.score
+                                        , total = playing.options.count
                                         }
                               }
                             , Cmd.none
@@ -237,6 +282,22 @@ update msg model =
                     ( model, Cmd.none )
 
 
+getGameOptions : InnerModel -> Maybe GameOptions
+getGameOptions model =
+    case model of
+        Homepage options ->
+            Just options
+
+        Playing { options } ->
+            Just options
+
+        Finished { options } ->
+            Just options
+
+        Sorting _ ->
+            Nothing
+
+
 updateFromBackend : ToFrontend -> FrontendModel -> ( FrontendModel, Cmd FrontendMsg )
 updateFromBackend msg model =
     case msg of
@@ -262,8 +323,8 @@ view model =
 innerView : InnerModel -> Element FrontendMsg
 innerView model =
     case model of
-        Homepage ->
-            viewHomepage
+        Homepage options ->
+            viewHomepage options
 
         Playing playing ->
             viewPlaying playing
@@ -275,43 +336,43 @@ innerView model =
             Sorting.view groups
 
 
-viewHomepage : Element FrontendMsg
-viewHomepage =
+viewHomepage : GameOptions -> Element FrontendMsg
+viewHomepage options =
     el
         [ centerX
         , centerY
         ]
-        startButtons
+        (startButtons options)
 
 
 viewPlaying : PlayingModel -> Element FrontendMsg
-viewPlaying ({ score, total, current, picked } as model) =
+viewPlaying ({ options, score, current, picked } as model) =
     el
         [ width fill
         , height fill
-        , inFront <| viewScore score total
+        , inFront <| viewScore score options.count
         ]
     <|
         Theme.column
             [ centerX
             , centerY
             ]
-            [ case current.kind of
-                GuessName ->
+            [ case current.guessFrom of
+                Flag ->
                     viewFlag current.guessing
 
-                GuessFlag ->
+                Name ->
                     el
                         [ Font.center
                         , width fill
                         , Font.size 50
                         ]
                         (viewCountryName current.guessing)
-            , case current.kind of
-                GuessName ->
+            , case current.guessTo of
+                Name ->
                     Element.table [ width fill, Theme.spacing ]
                         { data =
-                            current.options
+                            current.answers
                                 |> List.map (viewNameButton model)
                                 |> List.Extra.greedyGroupsOf 2
                         , columns =
@@ -335,8 +396,8 @@ viewPlaying ({ score, total, current, picked } as model) =
                             ]
                         }
 
-                GuessFlag ->
-                    current.options
+                Flag ->
+                    current.answers
                         |> List.map (viewFlagButton model)
                         |> List.Extra.greedyGroupsOf 2
                         |> List.map (\group -> Theme.row [ width fill ] group)
@@ -387,13 +448,7 @@ viewNameButton { current, picked } countryCode =
 
             else
                 Nothing
-        , label =
-            case current.kind of
-                GuessName ->
-                    viewCountryName countryCode
-
-                GuessFlag ->
-                    viewFlag countryCode
+        , label = viewCountryName countryCode
         }
 
 
@@ -443,7 +498,7 @@ viewFlagButton { picked, current } countryCode =
             (viewFlag countryCode)
 
 
-viewFinished : { score : Int, total : Int } -> Element FrontendMsg
+viewFinished : { options : GameOptions, score : Int, total : Int } -> Element FrontendMsg
 viewFinished finished =
     Theme.column
         [ centerX
@@ -456,49 +511,159 @@ viewFinished finished =
                     ++ "/"
                     ++ String.fromInt finished.total
         , el [ width fill, Font.center ] <| text "Play again"
-        , startButtons
+        , startButtons finished.options
         ]
 
 
-startButtons : Element FrontendMsg
-startButtons =
-    Element.table [ Theme.spacing ]
-        { data =
-            [ ( "Easy", Easy )
-            , ( "Normal", Normal )
-            , ( "Hard", Hard )
+startButtons : GameOptions -> Element FrontendMsg
+startButtons options =
+    let
+        button :
+            { selected : Bool
+            , label : String
+            , onPress : GameOptions
+            }
+            -> Element FrontendMsg
+        button config =
+            Theme.button
+                [ Font.center
+                , width fill
+                , if config.selected then
+                    Background.color Theme.colors.selectedButtonBackground
+
+                  else
+                    Background.color Theme.colors.buttonBackground
+                ]
+                { label = text config.label
+                , onPress = Just <| ChangeOptions config.onPress
+                }
+
+        checkboxes :
+            String
+            ->
+                { get : GameOptions -> List v
+                , toLabel : v -> String
+                , set : List v -> GameOptions
+                , all : List v
+                }
+            -> ( String, List (Element FrontendMsg) )
+        checkboxes label config =
+            let
+                current =
+                    config.get options
+            in
+            ( label
+            , List.map
+                (\value ->
+                    let
+                        selected =
+                            List.member value current
+                    in
+                    button
+                        { label = config.toLabel value
+                        , selected = selected
+                        , onPress =
+                            config.set <|
+                                if selected then
+                                    List.Extra.remove value current
+
+                                else
+                                    value :: current
+                        }
+                )
+                config.all
+            )
+
+        radios :
+            String
+            ->
+                { get : GameOptions -> v
+                , toLabel : v -> String
+                , set : v -> GameOptions
+                , all : List v
+                }
+            -> ( String, List (Element FrontendMsg) )
+        radios label config =
+            let
+                current =
+                    config.get options
+            in
+            ( label
+            , List.map
+                (\value ->
+                    let
+                        selected =
+                            value == current
+                    in
+                    button
+                        { label = config.toLabel value
+                        , selected = selected
+                        , onPress = config.set value
+                        }
+                )
+                config.all
+            )
+
+        optionsGrid : Element FrontendMsg
+        optionsGrid =
+            [ radios "Difficulty"
+                { toLabel = difficultyToString
+                , all = [ Easy, Normal, Hard ]
+                , get = .difficulty
+                , set = \v -> { options | difficulty = v }
+                }
+            , checkboxes "Guess from"
+                { toLabel = Types.propertyToString
+                , all = Types.allProperties
+                , get = .guessFrom
+                , set = \v -> { options | guessFrom = v }
+                }
+            , checkboxes "Guess to"
+                { toLabel = Types.propertyToString
+                , all = Types.allProperties
+                , get = .guessTo
+                , set = \v -> { options | guessTo = v }
+                }
+            , radios "Possible answers"
+                { toLabel = String.fromInt
+                , all = [ 4, 6, 8 ]
+                , get = .answersCount
+                , set = \v -> { options | answersCount = v }
+                }
+            , radios "Game length"
+                { toLabel = String.fromInt
+                , all = [ 20, 100, List.length Flags.all ]
+                , get = .count
+                , set = \v -> { options | count = v }
+                }
             ]
-        , columns =
-            [ { header = Element.none
-              , width = shrink
-              , view = \( label, _ ) -> el [ centerY ] <| text label
-              }
-            , { header = Element.none
-              , width = fill
-              , view =
-                    \( _, difficulty ) ->
-                        Theme.button
-                            [ Font.center
-                            , width fill
-                            ]
-                            { label = text "GUESS NAMES"
-                            , onPress = Just <| Play GuessName difficulty
-                            }
-              }
-            , { header = Element.none
-              , width = fill
-              , view =
-                    \( _, difficulty ) ->
-                        Theme.button
-                            [ Font.center
-                            , width fill
-                            ]
-                            { label = text "GUESS FLAGS"
-                            , onPress = Just <| Play GuessFlag difficulty
-                            }
-              }
-            ]
-        }
+                |> List.map
+                    (\( label, cells ) ->
+                        el [ centerY ] (text label)
+                            :: cells
+                    )
+                |> Theme.grid []
+    in
+    Theme.column []
+        [ optionsGrid
+        , Theme.button [ centerX ]
+            { label = text "Play"
+            , onPress = Just Play
+            }
+        ]
+
+
+difficultyToString : Difficulty -> String
+difficultyToString difficulty =
+    case difficulty of
+        Easy ->
+            "Easy"
+
+        Normal ->
+            "Normal"
+
+        Hard ->
+            "Hard"
 
 
 viewScore : Int -> Int -> Element msg

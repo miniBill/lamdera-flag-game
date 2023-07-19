@@ -1,4 +1,22 @@
-module Types exposing (BackendModel, BackendMsg(..), Card, CardKind(..), Context, Difficulty(..), FrontendModel, FrontendMsg(..), InnerModel(..), Language(..), PlayingModel, SortingModel, ToBackend(..), ToFrontend(..))
+module Types exposing
+    ( BackendModel
+    , BackendMsg(..)
+    , Card
+    , Context
+    , Difficulty(..)
+    , FrontendModel
+    , FrontendMsg(..)
+    , GameOptions
+    , InnerModel(..)
+    , Language(..)
+    , PlayingModel
+    , Property(..)
+    , SortingModel
+    , ToBackend(..)
+    , ToFrontend(..)
+    , allProperties
+    , propertyToString
+    )
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
@@ -46,13 +64,23 @@ type alias FrontendModel =
 
 
 type InnerModel
-    = Homepage
+    = Homepage GameOptions
     | Playing PlayingModel
     | Finished
-        { score : Int
+        { options : GameOptions
+        , score : Int
         , total : Int
         }
     | Sorting SortingModel
+
+
+type alias GameOptions =
+    { count : Int
+    , difficulty : Difficulty
+    , answersCount : Int
+    , guessFrom : List Property
+    , guessTo : List Property
+    }
 
 
 type alias SortingModel =
@@ -62,24 +90,30 @@ type alias SortingModel =
 
 
 type alias PlayingModel =
-    { current : Card
+    { options : GameOptions
+    , current : Card
     , picked : Maybe CountryCode
     , queue : List Card
     , score : Int
-    , total : Int
     }
 
 
 type alias Card =
     { guessing : CountryCode
-    , options : List CountryCode
-    , kind : CardKind
+    , answers : List CountryCode
+    , guessFrom : Property
+    , guessTo : Property
     }
 
 
-type CardKind
-    = GuessFlag
-    | GuessName
+type Property
+    = Flag
+    | Name
+
+
+allProperties : List Property
+allProperties =
+    [ Flag, Name ]
 
 
 type Difficulty
@@ -95,10 +129,12 @@ type alias BackendModel =
 type FrontendMsg
     = UrlClicked UrlRequest
     | UrlChanged Url
-    | Play CardKind Difficulty
+    | Play
     | Seed Random.Seed
     | Pick CountryCode
     | Next
+    | ChangeOptions GameOptions
+      -- Used in the sorting module
     | Move CountryCode Int
     | SelectForMove CountryCode
 
@@ -113,3 +149,13 @@ type BackendMsg
 
 type ToFrontend
     = NoOpToFrontend
+
+
+propertyToString : Property -> String
+propertyToString property =
+    case property of
+        Name ->
+            "Name"
+
+        Flag ->
+            "Flag"
