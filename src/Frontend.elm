@@ -2,7 +2,7 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Element.WithContext as Element exposing (alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, px, rgb, rgb255, text, width)
+import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, padding, paddingXY, paragraph, px, rgb, rgb255, rgba, scrollbarY, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -314,6 +314,7 @@ view model =
             [ width fill
             , height fill
             , Background.color <| rgb255 0x94 0xBB 0xF8
+            , scrollbarY
             ]
             (innerView model.inner)
         ]
@@ -458,56 +459,72 @@ viewNameButton { current, picked } countryCode =
 
 viewFlagButton : PlayingModel -> CountryCode -> Element FrontendMsg
 viewFlagButton { picked, current } countryCode =
-    if picked == Nothing then
-        Input.button
-            [ width fill
-            , Theme.padding
+    let
+        badge : String -> Color -> List (Element msg)
+        badge label color =
+            [ el
+                [ Font.color <| rgb 1 1 1
+                , Background.color color
+                , Border.rounded 9999
+                , paddingXY 6 2
+                ]
+                (text label)
+            , text " "
             ]
-            { onPress = Just <| Pick countryCode
-            , label =
-                viewFlag
-                    { countryCode = countryCode
-                    , width = 150
+    in
+    case picked of
+        Nothing ->
+            Theme.column
+                [ width fill
+                , Theme.padding
+                ]
+                [ Input.button
+                    [ width fill
+                    ]
+                    { onPress = Just <| Pick countryCode
+                    , label =
+                        el [ centerX ] <|
+                            viewFlag
+                                { countryCode = countryCode
+                                , width = 150
+                                }
                     }
-            }
+                , paragraph
+                    [ Font.center
+                    , Font.color <| rgba 0 0 0 0
+                    ]
+                    (badge " " (rgba 0 0 0 0)
+                        ++ [ viewCountryName countryCode ]
+                    )
+                ]
 
-    else
-        el
-            [ width fill
-            , Theme.padding
-            , inFront <|
-                if countryCode == current.guessing then
-                    el
-                        [ Font.size 80
-                        , centerX
-                        , centerY
-                        , Font.color <| rgb 1 1 1
-                        , Background.color <| rgb 0.2 0.6 0.2
-                        , Border.rounded 9999
-                        , Theme.padding
-                        ]
-                        (text "✓")
+        Just pickedCountryCode ->
+            let
+                maybeBadge : List (Element msg)
+                maybeBadge =
+                    if countryCode == current.guessing then
+                        badge "✓" <| rgb 0.2 0.6 0.2
 
-                else if Just countryCode == picked then
-                    el
-                        [ Font.size 80
-                        , centerX
-                        , centerY
-                        , Font.color <| rgb 1 1 1
-                        , Background.color <| rgb 0.6 0.2 0.2
-                        , Border.rounded 9999
-                        , Theme.padding
-                        ]
-                        (text "✗")
+                    else if countryCode == pickedCountryCode then
+                        badge "✗" <| rgb 0.6 0.2 0.2
 
-                else
-                    Element.none
-            ]
-            (viewFlag
-                { countryCode = countryCode
-                , width = 150
-                }
-            )
+                    else
+                        badge "-" <| rgb 0.9 0.9 0.9
+            in
+            Theme.column
+                [ width fill
+                , Theme.padding
+                ]
+                [ el [ centerX ] <|
+                    viewFlag
+                        { countryCode = countryCode
+                        , width = 150
+                        }
+                , paragraph [ Font.center ]
+                    (maybeBadge
+                        ++ [ viewCountryName countryCode ]
+                    )
+                ]
 
 
 viewFinished : { options : GameOptions, score : Int, total : Int } -> Element FrontendMsg
