@@ -1,13 +1,12 @@
 module Theme exposing (Attribute, Element, button, colors, column, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, image, px, rgb255, shrink, text, width)
+import Element.WithContext as Element exposing (Color, image, px, rgb255, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Iso3166 exposing (CountryCode)
 import Types exposing (Context)
-import Url.Builder
 
 
 type alias Element msg =
