@@ -115,11 +115,7 @@ viewFlag config =
     let
         src : String
         src =
-            Url.Builder.absolute
-                [ "public"
-                , Iso3166.toAlpha2 config.countryCode ++ ".svg"
-                ]
-                []
+            "/" ++ Iso3166.toAlpha2 config.countryCode ++ ".svg"
     in
     image [ width <| px config.width ]
         { src = src
