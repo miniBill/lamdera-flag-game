@@ -6,7 +6,7 @@ import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags
 import Html
-import Iso3166 exposing (CountryCode)
+import Iso3166 exposing (CountryCode(..))
 import List.Extra
 import Theme exposing (Element)
 import Types exposing (FrontendMsg(..), SortingModel)
@@ -28,12 +28,12 @@ viewGroup { selected } index codes =
 
             else
                 codes
-                    |> List.Extra.gatherEqualsBy toContinent
-                    |> List.sortBy (\( first, _ ) -> Flags.continentToString <| toContinent first)
+                    |> List.Extra.gatherEqualsBy Flags.toContinent
+                    |> List.sortBy (\( first, _ ) -> Flags.continentToString <| Flags.toContinent first)
                     |> List.map
                         (\( first, rest ) ->
                             Theme.column [ alignTop, width fill ]
-                                [ text <| Flags.continentToString <| toContinent first
+                                [ text <| Flags.continentToString <| Flags.toContinent first
                                 , Theme.wrappedRow [] <| List.map viewFlag (first :: rest)
                                 ]
                         )
@@ -81,41 +81,33 @@ viewFlag countryCode =
 
 toText : List (List CountryCode) -> Element FrontendMsg
 toText groups =
-    groups
-        |> List.concatMap
-            (\group ->
-                List.map
-                    (\element -> ( element, List.Extra.remove element group ))
-                    group
-            )
-        |> List.sortBy (Iso3166.toAlpha2 << Tuple.first)
-        |> List.map groupToText
-        |> String.join "\n    , "
-        |> (\l -> "    [ " ++ l)
-        |> Html.text
-        |> List.singleton
-        |> Html.pre []
+    let
+        content =
+            groups
+                |> List.sortBy
+                    (Iso3166.toAlpha2
+                        << Maybe.withDefault AD
+                        << List.head
+                    )
+                |> List.map groupToText
+                |> String.join "\n    , "
+                |> (\l ->
+                        "similarityGroups =\n    ["
+                            ++ l
+                            ++ "\n    ]"
+                   )
+    in
+    Html.pre []
+        [ Html.text content ]
         |> Element.html
         |> el []
 
 
-groupToText : ( CountryCode, List CountryCode ) -> String
-groupToText ( first, group ) =
-    "( "
-        ++ toUpper first
-        ++ ", ["
+groupToText : List CountryCode -> String
+groupToText group =
+    "["
         ++ String.join ", " (List.map toUpper group)
-        ++ "], "
-        ++ String.replace " " "" (Flags.continentToString <| toContinent first)
-        ++ ")"
-
-
-toContinent : CountryCode -> Flags.Continent
-toContinent first =
-    Flags.all
-        |> List.Extra.find (\( cc, _, _ ) -> cc == first)
-        |> Maybe.map (\( _, _, c ) -> c)
-        |> Maybe.withDefault Flags.Antartica
+        ++ "]"
 
 
 toUpper : CountryCode -> String
@@ -125,3 +117,12 @@ toUpper countryCode =
         |> String.toUpper
         |> String.replace "GT" "GT_"
         |> String.replace "LT" "LT_"
+
+
+toLower : CountryCode -> String
+toLower countryCode =
+    countryCode
+        |> Iso3166.toAlpha2
+        |> String.toLower
+        |> String.replace "in" "in_"
+        |> String.replace "as" "as_"

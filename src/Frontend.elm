@@ -77,9 +77,13 @@ init url key =
             if url.path == "/sort" then
                 Sorting
                     { groups =
-                        Flags.all
+                        Iso3166.all
                             |> List.foldl
-                                (\( countryCode, similar, _ ) ( acc, setAcc ) ->
+                                (\countryCode ( acc, setAcc ) ->
+                                    let
+                                        similar =
+                                            Flags.getSimilarFlags countryCode
+                                    in
                                     if Set.member (Iso3166.toAlpha2 countryCode) setAcc then
                                         ( acc, setAcc )
 
@@ -677,7 +681,7 @@ startButtons options =
                 }
             , radios "Game length"
                 { toLabel = String.fromInt
-                , all = [ 20, 100, List.length Flags.all ]
+                , all = [ 20, 100, List.length Iso3166.all ]
                 , get = .count
                 , set = \v -> { options | count = v }
                 }
