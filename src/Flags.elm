@@ -1319,6 +1319,7 @@ getSimilarFlags countryCode =
     similarityGroups
         |> List.Extra.find (\g -> List.member countryCode g)
         |> Maybe.withDefault []
+        |> List.filter ((/=) countryCode)
 
 
 toCard :

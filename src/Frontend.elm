@@ -36,7 +36,6 @@ import Iso3166.Ukrainian
 import Lamdera
 import List.Extra
 import Random
-import Set
 import Sorting
 import Theme exposing (Attribute, Element, viewFlag)
 import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), Language(..), PlayingModel, Property(..), ToFrontend(..))
@@ -75,30 +74,7 @@ init url key =
       , context = context
       , inner =
             if url.path == "/sort" then
-                Sorting
-                    { groups =
-                        Iso3166.all
-                            |> List.foldl
-                                (\countryCode ( acc, setAcc ) ->
-                                    if Set.member (Iso3166.toAlpha2 countryCode) setAcc then
-                                        ( acc, setAcc )
-
-                                    else
-                                        let
-                                            similar =
-                                                Flags.getSimilarFlags countryCode
-                                        in
-                                        ( (countryCode :: similar) :: acc
-                                        , (countryCode :: similar)
-                                            |> List.map Iso3166.toAlpha2
-                                            |> Set.fromList
-                                            |> Set.union setAcc
-                                        )
-                                )
-                                ( [], Set.empty )
-                            |> Tuple.first
-                    , selected = Nothing
-                    }
+                Sorting Sorting.init
 
             else
                 Homepage defaultGameOptions

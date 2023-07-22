@@ -1,4 +1,4 @@
-module Sorting exposing (view)
+module Sorting exposing (init, view)
 
 import Element.WithContext as Element exposing (alignTop, el, fill, height, px, text, width)
 import Element.WithContext.Border as Border
@@ -8,6 +8,7 @@ import Flags
 import Html
 import Iso3166 exposing (CountryCode(..))
 import List.Extra
+import Set
 import Theme exposing (Element)
 import Types exposing (FrontendMsg(..), SortingModel)
 
@@ -126,3 +127,30 @@ toLower countryCode =
         |> String.toLower
         |> String.replace "in" "in_"
         |> String.replace "as" "as_"
+
+
+init : { groups : List (List CountryCode), selected : Maybe CountryCode }
+init =
+    { groups =
+        Iso3166.all
+            |> List.foldl
+                (\countryCode ( acc, setAcc ) ->
+                    if Set.member (Iso3166.toAlpha2 countryCode) setAcc then
+                        ( acc, setAcc )
+
+                    else
+                        let
+                            similar =
+                                Flags.getSimilarFlags countryCode
+                        in
+                        ( (countryCode :: similar) :: acc
+                        , (countryCode :: similar)
+                            |> List.map Iso3166.toAlpha2
+                            |> Set.fromList
+                            |> Set.union setAcc
+                        )
+                )
+                ( [], Set.empty )
+            |> Tuple.first
+    , selected = Nothing
+    }
