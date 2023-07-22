@@ -11,7 +11,7 @@ allCards : GameOptions -> Random.Seed -> ( List Card, Random.Seed )
 allCards options seed =
     let
         ( finalSeed, result ) =
-            Iso3166.all
+            all options.sovereignOnly
                 |> List.foldl
                     (\input ( seedAcc, acc ) ->
                         let
@@ -85,7 +85,7 @@ toCard options countryCode seed =
         listGenerator =
             case options.difficulty of
                 Easy ->
-                    Iso3166.all
+                    all options.sovereignOnly
                         |> List.filter
                             (\option ->
                                 (option /= countryCode)
@@ -96,7 +96,7 @@ toCard options countryCode seed =
                         |> Random.map Tuple.first
 
                 Normal ->
-                    Iso3166.all
+                    all options.sovereignOnly
                         |> List.filter
                             (\option ->
                                 (option /= countryCode)
@@ -108,7 +108,7 @@ toCard options countryCode seed =
 
                 Hard ->
                     if List.length similar < (count - 1) then
-                        Iso3166.all
+                        all options.sovereignOnly
                             |> List.filter
                                 (\option ->
                                     (option /= countryCode)

@@ -125,10 +125,10 @@ update msg model =
                 | inner =
                     case model.inner of
                         Finished finished ->
-                            Finished { finished | options = options }
+                            Finished { finished | options = fixOptions options }
 
                         Homepage _ ->
-                            Homepage options
+                            Homepage <| fixOptions options
 
                         Playing _ ->
                             -- Can't change options while playing
@@ -266,6 +266,19 @@ update msg model =
 
                 _ ->
                     ( model, Cmd.none )
+
+
+fixOptions : GameOptions -> GameOptions
+fixOptions options =
+    -- TODO: FIX THIS
+    if options.gameLength > 100 then
+        { options
+            | gameLength =
+                List.length <| Flags.all options.sovereignOnly
+        }
+
+    else
+        options
 
 
 getGameOptions : InnerModel -> Maybe GameOptions
@@ -672,7 +685,7 @@ startButtons options =
                 }
             , radios "Game length"
                 { toLabel = String.fromInt
-                , all = [ 20, 100, List.length <| Flags.all options.sovereignOnly ]
+                , all = [ defaultGameLength, 100, List.length <| Flags.all options.sovereignOnly ]
                 , get = .gameLength
                 , set = \v -> { options | gameLength = v }
                 }
