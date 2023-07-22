@@ -54,12 +54,16 @@ similarityGroups =
     ]
 
 
-getSimilarFlags : CountryCode -> List CountryCode
-getSimilarFlags countryCode =
+getSimilarFlags : GameOptions -> CountryCode -> List CountryCode
+getSimilarFlags { sovereignOnly } countryCode =
     similarityGroups
         |> List.Extra.find (\g -> List.member countryCode g)
         |> Maybe.withDefault []
-        |> List.filter ((/=) countryCode)
+        |> List.filter
+            (\cc ->
+                (cc /= countryCode)
+                    && (not sovereignOnly || isSovereign cc)
+            )
 
 
 toCard :
