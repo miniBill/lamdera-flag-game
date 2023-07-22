@@ -14,6 +14,7 @@ module Types exposing
     , SortingModel
     , ToBackend(..)
     , ToFrontend(..)
+    , allGuessPatterns
     , allProperties
     , propertyToString
     )
@@ -78,8 +79,7 @@ type alias GameOptions =
     { count : Int
     , difficulty : Difficulty
     , answersCount : Int
-    , guessFrom : List Property
-    , guessTo : List Property
+    , guessPatterns : List ( Property, Property )
     }
 
 
@@ -114,6 +114,13 @@ type Property
 allProperties : List Property
 allProperties =
     [ Flag, Name ]
+
+
+allGuessPatterns : List ( Property, Property )
+allGuessPatterns =
+    [ ( Flag, Name )
+    , ( Name, Flag )
+    ]
 
 
 type Difficulty

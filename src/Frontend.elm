@@ -89,8 +89,7 @@ defaultGameOptions =
     { count = 20
     , difficulty = Normal
     , answersCount = 6
-    , guessFrom = Types.allProperties
-    , guessTo = Types.allProperties
+    , guessPatterns = Types.allGuessPatterns
     }
 
 
@@ -637,17 +636,15 @@ startButtons options =
                 , get = .difficulty
                 , set = \v -> { options | difficulty = v }
                 }
-            , checkboxes "Guess from"
-                { toLabel = Types.propertyToString
-                , all = Types.allProperties
-                , get = .guessFrom
-                , set = \v -> { options | guessFrom = v }
-                }
-            , checkboxes "Guess to"
-                { toLabel = Types.propertyToString
-                , all = Types.allProperties
-                , get = .guessTo
-                , set = \v -> { options | guessTo = v }
+            , checkboxes "Guess"
+                { toLabel =
+                    \( f, t ) ->
+                        Types.propertyToString f
+                            ++ " → "
+                            ++ Types.propertyToString t
+                , all = Types.allGuessPatterns
+                , get = .guessPatterns
+                , set = \v -> { options | guessPatterns = v }
                 }
             , radios "Possible answers"
                 { toLabel = String.fromInt

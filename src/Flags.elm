@@ -140,12 +140,13 @@ toCard options countryCode seed =
 
 
 propertyGenerator : GameOptions -> Random.Generator ( Property, Property )
-propertyGenerator { guessFrom, guessTo } =
+propertyGenerator { guessPatterns } =
     let
         pairs : List ( Property, Property )
         pairs =
-            List.Extra.lift2 Tuple.pair guessFrom guessTo
-                |> List.filter (\( f, t ) -> f /= t)
+            List.filter
+                (\( f, t ) -> f /= t)
+                guessPatterns
     in
     case pairs of
         [] ->
