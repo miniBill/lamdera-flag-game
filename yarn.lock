@@ -2,6 +2,31 @@
 # yarn lockfile v1
 
 
+"@avh4/elm-format-darwin-arm64@0.8.7-2":
+  version "0.8.7-2"
+  resolved "https://registry.yarnpkg.com/@avh4/elm-format-darwin-arm64/-/elm-format-darwin-arm64-0.8.7-2.tgz#7ef272e77ed22804c3d18e99cffdf8952b88cf6a"
+  integrity sha512-F5JD44mJ3KX960J5GkXMfh1/dtkXuPcQpX2EToHQKjLTZUfnhZ++ytQQt0gAvrJ0bzoOvhNzjNjUHDA1ruTVbg==
+
+"@avh4/elm-format-darwin-x64@0.8.7-2":
+  version "0.8.7-2"
+  resolved "https://registry.yarnpkg.com/@avh4/elm-format-darwin-x64/-/elm-format-darwin-x64-0.8.7-2.tgz#c43eb3af88edec45aae405fda7d703e343614965"
+  integrity sha512-4pfF1cl0KyTion+7Mg4XKM3yi4Yc7vP76Kt/DotLVGJOSag4ISGic1og2mt8RZZ7XArybBmHNyYkiUbe/cEiCw==
+
+"@avh4/elm-format-linux-arm64@0.8.7-2":
+  version "0.8.7-2"
+  resolved "https://registry.yarnpkg.com/@avh4/elm-format-linux-arm64/-/elm-format-linux-arm64-0.8.7-2.tgz#e01a088c051aa5734453f83e9f63aa572ffb7439"
+  integrity sha512-WkVmuce2zU6s9dupHhqPc886Vaqpea8dZlxv2fpZ4wSzPUbiiKHoHZzoVndMIMTUL0TZukP3Ps0n/lWO5R5+FA==
+
+"@avh4/elm-format-linux-x64@0.8.7-2":
+  version "0.8.7-2"
+  resolved "https://registry.yarnpkg.com/@avh4/elm-format-linux-x64/-/elm-format-linux-x64-0.8.7-2.tgz#50f60f3bfb11223d9e72a34a0cc28640726f5bae"
+  integrity sha512-kmncfJrTBjVT94JtQvMf4M5Pn2Yl0sZt3wo7AzgFiDnB/CiZ+KjJyXuWM64NeGiv4MQqzPq65tsFXUH1CIJeiQ==
+
+"@avh4/elm-format-win32-x64@0.8.7-2":
+  version "0.8.7-2"
+  resolved "https://registry.yarnpkg.com/@avh4/elm-format-win32-x64/-/elm-format-win32-x64-0.8.7-2.tgz#4a4e7489a7b519a810a8a89798c4aab3805626ab"
+  integrity sha512-sBdMBGq/8mD8Y5C+fIr5vlb3N50yB7S1MfgeAq2QEbvkr/sKrCZI540i43lZDH9gWsfA1w2W8wCe0penFYzsGw==
+
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/@isaacs/cliui/-/cliui-8.0.2.tgz#b37667b7bc181c168782259bab42474fbf52b550"
@@ -224,6 +249,15 @@ cli-spinners@^2.5.0:
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.9.0.tgz#5881d0ad96381e117bbe07ad91f2008fe6ffd8db"
   integrity sha512-4/aL9X3Wh0yiMQlE+eeRhWP6vclO3QRtw1JHKIT0FFUs5FjpFmESqtMvYZ0+lbzBw900b95mS0hohy+qn2VK/g==
 
+cliui@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/cliui/-/cliui-8.0.1.tgz#0c04b075db02cbfe60dc8e6cf2f5486b1a3608aa"
+  integrity sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==
+  dependencies:
+    string-width "^4.2.0"
+    strip-ansi "^6.0.1"
+    wrap-ansi "^7.0.0"
+
 clone-response@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/clone-response/-/clone-response-1.0.3.tgz#af2032aa47816399cf5f0a1d0db902f517abb8c3"
@@ -367,6 +401,17 @@ eastasianwidth@^0.2.0:
   resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
+elm-format@0.8.7:
+  version "0.8.7"
+  resolved "https://registry.yarnpkg.com/elm-format/-/elm-format-0.8.7.tgz#23d8a320ef896400b01b26609f99f579b2ed2d84"
+  integrity sha512-sVzFXfWnb+6rzXK+q3e3Ccgr6/uS5mFbFk1VSmigC+x2XZ28QycAa7lS8owl009ALPhRQk+pZ95Eq5ANjpEZsQ==
+  optionalDependencies:
+    "@avh4/elm-format-darwin-arm64" "0.8.7-2"
+    "@avh4/elm-format-darwin-x64" "0.8.7-2"
+    "@avh4/elm-format-linux-arm64" "0.8.7-2"
+    "@avh4/elm-format-linux-x64" "0.8.7-2"
+    "@avh4/elm-format-win32-x64" "0.8.7-2"
+
 elm-review@^2.10.2:
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/elm-review/-/elm-review-2.10.2.tgz#45244ab78aa276ef0353a960f068393c7d7fffce"
@@ -419,6 +464,11 @@ entities@^4.2.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/entities/-/entities-4.5.0.tgz#5d268ea5e7113ec74c4d033b79ea5a35a488fb48"
   integrity sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==
+
+escalade@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
+  integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
 
 fast-levenshtein@^3.0.0:
   version "3.0.0"
@@ -483,6 +533,11 @@ fsevents@~2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
   integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
+
+get-caller-file@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
+  integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
 get-stream@^5.1.0:
   version "5.2.0"
@@ -578,6 +633,11 @@ inherits@2, inherits@^2.0.3, inherits@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
+
+intl-proxy@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/intl-proxy/-/intl-proxy-1.0.1.tgz#a86bfeadcff1c2952fada704581e15d3342d7db1"
+  integrity sha512-Wv6gHJYXm5VCexYqP5DUtsmOn60kYhCiJKkB5RGqyOnzDMseYB4X2Ez2inWr7DUHVfWkFhHLFgyauR/Lr0AaAw==
 
 is-binary-path@~2.1.0:
   version "2.1.0"
@@ -884,6 +944,11 @@ readdirp@~3.6.0:
   dependencies:
     picomatch "^2.2.1"
 
+require-directory@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
+  integrity sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==
+
 resolve-alpn@^1.0.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/resolve-alpn/-/resolve-alpn-1.2.1.tgz#b7adbdac3546aaaec20b45e7d8265927072726f9"
@@ -948,7 +1013,7 @@ source-map-js@^1.0.1:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
-"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -1029,6 +1094,15 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
+travelm-agency@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/travelm-agency/-/travelm-agency-3.4.1.tgz#edd8e0ba29a5cacc91a047620c75450721fcbc95"
+  integrity sha512-aKg9PYwaWXI5YtOIiM3WFeOxtNztj5w77wQbGlbdLbaMv2zFWruaKNxHtJhsvLEDkaNr+DhL9AZ5fb8I1/LFnQ==
+  dependencies:
+    elm-format "0.8.7"
+    intl-proxy "^1.0.1"
+    yargs "^17.4.0"
+
 type-fest@^0.21.3:
   version "0.21.3"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.21.3.tgz#d260a24b0198436e133fa26a524a6d65fa3b2e37"
@@ -1058,7 +1132,7 @@ which@^2.0.1, which@^2.0.2:
   dependencies:
     isexe "^2.0.0"
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -1089,3 +1163,26 @@ wrappy@1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
+
+y18n@^5.0.5:
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-5.0.8.tgz#7f4934d0f7ca8c56f95314939ddcd2dd91ce1d55"
+  integrity sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==
+
+yargs-parser@^21.1.1:
+  version "21.1.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.1.1.tgz#9096bceebf990d21bb31fa9516e0ede294a77d35"
+  integrity sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==
+
+yargs@^17.4.0:
+  version "17.7.2"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.7.2.tgz#991df39aca675a192b816e1e0363f9d75d2aa269"
+  integrity sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==
+  dependencies:
+    cliui "^8.0.1"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.3"
+    y18n "^5.0.5"
+    yargs-parser "^21.1.1"
