@@ -1,10 +1,19 @@
 ## Needed
 
 - Remove small countries and duplicates
-- Check Taiwan's situation
+- Back Burton
+- Fix name of
+  - Taiwan
+  - Koreas
+- Reply counter is Wrong
+- Make clue flags bigger
+- Sovereign note
 
 ## Tweaks
 
+- Cap button widths
+- Colors
+- Persist settings
 - Have continent option
 
 - Mobile layout
