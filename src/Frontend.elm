@@ -80,14 +80,14 @@ init url key =
                         Iso3166.all
                             |> List.foldl
                                 (\countryCode ( acc, setAcc ) ->
-                                    let
-                                        similar =
-                                            Flags.getSimilarFlags countryCode
-                                    in
                                     if Set.member (Iso3166.toAlpha2 countryCode) setAcc then
                                         ( acc, setAcc )
 
                                     else
+                                        let
+                                            similar =
+                                                Flags.getSimilarFlags countryCode
+                                        in
                                         ( (countryCode :: similar) :: acc
                                         , (countryCode :: similar)
                                             |> List.map Iso3166.toAlpha2

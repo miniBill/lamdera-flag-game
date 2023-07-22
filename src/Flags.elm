@@ -1,4 +1,4 @@
-module Flags exposing (Continent(..), PerCountryData, allCards, continentToString, continents, getSimilarFlags, perCountryDataToFunction, similarityGroups, toContinent)
+module Flags exposing (Continent(..), PerCountryData, allCards, continentToString, getSimilarFlags, toContinent)
 
 import Iso3166 exposing (CountryCode(..))
 import List.Extra
