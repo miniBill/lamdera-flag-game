@@ -1,4 +1,4 @@
-module Flags exposing (Continent(..), allCards, continentToString, getSimilarFlags, toContinent)
+module Flags exposing (Continent(..), allCards, continentToString, getSimilarFlags, toContinent, toSovereignity)
 
 import Iso3166 exposing (CountryCode(..))
 import List.Extra
@@ -939,3 +939,1008 @@ toContinent countryCode =
 
         ZW ->
             Africa
+
+
+type Sovereignity
+    = Sovereign
+    | NotSovereign
+
+
+toSovereignity : CountryCode -> Sovereignity
+toSovereignity countryCode =
+    case countryCode of
+        -- Afghanistan
+        AF ->
+            Sovereign
+
+        -- Åland Islands
+        AX ->
+            NotSovereign
+
+        -- Albania
+        AL ->
+            Sovereign
+
+        -- Algeria
+        DZ ->
+            Sovereign
+
+        -- American Samoa
+        AS ->
+            NotSovereign
+
+        -- Andorra
+        AD ->
+            Sovereign
+
+        -- Angola
+        AO ->
+            Sovereign
+
+        -- Anguilla
+        AI ->
+            NotSovereign
+
+        -- Antarctica
+        AQ ->
+            NotSovereign
+
+        -- Antigua and Barbuda
+        AG ->
+            Sovereign
+
+        -- Argentina
+        AR ->
+            Sovereign
+
+        -- Armenia
+        AM ->
+            Sovereign
+
+        -- Aruba
+        AW ->
+            NotSovereign
+
+        -- Australia
+        AU ->
+            Sovereign
+
+        -- Austria
+        AT ->
+            Sovereign
+
+        -- Azerbaijan
+        AZ ->
+            Sovereign
+
+        -- Bahamas
+        BS ->
+            Sovereign
+
+        -- Bahrain
+        BH ->
+            Sovereign
+
+        -- Bangladesh
+        BD ->
+            Sovereign
+
+        -- Barbados
+        BB ->
+            Sovereign
+
+        -- Belarus
+        BY ->
+            Sovereign
+
+        -- Belgium
+        BE ->
+            Sovereign
+
+        -- Belize
+        BZ ->
+            Sovereign
+
+        -- Benin
+        BJ ->
+            Sovereign
+
+        -- Bermuda
+        BM ->
+            NotSovereign
+
+        -- Bhutan
+        BT ->
+            Sovereign
+
+        -- Bolivia (Plurinational State of)
+        BO ->
+            Sovereign
+
+        -- Bonaire, Sint Eustatius and Saba
+        BQ ->
+            NotSovereign
+
+        -- Bosnia and Herzegovina
+        BA ->
+            Sovereign
+
+        -- Botswana
+        BW ->
+            Sovereign
+
+        -- Bouvet Island
+        BV ->
+            NotSovereign
+
+        -- Brazil
+        BR ->
+            Sovereign
+
+        -- British Indian Ocean Territory
+        IO ->
+            NotSovereign
+
+        -- Brunei Darussalam
+        BN ->
+            Sovereign
+
+        -- Bulgaria
+        BG ->
+            Sovereign
+
+        -- Burkina Faso
+        BF ->
+            Sovereign
+
+        -- Burundi
+        BI ->
+            Sovereign
+
+        -- Cabo Verde
+        CV ->
+            Sovereign
+
+        -- Cambodia
+        KH ->
+            Sovereign
+
+        -- Cameroon
+        CM ->
+            Sovereign
+
+        -- Canada
+        CA ->
+            Sovereign
+
+        -- Cayman Islands
+        KY ->
+            NotSovereign
+
+        -- Central African Republic
+        CF ->
+            Sovereign
+
+        -- Chad
+        TD ->
+            Sovereign
+
+        -- Chile
+        CL ->
+            Sovereign
+
+        -- China
+        CN ->
+            Sovereign
+
+        -- Christmas Island
+        CX ->
+            NotSovereign
+
+        -- Cocos (Keeling) Islands
+        CC ->
+            NotSovereign
+
+        -- Colombia
+        CO ->
+            Sovereign
+
+        -- Comoros
+        KM ->
+            Sovereign
+
+        -- Congo, Democratic Republic of the
+        CD ->
+            Sovereign
+
+        -- Congo
+        CG ->
+            Sovereign
+
+        -- Cook Islands
+        CK ->
+            NotSovereign
+
+        -- Costa Rica
+        CR ->
+            Sovereign
+
+        -- Côte d'Ivoire
+        CI ->
+            Sovereign
+
+        -- Croatia
+        HR ->
+            Sovereign
+
+        -- Cuba
+        CU ->
+            Sovereign
+
+        -- Curaçao
+        CW ->
+            NotSovereign
+
+        -- Cyprus
+        CY ->
+            Sovereign
+
+        -- Czechia
+        CZ ->
+            Sovereign
+
+        -- Denmark
+        DK ->
+            Sovereign
+
+        -- Djibouti
+        DJ ->
+            Sovereign
+
+        -- Dominica
+        DM ->
+            Sovereign
+
+        -- Dominican Republic
+        DO ->
+            Sovereign
+
+        -- Ecuador
+        EC ->
+            Sovereign
+
+        -- Egypt
+        EG ->
+            Sovereign
+
+        -- El Salvador
+        SV ->
+            Sovereign
+
+        -- Equatorial Guinea
+        GQ ->
+            Sovereign
+
+        -- Eritrea
+        ER ->
+            Sovereign
+
+        -- Estonia
+        EE ->
+            Sovereign
+
+        -- Eswatini
+        SZ ->
+            Sovereign
+
+        -- Ethiopia
+        ET ->
+            Sovereign
+
+        -- Falkland Islands (Malvinas)
+        FK ->
+            NotSovereign
+
+        -- Faroe Islands
+        FO ->
+            NotSovereign
+
+        -- Fiji
+        FJ ->
+            Sovereign
+
+        -- Finland
+        FI ->
+            Sovereign
+
+        -- France
+        FR ->
+            Sovereign
+
+        -- French Guiana
+        GF ->
+            NotSovereign
+
+        -- French Polynesia
+        PF ->
+            NotSovereign
+
+        -- French Southern Territories
+        TF ->
+            NotSovereign
+
+        -- Gabon
+        GA ->
+            Sovereign
+
+        -- Gambia
+        GM ->
+            Sovereign
+
+        -- Georgia
+        GE ->
+            Sovereign
+
+        -- Germany
+        DE ->
+            Sovereign
+
+        -- Ghana
+        GH ->
+            Sovereign
+
+        -- Gibraltar
+        GI ->
+            NotSovereign
+
+        -- Greece
+        GR ->
+            Sovereign
+
+        -- Greenland
+        GL ->
+            NotSovereign
+
+        -- Grenada
+        GD ->
+            Sovereign
+
+        -- Guadeloupe
+        GP ->
+            NotSovereign
+
+        -- Guam
+        GU ->
+            NotSovereign
+
+        --Guatemala
+        GT_ ->
+            Sovereign
+
+        -- Guernsey
+        GG ->
+            NotSovereign
+
+        -- Guinea-Bissau
+        GW ->
+            Sovereign
+
+        -- Guinea
+        GN ->
+            Sovereign
+
+        -- Guyana
+        GY ->
+            Sovereign
+
+        -- Haiti
+        HT ->
+            Sovereign
+
+        -- Heard Island and McDonald Islands
+        HM ->
+            NotSovereign
+
+        -- Holy See
+        VA ->
+            Sovereign
+
+        -- Honduras
+        HN ->
+            Sovereign
+
+        -- Hong Kong
+        HK ->
+            NotSovereign
+
+        -- Hungary
+        HU ->
+            Sovereign
+
+        -- Iceland
+        IS ->
+            Sovereign
+
+        -- India
+        IN ->
+            Sovereign
+
+        -- Indonesia
+        ID ->
+            Sovereign
+
+        -- Iran (Islamic Republic of)
+        IR ->
+            Sovereign
+
+        -- Iraq
+        IQ ->
+            Sovereign
+
+        -- Ireland
+        IE ->
+            Sovereign
+
+        -- Isle of Man
+        IM ->
+            NotSovereign
+
+        -- Israel
+        IL ->
+            Sovereign
+
+        -- Italy
+        IT ->
+            Sovereign
+
+        -- Jamaica
+        JM ->
+            Sovereign
+
+        -- Japan
+        JP ->
+            Sovereign
+
+        -- Jersey
+        JE ->
+            NotSovereign
+
+        -- Jordan
+        JO ->
+            Sovereign
+
+        -- Kazakhstan
+        KZ ->
+            Sovereign
+
+        -- Kenya
+        KE ->
+            Sovereign
+
+        -- Kiribati
+        KI ->
+            Sovereign
+
+        -- Korea (Democratic People's Republic of)
+        KP ->
+            Sovereign
+
+        -- Korea, Republic of
+        KR ->
+            Sovereign
+
+        -- Kuwait
+        KW ->
+            Sovereign
+
+        -- Kyrgyzstan
+        KG ->
+            Sovereign
+
+        -- Lao People's Democratic Republic
+        LA ->
+            Sovereign
+
+        -- Latvia
+        LV ->
+            Sovereign
+
+        -- Lebanon
+        LB ->
+            Sovereign
+
+        -- Lesotho
+        LS ->
+            Sovereign
+
+        -- Liberia
+        LR ->
+            Sovereign
+
+        -- Libya
+        LY ->
+            Sovereign
+
+        -- Liechtenstein
+        LI ->
+            Sovereign
+
+        -- Lithuania
+        LT_ ->
+            Sovereign
+
+        -- Luxembourg
+        LU ->
+            Sovereign
+
+        -- Macao
+        MO ->
+            NotSovereign
+
+        -- Madagascar
+        MG ->
+            Sovereign
+
+        -- Malawi
+        MW ->
+            Sovereign
+
+        -- Malaysia
+        MY ->
+            Sovereign
+
+        -- Maldives
+        MV ->
+            Sovereign
+
+        -- Mali
+        ML ->
+            Sovereign
+
+        -- Malta
+        MT ->
+            Sovereign
+
+        -- Marshall Islands
+        MH ->
+            NotSovereign
+
+        -- Martinique
+        MQ ->
+            NotSovereign
+
+        -- Mauritania
+        MR ->
+            Sovereign
+
+        -- Mauritius
+        MU ->
+            Sovereign
+
+        -- Mayotte
+        YT ->
+            NotSovereign
+
+        -- Mexico
+        MX ->
+            Sovereign
+
+        -- Micronesia (Federated States of)
+        FM ->
+            Sovereign
+
+        -- Moldova, Republic of
+        MD ->
+            Sovereign
+
+        -- Monaco
+        MC ->
+            Sovereign
+
+        -- Mongolia
+        MN ->
+            Sovereign
+
+        -- Montenegro
+        ME ->
+            Sovereign
+
+        -- Montserrat
+        MS ->
+            NotSovereign
+
+        -- Morocco
+        MA ->
+            Sovereign
+
+        -- Mozambique
+        MZ ->
+            Sovereign
+
+        -- Myanmar
+        MM ->
+            Sovereign
+
+        -- Namibia
+        NA ->
+            Sovereign
+
+        -- Nauru
+        NR ->
+            Sovereign
+
+        -- Nepal
+        NP ->
+            Sovereign
+
+        -- Netherlands
+        NL ->
+            Sovereign
+
+        -- New Caledonia
+        NC ->
+            NotSovereign
+
+        -- New Zealand
+        NZ ->
+            Sovereign
+
+        -- Nicaragua
+        NI ->
+            Sovereign
+
+        -- Niger
+        NE ->
+            Sovereign
+
+        -- Nigeria
+        NG ->
+            Sovereign
+
+        -- Niue
+        NU ->
+            NotSovereign
+
+        -- Norfolk Island
+        NF ->
+            NotSovereign
+
+        -- North Macedonia
+        MK ->
+            Sovereign
+
+        -- Northern Mariana Islands
+        MP ->
+            NotSovereign
+
+        -- Norway
+        NO ->
+            Sovereign
+
+        -- Oman
+        OM ->
+            Sovereign
+
+        -- Pakistan
+        PK ->
+            Sovereign
+
+        -- Palau
+        PW ->
+            Sovereign
+
+        -- Palestine, State of
+        PS ->
+            Sovereign
+
+        -- Panama
+        PA ->
+            Sovereign
+
+        -- Papua New Guinea
+        PG ->
+            Sovereign
+
+        -- Paraguay
+        PY ->
+            Sovereign
+
+        -- Peru
+        PE ->
+            Sovereign
+
+        -- Philippines
+        PH ->
+            Sovereign
+
+        -- Pitcairn
+        PN ->
+            NotSovereign
+
+        -- Poland
+        PL ->
+            Sovereign
+
+        -- Portugal
+        PT ->
+            Sovereign
+
+        -- Puerto Rico
+        PR ->
+            NotSovereign
+
+        -- Qatar
+        QA ->
+            Sovereign
+
+        -- Réunion
+        RE ->
+            NotSovereign
+
+        -- Romania
+        RO ->
+            Sovereign
+
+        -- Russian Federation
+        RU ->
+            Sovereign
+
+        -- Rwanda
+        RW ->
+            Sovereign
+
+        -- Saint Barthélemy
+        BL ->
+            NotSovereign
+
+        -- Saint Helena, Ascension and Tristan da Cunha
+        SH ->
+            NotSovereign
+
+        -- Saint Kitts and Nevis
+        KN ->
+            Sovereign
+
+        -- Saint Lucia
+        LC ->
+            Sovereign
+
+        -- Saint Martin (French part)
+        MF ->
+            NotSovereign
+
+        -- Saint Pierre and Miquelon
+        PM ->
+            NotSovereign
+
+        -- Saint Vincent and the Grenadines
+        VC ->
+            Sovereign
+
+        -- Samoa
+        WS ->
+            Sovereign
+
+        -- San Marino
+        SM ->
+            Sovereign
+
+        -- Sao Tome and Principe
+        ST ->
+            Sovereign
+
+        -- Saudi Arabia
+        SA ->
+            Sovereign
+
+        -- Senegal
+        SN ->
+            Sovereign
+
+        -- Serbia
+        RS ->
+            Sovereign
+
+        -- Seychelles
+        SC ->
+            Sovereign
+
+        -- Sierra Leone
+        SL ->
+            Sovereign
+
+        -- Singapore
+        SG ->
+            Sovereign
+
+        -- Sint Maarten (Dutch part)
+        SX ->
+            NotSovereign
+
+        -- Slovakia
+        SK ->
+            Sovereign
+
+        -- Slovenia
+        SI ->
+            Sovereign
+
+        -- Solomon Islands
+        SB ->
+            Sovereign
+
+        -- Somalia
+        SO ->
+            Sovereign
+
+        -- South Africa
+        ZA ->
+            Sovereign
+
+        -- South Georgia and the South Sandwich Islands
+        GS ->
+            NotSovereign
+
+        -- South Sudan
+        SS ->
+            Sovereign
+
+        -- Spain
+        ES ->
+            Sovereign
+
+        -- Sri Lanka
+        LK ->
+            Sovereign
+
+        -- Sudan
+        SD ->
+            Sovereign
+
+        -- Suriname
+        SR ->
+            Sovereign
+
+        -- Svalbard and Jan Mayen
+        SJ ->
+            NotSovereign
+
+        -- Sweden
+        SE ->
+            Sovereign
+
+        -- Switzerland
+        CH ->
+            Sovereign
+
+        -- Syrian Arab Republic
+        SY ->
+            Sovereign
+
+        -- Taiwan, Province of China
+        TW ->
+            Sovereign
+
+        -- Tajikistan
+        TJ ->
+            Sovereign
+
+        -- Tanzania, United Republic of
+        TZ ->
+            Sovereign
+
+        -- Thailand
+        TH ->
+            Sovereign
+
+        -- Timor-Leste
+        TL ->
+            Sovereign
+
+        -- Togo
+        TG ->
+            Sovereign
+
+        -- Tokelau
+        TK ->
+            NotSovereign
+
+        -- Tonga
+        TO ->
+            Sovereign
+
+        -- Trinidad and Tobago
+        TT ->
+            Sovereign
+
+        -- Tunisia
+        TN ->
+            Sovereign
+
+        -- Türkiye
+        TR ->
+            Sovereign
+
+        -- Turkmenistan
+        TM ->
+            Sovereign
+
+        -- Turks and Caicos Islands
+        TC ->
+            NotSovereign
+
+        -- Tuvalu
+        TV ->
+            Sovereign
+
+        -- Uganda
+        UG ->
+            Sovereign
+
+        -- Ukraine
+        UA ->
+            Sovereign
+
+        -- United Arab Emirates
+        AE ->
+            Sovereign
+
+        -- United Kingdom of Great Britain and Northern Ireland
+        GB ->
+            Sovereign
+
+        -- United States Minor Outlying Islands
+        UM ->
+            NotSovereign
+
+        -- United States of America
+        US ->
+            Sovereign
+
+        -- Uruguay
+        UY ->
+            Sovereign
+
+        -- Uzbekistan
+        UZ ->
+            Sovereign
+
+        -- Vanuatu
+        VU ->
+            Sovereign
+
+        -- Venezuela (Bolivarian Republic of)
+        VE ->
+            Sovereign
+
+        -- Viet Nam
+        VN ->
+            Sovereign
+
+        -- Virgin Islands (British)
+        VG ->
+            NotSovereign
+
+        -- Virgin Islands (U.S.)
+        VI ->
+            NotSovereign
+
+        -- Wallis and Futuna
+        WF ->
+            NotSovereign
+
+        -- Western Sahara
+        EH ->
+            NotSovereign
+
+        -- Yemen
+        YE ->
+            Sovereign
+
+        -- Zambia
+        ZM ->
+            Sovereign
+
+        -- Zimbabwe
+        ZW ->
+            Sovereign
