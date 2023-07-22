@@ -120,15 +120,6 @@ toUpper countryCode =
         |> String.replace "LT" "LT_"
 
 
-toLower : CountryCode -> String
-toLower countryCode =
-    countryCode
-        |> Iso3166.toAlpha2
-        |> String.toLower
-        |> String.replace "in" "in_"
-        |> String.replace "as" "as_"
-
-
 init : { groups : List (List CountryCode), selected : Maybe CountryCode }
 init =
     { groups =
@@ -141,7 +132,7 @@ init =
                     else
                         let
                             similar =
-                                Flags.getSimilarFlags countryCode
+                                Flags.getSimilarFlags { sovereignOnly = False } countryCode
                         in
                         ( (countryCode :: similar) :: acc
                         , (countryCode :: similar)

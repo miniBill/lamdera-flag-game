@@ -11,7 +11,7 @@ allCards : GameOptions -> Random.Seed -> ( List Card, Random.Seed )
 allCards options seed =
     let
         ( finalSeed, result ) =
-            all options.sovereignOnly
+            all options
                 |> List.foldl
                     (\input ( seedAcc, acc ) ->
                         let
@@ -54,7 +54,7 @@ similarityGroups =
     ]
 
 
-getSimilarFlags : GameOptions -> CountryCode -> List CountryCode
+getSimilarFlags : { a | sovereignOnly : Bool } -> CountryCode -> List CountryCode
 getSimilarFlags { sovereignOnly } countryCode =
     similarityGroups
         |> List.Extra.find (\g -> List.member countryCode g)
@@ -79,7 +79,7 @@ toCard options countryCode seed =
 
         similar : List CountryCode
         similar =
-            getSimilarFlags countryCode
+            getSimilarFlags options countryCode
 
         count : Int
         count =
@@ -89,7 +89,7 @@ toCard options countryCode seed =
         listGenerator =
             case options.difficulty of
                 Easy ->
-                    all options.sovereignOnly
+                    all options
                         |> List.filter
                             (\option ->
                                 (option /= countryCode)
@@ -100,7 +100,7 @@ toCard options countryCode seed =
                         |> Random.map Tuple.first
 
                 Normal ->
-                    all options.sovereignOnly
+                    all options
                         |> List.filter
                             (\option ->
                                 (option /= countryCode)
@@ -112,7 +112,7 @@ toCard options countryCode seed =
 
                 Hard ->
                     if List.length similar < (count - 1) then
-                        all options.sovereignOnly
+                        all options
                             |> List.filter
                                 (\option ->
                                     (option /= countryCode)
@@ -1951,8 +1951,8 @@ toSovereignity countryCode =
             Sovereign
 
 
-all : Bool -> List CountryCode
-all sovereignOnly =
+all : GameOptions -> List CountryCode
+all { sovereignOnly } =
     if sovereignOnly then
         List.filter isSovereign Iso3166.all
 

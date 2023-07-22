@@ -274,7 +274,7 @@ fixOptions options =
     if options.gameLength > 100 then
         { options
             | gameLength =
-                List.length <| Flags.all options.sovereignOnly
+                List.length <| Flags.all options
         }
 
     else
@@ -685,7 +685,7 @@ startButtons options =
                 }
             , radios "Game length"
                 { toLabel = String.fromInt
-                , all = [ defaultGameLength, 100, List.length <| Flags.all options.sovereignOnly ]
+                , all = [ defaultGameLength, 100, List.length <| Flags.all options ]
                 , get = .gameLength
                 , set = \v -> { options | gameLength = v }
                 }
