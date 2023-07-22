@@ -84,12 +84,18 @@ init url key =
     )
 
 
+defaultGameLength : Int
+defaultGameLength =
+    20
+
+
 defaultGameOptions : GameOptions
 defaultGameOptions =
-    { count = 20
+    { gameLength = defaultGameLength
     , difficulty = Normal
-    , answersCount = 6
+    , answersPerCard = 6
     , guessPatterns = Types.allGuessPatterns
+    , sovereignOnly = True
     }
 
 
@@ -200,7 +206,7 @@ update msg model =
                                     Finished
                                         { options = playing.options
                                         , score = playing.score
-                                        , total = playing.options.count
+                                        , total = playing.options.gameLength
                                         }
                               }
                             , Cmd.none
@@ -331,7 +337,7 @@ viewPlaying ({ options, score, current, picked } as model) =
     el
         [ width fill
         , height fill
-        , inFront <| viewScore score options.count
+        , inFront <| viewScore score options.gameLength
         ]
     <|
         Theme.column
@@ -649,14 +655,26 @@ startButtons options =
             , radios "Possible answers"
                 { toLabel = String.fromInt
                 , all = [ 4, 6, 8 ]
-                , get = .answersCount
-                , set = \v -> { options | answersCount = v }
+                , get = .answersPerCard
+                , set = \v -> { options | answersPerCard = v }
+                }
+            , radios "Include"
+                { toLabel =
+                    \sovereignOnly ->
+                        if sovereignOnly then
+                            "States"
+
+                        else
+                            "States and territories"
+                , all = [ True, False ]
+                , get = .sovereignOnly
+                , set = \v -> { options | sovereignOnly = v }
                 }
             , radios "Game length"
                 { toLabel = String.fromInt
-                , all = [ 20, 100, List.length Iso3166.all ]
-                , get = .count
-                , set = \v -> { options | count = v }
+                , all = [ 20, 100, List.length <| Flags.all options.sovereignOnly ]
+                , get = .gameLength
+                , set = \v -> { options | gameLength = v }
                 }
             ]
                 |> List.map

@@ -76,10 +76,11 @@ type InnerModel
 
 
 type alias GameOptions =
-    { count : Int
+    { gameLength : Int
     , difficulty : Difficulty
-    , answersCount : Int
+    , answersPerCard : Int
     , guessPatterns : List ( Property, Property )
+    , sovereignOnly : Bool
     }
 
 

@@ -1,4 +1,4 @@
-module Flags exposing (Continent(..), allCards, continentToString, getSimilarFlags, toContinent, toSovereignity)
+module Flags exposing (Continent(..), all, allCards, continentToString, getSimilarFlags, toContinent, toSovereignity)
 
 import Iso3166 exposing (CountryCode(..))
 import List.Extra
@@ -79,7 +79,7 @@ toCard options countryCode seed =
 
         count : Int
         count =
-            options.answersCount
+            options.answersPerCard
 
         listGenerator : Random.Generator (List CountryCode)
         listGenerator =
@@ -1504,7 +1504,7 @@ toSovereignity countryCode =
 
         -- Marshall Islands
         MH ->
-            NotSovereign
+            Sovereign
 
         -- Martinique
         MQ ->
@@ -1945,3 +1945,17 @@ toSovereignity countryCode =
         -- Zimbabwe
         ZW ->
             Sovereign
+
+
+all : Bool -> List CountryCode
+all sovereignOnly =
+    if sovereignOnly then
+        List.filter isSovereign Iso3166.all
+
+    else
+        Iso3166.all
+
+
+isSovereign : CountryCode -> Bool
+isSovereign countryCode =
+    toSovereignity countryCode == Sovereign
