@@ -2,7 +2,7 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Element.WithContext as Element exposing (centerX, centerY, el, fill, height, rgb255, scrollbarY, shrink, text, width)
+import Element.WithContext as Element exposing (centerX, centerY, el, fill, height, rgb, rgb255, scrollbarY, shrink, text, width)
 import Element.WithContext.Font as Font
 import Flags exposing (allCards)
 import Frontend.Playing
@@ -353,6 +353,11 @@ startButtons options =
         button config =
             Theme.button
                 [ Font.center
+                , if config.selected then
+                    Font.color <| rgb 0 0 0
+
+                  else
+                    Font.color <| rgb 1 1 1
                 , width fill
                 ]
                 { background =
