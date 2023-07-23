@@ -1,6 +1,5 @@
 ## Needed
 
-- Remove small countries and duplicates
 - Back Burton
 - Fix name of
   - Taiwan
@@ -20,6 +19,7 @@
 - Change font
 - Add grain to the background
 - Green for homepage buttons?
+- Prevent duplicates from showing up in the same question
 
 ## Nice to have
 
