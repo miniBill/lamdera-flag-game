@@ -246,15 +246,17 @@ viewFlagButton { picked, current } country =
 
         flag : Element msg
         flag =
-            el [ centerX ] <|
-                viewFlag
-                    { country = country
-                    , width = 150
-                    }
+            viewFlag
+                { country = country
+                , width = 150
+                }
     in
     case picked of
         Nothing ->
-            [ Input.button [ centerX, alignBottom ]
+            [ Input.button
+                [ centerX
+                , alignBottom
+                ]
                 { onPress = Just <| Pick country
                 , label = flag
                 }
@@ -262,7 +264,11 @@ viewFlagButton { picked, current } country =
             ]
 
         Just _ ->
-            [ flag
+            [ el
+                [ centerX
+                , alignBottom
+                ]
+                flag
             , nameAndBadge
             ]
 
