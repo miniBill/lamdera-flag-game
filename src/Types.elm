@@ -15,7 +15,6 @@ module Types exposing
     , ToBackend(..)
     , ToFrontend(..)
     , allGuessPatterns
-    , allProperties
     , propertyToString
     )
 
@@ -110,11 +109,6 @@ type alias Card =
 type Property
     = Flag
     | Name
-
-
-allProperties : List Property
-allProperties =
-    [ Flag, Name ]
 
 
 allGuessPatterns : List ( Property, Property )

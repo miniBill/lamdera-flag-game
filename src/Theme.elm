@@ -1,10 +1,11 @@
-module Theme exposing (Attribute, Element, button, colors, column, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
+module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, Length, centerX, height, image, px, rgb255, shrink, width)
+import Element.WithContext as Element exposing (Color, Length, centerX, height, image, px, rgb, rgb255, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
+import Html.Attributes
 import Iso3166 exposing (CountryCode)
 import List.Extra
 import Types exposing (Context)
@@ -42,26 +43,77 @@ button :
     -> Element msg
 button attrs config =
     Input.button
-        (Border.width 1
-            :: padding
+        (padding
             :: Border.rounded rythm
-            :: Background.color colors.buttonBackground
-            :: Font.color (rgb255 (0xD9 // 2) (0xB9 // 2) (0x9B // 2))
+            :: gradient colors.buttonBackground
+            :: Font.color (rgb 1 1 1)
             :: Element.mouseOver [ Background.color <| rgb255 0x9B 0x9B 0xFB ]
             :: attrs
         )
         config
 
 
+gradient : Gradient -> Attribute msg
+gradient { from, to } =
+    ("radial-gradient("
+        ++ colorToCss from
+        ++ ", "
+        ++ colorToCss to
+        ++ ")"
+    )
+        |> Html.Attributes.style "background"
+        |> Element.htmlAttribute
+
+
+colorToCss : Color -> String
+colorToCss color =
+    let
+        { red, green, blue, alpha } =
+            Element.toRgb color
+
+        colorString : String
+        colorString =
+            [ red
+            , green
+            , blue
+            ]
+                |> List.map
+                    (\f ->
+                        String.fromInt <| round (f * 255)
+                    )
+                |> String.join " "
+    in
+    if alpha == 1 then
+        "rgb(" ++ colorString ++ ")"
+
+    else
+        "rgb(" ++ colorString ++ " / " ++ String.fromFloat alpha ++ ")"
+
+
+type alias Gradient =
+    { from : Color
+    , to : Color
+    }
+
+
 colors :
-    { buttonBackground : Color
-    , selectedButtonBackground : Color
+    { buttonBackground : Gradient
+    , greenButtonBackground : Gradient
+    , redButtonBackground : Gradient
     }
 colors =
     { buttonBackground =
-        rgb255 0xD9 0xB9 0x9B
-    , selectedButtonBackground =
-        rgb255 0xB8 0xB8 0xFF
+        { from = rgb255 0xC7 0x9D 0x69
+        , to = rgb255 0x98 0x78 0x50
+        }
+    , greenButtonBackground =
+        { from = rgb255 0x8B 0xD1 0x78
+        , to = rgb255 0x72 0xB0 0x61
+        }
+    , redButtonBackground =
+        { from = rgb255 0xDC 0x4E 0x3B
+        , to = rgb255 0xAB 0x3A 0x2B
+        }
     }
 
 
@@ -89,11 +141,18 @@ grid :
     -> Element msg
 grid attrs { widths, elements } =
     let
+        columnCount : Int
         columnCount =
             List.map List.length elements
                 |> List.maximum
                 |> Maybe.withDefault 0
 
+        columns :
+            List
+                { header : Element msg
+                , width : Length
+                , view : List (Element msg) -> Element msg
+                }
         columns =
             List.map
                 (\i ->

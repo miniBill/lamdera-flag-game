@@ -1,4 +1,4 @@
-module Flags exposing (Continent(..), all, allCards, continentToString, getSimilarFlags, toContinent, toSovereignity)
+module Flags exposing (Continent(..), Sovereignity, all, allCards, continentToString, getSimilarFlags, toContinent)
 
 import Iso3166 exposing (CountryCode(..))
 import List.Extra

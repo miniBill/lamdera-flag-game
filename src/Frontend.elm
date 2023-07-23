@@ -438,7 +438,7 @@ viewNameButton { current, picked } countryCode =
     let
         common : List (Attribute msg)
         common =
-            [ width fill ]
+            [ width <| Element.maximum 250 fill ]
 
         attrs : List (Attribute msg)
         attrs =
@@ -498,6 +498,7 @@ viewFlagButton { picked, current } countryCode =
             else
                 badge "-" <| rgb 0.9 0.9 0.9
 
+        nameAndBadge : Element msg
         nameAndBadge =
             paragraph
                 (if picked == Nothing then
@@ -572,10 +573,10 @@ startButtons options =
                 [ Font.center
                 , width fill
                 , if config.selected then
-                    Background.color Theme.colors.selectedButtonBackground
+                    Theme.gradient Theme.colors.greenButtonBackground
 
                   else
-                    Background.color Theme.colors.buttonBackground
+                    Theme.gradient Theme.colors.buttonBackground
                 ]
                 { label = text config.label
                 , onPress = Just <| ChangeOptions config.onPress
@@ -592,6 +593,7 @@ startButtons options =
             -> ( String, List (Element FrontendMsg) )
         checkboxes label config =
             let
+                current : List v
                 current =
                     config.get options
             in
@@ -599,6 +601,7 @@ startButtons options =
             , List.map
                 (\value ->
                     let
+                        selected : Bool
                         selected =
                             List.member value current
                     in
@@ -628,6 +631,7 @@ startButtons options =
             -> ( String, List (Element FrontendMsg) )
         radios label config =
             let
+                current : v
                 current =
                     config.get options
             in
@@ -635,6 +639,7 @@ startButtons options =
             , List.map
                 (\value ->
                     let
+                        selected : Bool
                         selected =
                             value == current
                     in
