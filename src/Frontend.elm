@@ -3,7 +3,6 @@ module Frontend exposing (app)
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
 import Element.WithContext as Element exposing (centerX, centerY, el, fill, height, rgb255, scrollbarY, shrink, text, width)
-import Element.WithContext.Background as Background
 import Element.WithContext.Font as Font
 import Flags exposing (allCards)
 import Frontend.Playing
@@ -287,7 +286,7 @@ view model =
             model.context
             [ width fill
             , height fill
-            , Theme.flexibleGradient
+            , Theme.gradient
                 [ ( 20, rgb255 0xFD 0xED 0xD6 )
                 , ( 100, rgb255 0x9F 0x88 0x67 )
                 ]
@@ -353,13 +352,14 @@ startButtons options =
             Theme.button
                 [ Font.center
                 , width fill
-                , if config.selected then
-                    Theme.gradient Theme.colors.greenButtonBackground
-
-                  else
-                    Theme.gradient Theme.colors.buttonBackground
                 ]
-                { label = text config.label
+                { background =
+                    if config.selected then
+                        Theme.colors.greenButtonBackground
+
+                    else
+                        Theme.colors.buttonBackground
+                , label = text config.label
                 , onPress = Just <| ChangeOptions config.onPress
                 }
 
@@ -488,7 +488,8 @@ startButtons options =
             , widths = [ shrink ]
             }
         , Theme.button [ centerX ]
-            { label = text "Play"
+            { background = Theme.colors.buttonBackground
+            , label = text "Play"
             , onPress = Just Play
             }
         ]

@@ -57,7 +57,8 @@ viewGroup { selected } index codes =
                 [ width fill
                 , alignTop
                 ]
-                { label = inner
+                { background = Theme.colors.buttonBackground
+                , label = inner
                 , onPress = Just <| Move countryCode index
                 }
 
@@ -65,7 +66,8 @@ viewGroup { selected } index codes =
 viewFlag : CountryCode -> Element FrontendMsg
 viewFlag countryCode =
     Theme.button []
-        { label =
+        { background = Theme.colors.buttonBackground
+        , label =
             Theme.column
                 [ width fill
                 , Font.center

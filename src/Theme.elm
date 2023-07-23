@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, Gradient, button, colors, column, flexibleGradient, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
+module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
 import Element.WithContext as Element exposing (Color, Length, centerX, el, fill, height, image, px, rgb, rgb255, rgba, shrink, width)
 import Element.WithContext.Background as Background
@@ -37,7 +37,8 @@ padding =
 button :
     List (Attribute msg)
     ->
-        { label : Element msg
+        { background : List ( Int, Color )
+        , label : Element msg
         , onPress : Maybe msg
         }
     -> Element msg
@@ -45,10 +46,7 @@ button attrs config =
     Input.button
         (padding
             :: Border.rounded 40
-            :: flexibleGradient
-                [ ( 40, colors.buttonBackground.from )
-                , ( 100, colors.buttonBackground.to )
-                ]
+            :: gradient config.background
             :: Font.color (rgb 1 1 1)
             :: Element.mouseOver [ Background.color <| rgb255 0x9B 0x9B 0xFB ]
             :: Border.shadow
@@ -59,11 +57,13 @@ button attrs config =
                 }
             :: attrs
         )
-        config
+        { label = config.label
+        , onPress = config.onPress
+        }
 
 
-flexibleGradient : List ( Int, Color ) -> Attribute msg
-flexibleGradient stops =
+gradient : Gradient -> Attribute msg
+gradient stops =
     ("radial-gradient("
         ++ String.join ", " (List.map stopToCss stops)
         ++ ")"
@@ -75,11 +75,6 @@ flexibleGradient stops =
 stopToCss : ( Int, Color ) -> String
 stopToCss ( at, color ) =
     colorToCss color ++ " " ++ String.fromInt at ++ "%"
-
-
-gradient : Gradient -> Attribute msg
-gradient { from, to } =
-    flexibleGradient [ ( 0, from ), ( 100, to ) ]
 
 
 colorToCss : Color -> String
@@ -108,9 +103,7 @@ colorToCss color =
 
 
 type alias Gradient =
-    { from : Color
-    , to : Color
-    }
+    List ( Int, Color )
 
 
 colors :
@@ -120,17 +113,17 @@ colors :
     }
 colors =
     { buttonBackground =
-        { from = rgb255 0xC7 0x9D 0x69
-        , to = rgb255 0x98 0x78 0x50
-        }
+        [ ( 40, rgb255 0xC7 0x9D 0x69 )
+        , ( 100, rgb255 0x98 0x78 0x50 )
+        ]
     , greenButtonBackground =
-        { from = rgb255 0x8B 0xD1 0x78
-        , to = rgb255 0x72 0xB0 0x61
-        }
+        [ ( 40, rgb255 0x8B 0xD1 0x78 )
+        , ( 100, rgb255 0x72 0xB0 0x61 )
+        ]
     , redButtonBackground =
-        { from = rgb255 0xDC 0x4E 0x3B
-        , to = rgb255 0xAB 0x3A 0x2B
-        }
+        [ ( 40, rgb255 0xDC 0x4E 0x3B )
+        , ( 100, rgb255 0xAB 0x3A 0x2B )
+        ]
     }
 
 

@@ -104,16 +104,14 @@ view ({ options, score, current, picked } as model) =
                                     }
                             )
                         |> Theme.column [ width fill ]
-            , Theme.button
-                (if picked == Nothing then
-                    [ Background.color <| rgb 0.7 0.7 0.7
-                    , centerX
-                    ]
+            , Theme.button [ centerX ]
+                { background =
+                    if picked == Nothing then
+                        [ ( 0, rgb 0.7 0.7 0.7 ) ]
 
-                 else
-                    [ centerX ]
-                )
-                { label = text "Next"
+                    else
+                        Theme.colors.buttonBackground
+                , label = text "Next"
                 , onPress =
                     if picked == Nothing then
                         Nothing
@@ -127,27 +125,25 @@ view ({ options, score, current, picked } as model) =
 viewNameButton : PlayingModel -> CountryCode -> Element FrontendMsg
 viewNameButton { current, picked } countryCode =
     let
-        common : List (Attribute msg)
-        common =
+        attrs : List (Attribute msg)
+        attrs =
             [ width <| Element.maximum 200 fill
             , height fill
             , Font.center
             ]
-
-        attrs : List (Attribute msg)
-        attrs =
-            if picked /= Nothing && countryCode == current.guessing then
-                Background.color (rgb 0.8 0.9 0.8) :: common
-
-            else if Just countryCode == picked then
-                Background.color (rgb 0.9 0.7 0.7) :: common
-
-            else
-                common
     in
     Theme.button
         attrs
-        { onPress =
+        { background =
+            if picked /= Nothing && countryCode == current.guessing then
+                Theme.colors.greenButtonBackground
+
+            else if Just countryCode == picked then
+                Theme.colors.redButtonBackground
+
+            else
+                Theme.colors.buttonBackground
+        , onPress =
             if picked == Nothing then
                 Just <| Pick countryCode
 
