@@ -12,7 +12,7 @@ import List.Extra
 import Random
 import Sorting
 import Theme exposing (Element)
-import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), Language(..), PlayingModel, Property(..), ToFrontend(..))
+import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), Language(..), PlayingModel, ToFrontend(..))
 import Url
 
 

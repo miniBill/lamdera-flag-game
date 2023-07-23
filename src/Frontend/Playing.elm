@@ -6,7 +6,7 @@ import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Html.Attributes
-import Iso3166 exposing (CountryCode(..))
+import Iso3166 exposing (CountryCode)
 import Iso3166.Arabic
 import Iso3166.Chinese
 import Iso3166.Czech
