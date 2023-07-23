@@ -1,13 +1,14 @@
 module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, Length, centerX, el, fill, height, image, px, rgb, rgb255, rgba, shrink, width)
+import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, rgba, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Html.Attributes
+import Iso3166 exposing (CountryCode(..))
 import List.Extra
-import Types exposing (Context, Country)
+import Types exposing (Context, Country(..), PartiallyRecognized(..))
 
 
 type alias Element msg =
@@ -198,13 +199,15 @@ viewFlag config =
         src =
             "/" ++ Types.countryToAlpha2 config.country ++ ".svg"
 
-        maxHeight : Int
-        maxHeight =
-            config.width * 2 // 3
+        tall : Bool
+        tall =
+            case config.country of
+                Iso3166 countryCode ->
+                    List.member countryCode
+                        [ NP, CH, VA, BE, NE, MC, DK, CD, GA, PG, SM, FO, IL, NO, IS, AL, AD, BR, BO ]
 
-        style : String -> String -> Attribute msg
-        style key value =
-            Element.htmlAttribute <| Html.Attributes.style key value
+                PartiallyRecognized countryCode ->
+                    countryCode == XK
     in
     image
         [ Border.shadow
@@ -213,8 +216,16 @@ viewFlag config =
             , blur = 5
             , color = rgba 0 0 0 0.15
             }
-        , style "max-width" <| String.fromInt config.width ++ "px"
-        , style "max-height" <| String.fromInt maxHeight ++ "px"
+        , if tall then
+            height <| px <| config.width * 2 // 3
+
+          else
+            width <| px config.width
+        , if tall then
+            width shrink
+
+          else
+            height shrink
         ]
         { src = src
         , description = "A country flag"

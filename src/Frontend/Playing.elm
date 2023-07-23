@@ -1,6 +1,6 @@
 module Frontend.Playing exposing (view)
 
-import Element.WithContext as Element exposing (Color, alignBottom, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, shrink, text, width)
+import Element.WithContext as Element exposing (Color, alignBottom, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
