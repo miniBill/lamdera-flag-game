@@ -197,22 +197,25 @@ viewFlag config =
         src : String
         src =
             "/" ++ Types.countryToAlpha2 config.country ++ ".svg"
+
+        maxHeight : Int
+        maxHeight =
+            config.width * 2 // 3
+
+        style : String -> String -> Attribute msg
+        style key value =
+            Element.htmlAttribute <| Html.Attributes.style key value
     in
-    el
-        [ width <| px config.width
-        , height <| px <| 2 * config.width // 3
-        ]
-    <|
-        image
-            [ width fill
-            , centerX
-            , Border.shadow
-                { offset = ( 5, 5 )
-                , size = 5
-                , blur = 5
-                , color = rgba 0 0 0 0.15
-                }
-            ]
-            { src = src
-            , description = "A country flag"
+    image
+        [ Border.shadow
+            { offset = ( 5, 5 )
+            , size = 5
+            , blur = 5
+            , color = rgba 0 0 0 0.15
             }
+        , style "max-width" <| String.fromInt config.width ++ "px"
+        , style "max-height" <| String.fromInt maxHeight ++ "px"
+        ]
+        { src = src
+        , description = "A country flag"
+        }

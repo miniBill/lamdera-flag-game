@@ -229,11 +229,16 @@ viewFlagButton { picked, current } country =
             paragraph
                 (if picked == Nothing then
                     [ Font.center
+                    , centerX
                     , Font.color <| rgba 0 0 0 0
+                    , width <| Element.maximum 150 fill
                     ]
 
                  else
-                    [ Font.center ]
+                    [ Font.center
+                    , centerX
+                    , width <| Element.maximum 150 fill
+                    ]
                 )
                 (maybeBadge
                     ++ [ viewCountryName country ]
@@ -241,12 +246,7 @@ viewFlagButton { picked, current } country =
 
         flag : Element msg
         flag =
-            el
-                [ centerX
-                , width shrink
-                , alignBottom
-                ]
-            <|
+            el [ centerX ] <|
                 viewFlag
                     { country = country
                     , width = 150
