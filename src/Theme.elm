@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
+module Theme exposing (Attribute, Element, Gradient, button, colors, column, flexibleGradient, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
 import Element.WithContext as Element exposing (Color, Length, centerX, el, fill, height, image, paddingEach, px, rgb, rgb255, rgba, shrink, width)
 import Element.WithContext.Background as Background
@@ -53,16 +53,24 @@ button attrs config =
         config
 
 
-gradient : Gradient -> Attribute msg
-gradient { from, to } =
+flexibleGradient : List ( Int, Color ) -> Attribute msg
+flexibleGradient stops =
     ("radial-gradient("
-        ++ colorToCss from
-        ++ ", "
-        ++ colorToCss to
+        ++ String.join ", " (List.map stopToCss stops)
         ++ ")"
     )
         |> Html.Attributes.style "background"
         |> Element.htmlAttribute
+
+
+stopToCss : ( Int, Color ) -> String
+stopToCss ( at, color ) =
+    colorToCss color ++ " " ++ String.fromInt at ++ "%"
+
+
+gradient : Gradient -> Attribute msg
+gradient { from, to } =
+    flexibleGradient [ ( 0, from ), ( 100, to ) ]
 
 
 colorToCss : Color -> String

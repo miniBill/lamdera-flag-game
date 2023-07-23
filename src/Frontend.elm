@@ -287,7 +287,10 @@ view model =
             model.context
             [ width fill
             , height fill
-            , Background.color <| rgb255 0x94 0xBB 0xF8
+            , Theme.flexibleGradient
+                [ ( 20, rgb255 0xFD 0xED 0xD6 )
+                , ( 100, rgb255 0x9F 0x88 0x67 )
+                ]
             , scrollbarY
             ]
             (innerView model.inner)
