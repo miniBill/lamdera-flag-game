@@ -291,6 +291,7 @@ view model =
                 , ( 100, rgb255 0x9F 0x88 0x67 )
                 ]
             , scrollbarY
+            , Font.family [ Font.typeface "urbane-rounded", Font.sansSerif ]
             ]
             (innerView model.inner)
         ]

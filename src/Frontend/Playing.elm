@@ -41,7 +41,6 @@ view ({ options, score, current, picked } as model) =
         [ width fill
         , height fill
         , inFront <| viewScore score options.gameLength
-        , Font.family [ Font.typeface "urbane-rounded", Font.sansSerif ]
         ]
     <|
         Theme.column
