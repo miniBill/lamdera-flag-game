@@ -10,7 +10,7 @@ import Iso3166 exposing (CountryCode(..))
 import List.Extra
 import Set
 import Theme exposing (Element)
-import Types exposing (FrontendMsg(..), SortingModel)
+import Types exposing (Country(..), FrontendMsg(..), SortingModel)
 
 
 view : SortingModel -> Element FrontendMsg
@@ -19,7 +19,7 @@ view ({ groups } as model) =
         (List.indexedMap (viewGroup model) ([] :: groups) ++ [ toText groups ])
 
 
-viewGroup : SortingModel -> Int -> List CountryCode -> Element FrontendMsg
+viewGroup : SortingModel -> Int -> List Country -> Element FrontendMsg
 viewGroup { selected } index codes =
     let
         inner : Element FrontendMsg
@@ -63,8 +63,8 @@ viewGroup { selected } index codes =
                 }
 
 
-viewFlag : CountryCode -> Element FrontendMsg
-viewFlag countryCode =
+viewFlag : Country -> Element FrontendMsg
+viewFlag country =
     Theme.button []
         { background = Theme.colors.buttonBackground
         , label =
@@ -73,23 +73,24 @@ viewFlag countryCode =
                 , Font.center
                 ]
                 [ Theme.viewFlag
-                    { countryCode = countryCode
+                    { country = country
                     , width = 50
                     }
-                , el [ Font.center, width fill ] <| text <| Iso3166.toAlpha2 countryCode
+                , el [ Font.center, width fill ] <| text <| Types.countryToAlpha2 country
                 ]
-        , onPress = Just <| SelectForMove countryCode
+        , onPress = Just <| SelectForMove country
         }
 
 
-toText : List (List CountryCode) -> Element FrontendMsg
+toText : List (List Country) -> Element FrontendMsg
 toText groups =
     let
+        content : String
         content =
             groups
                 |> List.sortBy
-                    (Iso3166.toAlpha2
-                        << Maybe.withDefault AD
+                    (Types.countryToAlpha2
+                        << Maybe.withDefault (Iso3166 AD)
                         << List.head
                     )
                 |> List.map groupToText
@@ -106,39 +107,48 @@ toText groups =
         |> el []
 
 
-groupToText : List CountryCode -> String
+groupToText : List Country -> String
 groupToText group =
-    "["
-        ++ String.join ", " (List.map toUpper group)
-        ++ "]"
+    "[" ++ String.join ", " (List.map countryToText group) ++ "]"
 
 
-toUpper : CountryCode -> String
-toUpper countryCode =
-    countryCode
-        |> Iso3166.toAlpha2
+countryToText : Country -> String
+countryToText country =
+    case country of
+        Iso3166 _ ->
+            "Iso3166 " ++ toUpper country
+
+        PartiallyRecognized _ ->
+            "PartiallyRecognized " ++ toUpper country
+
+
+toUpper : Country -> String
+toUpper country =
+    country
+        |> Types.countryToAlpha2
         |> String.toUpper
         |> String.replace "GT" "GT_"
         |> String.replace "LT" "LT_"
 
 
-init : { groups : List (List CountryCode), selected : Maybe CountryCode }
+init : { groups : List (List Country), selected : Maybe Country }
 init =
     { groups =
-        Iso3166.all
+        Flags.all { sovereignOnly = False }
             |> List.foldl
-                (\countryCode ( acc, setAcc ) ->
-                    if Set.member (Iso3166.toAlpha2 countryCode) setAcc then
+                (\country ( acc, setAcc ) ->
+                    if Set.member (Types.countryToAlpha2 country) setAcc then
                         ( acc, setAcc )
 
                     else
                         let
+                            similar : List Country
                             similar =
-                                Flags.getSimilarFlags { sovereignOnly = False } countryCode
+                                Flags.getSimilarFlags { sovereignOnly = False } country
                         in
-                        ( (countryCode :: similar) :: acc
-                        , (countryCode :: similar)
-                            |> List.map Iso3166.toAlpha2
+                        ( (country :: similar) :: acc
+                        , (country :: similar)
+                            |> List.map Types.countryToAlpha2
                             |> Set.fromList
                             |> Set.union setAcc
                         )

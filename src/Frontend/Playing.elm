@@ -5,8 +5,6 @@ import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
-import Html.Attributes
-import Iso3166 exposing (CountryCode)
 import Iso3166.Arabic
 import Iso3166.Chinese
 import Iso3166.Czech
@@ -32,7 +30,7 @@ import Iso3166.Thai
 import Iso3166.Ukrainian
 import List.Extra
 import Theme exposing (Attribute, Element, viewFlag)
-import Types exposing (FrontendMsg(..), Language(..), PlayingModel, Property(..))
+import Types exposing (Country(..), FrontendMsg(..), Language(..), PartiallyRecognized(..), PlayingModel, Property(..))
 
 
 view : PlayingModel -> Element FrontendMsg
@@ -69,7 +67,7 @@ viewFlagClue : { a | current : Types.Card } -> Element msg
 viewFlagClue { current } =
     el [ centerX ] <|
         viewFlag
-            { countryCode = current.guessing
+            { country = current.guessing
             , width = 240
             }
 
@@ -128,7 +126,7 @@ viewNameAnswers ({ current } as model) =
         }
 
 
-nextButton : { a | picked : Maybe CountryCode } -> Element FrontendMsg
+nextButton : { a | picked : Maybe Country } -> Element FrontendMsg
 nextButton { picked } =
     Theme.button [ centerX ]
         { background =
@@ -147,8 +145,8 @@ nextButton { picked } =
         }
 
 
-viewNameButton : PlayingModel -> CountryCode -> Element FrontendMsg
-viewNameButton { current, picked } countryCode =
+viewNameButton : PlayingModel -> Country -> Element FrontendMsg
+viewNameButton { current, picked } country =
     let
         attrs : List (Attribute msg)
         attrs =
@@ -164,11 +162,11 @@ viewNameButton { current, picked } countryCode =
 
         green : Bool
         green =
-            picked /= Nothing && countryCode == current.guessing
+            picked /= Nothing && country == current.guessing
 
         red : Bool
         red =
-            Just countryCode == picked
+            Just country == picked
     in
     Theme.button
         attrs
@@ -183,18 +181,18 @@ viewNameButton { current, picked } countryCode =
                 Theme.colors.buttonBackground
         , onPress =
             if picked == Nothing then
-                Just <| Pick countryCode
+                Just <| Pick country
 
             else
                 Nothing
         , label =
             paragraph []
-                [ viewCountryName countryCode ]
+                [ viewCountryName country ]
         }
 
 
-viewFlagButton : PlayingModel -> CountryCode -> List (Element FrontendMsg)
-viewFlagButton { picked, current } countryCode =
+viewFlagButton : PlayingModel -> Country -> List (Element FrontendMsg)
+viewFlagButton { picked, current } country =
     let
         badge : String -> Color -> List (Element msg)
         badge label color =
@@ -217,10 +215,10 @@ viewFlagButton { picked, current } countryCode =
 
         maybeBadge : List (Element msg)
         maybeBadge =
-            if countryCode == current.guessing then
+            if country == current.guessing then
                 badge "✓" <| rgb 0.2 0.6 0.2
 
-            else if Just countryCode == picked then
+            else if Just country == picked then
                 badge "✗" <| rgb 0.6 0.2 0.2
 
             else
@@ -238,7 +236,7 @@ viewFlagButton { picked, current } countryCode =
                     [ Font.center ]
                 )
                 (maybeBadge
-                    ++ [ viewCountryName countryCode ]
+                    ++ [ viewCountryName country ]
                 )
 
         flag : Element msg
@@ -247,18 +245,17 @@ viewFlagButton { picked, current } countryCode =
                 [ centerX
                 , width shrink
                 , alignBottom
-                , Element.htmlAttribute <| Html.Attributes.id "flag"
                 ]
             <|
                 viewFlag
-                    { countryCode = countryCode
+                    { country = country
                     , width = 150
                     }
     in
     case picked of
         Nothing ->
             [ Input.button [ centerX, alignBottom ]
-                { onPress = Just <| Pick countryCode
+                { onPress = Just <| Pick country
                 , label = flag
                 }
             , nameAndBadge
@@ -290,76 +287,81 @@ viewScore score total =
         )
 
 
-viewCountryName : CountryCode -> Element msg
-viewCountryName countryCode =
-    Element.with .language <|
-        \language ->
-            case language of
-                Arabic ->
-                    text <| Iso3166.Arabic.toName countryCode
+viewCountryName : Country -> Element msg
+viewCountryName country =
+    case country of
+        PartiallyRecognized XK ->
+            text "Kosovo"
 
-                Chinese ->
-                    text <| Iso3166.Chinese.toName countryCode
+        Iso3166 countryCode ->
+            Element.with .language <|
+                \language ->
+                    case language of
+                        Arabic ->
+                            text <| Iso3166.Arabic.toName countryCode
 
-                Czech ->
-                    text <| Iso3166.Czech.toName countryCode
+                        Chinese ->
+                            text <| Iso3166.Chinese.toName countryCode
 
-                Danish ->
-                    text <| Iso3166.Danish.toName countryCode
+                        Czech ->
+                            text <| Iso3166.Czech.toName countryCode
 
-                Dutch ->
-                    text <| Iso3166.Dutch.toName countryCode
+                        Danish ->
+                            text <| Iso3166.Danish.toName countryCode
 
-                English ->
-                    text <| Iso3166.English.toName countryCode
+                        Dutch ->
+                            text <| Iso3166.Dutch.toName countryCode
 
-                Estonian ->
-                    text <| Iso3166.Estonian.toName countryCode
+                        English ->
+                            text <| Iso3166.English.toName countryCode
 
-                French ->
-                    text <| Iso3166.French.toName countryCode
+                        Estonian ->
+                            text <| Iso3166.Estonian.toName countryCode
 
-                German ->
-                    text <| Iso3166.German.toName countryCode
+                        French ->
+                            text <| Iso3166.French.toName countryCode
 
-                Greek ->
-                    text <| Iso3166.Greek.toName countryCode
+                        German ->
+                            text <| Iso3166.German.toName countryCode
 
-                Hungarian ->
-                    text <| Iso3166.Hungarian.toName countryCode
+                        Greek ->
+                            text <| Iso3166.Greek.toName countryCode
 
-                Italian ->
-                    text <| Iso3166.Italian.toName countryCode
+                        Hungarian ->
+                            text <| Iso3166.Hungarian.toName countryCode
 
-                Japanese ->
-                    text <| Iso3166.Japanese.toName countryCode
+                        Italian ->
+                            text <| Iso3166.Italian.toName countryCode
 
-                Lithuanian ->
-                    text <| Iso3166.Lithuanian.toName countryCode
+                        Japanese ->
+                            text <| Iso3166.Japanese.toName countryCode
 
-                Norwegian ->
-                    text <| Iso3166.Norwegian.toName countryCode
+                        Lithuanian ->
+                            text <| Iso3166.Lithuanian.toName countryCode
 
-                Polish ->
-                    text <| Iso3166.Polish.toName countryCode
+                        Norwegian ->
+                            text <| Iso3166.Norwegian.toName countryCode
 
-                Portuguese ->
-                    text <| Iso3166.Portuguese.toName countryCode
+                        Polish ->
+                            text <| Iso3166.Polish.toName countryCode
 
-                Romanian ->
-                    text <| Iso3166.Romanian.toName countryCode
+                        Portuguese ->
+                            text <| Iso3166.Portuguese.toName countryCode
 
-                Russian ->
-                    text <| Iso3166.Russian.toName countryCode
+                        Romanian ->
+                            text <| Iso3166.Romanian.toName countryCode
 
-                Slovak ->
-                    text <| Iso3166.Slovak.toName countryCode
+                        Russian ->
+                            text <| Iso3166.Russian.toName countryCode
 
-                Spanish ->
-                    text <| Iso3166.Spanish.toName countryCode
+                        Slovak ->
+                            text <| Iso3166.Slovak.toName countryCode
 
-                Thai ->
-                    text <| Iso3166.Thai.toName countryCode
+                        Spanish ->
+                            text <| Iso3166.Spanish.toName countryCode
 
-                Ukrainian ->
-                    text <| Iso3166.Ukrainian.toName countryCode
+                        Thai ->
+                            text <| Iso3166.Thai.toName countryCode
+
+                        Ukrainian ->
+                            text <| Iso3166.Ukrainian.toName countryCode

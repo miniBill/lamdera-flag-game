@@ -7,7 +7,6 @@ import Element.WithContext.Font as Font
 import Flags exposing (allCards)
 import Frontend.Playing
 import Html.Attributes
-import Iso3166
 import Lamdera
 import List.Extra
 import Random
@@ -233,7 +232,7 @@ update msg model =
                                         |> List.Extra.updateAt index ((::) countryCode)
                                         |> List.Extra.filterNot List.isEmpty
                                         |> List.sortBy List.length
-                                        |> List.map (List.sortBy Iso3166.toAlpha2)
+                                        |> List.map (List.sortBy Types.countryToAlpha2)
                                 }
                       }
                     , Cmd.none

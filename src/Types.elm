@@ -3,24 +3,27 @@ module Types exposing
     , BackendMsg(..)
     , Card
     , Context
+    , Country(..)
     , Difficulty(..)
     , FrontendModel
     , FrontendMsg(..)
     , GameOptions
     , InnerModel(..)
     , Language(..)
+    , PartiallyRecognized(..)
     , PlayingModel
     , Property(..)
     , SortingModel
     , ToBackend(..)
     , ToFrontend(..)
     , allGuessPatterns
+    , countryToAlpha2
     , propertyToString
     )
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
-import Iso3166 exposing (CountryCode)
+import Iso3166
 import Random
 import Url exposing (Url)
 
@@ -83,24 +86,33 @@ type alias GameOptions =
     }
 
 
+type Country
+    = Iso3166 Iso3166.CountryCode
+    | PartiallyRecognized PartiallyRecognized
+
+
+type PartiallyRecognized
+    = XK -- Kosovo
+
+
 type alias SortingModel =
-    { groups : List (List CountryCode)
-    , selected : Maybe CountryCode
+    { groups : List (List Country)
+    , selected : Maybe Country
     }
 
 
 type alias PlayingModel =
     { options : GameOptions
     , current : Card
-    , picked : Maybe CountryCode
+    , picked : Maybe Country
     , queue : List Card
     , score : Int
     }
 
 
 type alias Card =
-    { guessing : CountryCode
-    , answers : List CountryCode
+    { guessing : Country
+    , answers : List Country
     , guessFrom : Property
     , guessTo : Property
     }
@@ -133,12 +145,12 @@ type FrontendMsg
     | UrlChanged Url
     | Play
     | Seed Random.Seed
-    | Pick CountryCode
+    | Pick Country
     | Next
     | ChangeOptions GameOptions
       -- Used in the sorting module
-    | Move CountryCode Int
-    | SelectForMove CountryCode
+    | Move Country Int
+    | SelectForMove Country
 
 
 type ToBackend
@@ -161,3 +173,13 @@ propertyToString property =
 
         Flag ->
             "Flag"
+
+
+countryToAlpha2 : Country -> String
+countryToAlpha2 country =
+    case country of
+        Iso3166 countryCode ->
+            Iso3166.toAlpha2 countryCode
+
+        PartiallyRecognized XK ->
+            "xk"

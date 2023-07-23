@@ -6,9 +6,8 @@ import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Html.Attributes
-import Iso3166 exposing (CountryCode)
 import List.Extra
-import Types exposing (Context)
+import Types exposing (Context, Country)
 
 
 type alias Element msg =
@@ -191,13 +190,13 @@ grid attrs { widths, elements } =
 
 
 viewFlag :
-    { countryCode : CountryCode, width : Int }
+    { country : Country, width : Int }
     -> Element msg
 viewFlag config =
     let
         src : String
         src =
-            "/" ++ Iso3166.toAlpha2 config.countryCode ++ ".svg"
+            "/" ++ Types.countryToAlpha2 config.country ++ ".svg"
     in
     el
         [ width <| px config.width
