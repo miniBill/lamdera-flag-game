@@ -36,7 +36,7 @@ import Types exposing (FrontendMsg(..), Language(..), PlayingModel, Property(..)
 
 
 view : PlayingModel -> Element FrontendMsg
-view ({ options, score, current, picked } as model) =
+view ({ options, score, current } as model) =
     el
         [ width fill
         , height fill
@@ -47,78 +47,104 @@ view ({ options, score, current, picked } as model) =
             [ centerX
             , centerY
             , Theme.padding
+            , Theme.spacing
             ]
             [ case current.guessFrom of
-                Flag ->
-                    el [ centerX ] <|
-                        viewFlag
-                            { countryCode = current.guessing
-                            , width = 240
-                            }
-
                 Name ->
-                    paragraph
-                        [ Font.center
-                        , width fill
-                        , Font.size 50
-                        ]
-                        [ viewCountryName current.guessing ]
+                    viewNameClue model
+
+                Flag ->
+                    viewFlagClue model
             , case current.guessTo of
                 Name ->
-                    Element.table [ width fill, Theme.spacing ]
-                        { data =
-                            current.answers
-                                |> List.map (viewNameButton model)
-                                |> List.Extra.greedyGroupsOf 2
-                        , columns =
-                            [ { header = Element.none
-                              , view =
-                                    \lst ->
-                                        lst
-                                            |> List.head
-                                            |> Maybe.withDefault Element.none
-                              , width = fill
-                              }
-                            , { header = Element.none
-                              , view =
-                                    \lst ->
-                                        lst
-                                            |> List.drop 1
-                                            |> List.head
-                                            |> Maybe.withDefault Element.none
-                              , width = fill
-                              }
-                            ]
-                        }
+                    viewNameAnswers model
 
                 Flag ->
-                    current.answers
-                        |> List.map (viewFlagButton model)
-                        |> List.Extra.greedyGroupsOf 2
-                        |> List.map
-                            (\group ->
-                                Theme.grid [ width fill ]
-                                    { elements = List.Extra.transpose group
-                                    , widths = [ fill, fill ]
-                                    }
-                            )
-                        |> Theme.column [ width fill ]
-            , Theme.button [ centerX ]
-                { background =
-                    if picked == Nothing then
-                        [ ( 0, rgb 0.7 0.7 0.7 ) ]
-
-                    else
-                        Theme.colors.buttonBackground
-                , label = text "Next"
-                , onPress =
-                    if picked == Nothing then
-                        Nothing
-
-                    else
-                        Just Next
-                }
+                    viewFlagAnswers model
+            , nextButton model
             ]
+
+
+viewFlagClue : { a | current : Types.Card } -> Element msg
+viewFlagClue { current } =
+    el [ centerX ] <|
+        viewFlag
+            { countryCode = current.guessing
+            , width = 240
+            }
+
+
+viewNameClue : { a | current : Types.Card } -> Element msg
+viewNameClue { current } =
+    paragraph
+        [ Font.center
+        , width fill
+        , Font.size 50
+        ]
+        [ viewCountryName current.guessing ]
+
+
+viewFlagAnswers : PlayingModel -> Element FrontendMsg
+viewFlagAnswers ({ current } as model) =
+    current.answers
+        |> List.map (viewFlagButton model)
+        |> List.Extra.greedyGroupsOf 2
+        |> List.map
+            (\group ->
+                Theme.grid [ width fill ]
+                    { elements = List.Extra.transpose group
+                    , widths = [ fill, fill ]
+                    }
+            )
+        |> Theme.column [ width fill ]
+
+
+viewNameAnswers : PlayingModel -> Element FrontendMsg
+viewNameAnswers ({ current } as model) =
+    Element.table [ width fill, Theme.spacing ]
+        { data =
+            current.answers
+                |> List.map (viewNameButton model)
+                |> List.Extra.greedyGroupsOf 2
+        , columns =
+            [ { header = Element.none
+              , view =
+                    \lst ->
+                        lst
+                            |> List.head
+                            |> Maybe.withDefault Element.none
+              , width = fill
+              }
+            , { header = Element.none
+              , view =
+                    \lst ->
+                        lst
+                            |> List.drop 1
+                            |> List.head
+                            |> Maybe.withDefault Element.none
+              , width = fill
+              }
+            ]
+        }
+
+
+nextButton : { a | picked : Maybe CountryCode } -> Element FrontendMsg
+nextButton { picked } =
+    Theme.button [ centerX ]
+        { background =
+            if picked == Nothing then
+                [ ( 0, rgb 0.7 0.7 0.7 ) ]
+
+            else
+                Theme.colors.buttonBackground
+        , label = text "Next"
+        , onPress =
+            if picked == Nothing then
+                Nothing
+
+            else
+                Just Next
+        }
 
 
 viewNameButton : PlayingModel -> CountryCode -> Element FrontendMsg
