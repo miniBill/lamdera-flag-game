@@ -1,6 +1,6 @@
 module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, Length, centerX, height, image, px, rgb, rgb255, shrink, width)
+import Element.WithContext as Element exposing (Color, Length, centerX, el, fill, height, image, paddingEach, px, rgb, rgb255, rgba, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -44,7 +44,7 @@ button :
 button attrs config =
     Input.button
         (padding
-            :: Border.rounded rythm
+            :: Border.rounded (3 * rythm)
             :: gradient colors.buttonBackground
             :: Font.color (rgb 1 1 1)
             :: Element.mouseOver [ Background.color <| rgb255 0x9B 0x9B 0xFB ]
@@ -185,11 +185,21 @@ viewFlag config =
         src =
             "/" ++ Iso3166.toAlpha2 config.countryCode ++ ".svg"
     in
-    image
+    el
         [ width <| px config.width
-        , height <| Element.maximum (2 * config.width // 3) shrink
-        , centerX
+        , height <| px <| 2 * config.width // 3
         ]
-        { src = src
-        , description = "A country flag"
-        }
+    <|
+        image
+            [ width fill
+            , centerX
+            , Border.shadow
+                { offset = ( 10, 10 )
+                , size = 5
+                , blur = 2
+                , color = rgba 0 0 0 0.2
+                }
+            ]
+            { src = src
+            , description = "A country flag"
+            }
