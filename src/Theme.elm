@@ -110,6 +110,8 @@ colors :
     { buttonBackground : Gradient
     , greenButtonBackground : Gradient
     , redButtonBackground : Gradient
+    , black : Color
+    , white : Color
     }
 colors =
     { buttonBackground =
@@ -124,6 +126,8 @@ colors =
         [ ( 40, rgb255 0xDC 0x4E 0x3B )
         , ( 100, rgb255 0xAB 0x3A 0x2B )
         ]
+    , black = rgb 0 0 0
+    , white = rgb 1 1 1
     }
 
 

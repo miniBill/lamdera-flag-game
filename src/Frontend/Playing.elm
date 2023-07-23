@@ -129,15 +129,28 @@ viewNameButton { current, picked } countryCode =
             [ width <| Element.maximum 200 fill
             , height fill
             , Font.center
+            , if green then
+                Font.color Theme.colors.black
+
+              else
+                Font.color Theme.colors.white
             ]
+
+        green : Bool
+        green =
+            picked /= Nothing && countryCode == current.guessing
+
+        red : Bool
+        red =
+            Just countryCode == picked
     in
     Theme.button
         attrs
         { background =
-            if picked /= Nothing && countryCode == current.guessing then
+            if green then
                 Theme.colors.greenButtonBackground
 
-            else if Just countryCode == picked then
+            else if red then
                 Theme.colors.redButtonBackground
 
             else

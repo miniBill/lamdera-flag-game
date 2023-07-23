@@ -6,6 +6,7 @@ import Element.WithContext as Element exposing (centerX, centerY, el, fill, heig
 import Element.WithContext.Font as Font
 import Flags exposing (allCards)
 import Frontend.Playing
+import Html.Attributes
 import Iso3166
 import Lamdera
 import List.Extra
@@ -476,24 +477,37 @@ startButtons options =
                 , get = .gameLength
                 , set = \v -> { options | gameLength = v }
                 }
+            , ( ""
+              , let
+                    filler : Element msg
+                    filler =
+                        Theme.button
+                            [ width fill
+                            , Element.htmlAttribute <| Html.Attributes.style "visibility" "hidden"
+                            ]
+                            { background = [], label = Element.none, onPress = Nothing }
+                in
+                [ filler
+                , Theme.button [ width fill, Font.center ]
+                    { background = Theme.colors.buttonBackground
+                    , label = text "Play"
+                    , onPress = Just Play
+                    }
+                , filler
+                ]
+              )
             ]
                 |> List.map
                     (\( label, cells ) ->
-                        el [ centerY ] (text label)
-                            :: cells
+                        [ el [ centerY ] (text label)
+                        , Theme.row [] cells
+                        ]
                     )
     in
-    Theme.column []
-        [ Theme.grid []
-            { elements = optionsGrid
-            , widths = [ shrink ]
-            }
-        , Theme.button [ centerX ]
-            { background = Theme.colors.buttonBackground
-            , label = text "Play"
-            , onPress = Just Play
-            }
-        ]
+    Theme.grid []
+        { elements = optionsGrid
+        , widths = [ shrink ]
+        }
 
 
 difficultyToString : Difficulty -> String
