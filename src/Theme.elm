@@ -1,6 +1,6 @@
 module Theme exposing (Attribute, Element, Gradient, button, colors, column, flexibleGradient, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, Length, centerX, el, fill, height, image, paddingEach, px, rgb, rgb255, rgba, shrink, width)
+import Element.WithContext as Element exposing (Color, Length, centerX, el, fill, height, image, px, rgb, rgb255, rgba, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -21,7 +21,7 @@ type alias Attribute msg =
 
 rythm : number
 rythm =
-    10
+    16
 
 
 spacing : Attribute msg
@@ -44,10 +44,19 @@ button :
 button attrs config =
     Input.button
         (padding
-            :: Border.rounded (3 * rythm)
-            :: gradient colors.buttonBackground
+            :: Border.rounded 40
+            :: flexibleGradient
+                [ ( 40, colors.buttonBackground.from )
+                , ( 100, colors.buttonBackground.to )
+                ]
             :: Font.color (rgb 1 1 1)
             :: Element.mouseOver [ Background.color <| rgb255 0x9B 0x9B 0xFB ]
+            :: Border.shadow
+                { offset = ( 2.5, 2.5 )
+                , size = 2.5
+                , blur = 2.5
+                , color = rgba 0 0 0 0.15
+                }
             :: attrs
         )
         config
@@ -202,10 +211,10 @@ viewFlag config =
             [ width fill
             , centerX
             , Border.shadow
-                { offset = ( 10, 10 )
+                { offset = ( 5, 5 )
                 , size = 5
-                , blur = 2
-                , color = rgba 0 0 0 0.2
+                , blur = 5
+                , color = rgba 0 0 0 0.15
                 }
             ]
             { src = src
