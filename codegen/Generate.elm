@@ -393,7 +393,8 @@ sizeParser =
     in
     Parser.succeed identity
         |= intParser
-        |. Parser.symbol "px"
+        |. Parser.oneOf [ Parser.symbol "px", Parser.succeed () ]
+        |. Parser.end
 
 
 parseMaybe : Parser x -> String -> Maybe x
@@ -413,6 +414,7 @@ viewBoxParser =
         |= Parser.int
         |. Parser.spaces
         |= Parser.int
+        |. Parser.end
 
 
 getRoot : String -> Maybe XmlParser.Node
@@ -452,3 +454,4 @@ alpha2Parser =
                 |. Parser.chompIf Char.isAlpha
             )
         |. Parser.symbol ".svg"
+        |. Parser.end
