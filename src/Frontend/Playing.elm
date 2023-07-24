@@ -1,7 +1,6 @@
 module Frontend.Playing exposing (view)
 
-import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, text, width)
-import Element.WithContext.Background as Background
+import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, column, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, shrink, text, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
@@ -34,11 +33,11 @@ import Types exposing (Country(..), FrontendMsg(..), Language(..), PartiallyReco
 
 
 view : PlayingModel -> Element FrontendMsg
-view ({ options, score, current } as model) =
+view model =
     el
         [ width fill
         , height fill
-        , inFront <| viewScore score options.gameLength
+        , inFront <| viewScore model
         ]
     <|
         Theme.column
@@ -47,13 +46,13 @@ view ({ options, score, current } as model) =
             , Theme.padding
             , Theme.spacing
             ]
-            [ case current.guessFrom of
+            [ case model.current.guessFrom of
                 Name ->
                     viewNameClue model
 
                 Flag ->
                     viewFlagClue model
-            , case current.guessTo of
+            , case model.current.guessTo of
                 Name ->
                     viewNameAnswers model
 
@@ -83,17 +82,15 @@ viewNameClue { current } =
 
 viewFlagAnswers : PlayingModel -> Element FrontendMsg
 viewFlagAnswers ({ current } as model) =
-    current.answers
-        |> List.map (viewFlagButton model)
-        |> List.Extra.greedyGroupsOf 2
-        |> List.map
-            (\group ->
-                Theme.grid [ centerX ]
-                    { elements = List.Extra.transpose group
-                    , widths = [ fill, fill ]
-                    }
-            )
-        |> Theme.column [ centerX ]
+    el [ centerX ] <|
+        Theme.grid [ width fill ]
+            { elements =
+                current.answers
+                    |> List.map (viewFlagButton model)
+                    |> List.Extra.greedyGroupsOf 2
+                    |> List.concatMap List.Extra.transpose
+            , widths = [ shrink, shrink ]
+            }
 
 
 viewNameAnswers : PlayingModel -> Element FrontendMsg
@@ -245,14 +242,14 @@ viewFlagButton { picked, current } country =
 
         flag : Element msg
         flag =
-            viewFlag []
+            viewFlag [ centerX ]
                 { country = country
                 , width = 150
                 }
     in
     case picked of
         Nothing ->
-            [ Input.button [ centerX, centerY ]
+            [ Input.button [ width fill, centerY ]
                 { onPress = Just <| Pick country
                 , label = flag
                 }
@@ -260,30 +257,34 @@ viewFlagButton { picked, current } country =
             ]
 
         Just _ ->
-            [ el [ centerX, centerY ]
+            [ el [ width fill, centerY ]
                 flag
             , nameAndBadge
             ]
 
 
-viewScore : Int -> Int -> Element msg
-viewScore score total =
-    el
+viewScore : PlayingModel -> Element msg
+viewScore model =
+    column
         [ alignTop
         , alignRight
-        , Background.color <| rgb 0.2 0.9 0.2
-        , Border.rounded 999
-        , width <| px 100
-        , height <| px 100
         , moveDown Theme.rythm
         , moveLeft Theme.rythm
         ]
-        (el [ centerX, centerY ] <|
-            text <|
-                String.fromInt score
-                    ++ "/"
-                    ++ String.fromInt total
-        )
+        [ el
+            [ Theme.gradient Theme.colors.greenButtonBackground
+            , Border.rounded 999
+            , width <| px 100
+            , height <| px 100
+            ]
+            (el [ centerX, centerY ] <|
+                text <|
+                    String.fromInt (model.options.gameLength - List.length model.queue)
+                        ++ "/"
+                        ++ String.fromInt model.options.gameLength
+            )
+        , paragraph [ Font.center ] [ text <| "score: " ++ String.fromInt model.score ]
+        ]
 
 
 viewCountryName : Country -> Element msg
