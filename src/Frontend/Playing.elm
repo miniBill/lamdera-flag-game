@@ -1,6 +1,6 @@
 module Frontend.Playing exposing (view)
 
-import Element.WithContext as Element exposing (Color, alignBottom, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, text, width)
+import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, text, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -88,12 +88,12 @@ viewFlagAnswers ({ current } as model) =
         |> List.Extra.greedyGroupsOf 2
         |> List.map
             (\group ->
-                Theme.grid [ width fill ]
+                Theme.grid [ centerX ]
                     { elements = List.Extra.transpose group
                     , widths = [ fill, fill ]
                     }
             )
-        |> Theme.column [ width fill ]
+        |> Theme.column [ centerX ]
 
 
 viewNameAnswers : PlayingModel -> Element FrontendMsg
@@ -252,7 +252,7 @@ viewFlagButton { picked, current } country =
     in
     case picked of
         Nothing ->
-            [ Input.button [ centerX, alignBottom ]
+            [ Input.button [ centerX, centerY ]
                 { onPress = Just <| Pick country
                 , label = flag
                 }
@@ -260,7 +260,7 @@ viewFlagButton { picked, current } country =
             ]
 
         Just _ ->
-            [ el [ centerX, alignBottom ]
+            [ el [ centerX, centerY ]
                 flag
             , nameAndBadge
             ]
