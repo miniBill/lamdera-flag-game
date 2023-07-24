@@ -19,6 +19,7 @@
 
 ## Nice to have
 
+- State vs civil flag
 - In easy mode show only obvious countries
 - Share button
 - Map mode
