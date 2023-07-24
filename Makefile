@@ -12,5 +12,5 @@ $(YARN_RUN): package.json yarn.lock
 codegen/Gen/Basics.elm: codegen/elm.codegen.json $(YARN_RUN)
 	yarn elm-codegen install
 
-generated/AspectRatios.elm: codegen/Generate.elm codegen/elm.json $(YARN_RUN)
+generated/AspectRatios.elm: codegen/Generate.elm codegen/elm.json codegen/Gen/Basics.elm $(YARN_RUN)
 	yarn elm-codegen run --flags-from public
