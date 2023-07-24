@@ -1,6 +1,6 @@
 module Sorting exposing (init, view)
 
-import Element.WithContext as Element exposing (alignTop, el, fill, height, px, text, width)
+import Element.WithContext as Element exposing (alignTop, centerX, el, fill, height, px, text, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
@@ -72,7 +72,7 @@ viewFlag country =
                 [ width fill
                 , Font.center
                 ]
-                [ Theme.viewFlag
+                [ Theme.viewFlag [ centerX ]
                     { country = country
                     , width = 50
                     }

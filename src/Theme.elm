@@ -1,6 +1,7 @@
 module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
-import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, rgba, shrink, width)
+import AspectRatios
+import Element.WithContext as Element exposing (Color, Length, alignBottom, centerX, height, image, px, rgb, rgb255, rgba, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -191,42 +192,44 @@ grid attrs { widths, elements } =
 
 
 viewFlag :
-    { country : Country, width : Int }
+    List (Attribute msg)
+    -> { country : Country, width : Int }
     -> Element msg
-viewFlag config =
+viewFlag attrs config =
     let
         src : String
         src =
             "/" ++ Types.countryToAlpha2 config.country ++ ".svg"
 
-        tall : Bool
-        tall =
-            case config.country of
-                Iso3166 countryCode ->
-                    List.member countryCode
-                        [ NP, CH, VA, BE, NE, MC, DK, CD, GA, PG, SM, FO, IL, NO, IS, AL, AD, BR, BO ]
+        ( aspectRatioWidth, aspectRatioHeight ) =
+            AspectRatios.getAspectRatio config.country
 
-                PartiallyRecognized countryCode ->
-                    countryCode == XK
+        -- arw / arh = w / h
+        -- w < config.width
+        -- h < config.width * 2 / 3
+        -- h = w * arh / arw
+        -- w * arh / arw < config.width * 2 / 3
+        -- w < config.width * arw * 2 / 3 / arh
+        -- w = min config.width (config.width * arw * 2 / 3 / arh)
+        -- h = w * arh / arw
+        w =
+            min config.width (config.width * aspectRatioWidth * 2 // (3 * aspectRatioHeight))
+
+        h =
+            w * aspectRatioHeight // aspectRatioWidth
     in
     image
-        [ Border.shadow
+        ([ Border.shadow
             { offset = ( 5, 5 )
             , size = 5
             , blur = 5
             , color = rgba 0 0 0 0.15
             }
-        , if tall then
-            height <| px <| config.width * 2 // 3
-
-          else
-            width <| px config.width
-        , if tall then
-            width shrink
-
-          else
-            height shrink
-        ]
+         , width <| px w
+         , height <| px h
+         ]
+            ++ attrs
+        )
         { src = src
         , description = "A country flag"
         }

@@ -65,11 +65,10 @@ view ({ options, score, current } as model) =
 
 viewFlagClue : { a | current : Types.Card } -> Element msg
 viewFlagClue { current } =
-    el [ centerX ] <|
-        viewFlag
-            { country = current.guessing
-            , width = 240
-            }
+    viewFlag [ centerX ]
+        { country = current.guessing
+        , width = 240
+        }
 
 
 viewNameClue : { a | current : Types.Card } -> Element msg
@@ -246,17 +245,14 @@ viewFlagButton { picked, current } country =
 
         flag : Element msg
         flag =
-            viewFlag
+            viewFlag []
                 { country = country
                 , width = 150
                 }
     in
     case picked of
         Nothing ->
-            [ Input.button
-                [ centerX
-                , alignBottom
-                ]
+            [ Input.button [ centerX, alignBottom ]
                 { onPress = Just <| Pick country
                 , label = flag
                 }
@@ -264,10 +260,7 @@ viewFlagButton { picked, current } country =
             ]
 
         Just _ ->
-            [ el
-                [ centerX
-                , alignBottom
-                ]
+            [ el [ centerX, alignBottom ]
                 flag
             , nameAndBadge
             ]
