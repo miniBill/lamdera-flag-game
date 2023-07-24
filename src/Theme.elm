@@ -7,9 +7,8 @@ import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Html.Attributes
-import Iso3166 exposing (CountryCode(..))
 import List.Extra
-import Types exposing (Context, Country(..), PartiallyRecognized(..))
+import Types exposing (Context, Country)
 
 
 type alias Element msg =
