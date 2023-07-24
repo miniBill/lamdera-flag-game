@@ -29,7 +29,7 @@ import Iso3166.Spanish
 import Iso3166.Thai
 import Iso3166.Ukrainian
 import List.Extra
-import Theme exposing (Attribute, Element, viewFlag)
+import Theme exposing (Attribute, Element, Gradient, viewFlag)
 import Types exposing (Country(..), FrontendMsg(..), Language(..), PartiallyRecognized(..), PlayingModel, Property(..))
 
 
@@ -193,8 +193,8 @@ viewNameButton { current, picked } country =
 viewFlagButton : PlayingModel -> Country -> List (Element FrontendMsg)
 viewFlagButton { picked, current } country =
     let
-        badge : String -> Color -> List (Element msg)
-        badge label color =
+        badge : String -> Color -> Gradient -> List (Element msg)
+        badge label font gradient =
             [ el
                 (if picked == Nothing then
                     [ Border.rounded 9999
@@ -202,8 +202,8 @@ viewFlagButton { picked, current } country =
                     ]
 
                  else
-                    [ Font.color <| rgb 1 1 1
-                    , Background.color color
+                    [ Font.color font
+                    , Theme.gradient gradient
                     , Border.rounded 9999
                     , paddingXY 6 2
                     ]
@@ -215,13 +215,13 @@ viewFlagButton { picked, current } country =
         maybeBadge : List (Element msg)
         maybeBadge =
             if country == current.guessing then
-                badge "✓" <| rgb 0.2 0.6 0.2
+                badge "✓" Theme.colors.black Theme.colors.greenButtonBackground
 
             else if Just country == picked then
-                badge "✗" <| rgb 0.6 0.2 0.2
+                badge "✗" Theme.colors.white Theme.colors.redButtonBackground
 
             else
-                badge "-" <| rgb 0.9 0.9 0.9
+                badge "-" Theme.colors.white Theme.colors.buttonBackground
 
         nameAndBadge : Element msg
         nameAndBadge =

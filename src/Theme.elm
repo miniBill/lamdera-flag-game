@@ -1,7 +1,7 @@
 module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
 
 import AspectRatios
-import Element.WithContext as Element exposing (Color, Length, alignBottom, centerX, height, image, px, rgb, rgb255, rgba, shrink, width)
+import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, rgba, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font

@@ -353,10 +353,10 @@ startButtons options =
             Theme.button
                 [ Font.center
                 , if config.selected then
-                    Font.color <| rgb 0 0 0
+                    Font.color Theme.colors.black
 
                   else
-                    Font.color <| rgb 1 1 1
+                    Font.color Theme.colors.white
                 , width fill
                 ]
                 { background =
