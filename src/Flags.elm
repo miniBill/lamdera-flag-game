@@ -24,7 +24,7 @@ allCards options seed =
     in
     Random.step
         (Random.List.shuffle result
-            |> Random.map (List.take 20)
+            |> Random.map (List.take options.gameLength)
         )
         finalSeed
 
