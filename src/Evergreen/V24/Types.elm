@@ -1,34 +1,44 @@
-module Evergreen.V4.Types exposing (..)
+module Evergreen.V24.Types exposing (..)
 
 import Browser
 import Browser.Navigation
-import Iso3166
+import Evergreen.V24.Cldr
 import Random
 import Url
 
 
 type Language
     = Arabic
+    | Armenian
+    | Basque
+    | Bulgarian
     | Chinese
+    | ChineseTraditional
+    | Croatian
     | Czech
     | Danish
     | Dutch
     | English
     | Estonian
+    | Finnish
     | French
     | German
     | Greek
     | Hungarian
     | Italian
     | Japanese
+    | Korean
     | Lithuanian
     | Norwegian
     | Polish
     | Portuguese
     | Romanian
     | Russian
+    | Serbian
     | Slovak
+    | Slovenian
     | Spanish
+    | Swedish
     | Thai
     | Ukrainian
 
@@ -38,38 +48,60 @@ type alias Context =
     }
 
 
-type CardKind
-    = GuessFlag
-    | GuessName
+type Difficulty
+    = Easy
+    | Normal
+    | Hard
+
+
+type Property
+    = Flag
+    | Name
+
+
+type alias GameOptions =
+    { gameLength : Int
+    , difficulty : Difficulty
+    , answersPerCard : Int
+    , guessPatterns : List ( Property, Property )
+    , sovereignOnly : Bool
+    }
+
+
+type Country
+    = Iso3166 Evergreen.V24.Cldr.CountryCode
+    | PartiallyRecognized Never
 
 
 type alias Card =
-    { guessing : Iso3166.CountryCode
-    , options : List Iso3166.CountryCode
-    , kind : CardKind
+    { guessing : Country
+    , answers : List Country
+    , guessFrom : Property
+    , guessTo : Property
     }
 
 
 type alias PlayingModel =
-    { current : Card
-    , picked : Maybe Iso3166.CountryCode
+    { options : GameOptions
+    , current : Card
+    , picked : Maybe Country
     , queue : List Card
     , score : Int
-    , total : Int
     }
 
 
 type alias SortingModel =
-    { groups : List (List Iso3166.CountryCode)
-    , selected : Maybe Iso3166.CountryCode
+    { groups : List (List Country)
+    , selected : Maybe Country
     }
 
 
 type InnerModel
-    = Homepage
+    = Homepage GameOptions
     | Playing PlayingModel
     | Finished
-        { score : Int
+        { options : GameOptions
+        , score : Int
         , total : Int
         }
     | Sorting SortingModel
@@ -87,21 +119,16 @@ type alias BackendModel =
     {}
 
 
-type Difficulty
-    = Easy
-    | Normal
-    | Hard
-
-
 type FrontendMsg
     = UrlClicked Browser.UrlRequest
     | UrlChanged Url.Url
-    | Play CardKind Difficulty
+    | Play
     | Seed Random.Seed
-    | Pick Iso3166.CountryCode
+    | Pick Country
     | Next
-    | Move Iso3166.CountryCode Int
-    | SelectForMove Iso3166.CountryCode
+    | ChangeOptions GameOptions
+    | Move Country Int
+    | SelectForMove Country
 
 
 type ToBackend
