@@ -6,6 +6,7 @@ module Cldr exposing (CountryCode(..), all, toAlpha2)
 
 
 
+{-| All the supported country codes. `GT` and `LT` are defined in Basics so we define them as `GT_` and `LT_`. -}
 type CountryCode
     = AD
     | AE
@@ -259,6 +260,7 @@ type CountryCode
     | ZW
 
 
+{-| Two-letter `ISO 3166-1 alpha-2` code from `CountryCode`. -}
 toAlpha2 : CountryCode -> String
 toAlpha2 countryCodeExpr =
     case countryCodeExpr of
@@ -1013,6 +1015,7 @@ toAlpha2 countryCodeExpr =
             "zw"
 
 
+{-| All `CountryCode`s sorted alphabetically. -}
 all : List CountryCode
 all =
     [ AD
