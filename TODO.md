@@ -1,13 +1,7 @@
 ## Needed
 
 - Back Burton
-- Fix name of
-  - Taiwan
-  - Koreas
-- Reply counter is Wrong
-- Make clue flags bigger
 - Sovereign note
-- Kosovo
 
 ## Tweaks
 
