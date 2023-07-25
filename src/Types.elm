@@ -10,7 +10,6 @@ module Types exposing
     , GameOptions
     , InnerModel(..)
     , Language(..)
-    , PartiallyRecognized(..)
     , PlayingModel
     , Property(..)
     , SortingModel
@@ -23,7 +22,7 @@ module Types exposing
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
-import Iso3166
+import Cldr
 import Random
 import Url exposing (Url)
 
@@ -34,26 +33,36 @@ type alias Context =
 
 type Language
     = Arabic
+    | Armenian
+    | Basque
+    | Bulgarian
     | Chinese
+    | ChineseTraditional
+    | Croatian
     | Czech
     | Danish
     | Dutch
     | English
     | Estonian
+    | Finnish
     | French
     | German
     | Greek
     | Hungarian
     | Italian
     | Japanese
+    | Korean
     | Lithuanian
     | Norwegian
     | Polish
     | Portuguese
     | Romanian
     | Russian
+    | Serbian
     | Slovak
+    | Slovenian
     | Spanish
+    | Swedish
     | Thai
     | Ukrainian
 
@@ -87,12 +96,8 @@ type alias GameOptions =
 
 
 type Country
-    = Iso3166 Iso3166.CountryCode
-    | PartiallyRecognized PartiallyRecognized
-
-
-type PartiallyRecognized
-    = XK -- Kosovo
+    = Iso3166 Cldr.CountryCode
+    | PartiallyRecognized Never
 
 
 type alias SortingModel =
@@ -179,7 +184,7 @@ countryToAlpha2 : Country -> String
 countryToAlpha2 country =
     case country of
         Iso3166 countryCode ->
-            Iso3166.toAlpha2 countryCode
+            Cldr.toAlpha2 countryCode
 
-        PartiallyRecognized XK ->
-            "xk"
+        PartiallyRecognized ever ->
+            never ever

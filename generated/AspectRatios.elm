@@ -5,763 +5,764 @@ module AspectRatios exposing (getAspectRatio)
 -}
 
 
-import Iso3166
+import Cldr
 import Types
 
 
 getAspectRatio : Types.Country -> ( Int, Int )
 getAspectRatio country =
     case country of
-        Types.Iso3166 iso3166CountryCode ->
-            case iso3166CountryCode of
-                Iso3166.AD ->
+        Types.Iso3166 cldrCountryCode ->
+            case cldrCountryCode of
+                Cldr.AD ->
                     ( 10, 7 )
 
-                Iso3166.AE ->
+                Cldr.AE ->
                     ( 2, 1 )
 
-                Iso3166.AF ->
+                Cldr.AF ->
                     ( 2, 1 )
 
-                Iso3166.AG ->
+                Cldr.AG ->
                     ( 3, 2 )
 
-                Iso3166.AI ->
+                Cldr.AI ->
                     ( 2, 1 )
 
-                Iso3166.AL ->
+                Cldr.AL ->
                     ( 7, 5 )
 
-                Iso3166.AM ->
+                Cldr.AM ->
                     ( 2, 1 )
 
-                Iso3166.AO ->
+                Cldr.AO ->
                     ( 3, 2 )
 
-                Iso3166.AQ ->
+                Cldr.AQ ->
                     ( 3, 2 )
 
-                Iso3166.AR ->
+                Cldr.AR ->
                     ( 8, 5 )
 
-                Iso3166.AS ->
+                Cldr.AS ->
                     ( 2, 1 )
 
-                Iso3166.AT ->
+                Cldr.AT ->
                     ( 3, 2 )
 
-                Iso3166.AU ->
+                Cldr.AU ->
                     ( 2, 1 )
 
-                Iso3166.AW ->
+                Cldr.AW ->
                     ( 3, 2 )
 
-                Iso3166.AX ->
+                Cldr.AX ->
                     ( 26, 17 )
 
-                Iso3166.AZ ->
+                Cldr.AZ ->
                     ( 2, 1 )
 
-                Iso3166.BA ->
+                Cldr.BA ->
                     ( 2, 1 )
 
-                Iso3166.BB ->
+                Cldr.BB ->
                     ( 3, 2 )
 
-                Iso3166.BD ->
+                Cldr.BD ->
                     ( 5, 3 )
 
-                Iso3166.BE ->
+                Cldr.BE ->
                     ( 15, 13 )
 
-                Iso3166.BF ->
+                Cldr.BF ->
                     ( 3, 2 )
 
-                Iso3166.BG ->
+                Cldr.BG ->
                     ( 5, 3 )
 
-                Iso3166.BH ->
+                Cldr.BH ->
                     ( 5, 3 )
 
-                Iso3166.BI ->
+                Cldr.BI ->
                     ( 5, 3 )
 
-                Iso3166.BJ ->
+                Cldr.BJ ->
                     ( 3, 2 )
 
-                Iso3166.BL ->
+                Cldr.BL ->
                     ( 3, 2 )
 
-                Iso3166.BM ->
+                Cldr.BM ->
                     ( 2, 1 )
 
-                Iso3166.BN ->
+                Cldr.BN ->
                     ( 2, 1 )
 
-                Iso3166.BO ->
+                Cldr.BO ->
                     ( 22, 15 )
 
-                Iso3166.BQ ->
+                Cldr.BQ ->
                     ( 3, 2 )
 
-                Iso3166.BR ->
+                Cldr.BR ->
                     ( 10, 7 )
 
-                Iso3166.BS ->
+                Cldr.BS ->
                     ( 2, 1 )
 
-                Iso3166.BT ->
+                Cldr.BT ->
                     ( 3, 2 )
 
-                Iso3166.BV ->
+                Cldr.BV ->
                     ( 11, 8 )
 
-                Iso3166.BW ->
+                Cldr.BW ->
                     ( 3, 2 )
 
-                Iso3166.BY ->
+                Cldr.BY ->
                     ( 2, 1 )
 
-                Iso3166.BZ ->
+                Cldr.BZ ->
                     ( 5, 3 )
 
-                Iso3166.CA ->
+                Cldr.CA ->
                     ( 2, 1 )
 
-                Iso3166.CC ->
+                Cldr.CC ->
                     ( 2, 1 )
 
-                Iso3166.CD ->
+                Cldr.CD ->
                     ( 4, 3 )
 
-                Iso3166.CF ->
+                Cldr.CF ->
                     ( 3, 2 )
 
-                Iso3166.CG ->
+                Cldr.CG ->
                     ( 3, 2 )
 
-                Iso3166.CH ->
+                Cldr.CH ->
                     ( 1, 1 )
 
-                Iso3166.CI ->
+                Cldr.CI ->
                     ( 3, 2 )
 
-                Iso3166.CK ->
+                Cldr.CK ->
                     ( 2, 1 )
 
-                Iso3166.CL ->
+                Cldr.CL ->
                     ( 3, 2 )
 
-                Iso3166.CM ->
+                Cldr.CM ->
                     ( 3, 2 )
 
-                Iso3166.CN ->
+                Cldr.CN ->
                     ( 3, 2 )
 
-                Iso3166.CO ->
+                Cldr.CO ->
                     ( 3, 2 )
 
-                Iso3166.CR ->
+                Cldr.CR ->
                     ( 5, 3 )
 
-                Iso3166.CU ->
+                Cldr.CU ->
                     ( 2, 1 )
 
-                Iso3166.CV ->
+                Cldr.CV ->
                     ( 17, 10 )
 
-                Iso3166.CW ->
+                Cldr.CW ->
                     ( 3, 2 )
 
-                Iso3166.CX ->
+                Cldr.CX ->
                     ( 2, 1 )
 
-                Iso3166.CY ->
+                Cldr.CY ->
                     ( 3, 2 )
 
-                Iso3166.CZ ->
+                Cldr.CZ ->
                     ( 3, 2 )
 
-                Iso3166.DE ->
+                Cldr.DE ->
                     ( 5, 3 )
 
-                Iso3166.DJ ->
+                Cldr.DJ ->
                     ( 3, 2 )
 
-                Iso3166.DK ->
+                Cldr.DK ->
                     ( 37, 28 )
 
-                Iso3166.DM ->
+                Cldr.DM ->
                     ( 2, 1 )
 
-                Iso3166.DO ->
+                Cldr.DO ->
                     ( 3, 2 )
 
-                Iso3166.DZ ->
+                Cldr.DZ ->
                     ( 3, 2 )
 
-                Iso3166.EC ->
+                Cldr.EC ->
                     ( 3, 2 )
 
-                Iso3166.EE ->
+                Cldr.EE ->
                     ( 11, 7 )
 
-                Iso3166.EG ->
+                Cldr.EG ->
                     ( 3, 2 )
 
-                Iso3166.EH ->
+                Cldr.EH ->
                     ( 2, 1 )
 
-                Iso3166.ER ->
+                Cldr.ER ->
                     ( 2, 1 )
 
-                Iso3166.ES ->
+                Cldr.ES ->
                     ( 3, 2 )
 
-                Iso3166.ET ->
+                Cldr.ET ->
                     ( 2, 1 )
 
-                Iso3166.FI ->
+                Cldr.FI ->
                     ( 18, 11 )
 
-                Iso3166.FJ ->
+                Cldr.FJ ->
                     ( 2, 1 )
 
-                Iso3166.FK ->
+                Cldr.FK ->
                     ( 2, 1 )
 
-                Iso3166.FM ->
+                Cldr.FM ->
                     ( 19, 10 )
 
-                Iso3166.FO ->
+                Cldr.FO ->
                     ( 11, 8 )
 
-                Iso3166.FR ->
+                Cldr.FR ->
                     ( 3, 2 )
 
-                Iso3166.GA ->
+                Cldr.GA ->
                     ( 4, 3 )
 
-                Iso3166.GB ->
+                Cldr.GB ->
                     ( 2, 1 )
 
-                Iso3166.GD ->
+                Cldr.GD ->
                     ( 5, 3 )
 
-                Iso3166.GE ->
+                Cldr.GE ->
                     ( 3, 2 )
 
-                Iso3166.GF ->
+                Cldr.GF ->
                     ( 3, 2 )
 
-                Iso3166.GG ->
+                Cldr.GG ->
                     ( 3, 2 )
 
-                Iso3166.GH ->
+                Cldr.GH ->
                     ( 3, 2 )
 
-                Iso3166.GI ->
+                Cldr.GI ->
                     ( 2, 1 )
 
-                Iso3166.GL ->
+                Cldr.GL ->
                     ( 3, 2 )
 
-                Iso3166.GM ->
+                Cldr.GM ->
                     ( 3, 2 )
 
-                Iso3166.GN ->
+                Cldr.GN ->
                     ( 3, 2 )
 
-                Iso3166.GP ->
+                Cldr.GP ->
                     ( 3, 2 )
 
-                Iso3166.GQ ->
+                Cldr.GQ ->
                     ( 3, 2 )
 
-                Iso3166.GR ->
+                Cldr.GR ->
                     ( 3, 2 )
 
-                Iso3166.GS ->
+                Cldr.GS ->
                     ( 2, 1 )
 
-                Iso3166.GT_ ->
+                Cldr.GT_ ->
                     ( 8, 5 )
 
-                Iso3166.GU ->
+                Cldr.GU ->
                     ( 41, 22 )
 
-                Iso3166.GW ->
+                Cldr.GW ->
                     ( 2, 1 )
 
-                Iso3166.GY ->
+                Cldr.GY ->
                     ( 5, 3 )
 
-                Iso3166.HK ->
+                Cldr.HK ->
                     ( 3, 2 )
 
-                Iso3166.HM ->
+                Cldr.HM ->
                     ( 2, 1 )
 
-                Iso3166.HN ->
+                Cldr.HN ->
                     ( 2, 1 )
 
-                Iso3166.HR ->
+                Cldr.HR ->
                     ( 2, 1 )
 
-                Iso3166.HT ->
+                Cldr.HT ->
                     ( 5, 3 )
 
-                Iso3166.HU ->
+                Cldr.HU ->
                     ( 2, 1 )
 
-                Iso3166.ID ->
+                Cldr.ID ->
                     ( 3, 2 )
 
-                Iso3166.IE ->
+                Cldr.IE ->
                     ( 2, 1 )
 
-                Iso3166.IL ->
+                Cldr.IL ->
                     ( 11, 8 )
 
-                Iso3166.IM ->
+                Cldr.IM ->
                     ( 2, 1 )
 
-                Iso3166.IN ->
+                Cldr.IN ->
                     ( 3, 2 )
 
-                Iso3166.IO ->
+                Cldr.IO ->
                     ( 2, 1 )
 
-                Iso3166.IQ ->
+                Cldr.IQ ->
                     ( 3, 2 )
 
-                Iso3166.IR ->
+                Cldr.IR ->
                     ( 7, 4 )
 
-                Iso3166.IS ->
+                Cldr.IS ->
                     ( 25, 18 )
 
-                Iso3166.IT ->
+                Cldr.IT ->
                     ( 3, 2 )
 
-                Iso3166.JE ->
+                Cldr.JE ->
                     ( 5, 3 )
 
-                Iso3166.JM ->
+                Cldr.JM ->
                     ( 2, 1 )
 
-                Iso3166.JO ->
+                Cldr.JO ->
                     ( 2, 1 )
 
-                Iso3166.JP ->
+                Cldr.JP ->
                     ( 3, 2 )
 
-                Iso3166.KE ->
+                Cldr.KE ->
                     ( 3, 2 )
 
-                Iso3166.KG ->
+                Cldr.KG ->
                     ( 5, 3 )
 
-                Iso3166.KH ->
+                Cldr.KH ->
                     ( 25, 16 )
 
-                Iso3166.KI ->
+                Cldr.KI ->
                     ( 2, 1 )
 
-                Iso3166.KM ->
+                Cldr.KM ->
                     ( 5, 3 )
 
-                Iso3166.KN ->
+                Cldr.KN ->
                     ( 3, 2 )
 
-                Iso3166.KP ->
+                Cldr.KP ->
                     ( 2, 1 )
 
-                Iso3166.KR ->
+                Cldr.KR ->
                     ( 3, 2 )
 
-                Iso3166.KW ->
+                Cldr.KW ->
                     ( 2, 1 )
 
-                Iso3166.KY ->
+                Cldr.KY ->
                     ( 2, 1 )
 
-                Iso3166.KZ ->
+                Cldr.KZ ->
                     ( 2, 1 )
 
-                Iso3166.LA ->
+                Cldr.LA ->
                     ( 3, 2 )
 
-                Iso3166.LB ->
+                Cldr.LB ->
                     ( 3, 2 )
 
-                Iso3166.LC ->
+                Cldr.LC ->
                     ( 2, 1 )
 
-                Iso3166.LI ->
+                Cldr.LI ->
                     ( 5, 3 )
 
-                Iso3166.LK ->
+                Cldr.LK ->
                     ( 2, 1 )
 
-                Iso3166.LR ->
+                Cldr.LR ->
                     ( 19, 10 )
 
-                Iso3166.LS ->
+                Cldr.LS ->
                     ( 3, 2 )
 
-                Iso3166.LT_ ->
+                Cldr.LT_ ->
                     ( 5, 3 )
 
-                Iso3166.LU ->
+                Cldr.LU ->
                     ( 5, 3 )
 
-                Iso3166.LV ->
+                Cldr.LV ->
                     ( 2, 1 )
 
-                Iso3166.LY ->
+                Cldr.LY ->
                     ( 2, 1 )
 
-                Iso3166.MA ->
+                Cldr.MA ->
                     ( 3, 2 )
 
-                Iso3166.MC ->
+                Cldr.MC ->
                     ( 5, 4 )
 
-                Iso3166.MD ->
+                Cldr.MD ->
                     ( 2, 1 )
 
-                Iso3166.ME ->
+                Cldr.ME ->
                     ( 2, 1 )
 
-                Iso3166.MF ->
+                Cldr.MF ->
                     ( 3, 2 )
 
-                Iso3166.MG ->
+                Cldr.MG ->
                     ( 3, 2 )
 
-                Iso3166.MH ->
+                Cldr.MH ->
                     ( 19, 10 )
 
-                Iso3166.MK ->
+                Cldr.MK ->
                     ( 2, 1 )
 
-                Iso3166.ML ->
+                Cldr.ML ->
                     ( 3, 2 )
 
-                Iso3166.MM ->
+                Cldr.MM ->
                     ( 3, 2 )
 
-                Iso3166.MN ->
+                Cldr.MN ->
                     ( 2, 1 )
 
-                Iso3166.MO ->
+                Cldr.MO ->
                     ( 3, 2 )
 
-                Iso3166.MP ->
+                Cldr.MP ->
                     ( 2, 1 )
 
-                Iso3166.MQ ->
+                Cldr.MQ ->
                     ( 3, 2 )
 
-                Iso3166.MR ->
+                Cldr.MR ->
                     ( 3, 2 )
 
-                Iso3166.MS ->
+                Cldr.MS ->
                     ( 2, 1 )
 
-                Iso3166.MT ->
+                Cldr.MT ->
                     ( 3, 2 )
 
-                Iso3166.MU ->
+                Cldr.MU ->
                     ( 3, 2 )
 
-                Iso3166.MV ->
+                Cldr.MV ->
                     ( 3, 2 )
 
-                Iso3166.MW ->
+                Cldr.MW ->
                     ( 3, 2 )
 
-                Iso3166.MX ->
+                Cldr.MX ->
                     ( 7, 4 )
 
-                Iso3166.MY ->
+                Cldr.MY ->
                     ( 2, 1 )
 
-                Iso3166.MZ ->
+                Cldr.MZ ->
                     ( 3, 2 )
 
-                Iso3166.NA ->
+                Cldr.NA ->
                     ( 3, 2 )
 
-                Iso3166.NC ->
+                Cldr.NC ->
                     ( 3, 2 )
 
-                Iso3166.NE ->
+                Cldr.NE ->
                     ( 7, 6 )
 
-                Iso3166.NF ->
+                Cldr.NF ->
                     ( 2, 1 )
 
-                Iso3166.NG ->
+                Cldr.NG ->
                     ( 2, 1 )
 
-                Iso3166.NI ->
+                Cldr.NI ->
                     ( 5, 3 )
 
-                Iso3166.NL ->
+                Cldr.NL ->
                     ( 3, 2 )
 
-                Iso3166.NO ->
+                Cldr.NO ->
                     ( 11, 8 )
 
-                Iso3166.NP ->
+                Cldr.NP ->
                     ( 242, 295 )
 
-                Iso3166.NR ->
+                Cldr.NR ->
                     ( 2, 1 )
 
-                Iso3166.NU ->
+                Cldr.NU ->
                     ( 2, 1 )
 
-                Iso3166.NZ ->
+                Cldr.NZ ->
                     ( 2, 1 )
 
-                Iso3166.OM ->
+                Cldr.OM ->
                     ( 2, 1 )
 
-                Iso3166.PA ->
+                Cldr.PA ->
                     ( 3, 2 )
 
-                Iso3166.PE ->
+                Cldr.PE ->
                     ( 3, 2 )
 
-                Iso3166.PF ->
+                Cldr.PF ->
                     ( 3, 2 )
 
-                Iso3166.PG ->
+                Cldr.PG ->
                     ( 4, 3 )
 
-                Iso3166.PH ->
+                Cldr.PH ->
                     ( 2, 1 )
 
-                Iso3166.PK ->
+                Cldr.PK ->
                     ( 3, 2 )
 
-                Iso3166.PL ->
+                Cldr.PL ->
                     ( 8, 5 )
 
-                Iso3166.PM ->
+                Cldr.PM ->
                     ( 3, 2 )
 
-                Iso3166.PN ->
+                Cldr.PN ->
                     ( 2, 1 )
 
-                Iso3166.PR ->
+                Cldr.PR ->
                     ( 3, 2 )
 
-                Iso3166.PS ->
+                Cldr.PS ->
                     ( 2, 1 )
 
-                Iso3166.PT ->
+                Cldr.PT ->
                     ( 3, 2 )
 
-                Iso3166.PW ->
+                Cldr.PW ->
                     ( 8, 5 )
 
-                Iso3166.PY ->
+                Cldr.PY ->
                     ( 20, 11 )
 
-                Iso3166.QA ->
+                Cldr.QA ->
                     ( 28, 11 )
 
-                Iso3166.RE ->
+                Cldr.RE ->
                     ( 3, 2 )
 
-                Iso3166.RO ->
+                Cldr.RO ->
                     ( 3, 2 )
 
-                Iso3166.RS ->
+                Cldr.RS ->
                     ( 3, 2 )
 
-                Iso3166.RU ->
+                Cldr.RU ->
                     ( 3, 2 )
 
-                Iso3166.RW ->
+                Cldr.RW ->
                     ( 3, 2 )
 
-                Iso3166.SA ->
+                Cldr.SA ->
                     ( 3, 2 )
 
-                Iso3166.SB ->
+                Cldr.SB ->
                     ( 2, 1 )
 
-                Iso3166.SC ->
+                Cldr.SC ->
                     ( 2, 1 )
 
-                Iso3166.SD ->
+                Cldr.SD ->
                     ( 2, 1 )
 
-                Iso3166.SE ->
+                Cldr.SE ->
                     ( 8, 5 )
 
-                Iso3166.SG ->
+                Cldr.SG ->
                     ( 3, 2 )
 
-                Iso3166.SH ->
+                Cldr.SH ->
                     ( 2, 1 )
 
-                Iso3166.SI ->
+                Cldr.SI ->
                     ( 2, 1 )
 
-                Iso3166.SJ ->
+                Cldr.SJ ->
                     ( 11, 8 )
 
-                Iso3166.SK ->
+                Cldr.SK ->
                     ( 3, 2 )
 
-                Iso3166.SL ->
+                Cldr.SL ->
                     ( 3, 2 )
 
-                Iso3166.SM ->
+                Cldr.SM ->
                     ( 4, 3 )
 
-                Iso3166.SN ->
+                Cldr.SN ->
                     ( 3, 2 )
 
-                Iso3166.SO ->
+                Cldr.SO ->
                     ( 3, 2 )
 
-                Iso3166.SR ->
+                Cldr.SR ->
                     ( 3, 2 )
 
-                Iso3166.SS ->
+                Cldr.SS ->
                     ( 2, 1 )
 
-                Iso3166.ST ->
+                Cldr.ST ->
                     ( 2, 1 )
 
-                Iso3166.SV ->
+                Cldr.SV ->
                     ( 335, 189 )
 
-                Iso3166.SX ->
+                Cldr.SX ->
                     ( 3, 2 )
 
-                Iso3166.SY ->
+                Cldr.SY ->
                     ( 3, 2 )
 
-                Iso3166.SZ ->
+                Cldr.SZ ->
                     ( 3, 2 )
 
-                Iso3166.TC ->
+                Cldr.TC ->
                     ( 2, 1 )
 
-                Iso3166.TD ->
+                Cldr.TD ->
                     ( 3, 2 )
 
-                Iso3166.TF ->
+                Cldr.TF ->
                     ( 3, 2 )
 
-                Iso3166.TG ->
+                Cldr.TG ->
                     ( 809, 500 )
 
-                Iso3166.TH ->
+                Cldr.TH ->
                     ( 3, 2 )
 
-                Iso3166.TJ ->
+                Cldr.TJ ->
                     ( 2, 1 )
 
-                Iso3166.TK ->
+                Cldr.TK ->
                     ( 2, 1 )
 
-                Iso3166.TL ->
+                Cldr.TL ->
                     ( 2, 1 )
 
-                Iso3166.TM ->
+                Cldr.TM ->
                     ( 3, 2 )
 
-                Iso3166.TN ->
+                Cldr.TN ->
                     ( 3, 2 )
 
-                Iso3166.TO ->
+                Cldr.TO ->
                     ( 2, 1 )
 
-                Iso3166.TR ->
+                Cldr.TR ->
                     ( 3, 2 )
 
-                Iso3166.TT ->
+                Cldr.TT ->
                     ( 5, 3 )
 
-                Iso3166.TV ->
+                Cldr.TV ->
                     ( 2, 1 )
 
-                Iso3166.TW ->
+                Cldr.TW ->
                     ( 3, 2 )
 
-                Iso3166.TZ ->
+                Cldr.TZ ->
                     ( 3, 2 )
 
-                Iso3166.UA ->
+                Cldr.UA ->
                     ( 3, 2 )
 
-                Iso3166.UG ->
+                Cldr.UG ->
                     ( 3, 2 )
 
-                Iso3166.UM ->
+                Cldr.UM ->
                     ( 19, 10 )
 
-                Iso3166.US ->
+                Cldr.US ->
                     ( 19, 10 )
 
-                Iso3166.UY ->
+                Cldr.UY ->
                     ( 3, 2 )
 
-                Iso3166.UZ ->
+                Cldr.UZ ->
                     ( 2, 1 )
 
-                Iso3166.VA ->
+                Cldr.VA ->
                     ( 1, 1 )
 
-                Iso3166.VC ->
+                Cldr.VC ->
                     ( 3, 2 )
 
-                Iso3166.VE ->
+                Cldr.VE ->
                     ( 3, 2 )
 
-                Iso3166.VG ->
+                Cldr.VG ->
                     ( 2, 1 )
 
-                Iso3166.VI ->
+                Cldr.VI ->
                     ( 3, 2 )
 
-                Iso3166.VN ->
+                Cldr.VN ->
                     ( 3, 2 )
 
-                Iso3166.VU ->
+                Cldr.VU ->
                     ( 5, 3 )
 
-                Iso3166.WF ->
+                Cldr.WF ->
                     ( 3, 2 )
 
-                Iso3166.WS ->
+                Cldr.WS ->
                     ( 2, 1 )
 
-                Iso3166.YE ->
-                    ( 3, 2 )
-
-                Iso3166.YT ->
-                    ( 3, 2 )
-
-                Iso3166.ZA ->
-                    ( 3, 2 )
-
-                Iso3166.ZM ->
-                    ( 3, 2 )
-
-                Iso3166.ZW ->
-                    ( 2, 1 )
-
-        Types.PartiallyRecognized partiallyRecognized ->
-            case partiallyRecognized of
-                Types.XK ->
+                Cldr.XK ->
                     ( 7, 5 )
+
+                Cldr.YE ->
+                    ( 3, 2 )
+
+                Cldr.YT ->
+                    ( 3, 2 )
+
+                Cldr.ZA ->
+                    ( 3, 2 )
+
+                Cldr.ZM ->
+                    ( 3, 2 )
+
+                Cldr.ZW ->
+                    ( 2, 1 )
+
+        Types.PartiallyRecognized never ->
+            Basics.never never

@@ -2,7 +2,8 @@
     "type": "application",
     "source-directories": [
         "src",
-        "generated"
+        "generated",
+        "../elm-cldr/generated"
     ],
     "elm-version": "0.19.1",
     "dependencies": {
@@ -16,8 +17,7 @@
             "elm-community/random-extra": "3.2.0",
             "lamdera/codecs": "1.0.0",
             "lamdera/core": "1.0.0",
-            "miniBill/elm-ui-with-context": "2.0.0",
-            "rl-king/elm-iso3166-country-codes": "2.0.1"
+            "miniBill/elm-ui-with-context": "2.0.0"
         },
         "indirect": {
             "elm/bytes": "1.0.8",

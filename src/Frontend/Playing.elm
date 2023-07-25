@@ -1,35 +1,45 @@
 module Frontend.Playing exposing (view)
 
+import Cldr.Arabic
+import Cldr.Armenian
+import Cldr.Basque
+import Cldr.Bulgarian
+import Cldr.Chinese
+import Cldr.Chinese.Traditional
+import Cldr.Croatian
+import Cldr.Czech
+import Cldr.Danish
+import Cldr.Dutch
+import Cldr.English
+import Cldr.Estonian
+import Cldr.Finnish
+import Cldr.French
+import Cldr.German
+import Cldr.Greek
+import Cldr.Hungarian
+import Cldr.Italian
+import Cldr.Japanese
+import Cldr.Korean
+import Cldr.Lithuanian
+import Cldr.Norwegian
+import Cldr.Polish
+import Cldr.Portuguese
+import Cldr.Romanian
+import Cldr.Russian
+import Cldr.Serbian
+import Cldr.Slovak
+import Cldr.Slovenian
+import Cldr.Spanish
+import Cldr.Swedish
+import Cldr.Thai
+import Cldr.Ukrainian
 import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, column, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, shrink, text, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
-import Iso3166.Arabic
-import Iso3166.Chinese
-import Iso3166.Czech
-import Iso3166.Danish
-import Iso3166.Dutch
-import Iso3166.English
-import Iso3166.Estonian
-import Iso3166.French
-import Iso3166.German
-import Iso3166.Greek
-import Iso3166.Hungarian
-import Iso3166.Italian
-import Iso3166.Japanese
-import Iso3166.Lithuanian
-import Iso3166.Norwegian
-import Iso3166.Polish
-import Iso3166.Portuguese
-import Iso3166.Romanian
-import Iso3166.Russian
-import Iso3166.Slovak
-import Iso3166.Spanish
-import Iso3166.Thai
-import Iso3166.Ukrainian
 import List.Extra
 import Theme exposing (Attribute, Element, Gradient, viewFlag)
-import Types exposing (Country(..), FrontendMsg(..), Language(..), PartiallyRecognized(..), PlayingModel, Property(..))
+import Types exposing (Country(..), FrontendMsg(..), Language(..), PlayingModel, Property(..))
 
 
 view : PlayingModel -> Element FrontendMsg
@@ -290,78 +300,108 @@ viewScore model =
 viewCountryName : Country -> Element msg
 viewCountryName country =
     case country of
-        PartiallyRecognized XK ->
-            text "Kosovo"
+        PartiallyRecognized ever ->
+            never ever
 
         Iso3166 countryCode ->
             Element.with .language <|
                 \language ->
                     case language of
                         Arabic ->
-                            text <| Iso3166.Arabic.toName countryCode
+                            text <| Cldr.Arabic.countryCodeToName countryCode
 
                         Chinese ->
-                            text <| Iso3166.Chinese.toName countryCode
+                            text <| Cldr.Chinese.countryCodeToName countryCode
 
                         Czech ->
-                            text <| Iso3166.Czech.toName countryCode
+                            text <| Cldr.Czech.countryCodeToName countryCode
 
                         Danish ->
-                            text <| Iso3166.Danish.toName countryCode
+                            text <| Cldr.Danish.countryCodeToName countryCode
 
                         Dutch ->
-                            text <| Iso3166.Dutch.toName countryCode
+                            text <| Cldr.Dutch.countryCodeToName countryCode
 
                         English ->
-                            text <| Iso3166.English.toName countryCode
+                            text <| Cldr.English.countryCodeToName countryCode
 
                         Estonian ->
-                            text <| Iso3166.Estonian.toName countryCode
+                            text <| Cldr.Estonian.countryCodeToName countryCode
 
                         French ->
-                            text <| Iso3166.French.toName countryCode
+                            text <| Cldr.French.countryCodeToName countryCode
 
                         German ->
-                            text <| Iso3166.German.toName countryCode
+                            text <| Cldr.German.countryCodeToName countryCode
 
                         Greek ->
-                            text <| Iso3166.Greek.toName countryCode
+                            text <| Cldr.Greek.countryCodeToName countryCode
 
                         Hungarian ->
-                            text <| Iso3166.Hungarian.toName countryCode
+                            text <| Cldr.Hungarian.countryCodeToName countryCode
 
                         Italian ->
-                            text <| Iso3166.Italian.toName countryCode
+                            text <| Cldr.Italian.countryCodeToName countryCode
 
                         Japanese ->
-                            text <| Iso3166.Japanese.toName countryCode
+                            text <| Cldr.Japanese.countryCodeToName countryCode
 
                         Lithuanian ->
-                            text <| Iso3166.Lithuanian.toName countryCode
+                            text <| Cldr.Lithuanian.countryCodeToName countryCode
 
                         Norwegian ->
-                            text <| Iso3166.Norwegian.toName countryCode
+                            text <| Cldr.Norwegian.countryCodeToName countryCode
 
                         Polish ->
-                            text <| Iso3166.Polish.toName countryCode
+                            text <| Cldr.Polish.countryCodeToName countryCode
 
                         Portuguese ->
-                            text <| Iso3166.Portuguese.toName countryCode
+                            text <| Cldr.Portuguese.countryCodeToName countryCode
 
                         Romanian ->
-                            text <| Iso3166.Romanian.toName countryCode
+                            text <| Cldr.Romanian.countryCodeToName countryCode
 
                         Russian ->
-                            text <| Iso3166.Russian.toName countryCode
+                            text <| Cldr.Russian.countryCodeToName countryCode
 
                         Slovak ->
-                            text <| Iso3166.Slovak.toName countryCode
+                            text <| Cldr.Slovak.countryCodeToName countryCode
 
                         Spanish ->
-                            text <| Iso3166.Spanish.toName countryCode
+                            text <| Cldr.Spanish.countryCodeToName countryCode
 
                         Thai ->
-                            text <| Iso3166.Thai.toName countryCode
+                            text <| Cldr.Thai.countryCodeToName countryCode
 
                         Ukrainian ->
-                            text <| Iso3166.Ukrainian.toName countryCode
+                            text <| Cldr.Ukrainian.countryCodeToName countryCode
+
+                        Armenian ->
+                            text <| Cldr.Armenian.countryCodeToName countryCode
+
+                        Basque ->
+                            text <| Cldr.Basque.countryCodeToName countryCode
+
+                        Bulgarian ->
+                            text <| Cldr.Bulgarian.countryCodeToName countryCode
+
+                        ChineseTraditional ->
+                            text <| Cldr.Chinese.Traditional.countryCodeToName countryCode
+
+                        Croatian ->
+                            text <| Cldr.Croatian.countryCodeToName countryCode
+
+                        Finnish ->
+                            text <| Cldr.Finnish.countryCodeToName countryCode
+
+                        Korean ->
+                            text <| Cldr.Korean.countryCodeToName countryCode
+
+                        Serbian ->
+                            text <| Cldr.Serbian.countryCodeToName countryCode
+
+                        Slovenian ->
+                            text <| Cldr.Slovenian.countryCodeToName countryCode
+
+                        Swedish ->
+                            text <| Cldr.Swedish.countryCodeToName countryCode

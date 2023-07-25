@@ -1,10 +1,10 @@
 module Flags exposing (Continent(..), Sovereignity, all, allCards, continentToString, getSimilarFlags, toContinent)
 
-import Iso3166 exposing (CountryCode(..))
+import Cldr exposing (CountryCode(..))
 import List.Extra
 import Random
 import Random.List
-import Types exposing (Card, Country(..), Difficulty(..), GameOptions, PartiallyRecognized(..), Property(..))
+import Types exposing (Card, Country(..), Difficulty(..), GameOptions, Property(..))
 
 
 allCards : GameOptions -> Random.Seed -> ( List Card, Random.Seed )
@@ -33,7 +33,7 @@ similarityGroups : List (List Country)
 similarityGroups =
     [ [ Iso3166 AD, Iso3166 MD, Iso3166 RO, Iso3166 TD ]
     , [ Iso3166 AE, Iso3166 EH, Iso3166 JO, Iso3166 KW, Iso3166 PS, Iso3166 SD, Iso3166 SS ]
-    , [ Iso3166 AF, Iso3166 AQ, Iso3166 BE, Iso3166 BR, Iso3166 CA, Iso3166 CH, Iso3166 CN, Iso3166 CY, Iso3166 DE, Iso3166 ES, Iso3166 FR, Iso3166 GB, Iso3166 GE, Iso3166 GR, Iso3166 IL, Iso3166 IN, Iso3166 JM, Iso3166 JP, Iso3166 KR, Iso3166 MF, Iso3166 MK, Iso3166 PT, Iso3166 SA, Iso3166 SM, Iso3166 UA, Iso3166 VA, Iso3166 WF, PartiallyRecognized XK, Iso3166 ZA ]
+    , [ Iso3166 AF, Iso3166 AQ, Iso3166 BE, Iso3166 BR, Iso3166 CA, Iso3166 CH, Iso3166 CN, Iso3166 CY, Iso3166 DE, Iso3166 ES, Iso3166 FR, Iso3166 GB, Iso3166 GE, Iso3166 GR, Iso3166 IL, Iso3166 IN, Iso3166 JM, Iso3166 JP, Iso3166 KR, Iso3166 MF, Iso3166 MK, Iso3166 PT, Iso3166 SA, Iso3166 SM, Iso3166 UA, Iso3166 VA, Iso3166 WF, Iso3166 XK, Iso3166 ZA ]
     , [ Iso3166 AG, Iso3166 AS, Iso3166 AW, Iso3166 BB, Iso3166 BL, Iso3166 BN, Iso3166 BQ, Iso3166 BZ, Iso3166 CC, Iso3166 CR, Iso3166 CV, Iso3166 CW, Iso3166 CX, Iso3166 DM, Iso3166 DO, Iso3166 FM, Iso3166 GI, Iso3166 GP, Iso3166 GQ, Iso3166 GT_, Iso3166 GU, Iso3166 HK, Iso3166 HT, Iso3166 IM, Iso3166 JE, Iso3166 KI, Iso3166 KM, Iso3166 LC, Iso3166 LI, Iso3166 MH, Iso3166 MN, Iso3166 MO, Iso3166 MP, Iso3166 MQ, Iso3166 NC, Iso3166 NF, Iso3166 NR, Iso3166 OM, Iso3166 PF, Iso3166 PG, Iso3166 PH, Iso3166 PM, Iso3166 PW, Iso3166 RE, Iso3166 SB, Iso3166 SC, Iso3166 SX, Iso3166 SZ, Iso3166 TF, Iso3166 TK, Iso3166 VC, Iso3166 VI, Iso3166 VU, Iso3166 YT ]
     , [ Iso3166 AI, Iso3166 AU, Iso3166 BM, Iso3166 CK, Iso3166 FJ, Iso3166 FK, Iso3166 GS, Iso3166 HM, Iso3166 IO, Iso3166 KY, Iso3166 MS, Iso3166 NU, Iso3166 NZ, Iso3166 PN, Iso3166 SH, Iso3166 TC, Iso3166 TV, Iso3166 VG ]
     , [ Iso3166 AL, Iso3166 BA, Iso3166 CZ, Iso3166 HR, Iso3166 LU, Iso3166 ME, Iso3166 NL, Iso3166 RS, Iso3166 RU, Iso3166 SI, Iso3166 SK ]
@@ -198,8 +198,8 @@ continentToString continent =
 toContinent : Country -> Continent
 toContinent country =
     case country of
-        PartiallyRecognized XK ->
-            Europe
+        PartiallyRecognized ever ->
+            never ever
 
         Iso3166 countryCode ->
             case countryCode of
@@ -935,6 +935,9 @@ toContinent country =
                 WS ->
                     Oceania
 
+                XK ->
+                    Europe
+
                 YE ->
                     Asia
 
@@ -959,8 +962,8 @@ type Sovereignity
 toSovereignity : Country -> Sovereignity
 toSovereignity country =
     case country of
-        PartiallyRecognized XK ->
-            Sovereign
+        PartiallyRecognized ever ->
+            never ever
 
         Iso3166 countryCode ->
             case countryCode of
@@ -1442,6 +1445,10 @@ toSovereignity country =
 
                 -- Korea, Republic of
                 KR ->
+                    Sovereign
+
+                -- Kosovo
+                XK ->
                     Sovereign
 
                 -- Kuwait
@@ -1967,12 +1974,12 @@ all { sovereignOnly } =
         fromIso : List Country
         fromIso =
             if sovereignOnly then
-                List.filter isSovereign <| List.map Iso3166 Iso3166.all
+                List.filter isSovereign <| List.map Iso3166 Cldr.all
 
             else
-                List.map Iso3166 Iso3166.all
+                List.map Iso3166 Cldr.all
     in
-    PartiallyRecognized XK :: fromIso
+    fromIso
 
 
 isSovereign : Country -> Bool

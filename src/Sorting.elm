@@ -1,12 +1,12 @@
 module Sorting exposing (init, view)
 
+import Cldr exposing (CountryCode(..))
 import Element.WithContext as Element exposing (alignTop, centerX, el, fill, height, px, text, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags
 import Html
-import Iso3166 exposing (CountryCode(..))
 import List.Extra
 import Set
 import Theme exposing (Element)

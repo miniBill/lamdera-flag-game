@@ -4,9 +4,11 @@ module Generate exposing (main)
 
 import Dict exposing (Dict)
 import Elm
+import Elm.Annotation as Annotation
+import Gen.Basics
+import Gen.Cldr
 import Gen.CodeGen.Generate as Generate
 import Gen.Debug
-import Gen.Iso3166
 import Gen.Types
 import Json.Encode
 import List.Extra
@@ -40,7 +42,7 @@ file (Generate.Directory { files }) =
         Gen.Types.caseOf_.country country
             { iso3166 =
                 \countryCode ->
-                    Gen.Iso3166.caseOf_.countryCode countryCode
+                    Gen.Cldr.caseOf_.countryCode countryCode
                         { aD = get "ad"
                         , aE = get "ae"
                         , aF = get "af"
@@ -285,6 +287,7 @@ file (Generate.Directory { files }) =
                         , vU = get "vu"
                         , wF = get "wf"
                         , wS = get "ws"
+                        , xK = get "xk"
                         , yE = get "ye"
                         , yT = get "yt"
                         , zA = get "za"
@@ -292,11 +295,9 @@ file (Generate.Directory { files }) =
                         , zW = get "zw"
                         }
             , partiallyRecognized =
-                \countryCode ->
-                    Gen.Types.caseOf_.partiallyRecognized countryCode
-                        { xK = get "xk"
-                        }
+                \ever -> Gen.Basics.never ever
             }
+            |> Elm.withType (Annotation.tuple Annotation.int Annotation.int)
     )
         |> Elm.fn ( "country", Just Gen.Types.annotation_.country )
         |> Elm.declaration "getAspectRatio"
