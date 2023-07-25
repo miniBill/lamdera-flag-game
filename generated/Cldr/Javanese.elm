@@ -1,0 +1,762 @@
+module Cldr.Javanese exposing (countryCodeToName)
+
+{-| 
+@docs countryCodeToName
+-}
+
+
+import Cldr
+
+
+countryCodeToName : Cldr.CountryCode -> String
+countryCodeToName countryCode =
+    case countryCode of
+        Cldr.AD ->
+            "Andora"
+
+        Cldr.AE ->
+            "Uni Émirat Arab"
+
+        Cldr.AF ->
+            "Afganistan"
+
+        Cldr.AG ->
+            "Antigua lan Barbuda"
+
+        Cldr.AI ->
+            "Anguilla"
+
+        Cldr.AL ->
+            "Albani"
+
+        Cldr.AM ->
+            "Arménia"
+
+        Cldr.AO ->
+            "Angola"
+
+        Cldr.AQ ->
+            "Antartika"
+
+        Cldr.AR ->
+            "Argèntina"
+
+        Cldr.AS ->
+            "Samoa Amerika"
+
+        Cldr.AT ->
+            "Ostenrik"
+
+        Cldr.AU ->
+            "Ostrali"
+
+        Cldr.AW ->
+            "Aruba"
+
+        Cldr.AX ->
+            "Kapuloan Alan"
+
+        Cldr.AZ ->
+            "Azerbaijan"
+
+        Cldr.BA ->
+            "Bosnia lan Hèrségovina"
+
+        Cldr.BB ->
+            "Barbadhos"
+
+        Cldr.BD ->
+            "Banggaladésa"
+
+        Cldr.BE ->
+            "Bèlgi"
+
+        Cldr.BF ->
+            "Burkina Faso"
+
+        Cldr.BG ->
+            "Bulgari"
+
+        Cldr.BH ->
+            "Bahrain"
+
+        Cldr.BI ->
+            "Burundi"
+
+        Cldr.BJ ->
+            "Bénin"
+
+        Cldr.BL ->
+            "Saint Barthélémi"
+
+        Cldr.BM ->
+            "Bermuda"
+
+        Cldr.BN ->
+            "Brunéi"
+
+        Cldr.BO ->
+            "Bolivia"
+
+        Cldr.BQ ->
+            "Karibia Walanda"
+
+        Cldr.BR ->
+            "Brasil"
+
+        Cldr.BS ->
+            "Bahamas"
+
+        Cldr.BT ->
+            "Bhutan"
+
+        Cldr.BV ->
+            "Pulo Bovèt"
+
+        Cldr.BW ->
+            "Botswana"
+
+        Cldr.BY ->
+            "Bélarus"
+
+        Cldr.BZ ->
+            "Bélisé"
+
+        Cldr.CA ->
+            "Kanada"
+
+        Cldr.CC ->
+            "Kapuloan Cocos (Keeling)"
+
+        Cldr.CD ->
+            "Kongo - Kinshasa"
+
+        Cldr.CF ->
+            "Républik Afrika Tengah"
+
+        Cldr.CG ->
+            "Kongo - Brassaville"
+
+        Cldr.CH ->
+            "Switserlan"
+
+        Cldr.CI ->
+            "Pasisir Gadhing"
+
+        Cldr.CK ->
+            "Kapuloan Cook"
+
+        Cldr.CL ->
+            "Cilé"
+
+        Cldr.CM ->
+            "Kamerun"
+
+        Cldr.CN ->
+            "Tyongkok"
+
+        Cldr.CO ->
+            "Kolombia"
+
+        Cldr.CR ->
+            "Kosta Rika"
+
+        Cldr.CU ->
+            "Kuba"
+
+        Cldr.CV ->
+            "Pongol Verdé"
+
+        Cldr.CW ->
+            "Kurasao"
+
+        Cldr.CX ->
+            "Pulo Natal"
+
+        Cldr.CY ->
+            "Siprus"
+
+        Cldr.CZ ->
+            "Céko"
+
+        Cldr.DE ->
+            "Jérman"
+
+        Cldr.DJ ->
+            "Jibuti"
+
+        Cldr.DK ->
+            "Dhènemarken"
+
+        Cldr.DM ->
+            "Dominika"
+
+        Cldr.DO ->
+            "Républik Dominika"
+
+        Cldr.DZ ->
+            "Aljasair"
+
+        Cldr.EC ->
+            "Ékuadhor"
+
+        Cldr.EE ->
+            "Éstonia"
+
+        Cldr.EG ->
+            "Mesir"
+
+        Cldr.EH ->
+            "Sahara Kulon"
+
+        Cldr.ER ->
+            "Éritréa"
+
+        Cldr.ES ->
+            "Sepanyol"
+
+        Cldr.ET ->
+            "Étiopia"
+
+        Cldr.FI ->
+            "Finlan"
+
+        Cldr.FJ ->
+            "Fiji"
+
+        Cldr.FK ->
+            "Kapuloan Falkland"
+
+        Cldr.FM ->
+            "Féderasi Mikronésia"
+
+        Cldr.FO ->
+            "Kapuloan Faro"
+
+        Cldr.FR ->
+            "Prancis"
+
+        Cldr.GA ->
+            "Gabon"
+
+        Cldr.GB ->
+            "Karajan Manunggal"
+
+        Cldr.GD ->
+            "Grénada"
+
+        Cldr.GE ->
+            "Géorgia"
+
+        Cldr.GF ->
+            "Guyana Prancis"
+
+        Cldr.GG ->
+            "Guernsei"
+
+        Cldr.GH ->
+            "Ghana"
+
+        Cldr.GI ->
+            "Gibraltar"
+
+        Cldr.GL ->
+            "Greenland"
+
+        Cldr.GM ->
+            "Gambia"
+
+        Cldr.GN ->
+            "Guinea"
+
+        Cldr.GP ->
+            "Guadélup"
+
+        Cldr.GQ ->
+            "Guinéa Katulistiwa"
+
+        Cldr.GR ->
+            "Grikenlan"
+
+        Cldr.GS ->
+            "Georgia Kidul lan Kapuloan Sandwich Kidul"
+
+        Cldr.GT_ ->
+            "Guatémala"
+
+        Cldr.GU ->
+            "Guam"
+
+        Cldr.GW ->
+            "Guinea-Bissau"
+
+        Cldr.GY ->
+            "Guyana"
+
+        Cldr.HK ->
+            "Laladan Administratif Astamiwa Hong Kong"
+
+        Cldr.HM ->
+            "Kapuloan Heard lan McDonald"
+
+        Cldr.HN ->
+            "Honduras"
+
+        Cldr.HR ->
+            "Kroasia"
+
+        Cldr.HT ->
+            "Haiti"
+
+        Cldr.HU ->
+            "Honggari"
+
+        Cldr.ID ->
+            "Indonésia"
+
+        Cldr.IE ->
+            "Républik Irlan"
+
+        Cldr.IL ->
+            "Israèl"
+
+        Cldr.IM ->
+            "Pulo Man"
+
+        Cldr.IN ->
+            "Indhia"
+
+        Cldr.IO ->
+            "Wilayah Inggris nang Segoro Hindia"
+
+        Cldr.IQ ->
+            "Irak"
+
+        Cldr.IR ->
+            "Iran"
+
+        Cldr.IS ->
+            "Èslan"
+
+        Cldr.IT ->
+            "Itali"
+
+        Cldr.JE ->
+            "Jersey"
+
+        Cldr.JM ->
+            "Jamaika"
+
+        Cldr.JO ->
+            "Yordania"
+
+        Cldr.JP ->
+            "Jepang"
+
+        Cldr.KE ->
+            "Kénya"
+
+        Cldr.KG ->
+            "Kirgistan"
+
+        Cldr.KH ->
+            "Kamboja"
+
+        Cldr.KI ->
+            "Kiribati"
+
+        Cldr.KM ->
+            "Komoro"
+
+        Cldr.KN ->
+            "Saint Kits lan Nèvis"
+
+        Cldr.KP ->
+            "Korea Lor"
+
+        Cldr.KR ->
+            "Koréa Kidul"
+
+        Cldr.KW ->
+            "Kuwait"
+
+        Cldr.KY ->
+            "Kapuloan Kéman"
+
+        Cldr.KZ ->
+            "Kasakstan"
+
+        Cldr.LA ->
+            "Laos"
+
+        Cldr.LB ->
+            "Libanon"
+
+        Cldr.LC ->
+            "Santa Lusia"
+
+        Cldr.LI ->
+            "Liktenstén"
+
+        Cldr.LK ->
+            "Sri Lanka"
+
+        Cldr.LR ->
+            "Libèria"
+
+        Cldr.LS ->
+            "Lésotho"
+
+        Cldr.LT_ ->
+            "Litowen"
+
+        Cldr.LU ->
+            "Luksemburg"
+
+        Cldr.LV ->
+            "Latvia"
+
+        Cldr.LY ->
+            "Libya"
+
+        Cldr.MA ->
+            "Maroko"
+
+        Cldr.MC ->
+            "Monako"
+
+        Cldr.MD ->
+            "Moldova"
+
+        Cldr.ME ->
+            "Montenégro"
+
+        Cldr.MF ->
+            "Santa Martin"
+
+        Cldr.MG ->
+            "Madagaskar"
+
+        Cldr.MH ->
+            "Kapuloan Marshall"
+
+        Cldr.MK ->
+            "Républik Makédonia Lor"
+
+        Cldr.ML ->
+            "Mali"
+
+        Cldr.MM ->
+            "Myanmar (Burma)"
+
+        Cldr.MN ->
+            "Mongolia"
+
+        Cldr.MO ->
+            "Laladan Administratif Astamiwa Makau"
+
+        Cldr.MP ->
+            "Kapuloan Mariana Lor"
+
+        Cldr.MQ ->
+            "Martinik"
+
+        Cldr.MR ->
+            "Mauritania"
+
+        Cldr.MS ->
+            "Monsérat"
+
+        Cldr.MT ->
+            "Malta"
+
+        Cldr.MU ->
+            "Mauritius"
+
+        Cldr.MV ->
+            "Maladéwa"
+
+        Cldr.MW ->
+            "Malawi"
+
+        Cldr.MX ->
+            "Mèksiko"
+
+        Cldr.MY ->
+            "Malaysia"
+
+        Cldr.MZ ->
+            "Mosambik"
+
+        Cldr.NA ->
+            "Namibia"
+
+        Cldr.NC ->
+            "Kalédonia Anyar"
+
+        Cldr.NE ->
+            "Nigér"
+
+        Cldr.NF ->
+            "Pulo Norfolk"
+
+        Cldr.NG ->
+            "Nigéria"
+
+        Cldr.NI ->
+            "Nikaragua"
+
+        Cldr.NL ->
+            "Walanda"
+
+        Cldr.NO ->
+            "Nurwègen"
+
+        Cldr.NP ->
+            "Népal"
+
+        Cldr.NR ->
+            "Nauru"
+
+        Cldr.NU ->
+            "Niue"
+
+        Cldr.NZ ->
+            "Selandia Anyar"
+
+        Cldr.OM ->
+            "Oman"
+
+        Cldr.PA ->
+            "Panama"
+
+        Cldr.PE ->
+            "Peru"
+
+        Cldr.PF ->
+            "Polinesia Prancis"
+
+        Cldr.PG ->
+            "Papua Nugini"
+
+        Cldr.PH ->
+            "Pilipina"
+
+        Cldr.PK ->
+            "Pakistan"
+
+        Cldr.PL ->
+            "Polen"
+
+        Cldr.PM ->
+            "Saint Pièr lan Mikuélon"
+
+        Cldr.PN ->
+            "Kapuloan Pitcairn"
+
+        Cldr.PR ->
+            "Puèrto Riko"
+
+        Cldr.PS ->
+            "Tlatah Palèstina"
+
+        Cldr.PT ->
+            "Portugal"
+
+        Cldr.PW ->
+            "Palau"
+
+        Cldr.PY ->
+            "Paraguay"
+
+        Cldr.QA ->
+            "Katar"
+
+        Cldr.RE ->
+            "Réunion"
+
+        Cldr.RO ->
+            "Ruméni"
+
+        Cldr.RS ->
+            "Sèrbi"
+
+        Cldr.RU ->
+            "Rusia"
+
+        Cldr.RW ->
+            "Rwanda"
+
+        Cldr.SA ->
+            "Arab Saudi"
+
+        Cldr.SB ->
+            "Kapuloan Suleman"
+
+        Cldr.SC ->
+            "Sésèl"
+
+        Cldr.SD ->
+            "Sudan"
+
+        Cldr.SE ->
+            "Swèdhen"
+
+        Cldr.SG ->
+            "Singapura"
+
+        Cldr.SH ->
+            "Saint Héléna"
+
+        Cldr.SI ->
+            "Slovénia"
+
+        Cldr.SJ ->
+            "Svalbard lan Jan Mayen"
+
+        Cldr.SK ->
+            "Slowak"
+
+        Cldr.SL ->
+            "Siéra Léoné"
+
+        Cldr.SM ->
+            "San Marino"
+
+        Cldr.SN ->
+            "Sénégal"
+
+        Cldr.SO ->
+            "Somalia"
+
+        Cldr.SR ->
+            "Suriname"
+
+        Cldr.SS ->
+            "Sudan Kidul"
+
+        Cldr.ST ->
+            "Sao Tomé lan Principé"
+
+        Cldr.SV ->
+            "Èl Salvador"
+
+        Cldr.SX ->
+            "Sint Martén"
+
+        Cldr.SY ->
+            "Suriah"
+
+        Cldr.SZ ->
+            "Swasiland"
+
+        Cldr.TC ->
+            "Turks lan Kapuloan Kaikos"
+
+        Cldr.TD ->
+            "Chad"
+
+        Cldr.TF ->
+            "Wilayah Prancis nang Kutub Kidul"
+
+        Cldr.TG ->
+            "Togo"
+
+        Cldr.TH ->
+            "Tanah Thai"
+
+        Cldr.TJ ->
+            "Tajikistan"
+
+        Cldr.TK ->
+            "Tokelau"
+
+        Cldr.TL ->
+            "Timor Leste"
+
+        Cldr.TM ->
+            "Turkménistan"
+
+        Cldr.TN ->
+            "Tunisia"
+
+        Cldr.TO ->
+            "Tonga"
+
+        Cldr.TR ->
+            "Turki"
+
+        Cldr.TT ->
+            "Trinidad lan Tobago"
+
+        Cldr.TV ->
+            "Tuvalu"
+
+        Cldr.TW ->
+            "Taiwan"
+
+        Cldr.TZ ->
+            "Tansania"
+
+        Cldr.UA ->
+            "Ukrania"
+
+        Cldr.UG ->
+            "Uganda"
+
+        Cldr.UM ->
+            "Kapuloan AS Paling Njaba"
+
+        Cldr.US ->
+            "Amérika Sarékat"
+
+        Cldr.UY ->
+            "Uruguay"
+
+        Cldr.UZ ->
+            "Usbèkistan"
+
+        Cldr.VA ->
+            "Kutha Vatikan"
+
+        Cldr.VC ->
+            "Saint Vinsen lan Grénadin"
+
+        Cldr.VE ->
+            "Vénésuéla"
+
+        Cldr.VG ->
+            "Kapuloan Virgin Britania"
+
+        Cldr.VI ->
+            "Kapuloan Virgin Amérika"
+
+        Cldr.VN ->
+            "Viètnam"
+
+        Cldr.VU ->
+            "Vanuatu"
+
+        Cldr.WF ->
+            "Wallis lan Futuna"
+
+        Cldr.WS ->
+            "Samoa"
+
+        Cldr.XK ->
+            "Kosovo"
+
+        Cldr.YE ->
+            "Yaman"
+
+        Cldr.YT ->
+            "Mayotte"
+
+        Cldr.ZA ->
+            "Afrika Kidul"
+
+        Cldr.ZM ->
+            "Sambia"
+
+        Cldr.ZW ->
+            "Simbabwe"
