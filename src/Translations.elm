@@ -190,25 +190,25 @@ back (I18n lang) =
             "Back"
 
         De ->
-            "Back"
+            "zurück"
 
         DeAT ->
-            "Back"
+            "zurück"
 
         DeBE ->
-            "Back"
+            "zurück"
 
         DeCH ->
-            "Back"
+            "zurück"
 
         DeIT ->
-            "Back"
+            "zurück"
 
         DeLI ->
-            "Back"
+            "zurück"
 
         DeLU ->
-            "Back"
+            "zurück"
 
         El ->
             "Back"
@@ -1358,25 +1358,25 @@ change (I18n lang) =
             "Change"
 
         De ->
-            "Change"
+            "Ändern"
 
         DeAT ->
-            "Change"
+            "Ändern"
 
         DeBE ->
-            "Change"
+            "Ändern"
 
         DeCH ->
-            "Change"
+            "Ändern"
 
         DeIT ->
-            "Change"
+            "Ändern"
 
         DeLI ->
-            "Change"
+            "Ändern"
 
         DeLU ->
-            "Change"
+            "Ändern"
 
         El ->
             "Change"
@@ -2526,25 +2526,25 @@ difficulty (I18n lang) =
             "Difficulty"
 
         De ->
-            "Difficulty"
+            "Schwierigkeitsgrad"
 
         DeAT ->
-            "Difficulty"
+            "Schwierigkeitsgrad"
 
         DeBE ->
-            "Difficulty"
+            "Schwierigkeitsgrad"
 
         DeCH ->
-            "Difficulty"
+            "Schwierigkeitsgrad"
 
         DeIT ->
-            "Difficulty"
+            "Schwierigkeitsgrad"
 
         DeLI ->
-            "Difficulty"
+            "Schwierigkeitsgrad"
 
         DeLU ->
-            "Difficulty"
+            "Schwierigkeitsgrad"
 
         El ->
             "Difficulty"
@@ -3694,25 +3694,25 @@ easy (I18n lang) =
             "Easy"
 
         De ->
-            "Easy"
+            "Einfach"
 
         DeAT ->
-            "Easy"
+            "Einfach"
 
         DeBE ->
-            "Easy"
+            "Einfach"
 
         DeCH ->
-            "Easy"
+            "Einfach"
 
         DeIT ->
-            "Easy"
+            "Einfach"
 
         DeLI ->
-            "Easy"
+            "Einfach"
 
         DeLU ->
-            "Easy"
+            "Einfach"
 
         El ->
             "Easy"
@@ -4862,25 +4862,25 @@ finalScore data (I18n lang) =
             "Final score: " ++ data.points ++ "/" ++ data.total
 
         De ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Finaler Punktestand: " ++ data.points ++ "/" ++ data.total
 
         DeAT ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Finaler Punktestand: " ++ data.points ++ "/" ++ data.total
 
         DeBE ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Finaler Punktestand: " ++ data.points ++ "/" ++ data.total
 
         DeCH ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Finaler Punktestand: " ++ data.points ++ "/" ++ data.total
 
         DeIT ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Finaler Punktestand: " ++ data.points ++ "/" ++ data.total
 
         DeLI ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Finaler Punktestand: " ++ data.points ++ "/" ++ data.total
 
         DeLU ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Finaler Punktestand: " ++ data.points ++ "/" ++ data.total
 
         El ->
             "Final score: " ++ data.points ++ "/" ++ data.total
@@ -6030,25 +6030,25 @@ flag (I18n lang) =
             "Flag"
 
         De ->
-            "Flag"
+            "Flagge"
 
         DeAT ->
-            "Flag"
+            "Flagge"
 
         DeBE ->
-            "Flag"
+            "Flagge"
 
         DeCH ->
-            "Flag"
+            "Flagge"
 
         DeIT ->
-            "Flag"
+            "Flagge"
 
         DeLI ->
-            "Flag"
+            "Flagge"
 
         DeLU ->
-            "Flag"
+            "Flagge"
 
         El ->
             "Flag"
@@ -7198,25 +7198,25 @@ gameLanguage (I18n lang) =
             "Game Language"
 
         De ->
-            "Game Language"
+            "Spielsprache"
 
         DeAT ->
-            "Game Language"
+            "Spielsprache"
 
         DeBE ->
-            "Game Language"
+            "Spielsprache"
 
         DeCH ->
-            "Game Language"
+            "Spielsprache"
 
         DeIT ->
-            "Game Language"
+            "Spielsprache"
 
         DeLI ->
-            "Game Language"
+            "Spielsprache"
 
         DeLU ->
-            "Game Language"
+            "Spielsprache"
 
         El ->
             "Game Language"
@@ -8366,25 +8366,25 @@ gameLength (I18n lang) =
             "Game Length"
 
         De ->
-            "Game Length"
+            "Spiellänge"
 
         DeAT ->
-            "Game Length"
+            "Spiellänge"
 
         DeBE ->
-            "Game Length"
+            "Spiellänge"
 
         DeCH ->
-            "Game Length"
+            "Spiellänge"
 
         DeIT ->
-            "Game Length"
+            "Spiellänge"
 
         DeLI ->
-            "Game Length"
+            "Spiellänge"
 
         DeLU ->
-            "Game Length"
+            "Spiellänge"
 
         El ->
             "Game Length"
@@ -9534,25 +9534,25 @@ guess (I18n lang) =
             "Guess"
 
         De ->
-            "Guess"
+            "Errate"
 
         DeAT ->
-            "Guess"
+            "Errate"
 
         DeBE ->
-            "Guess"
+            "Errate"
 
         DeCH ->
-            "Guess"
+            "Errate"
 
         DeIT ->
-            "Guess"
+            "Errate"
 
         DeLI ->
-            "Guess"
+            "Errate"
 
         DeLU ->
-            "Guess"
+            "Errate"
 
         El ->
             "Guess"
@@ -10702,25 +10702,25 @@ hard (I18n lang) =
             "Hard"
 
         De ->
-            "Hard"
+            "Schwer"
 
         DeAT ->
-            "Hard"
+            "Schwer"
 
         DeBE ->
-            "Hard"
+            "Schwer"
 
         DeCH ->
-            "Hard"
+            "Schwer"
 
         DeIT ->
-            "Hard"
+            "Schwer"
 
         DeLI ->
-            "Hard"
+            "Schwer"
 
         DeLU ->
-            "Hard"
+            "Schwer"
 
         El ->
             "Hard"
@@ -11870,25 +11870,25 @@ include (I18n lang) =
             "Include"
 
         De ->
-            "Include"
+            "Inkludiere"
 
         DeAT ->
-            "Include"
+            "Inkludiere"
 
         DeBE ->
-            "Include"
+            "Inkludiere"
 
         DeCH ->
-            "Include"
+            "Inkludiere"
 
         DeIT ->
-            "Include"
+            "Inkludiere"
 
         DeLI ->
-            "Include"
+            "Inkludiere"
 
         DeLU ->
-            "Include"
+            "Inkludiere"
 
         El ->
             "Include"
@@ -14206,25 +14206,25 @@ next (I18n lang) =
             "Next"
 
         De ->
-            "Next"
+            "Weiter"
 
         DeAT ->
-            "Next"
+            "Weiter"
 
         DeBE ->
-            "Next"
+            "Weiter"
 
         DeCH ->
-            "Next"
+            "Weiter"
 
         DeIT ->
-            "Next"
+            "Weiter"
 
         DeLI ->
-            "Next"
+            "Weiter"
 
         DeLU ->
-            "Next"
+            "Weiter"
 
         El ->
             "Next"
@@ -16542,25 +16542,25 @@ play (I18n lang) =
             "Play"
 
         De ->
-            "Play"
+            "Spielen"
 
         DeAT ->
-            "Play"
+            "Spielen"
 
         DeBE ->
-            "Play"
+            "Spielen"
 
         DeCH ->
-            "Play"
+            "Spielen"
 
         DeIT ->
-            "Play"
+            "Spielen"
 
         DeLI ->
-            "Play"
+            "Spielen"
 
         DeLU ->
-            "Play"
+            "Spielen"
 
         El ->
             "Play"
@@ -17710,25 +17710,25 @@ possibleAnswers (I18n lang) =
             "Possible answers"
 
         De ->
-            "Possible answers"
+            "Mögliche Antworten"
 
         DeAT ->
-            "Possible answers"
+            "Mögliche Antworten"
 
         DeBE ->
-            "Possible answers"
+            "Mögliche Antworten"
 
         DeCH ->
-            "Possible answers"
+            "Mögliche Antworten"
 
         DeIT ->
-            "Possible answers"
+            "Mögliche Antworten"
 
         DeLI ->
-            "Possible answers"
+            "Mögliche Antworten"
 
         DeLU ->
-            "Possible answers"
+            "Mögliche Antworten"
 
         El ->
             "Possible answers"
@@ -18878,25 +18878,25 @@ score score__ (I18n lang) =
             "Score: " ++ score__
 
         De ->
-            "Score: " ++ score__
+            "Punktestand: " ++ score__
 
         DeAT ->
-            "Score: " ++ score__
+            "Punktestand: " ++ score__
 
         DeBE ->
-            "Score: " ++ score__
+            "Punktestand: " ++ score__
 
         DeCH ->
-            "Score: " ++ score__
+            "Punktestand: " ++ score__
 
         DeIT ->
-            "Score: " ++ score__
+            "Punktestand: " ++ score__
 
         DeLI ->
-            "Score: " ++ score__
+            "Punktestand: " ++ score__
 
         DeLU ->
-            "Score: " ++ score__
+            "Punktestand: " ++ score__
 
         El ->
             "Score: " ++ score__
@@ -20046,25 +20046,25 @@ search (I18n lang) =
             "Search"
 
         De ->
-            "Search"
+            "Suche"
 
         DeAT ->
-            "Search"
+            "Suche"
 
         DeBE ->
-            "Search"
+            "Suche"
 
         DeCH ->
-            "Search"
+            "Suche"
 
         DeIT ->
-            "Search"
+            "Suche"
 
         DeLI ->
-            "Search"
+            "Suche"
 
         DeLU ->
-            "Search"
+            "Suche"
 
         El ->
             "Search"
@@ -21214,25 +21214,25 @@ states (I18n lang) =
             "States"
 
         De ->
-            "States"
+            "Staaten"
 
         DeAT ->
-            "States"
+            "Staaten"
 
         DeBE ->
-            "States"
+            "Staaten"
 
         DeCH ->
-            "States"
+            "Staaten"
 
         DeIT ->
-            "States"
+            "Staaten"
 
         DeLI ->
-            "States"
+            "Staaten"
 
         DeLU ->
-            "States"
+            "Staaten"
 
         El ->
             "States"
@@ -22382,25 +22382,25 @@ statesAndTerritories (I18n lang) =
             "States and territories"
 
         De ->
-            "States and territories"
+            "Staaten und Territorien"
 
         DeAT ->
-            "States and territories"
+            "Staaten und Territorien"
 
         DeBE ->
-            "States and territories"
+            "Staaten und Territorien"
 
         DeCH ->
-            "States and territories"
+            "Staaten und Territorien"
 
         DeIT ->
-            "States and territories"
+            "Staaten und Territorien"
 
         DeLI ->
-            "States and territories"
+            "Staaten und Territorien"
 
         DeLU ->
-            "States and territories"
+            "Staaten und Territorien"
 
         El ->
             "States and territories"
@@ -23550,25 +23550,25 @@ title (I18n lang) =
             "Flag game"
 
         De ->
-            "Flag game"
+            "Flaggenspiel"
 
         DeAT ->
-            "Flag game"
+            "Flaggenspiel"
 
         DeBE ->
-            "Flag game"
+            "Flaggenspiel"
 
         DeCH ->
-            "Flag game"
+            "Flaggenspiel"
 
         DeIT ->
-            "Flag game"
+            "Flaggenspiel"
 
         DeLI ->
-            "Flag game"
+            "Flaggenspiel"
 
         DeLU ->
-            "Flag game"
+            "Flaggenspiel"
 
         El ->
             "Flag game"
