@@ -16,100 +16,25 @@ module Types exposing
     , ToFrontend(..)
     , allGuessPatterns
     , countryToAlpha2
-    , languageToString
     , propertyToString
     )
 
 import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
-import Cldr
+import Cldr exposing (Locale)
 import Random
 import Translations exposing (Language(..))
 import Url exposing (Url)
 
 
 type alias Context =
-    { language : Language }
-
-
-languageToString : Language -> String
-languageToString language =
-    case language of
-        -- Arabic ->
-        --     "Arabic"
-        -- Armenian ->
-        --     "Armenian"
-        -- Basque ->
-        --     "Basque"
-        -- Bulgarian ->
-        --     "Bulgarian"
-        -- Chinese ->
-        --     "Chinese"
-        -- ChineseTraditional ->
-        --     "Chinese (Traditional)"
-        -- Croatian ->
-        --     "Croatian"
-        -- Czech ->
-        --     "Czech"
-        -- Danish ->
-        --     "Danish"
-        -- Dutch ->
-        --     "Dutch"
-        En ->
-            "English"
-
-        -- Estonian ->
-        --     "Estonian"
-        -- Finnish ->
-        --     "Finnish"
-        -- French ->
-        --     "French"
-        -- German ->
-        --     "German"
-        -- Greek ->
-        --     "Greek"
-        -- Hungarian ->
-        --     "Hungarian"
-        It ->
-            "Italian"
-
-
-
--- Japanese ->
---     "Japanese"
--- Korean ->
---     "Korean"
--- Lithuanian ->
---     "Lithuanian"
--- Norwegian ->
---     "Norwegian"
--- Polish ->
---     "Polish"
--- Portuguese ->
---     "Portuguese"
--- Romanian ->
---     "Romanian"
--- Russian ->
---     "Russian"
--- Serbian ->
---     "Serbian"
--- Slovak ->
---     "Slovak"
--- Slovenian ->
---     "Slovenian"
--- Spanish ->
---     "Spanish"
--- Swedish ->
---     "Swedish"
--- Thai ->
---     "Thai"
--- Ukrainian ->
---     "Ukrainian"
+    { locale : Locale }
 
 
 type alias FrontendModel =
     { key : Key
     , context : Context
+    , changingLocale : Maybe String
     , inner : InnerModel
     , seed : Random.Seed
     }
@@ -193,7 +118,8 @@ type FrontendMsg
     | Pick Country
     | Next
     | ChangeOptions GameOptions
-    | Language Language
+    | Locale Locale
+    | ChangingLocale String
       -- Used in the sorting module
     | Move Country Int
     | SelectForMove Country

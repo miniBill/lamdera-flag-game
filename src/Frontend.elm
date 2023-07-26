@@ -2,8 +2,10 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Element.WithContext as Element exposing (centerX, centerY, el, fill, height, rgb255, scrollbarY, shrink, width)
+import Cldr
+import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, rgb255, scrollbarY, scrollbars, shrink, width)
 import Element.WithContext.Font as Font
+import Element.WithContext.Input as Input
 import Flags exposing (allCards)
 import Frontend.Playing
 import Html.Attributes
@@ -12,7 +14,7 @@ import List.Extra
 import Random
 import Sorting
 import Theme exposing (Element, text, textInvariant)
-import Translations exposing (I18n, Language(..))
+import Translations exposing (I18n)
 import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), PlayingModel, ToFrontend(..))
 import Url
 
@@ -43,18 +45,23 @@ init url key =
     let
         context : Context
         context =
-            { language = En }
-    in
-    ( { key = key
-      , context = context
-      , inner =
-            if url.path == "/sort" then
-                Sorting Sorting.init
+            { locale = Cldr.En }
 
-            else
-                Homepage defaultGameOptions
-      , seed = Random.initialSeed 0
-      }
+        model : FrontendModel
+        model =
+            { key = key
+            , context = context
+            , changingLocale = Nothing
+            , inner =
+                if url.path == "/sort" then
+                    Sorting Sorting.init
+
+                else
+                    Homepage defaultGameOptions
+            , seed = Random.initialSeed 0
+            }
+    in
+    ( model
     , Random.generate Seed Random.independentSeed
     )
 
@@ -115,8 +122,16 @@ update msg ({ context } as model) =
             , Cmd.none
             )
 
-        Language language ->
-            ( { model | context = { context | language = language } }
+        Locale locale ->
+            ( { model
+                | context = { context | locale = locale }
+                , changingLocale = Nothing
+              }
+            , Cmd.none
+            )
+
+        ChangingLocale input ->
+            ( { model | changingLocale = Just input }
             , Cmd.none
             )
 
@@ -298,10 +313,53 @@ view model =
                 ]
             , scrollbarY
             , Font.family [ Font.typeface "urbane-rounded", Font.sansSerif ]
+            , inFront <| changingLocalePopup model.changingLocale
             ]
             (innerView model.inner)
         ]
     }
+
+
+changingLocalePopup : Maybe String -> Element FrontendMsg
+changingLocalePopup maybeInput =
+    case maybeInput of
+        Nothing ->
+            Element.none
+
+        Just input ->
+            Theme.column
+                [ Theme.padding
+                , width fill
+                , height fill
+                , Theme.gradient Theme.colors.buttonBackground
+                ]
+                [ Input.text []
+                    { onChange = ChangingLocale
+                    , text = input
+                    , placeholder = Nothing
+                    , label = Input.labelAbove [] <| Theme.text Translations.search
+                    }
+                , Cldr.allLocales
+                    |> List.filterMap
+                        (\locale ->
+                            let
+                                name : String
+                                name =
+                                    Cldr.localeToName locale
+                            in
+                            if String.contains (String.toLower input) (String.toLower name) then
+                                Theme.button [ alignTop ]
+                                    { background = Theme.colors.buttonBackground
+                                    , label = Theme.textInvariant name
+                                    , onPress = Just <| Locale locale
+                                    }
+                                    |> Just
+
+                            else
+                                Nothing
+                        )
+                    |> Theme.wrappedRow []
+                ]
 
 
 innerView : InnerModel -> Element FrontendMsg
@@ -349,32 +407,6 @@ viewFinished finished =
 startButtons : GameOptions -> Element FrontendMsg
 startButtons options =
     let
-        button :
-            { selected : Bool
-            , label : I18n -> String
-            , onPress : FrontendMsg
-            }
-            -> Element FrontendMsg
-        button config =
-            Theme.button
-                [ Font.center
-                , if config.selected then
-                    Font.color Theme.colors.black
-
-                  else
-                    Font.color Theme.colors.white
-                , width fill
-                ]
-                { background =
-                    if config.selected then
-                        Theme.colors.greenButtonBackground
-
-                    else
-                        Theme.colors.buttonBackground
-                , label = text config.label
-                , onPress = Just config.onPress
-                }
-
         checkboxes :
             (I18n -> String)
             ->
@@ -398,7 +430,7 @@ startButtons options =
                         selected =
                             List.member value current
                     in
-                    button
+                    Theme.selectableButton [ Font.center, width fill ]
                         { label = config.toLabel value
                         , selected = selected
                         , onPress =
@@ -437,7 +469,7 @@ startButtons options =
                         selected =
                             value == current
                     in
-                    button
+                    Theme.selectableButton [ Font.center, width fill ]
                         { label = config.toLabel value
                         , selected = selected
                         , onPress = ChangeOptions <| config.set value
@@ -489,18 +521,20 @@ startButtons options =
                 , set = \v -> { options | gameLength = v }
                 }
             , ( \_ -> "Game language"
-              , [ En, It ]
-                    |> List.map
-                        (\language ->
-                            Element.withContext
-                                (\context ->
-                                    button
-                                        { selected = context.language == language
-                                        , label = \_ -> Types.languageToString language
-                                        , onPress = Language language
-                                        }
-                                )
-                        )
+              , [ Element.withContext
+                    (\context ->
+                        Theme.selectableButton [ Font.center, width fill ]
+                            { selected = True
+                            , label = \_ -> Cldr.localeToName context.locale
+                            , onPress = Locale context.locale
+                            }
+                    )
+                , Theme.selectableButton [ Font.center, width fill ]
+                    { selected = False
+                    , label = \_ -> "Change"
+                    , onPress = ChangingLocale ""
+                    }
+                ]
               )
             , ( \_ -> ""
               , let
