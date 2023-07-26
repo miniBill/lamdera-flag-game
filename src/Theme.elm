@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, wrappedRow)
+module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, wrappedRow, localeToLanguage)
 
 import AspectRatios
 import Cldr exposing (Locale)

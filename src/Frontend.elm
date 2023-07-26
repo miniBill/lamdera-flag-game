@@ -301,7 +301,10 @@ updateFromBackend msg model =
 
 view : FrontendModel -> Browser.Document FrontendMsg
 view model =
-    { title = ""
+    { title =
+        Translations.title <|
+            Translations.init <|
+                Theme.localeToLanguage model.context.locale
     , body =
         [ Element.layout
             model.context

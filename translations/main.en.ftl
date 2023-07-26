@@ -1,3 +1,5 @@
+title = Flag game
+
 back = Back
 play = Play
 search = Search
