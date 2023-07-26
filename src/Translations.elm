@@ -2000,7 +2000,7 @@ change (I18n lang) =
             "Change"
 
         It ->
-            "Change"
+            "Cambia"
 
         ItCH ->
             "Change"
@@ -3168,7 +3168,7 @@ difficulty (I18n lang) =
             "Difficulty"
 
         It ->
-            "Difficulty"
+            "Difficoltà"
 
         ItCH ->
             "Difficulty"
@@ -5504,7 +5504,7 @@ finalScore data (I18n lang) =
             "Final score: " ++ data.points ++ "/" ++ data.total
 
         It ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Punteggio finale: " ++ data.points ++ "/" ++ data.total
 
         ItCH ->
             "Final score: " ++ data.points ++ "/" ++ data.total
@@ -6672,7 +6672,7 @@ flag (I18n lang) =
             "Flag"
 
         It ->
-            "Flag"
+            "Bandiera"
 
         ItCH ->
             "Flag"
@@ -7840,7 +7840,7 @@ gameLanguage (I18n lang) =
             "Game Language"
 
         It ->
-            "Game Language"
+            "Lingua"
 
         ItCH ->
             "Game Language"
@@ -9008,7 +9008,7 @@ gameLength (I18n lang) =
             "Game Length"
 
         It ->
-            "Game Length"
+            "Lunghezza partita"
 
         ItCH ->
             "Game Length"
@@ -10176,7 +10176,7 @@ guess (I18n lang) =
             "Guess"
 
         It ->
-            "Guess"
+            "Indovina"
 
         ItCH ->
             "Guess"
@@ -12512,7 +12512,7 @@ include (I18n lang) =
             "Include"
 
         It ->
-            "Include"
+            "Includi"
 
         ItCH ->
             "Include"
@@ -13680,7 +13680,7 @@ name (I18n lang) =
             "Name"
 
         It ->
-            "Name"
+            "Nome"
 
         ItCH ->
             "Name"
@@ -14848,7 +14848,7 @@ next (I18n lang) =
             "Next"
 
         It ->
-            "Next"
+            "Avanti"
 
         ItCH ->
             "Next"
@@ -18352,7 +18352,7 @@ possibleAnswers (I18n lang) =
             "Possible answers"
 
         It ->
-            "Possible answers"
+            "Opzioni"
 
         ItCH ->
             "Possible answers"
@@ -19520,7 +19520,7 @@ score score__ (I18n lang) =
             "Score: " ++ score__
 
         It ->
-            "Score: " ++ score__
+            "Punteggio: " ++ score__
 
         ItCH ->
             "Score: " ++ score__
@@ -20688,7 +20688,7 @@ search (I18n lang) =
             "Search"
 
         It ->
-            "Search"
+            "Cerca"
 
         ItCH ->
             "Search"
@@ -21856,7 +21856,7 @@ states (I18n lang) =
             "States"
 
         It ->
-            "States"
+            "Nazioni"
 
         ItCH ->
             "States"
@@ -23024,7 +23024,7 @@ statesAndTerritories (I18n lang) =
             "States and territories"
 
         It ->
-            "States and territories"
+            "Nazioni e territori"
 
         ItCH ->
             "States and territories"
@@ -24192,7 +24192,7 @@ title (I18n lang) =
             "Flag game"
 
         It ->
-            "Flag game"
+            "Indovina la bandiera"
 
         ItCH ->
             "Flag game"
