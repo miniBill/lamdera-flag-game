@@ -835,13 +835,13 @@ back (I18n lang) =
             "Indietro"
 
         ItCH ->
-            "Back"
+            "Indietro"
 
         ItSM ->
-            "Back"
+            "Indietro"
 
         ItVA ->
-            "Back"
+            "Indietro"
 
         Ja ->
             "Back"
@@ -2003,13 +2003,13 @@ change (I18n lang) =
             "Cambia"
 
         ItCH ->
-            "Change"
+            "Cambia"
 
         ItSM ->
-            "Change"
+            "Cambia"
 
         ItVA ->
-            "Change"
+            "Cambia"
 
         Ja ->
             "Change"
@@ -3171,13 +3171,13 @@ difficulty (I18n lang) =
             "Difficoltà"
 
         ItCH ->
-            "Difficulty"
+            "Difficoltà"
 
         ItSM ->
-            "Difficulty"
+            "Difficoltà"
 
         ItVA ->
-            "Difficulty"
+            "Difficoltà"
 
         Ja ->
             "Difficulty"
@@ -4339,13 +4339,13 @@ easy (I18n lang) =
             "Facile"
 
         ItCH ->
-            "Easy"
+            "Facile"
 
         ItSM ->
-            "Easy"
+            "Facile"
 
         ItVA ->
-            "Easy"
+            "Facile"
 
         Ja ->
             "Easy"
@@ -5507,13 +5507,13 @@ finalScore data (I18n lang) =
             "Punteggio finale: " ++ data.points ++ "/" ++ data.total
 
         ItCH ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Punteggio finale: " ++ data.points ++ "/" ++ data.total
 
         ItSM ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Punteggio finale: " ++ data.points ++ "/" ++ data.total
 
         ItVA ->
-            "Final score: " ++ data.points ++ "/" ++ data.total
+            "Punteggio finale: " ++ data.points ++ "/" ++ data.total
 
         Ja ->
             "Final score: " ++ data.points ++ "/" ++ data.total
@@ -6675,13 +6675,13 @@ flag (I18n lang) =
             "Bandiera"
 
         ItCH ->
-            "Flag"
+            "Bandiera"
 
         ItSM ->
-            "Flag"
+            "Bandiera"
 
         ItVA ->
-            "Flag"
+            "Bandiera"
 
         Ja ->
             "Flag"
@@ -7843,13 +7843,13 @@ gameLanguage (I18n lang) =
             "Lingua"
 
         ItCH ->
-            "Game Language"
+            "Lingua"
 
         ItSM ->
-            "Game Language"
+            "Lingua"
 
         ItVA ->
-            "Game Language"
+            "Lingua"
 
         Ja ->
             "Game Language"
@@ -9011,13 +9011,13 @@ gameLength (I18n lang) =
             "Lunghezza partita"
 
         ItCH ->
-            "Game Length"
+            "Lunghezza partita"
 
         ItSM ->
-            "Game Length"
+            "Lunghezza partita"
 
         ItVA ->
-            "Game Length"
+            "Lunghezza partita"
 
         Ja ->
             "Game Length"
@@ -10179,13 +10179,13 @@ guess (I18n lang) =
             "Indovina"
 
         ItCH ->
-            "Guess"
+            "Indovina"
 
         ItSM ->
-            "Guess"
+            "Indovina"
 
         ItVA ->
-            "Guess"
+            "Indovina"
 
         Ja ->
             "Guess"
@@ -11347,13 +11347,13 @@ hard (I18n lang) =
             "Difficile"
 
         ItCH ->
-            "Hard"
+            "Difficile"
 
         ItSM ->
-            "Hard"
+            "Difficile"
 
         ItVA ->
-            "Hard"
+            "Difficile"
 
         Ja ->
             "Hard"
@@ -12515,13 +12515,13 @@ include (I18n lang) =
             "Includi"
 
         ItCH ->
-            "Include"
+            "Includi"
 
         ItSM ->
-            "Include"
+            "Includi"
 
         ItVA ->
-            "Include"
+            "Includi"
 
         Ja ->
             "Include"
@@ -13683,13 +13683,13 @@ name (I18n lang) =
             "Nome"
 
         ItCH ->
-            "Name"
+            "Nome"
 
         ItSM ->
-            "Name"
+            "Nome"
 
         ItVA ->
-            "Name"
+            "Nome"
 
         Ja ->
             "Name"
@@ -14851,13 +14851,13 @@ next (I18n lang) =
             "Avanti"
 
         ItCH ->
-            "Next"
+            "Avanti"
 
         ItSM ->
-            "Next"
+            "Avanti"
 
         ItVA ->
-            "Next"
+            "Avanti"
 
         Ja ->
             "Next"
@@ -16019,13 +16019,13 @@ normal (I18n lang) =
             "Normale"
 
         ItCH ->
-            "Normal"
+            "Normale"
 
         ItSM ->
-            "Normal"
+            "Normale"
 
         ItVA ->
-            "Normal"
+            "Normale"
 
         Ja ->
             "Normal"
@@ -17187,13 +17187,13 @@ play (I18n lang) =
             "Gioca"
 
         ItCH ->
-            "Play"
+            "Gioca"
 
         ItSM ->
-            "Play"
+            "Gioca"
 
         ItVA ->
-            "Play"
+            "Gioca"
 
         Ja ->
             "Play"
@@ -18355,13 +18355,13 @@ possibleAnswers (I18n lang) =
             "Opzioni"
 
         ItCH ->
-            "Possible answers"
+            "Opzioni"
 
         ItSM ->
-            "Possible answers"
+            "Opzioni"
 
         ItVA ->
-            "Possible answers"
+            "Opzioni"
 
         Ja ->
             "Possible answers"
@@ -19523,13 +19523,13 @@ score score__ (I18n lang) =
             "Punteggio: " ++ score__
 
         ItCH ->
-            "Score: " ++ score__
+            "Punteggio: " ++ score__
 
         ItSM ->
-            "Score: " ++ score__
+            "Punteggio: " ++ score__
 
         ItVA ->
-            "Score: " ++ score__
+            "Punteggio: " ++ score__
 
         Ja ->
             "Score: " ++ score__
@@ -20691,13 +20691,13 @@ search (I18n lang) =
             "Cerca"
 
         ItCH ->
-            "Search"
+            "Cerca"
 
         ItSM ->
-            "Search"
+            "Cerca"
 
         ItVA ->
-            "Search"
+            "Cerca"
 
         Ja ->
             "Search"
@@ -21859,13 +21859,13 @@ states (I18n lang) =
             "Nazioni"
 
         ItCH ->
-            "States"
+            "Nazioni"
 
         ItSM ->
-            "States"
+            "Nazioni"
 
         ItVA ->
-            "States"
+            "Nazioni"
 
         Ja ->
             "States"
@@ -23027,13 +23027,13 @@ statesAndTerritories (I18n lang) =
             "Nazioni e territori"
 
         ItCH ->
-            "States and territories"
+            "Nazioni e territori"
 
         ItSM ->
-            "States and territories"
+            "Nazioni e territori"
 
         ItVA ->
-            "States and territories"
+            "Nazioni e territori"
 
         Ja ->
             "States and territories"
@@ -24195,13 +24195,13 @@ title (I18n lang) =
             "Indovina la bandiera"
 
         ItCH ->
-            "Flag game"
+            "Indovina la bandiera"
 
         ItSM ->
-            "Flag game"
+            "Indovina la bandiera"
 
         ItVA ->
-            "Flag game"
+            "Indovina la bandiera"
 
         Ja ->
             "Flag game"
