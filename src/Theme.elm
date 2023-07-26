@@ -246,1166 +246,1166 @@ text f =
 localeToLanguage : Locale -> Translations.Language
 localeToLanguage locale =
     case locale of
-        Cldr.It ->
-            Translations.It
+        Cldr.Af ->
+            Translations.Af
+
+        Cldr.AfNA ->
+            Translations.AfNA
+
+        Cldr.Am ->
+            Translations.Am
+
+        Cldr.Ar ->
+            Translations.Ar
+
+        Cldr.ArAE ->
+            Translations.ArAE
+
+        Cldr.ArBH ->
+            Translations.ArBH
+
+        Cldr.ArDJ ->
+            Translations.ArDJ
+
+        Cldr.ArDZ ->
+            Translations.ArDZ
+
+        Cldr.ArEG ->
+            Translations.ArEG
+
+        Cldr.ArEH ->
+            Translations.ArEH
+
+        Cldr.ArER ->
+            Translations.ArER
+
+        Cldr.ArIL ->
+            Translations.ArIL
+
+        Cldr.ArIQ ->
+            Translations.ArIQ
+
+        Cldr.ArJO ->
+            Translations.ArJO
+
+        Cldr.ArKM ->
+            Translations.ArKM
+
+        Cldr.ArKW ->
+            Translations.ArKW
+
+        Cldr.ArLB ->
+            Translations.ArLB
+
+        Cldr.ArLY ->
+            Translations.ArLY
+
+        Cldr.ArMA ->
+            Translations.ArMA
+
+        Cldr.ArMR ->
+            Translations.ArMR
+
+        Cldr.ArOM ->
+            Translations.ArOM
+
+        Cldr.ArPS ->
+            Translations.ArPS
+
+        Cldr.ArQA ->
+            Translations.ArQA
+
+        Cldr.ArSA ->
+            Translations.ArSA
+
+        Cldr.ArSD ->
+            Translations.ArSD
+
+        Cldr.ArSO ->
+            Translations.ArSO
+
+        Cldr.ArSS ->
+            Translations.ArSS
+
+        Cldr.ArSY ->
+            Translations.ArSY
+
+        Cldr.ArTD ->
+            Translations.ArTD
+
+        Cldr.ArTN ->
+            Translations.ArTN
+
+        Cldr.ArYE ->
+            Translations.ArYE
+
+        Cldr.As ->
+            Translations.As
+
+        Cldr.Az ->
+            Translations.Az
+
+        Cldr.AzLatn ->
+            Translations.AzLatn
+
+        Cldr.Be ->
+            Translations.Be
+
+        Cldr.BeTarask ->
+            Translations.BeTarask
+
+        Cldr.Bg ->
+            Translations.Bg
+
+        Cldr.Bn ->
+            Translations.Bn
+
+        Cldr.BnIN ->
+            Translations.BnIN
+
+        Cldr.Bs ->
+            Translations.Bs
+
+        Cldr.BsLatn ->
+            Translations.BsLatn
+
+        Cldr.Ca ->
+            Translations.Ca
+
+        Cldr.CaAD ->
+            Translations.CaAD
+
+        Cldr.CaESValencia ->
+            Translations.CaESValencia
+
+        Cldr.CaFR ->
+            Translations.CaFR
+
+        Cldr.CaIT ->
+            Translations.CaIT
+
+        Cldr.Cs ->
+            Translations.Cs
+
+        Cldr.Cy ->
+            Translations.Cy
+
+        Cldr.Da ->
+            Translations.Da
+
+        Cldr.DaGL ->
+            Translations.DaGL
+
+        Cldr.De ->
+            Translations.De
+
+        Cldr.DeAT ->
+            Translations.DeAT
+
+        Cldr.DeBE ->
+            Translations.DeBE
+
+        Cldr.DeCH ->
+            Translations.DeCH
+
+        Cldr.DeIT ->
+            Translations.DeIT
+
+        Cldr.DeLI ->
+            Translations.DeLI
+
+        Cldr.DeLU ->
+            Translations.DeLU
+
+        Cldr.El ->
+            Translations.El
+
+        Cldr.ElCY ->
+            Translations.ElCY
+
+        Cldr.ElPolyton ->
+            Translations.ElPolyton
 
         Cldr.En ->
             Translations.En
 
-        Cldr.Af ->
-            Debug.todo "branch 'Af' not implemented"
-
-        Cldr.AfNA ->
-            Debug.todo "branch 'AfNA' not implemented"
-
-        Cldr.Am ->
-            Debug.todo "branch 'Am' not implemented"
-
-        Cldr.Ar ->
-            Debug.todo "branch 'Ar' not implemented"
-
-        Cldr.ArAE ->
-            Debug.todo "branch 'ArAE' not implemented"
-
-        Cldr.ArBH ->
-            Debug.todo "branch 'ArBH' not implemented"
-
-        Cldr.ArDJ ->
-            Debug.todo "branch 'ArDJ' not implemented"
-
-        Cldr.ArDZ ->
-            Debug.todo "branch 'ArDZ' not implemented"
-
-        Cldr.ArEG ->
-            Debug.todo "branch 'ArEG' not implemented"
-
-        Cldr.ArEH ->
-            Debug.todo "branch 'ArEH' not implemented"
-
-        Cldr.ArER ->
-            Debug.todo "branch 'ArER' not implemented"
-
-        Cldr.ArIL ->
-            Debug.todo "branch 'ArIL' not implemented"
-
-        Cldr.ArIQ ->
-            Debug.todo "branch 'ArIQ' not implemented"
-
-        Cldr.ArJO ->
-            Debug.todo "branch 'ArJO' not implemented"
-
-        Cldr.ArKM ->
-            Debug.todo "branch 'ArKM' not implemented"
-
-        Cldr.ArKW ->
-            Debug.todo "branch 'ArKW' not implemented"
-
-        Cldr.ArLB ->
-            Debug.todo "branch 'ArLB' not implemented"
-
-        Cldr.ArLY ->
-            Debug.todo "branch 'ArLY' not implemented"
-
-        Cldr.ArMA ->
-            Debug.todo "branch 'ArMA' not implemented"
-
-        Cldr.ArMR ->
-            Debug.todo "branch 'ArMR' not implemented"
-
-        Cldr.ArOM ->
-            Debug.todo "branch 'ArOM' not implemented"
-
-        Cldr.ArPS ->
-            Debug.todo "branch 'ArPS' not implemented"
-
-        Cldr.ArQA ->
-            Debug.todo "branch 'ArQA' not implemented"
-
-        Cldr.ArSA ->
-            Debug.todo "branch 'ArSA' not implemented"
-
-        Cldr.ArSD ->
-            Debug.todo "branch 'ArSD' not implemented"
-
-        Cldr.ArSO ->
-            Debug.todo "branch 'ArSO' not implemented"
-
-        Cldr.ArSS ->
-            Debug.todo "branch 'ArSS' not implemented"
-
-        Cldr.ArSY ->
-            Debug.todo "branch 'ArSY' not implemented"
-
-        Cldr.ArTD ->
-            Debug.todo "branch 'ArTD' not implemented"
-
-        Cldr.ArTN ->
-            Debug.todo "branch 'ArTN' not implemented"
-
-        Cldr.ArYE ->
-            Debug.todo "branch 'ArYE' not implemented"
-
-        Cldr.As ->
-            Debug.todo "branch 'As' not implemented"
-
-        Cldr.Az ->
-            Debug.todo "branch 'Az' not implemented"
-
-        Cldr.AzLatn ->
-            Debug.todo "branch 'AzLatn' not implemented"
-
-        Cldr.Be ->
-            Debug.todo "branch 'Be' not implemented"
-
-        Cldr.BeTarask ->
-            Debug.todo "branch 'BeTarask' not implemented"
-
-        Cldr.Bg ->
-            Debug.todo "branch 'Bg' not implemented"
-
-        Cldr.Bn ->
-            Debug.todo "branch 'Bn' not implemented"
-
-        Cldr.BnIN ->
-            Debug.todo "branch 'BnIN' not implemented"
-
-        Cldr.Bs ->
-            Debug.todo "branch 'Bs' not implemented"
-
-        Cldr.BsLatn ->
-            Debug.todo "branch 'BsLatn' not implemented"
-
-        Cldr.Ca ->
-            Debug.todo "branch 'Ca' not implemented"
-
-        Cldr.CaAD ->
-            Debug.todo "branch 'CaAD' not implemented"
-
-        Cldr.CaESValencia ->
-            Debug.todo "branch 'CaESValencia' not implemented"
-
-        Cldr.CaFR ->
-            Debug.todo "branch 'CaFR' not implemented"
-
-        Cldr.CaIT ->
-            Debug.todo "branch 'CaIT' not implemented"
-
-        Cldr.Cs ->
-            Debug.todo "branch 'Cs' not implemented"
-
-        Cldr.Cy ->
-            Debug.todo "branch 'Cy' not implemented"
-
-        Cldr.Da ->
-            Debug.todo "branch 'Da' not implemented"
-
-        Cldr.DaGL ->
-            Debug.todo "branch 'DaGL' not implemented"
-
-        Cldr.De ->
-            Debug.todo "branch 'De' not implemented"
-
-        Cldr.DeAT ->
-            Debug.todo "branch 'DeAT' not implemented"
-
-        Cldr.DeBE ->
-            Debug.todo "branch 'DeBE' not implemented"
-
-        Cldr.DeCH ->
-            Debug.todo "branch 'DeCH' not implemented"
-
-        Cldr.DeIT ->
-            Debug.todo "branch 'DeIT' not implemented"
-
-        Cldr.DeLI ->
-            Debug.todo "branch 'DeLI' not implemented"
-
-        Cldr.DeLU ->
-            Debug.todo "branch 'DeLU' not implemented"
-
-        Cldr.El ->
-            Debug.todo "branch 'El' not implemented"
-
-        Cldr.ElCY ->
-            Debug.todo "branch 'ElCY' not implemented"
-
-        Cldr.ElPolyton ->
-            Debug.todo "branch 'ElPolyton' not implemented"
-
         Cldr.En001 ->
-            Debug.todo "branch 'En001' not implemented"
+            Translations.En001
 
         Cldr.En150 ->
-            Debug.todo "branch 'En150' not implemented"
+            Translations.En150
 
         Cldr.EnAE ->
-            Debug.todo "branch 'EnAE' not implemented"
+            Translations.EnAE
 
         Cldr.EnAG ->
-            Debug.todo "branch 'EnAG' not implemented"
+            Translations.EnAG
 
         Cldr.EnAI ->
-            Debug.todo "branch 'EnAI' not implemented"
+            Translations.EnAI
 
         Cldr.EnAS ->
-            Debug.todo "branch 'EnAS' not implemented"
+            Translations.EnAS
 
         Cldr.EnAT ->
-            Debug.todo "branch 'EnAT' not implemented"
+            Translations.EnAT
 
         Cldr.EnAU ->
-            Debug.todo "branch 'EnAU' not implemented"
+            Translations.EnAU
 
         Cldr.EnBB ->
-            Debug.todo "branch 'EnBB' not implemented"
+            Translations.EnBB
 
         Cldr.EnBE ->
-            Debug.todo "branch 'EnBE' not implemented"
+            Translations.EnBE
 
         Cldr.EnBI ->
-            Debug.todo "branch 'EnBI' not implemented"
+            Translations.EnBI
 
         Cldr.EnBM ->
-            Debug.todo "branch 'EnBM' not implemented"
+            Translations.EnBM
 
         Cldr.EnBS ->
-            Debug.todo "branch 'EnBS' not implemented"
+            Translations.EnBS
 
         Cldr.EnBW ->
-            Debug.todo "branch 'EnBW' not implemented"
+            Translations.EnBW
 
         Cldr.EnBZ ->
-            Debug.todo "branch 'EnBZ' not implemented"
+            Translations.EnBZ
 
         Cldr.EnCA ->
-            Debug.todo "branch 'EnCA' not implemented"
+            Translations.EnCA
 
         Cldr.EnCC ->
-            Debug.todo "branch 'EnCC' not implemented"
+            Translations.EnCC
 
         Cldr.EnCH ->
-            Debug.todo "branch 'EnCH' not implemented"
+            Translations.EnCH
 
         Cldr.EnCK ->
-            Debug.todo "branch 'EnCK' not implemented"
+            Translations.EnCK
 
         Cldr.EnCM ->
-            Debug.todo "branch 'EnCM' not implemented"
+            Translations.EnCM
 
         Cldr.EnCX ->
-            Debug.todo "branch 'EnCX' not implemented"
+            Translations.EnCX
 
         Cldr.EnCY ->
-            Debug.todo "branch 'EnCY' not implemented"
+            Translations.EnCY
 
         Cldr.EnDE ->
-            Debug.todo "branch 'EnDE' not implemented"
+            Translations.EnDE
 
         Cldr.EnDG ->
-            Debug.todo "branch 'EnDG' not implemented"
+            Translations.EnDG
 
         Cldr.EnDK ->
-            Debug.todo "branch 'EnDK' not implemented"
+            Translations.EnDK
 
         Cldr.EnDM ->
-            Debug.todo "branch 'EnDM' not implemented"
+            Translations.EnDM
 
         Cldr.EnER ->
-            Debug.todo "branch 'EnER' not implemented"
+            Translations.EnER
 
         Cldr.EnFI ->
-            Debug.todo "branch 'EnFI' not implemented"
+            Translations.EnFI
 
         Cldr.EnFJ ->
-            Debug.todo "branch 'EnFJ' not implemented"
+            Translations.EnFJ
 
         Cldr.EnFK ->
-            Debug.todo "branch 'EnFK' not implemented"
+            Translations.EnFK
 
         Cldr.EnFM ->
-            Debug.todo "branch 'EnFM' not implemented"
+            Translations.EnFM
 
         Cldr.EnGB ->
-            Debug.todo "branch 'EnGB' not implemented"
+            Translations.EnGB
 
         Cldr.EnGD ->
-            Debug.todo "branch 'EnGD' not implemented"
+            Translations.EnGD
 
         Cldr.EnGG ->
-            Debug.todo "branch 'EnGG' not implemented"
+            Translations.EnGG
 
         Cldr.EnGH ->
-            Debug.todo "branch 'EnGH' not implemented"
+            Translations.EnGH
 
         Cldr.EnGI ->
-            Debug.todo "branch 'EnGI' not implemented"
+            Translations.EnGI
 
         Cldr.EnGM ->
-            Debug.todo "branch 'EnGM' not implemented"
+            Translations.EnGM
 
         Cldr.EnGU ->
-            Debug.todo "branch 'EnGU' not implemented"
+            Translations.EnGU
 
         Cldr.EnGY ->
-            Debug.todo "branch 'EnGY' not implemented"
+            Translations.EnGY
 
         Cldr.EnHK ->
-            Debug.todo "branch 'EnHK' not implemented"
+            Translations.EnHK
 
         Cldr.EnIE ->
-            Debug.todo "branch 'EnIE' not implemented"
+            Translations.EnIE
 
         Cldr.EnIL ->
-            Debug.todo "branch 'EnIL' not implemented"
+            Translations.EnIL
 
         Cldr.EnIM ->
-            Debug.todo "branch 'EnIM' not implemented"
+            Translations.EnIM
 
         Cldr.EnIN ->
-            Debug.todo "branch 'EnIN' not implemented"
+            Translations.EnIN
 
         Cldr.EnIO ->
-            Debug.todo "branch 'EnIO' not implemented"
+            Translations.EnIO
 
         Cldr.EnJE ->
-            Debug.todo "branch 'EnJE' not implemented"
+            Translations.EnJE
 
         Cldr.EnJM ->
-            Debug.todo "branch 'EnJM' not implemented"
+            Translations.EnJM
 
         Cldr.EnKE ->
-            Debug.todo "branch 'EnKE' not implemented"
+            Translations.EnKE
 
         Cldr.EnKI ->
-            Debug.todo "branch 'EnKI' not implemented"
+            Translations.EnKI
 
         Cldr.EnKN ->
-            Debug.todo "branch 'EnKN' not implemented"
+            Translations.EnKN
 
         Cldr.EnKY ->
-            Debug.todo "branch 'EnKY' not implemented"
+            Translations.EnKY
 
         Cldr.EnLC ->
-            Debug.todo "branch 'EnLC' not implemented"
+            Translations.EnLC
 
         Cldr.EnLR ->
-            Debug.todo "branch 'EnLR' not implemented"
+            Translations.EnLR
 
         Cldr.EnLS ->
-            Debug.todo "branch 'EnLS' not implemented"
+            Translations.EnLS
 
         Cldr.EnMG ->
-            Debug.todo "branch 'EnMG' not implemented"
+            Translations.EnMG
 
         Cldr.EnMH ->
-            Debug.todo "branch 'EnMH' not implemented"
+            Translations.EnMH
 
         Cldr.EnMO ->
-            Debug.todo "branch 'EnMO' not implemented"
+            Translations.EnMO
 
         Cldr.EnMP ->
-            Debug.todo "branch 'EnMP' not implemented"
+            Translations.EnMP
 
         Cldr.EnMS ->
-            Debug.todo "branch 'EnMS' not implemented"
+            Translations.EnMS
 
         Cldr.EnMT ->
-            Debug.todo "branch 'EnMT' not implemented"
+            Translations.EnMT
 
         Cldr.EnMU ->
-            Debug.todo "branch 'EnMU' not implemented"
+            Translations.EnMU
 
         Cldr.EnMV ->
-            Debug.todo "branch 'EnMV' not implemented"
+            Translations.EnMV
 
         Cldr.EnMW ->
-            Debug.todo "branch 'EnMW' not implemented"
+            Translations.EnMW
 
         Cldr.EnMY ->
-            Debug.todo "branch 'EnMY' not implemented"
+            Translations.EnMY
 
         Cldr.EnNA ->
-            Debug.todo "branch 'EnNA' not implemented"
+            Translations.EnNA
 
         Cldr.EnNF ->
-            Debug.todo "branch 'EnNF' not implemented"
+            Translations.EnNF
 
         Cldr.EnNG ->
-            Debug.todo "branch 'EnNG' not implemented"
+            Translations.EnNG
 
         Cldr.EnNL ->
-            Debug.todo "branch 'EnNL' not implemented"
+            Translations.EnNL
 
         Cldr.EnNR ->
-            Debug.todo "branch 'EnNR' not implemented"
+            Translations.EnNR
 
         Cldr.EnNU ->
-            Debug.todo "branch 'EnNU' not implemented"
+            Translations.EnNU
 
         Cldr.EnNZ ->
-            Debug.todo "branch 'EnNZ' not implemented"
+            Translations.EnNZ
 
         Cldr.EnPG ->
-            Debug.todo "branch 'EnPG' not implemented"
+            Translations.EnPG
 
         Cldr.EnPH ->
-            Debug.todo "branch 'EnPH' not implemented"
+            Translations.EnPH
 
         Cldr.EnPK ->
-            Debug.todo "branch 'EnPK' not implemented"
+            Translations.EnPK
 
         Cldr.EnPN ->
-            Debug.todo "branch 'EnPN' not implemented"
+            Translations.EnPN
 
         Cldr.EnPR ->
-            Debug.todo "branch 'EnPR' not implemented"
+            Translations.EnPR
 
         Cldr.EnPW ->
-            Debug.todo "branch 'EnPW' not implemented"
+            Translations.EnPW
 
         Cldr.EnRW ->
-            Debug.todo "branch 'EnRW' not implemented"
+            Translations.EnRW
 
         Cldr.EnSB ->
-            Debug.todo "branch 'EnSB' not implemented"
+            Translations.EnSB
 
         Cldr.EnSC ->
-            Debug.todo "branch 'EnSC' not implemented"
+            Translations.EnSC
 
         Cldr.EnSD ->
-            Debug.todo "branch 'EnSD' not implemented"
+            Translations.EnSD
 
         Cldr.EnSE ->
-            Debug.todo "branch 'EnSE' not implemented"
+            Translations.EnSE
 
         Cldr.EnSG ->
-            Debug.todo "branch 'EnSG' not implemented"
+            Translations.EnSG
 
         Cldr.EnSH ->
-            Debug.todo "branch 'EnSH' not implemented"
+            Translations.EnSH
 
         Cldr.EnSI ->
-            Debug.todo "branch 'EnSI' not implemented"
+            Translations.EnSI
 
         Cldr.EnSL ->
-            Debug.todo "branch 'EnSL' not implemented"
+            Translations.EnSL
 
         Cldr.EnSS ->
-            Debug.todo "branch 'EnSS' not implemented"
+            Translations.EnSS
 
         Cldr.EnSX ->
-            Debug.todo "branch 'EnSX' not implemented"
+            Translations.EnSX
 
         Cldr.EnSZ ->
-            Debug.todo "branch 'EnSZ' not implemented"
+            Translations.EnSZ
 
         Cldr.EnTC ->
-            Debug.todo "branch 'EnTC' not implemented"
+            Translations.EnTC
 
         Cldr.EnTK ->
-            Debug.todo "branch 'EnTK' not implemented"
+            Translations.EnTK
 
         Cldr.EnTO ->
-            Debug.todo "branch 'EnTO' not implemented"
+            Translations.EnTO
 
         Cldr.EnTT ->
-            Debug.todo "branch 'EnTT' not implemented"
+            Translations.EnTT
 
         Cldr.EnTV ->
-            Debug.todo "branch 'EnTV' not implemented"
+            Translations.EnTV
 
         Cldr.EnTZ ->
-            Debug.todo "branch 'EnTZ' not implemented"
+            Translations.EnTZ
 
         Cldr.EnUG ->
-            Debug.todo "branch 'EnUG' not implemented"
+            Translations.EnUG
 
         Cldr.EnUM ->
-            Debug.todo "branch 'EnUM' not implemented"
+            Translations.EnUM
 
         Cldr.EnVC ->
-            Debug.todo "branch 'EnVC' not implemented"
+            Translations.EnVC
 
         Cldr.EnVG ->
-            Debug.todo "branch 'EnVG' not implemented"
+            Translations.EnVG
 
         Cldr.EnVI ->
-            Debug.todo "branch 'EnVI' not implemented"
+            Translations.EnVI
 
         Cldr.EnVU ->
-            Debug.todo "branch 'EnVU' not implemented"
+            Translations.EnVU
 
         Cldr.EnWS ->
-            Debug.todo "branch 'EnWS' not implemented"
+            Translations.EnWS
 
         Cldr.EnZA ->
-            Debug.todo "branch 'EnZA' not implemented"
+            Translations.EnZA
 
         Cldr.EnZM ->
-            Debug.todo "branch 'EnZM' not implemented"
+            Translations.EnZM
 
         Cldr.EnZW ->
-            Debug.todo "branch 'EnZW' not implemented"
+            Translations.EnZW
 
         Cldr.Es ->
-            Debug.todo "branch 'Es' not implemented"
+            Translations.Es
 
         Cldr.Es419 ->
-            Debug.todo "branch 'Es419' not implemented"
+            Translations.Es419
 
         Cldr.EsAR ->
-            Debug.todo "branch 'EsAR' not implemented"
+            Translations.EsAR
 
         Cldr.EsBO ->
-            Debug.todo "branch 'EsBO' not implemented"
+            Translations.EsBO
 
         Cldr.EsBR ->
-            Debug.todo "branch 'EsBR' not implemented"
+            Translations.EsBR
 
         Cldr.EsBZ ->
-            Debug.todo "branch 'EsBZ' not implemented"
+            Translations.EsBZ
 
         Cldr.EsCL ->
-            Debug.todo "branch 'EsCL' not implemented"
+            Translations.EsCL
 
         Cldr.EsCO ->
-            Debug.todo "branch 'EsCO' not implemented"
+            Translations.EsCO
 
         Cldr.EsCR ->
-            Debug.todo "branch 'EsCR' not implemented"
+            Translations.EsCR
 
         Cldr.EsCU ->
-            Debug.todo "branch 'EsCU' not implemented"
+            Translations.EsCU
 
         Cldr.EsDO ->
-            Debug.todo "branch 'EsDO' not implemented"
+            Translations.EsDO
 
         Cldr.EsEA ->
-            Debug.todo "branch 'EsEA' not implemented"
+            Translations.EsEA
 
         Cldr.EsEC ->
-            Debug.todo "branch 'EsEC' not implemented"
+            Translations.EsEC
 
         Cldr.EsGQ ->
-            Debug.todo "branch 'EsGQ' not implemented"
+            Translations.EsGQ
 
         Cldr.EsGT ->
-            Debug.todo "branch 'EsGT' not implemented"
+            Translations.EsGT
 
         Cldr.EsHN ->
-            Debug.todo "branch 'EsHN' not implemented"
+            Translations.EsHN
 
         Cldr.EsIC ->
-            Debug.todo "branch 'EsIC' not implemented"
+            Translations.EsIC
 
         Cldr.EsMX ->
-            Debug.todo "branch 'EsMX' not implemented"
+            Translations.EsMX
 
         Cldr.EsNI ->
-            Debug.todo "branch 'EsNI' not implemented"
+            Translations.EsNI
 
         Cldr.EsPA ->
-            Debug.todo "branch 'EsPA' not implemented"
+            Translations.EsPA
 
         Cldr.EsPE ->
-            Debug.todo "branch 'EsPE' not implemented"
+            Translations.EsPE
 
         Cldr.EsPH ->
-            Debug.todo "branch 'EsPH' not implemented"
+            Translations.EsPH
 
         Cldr.EsPR ->
-            Debug.todo "branch 'EsPR' not implemented"
+            Translations.EsPR
 
         Cldr.EsPY ->
-            Debug.todo "branch 'EsPY' not implemented"
+            Translations.EsPY
 
         Cldr.EsSV ->
-            Debug.todo "branch 'EsSV' not implemented"
+            Translations.EsSV
 
         Cldr.EsUS ->
-            Debug.todo "branch 'EsUS' not implemented"
+            Translations.EsUS
 
         Cldr.EsUY ->
-            Debug.todo "branch 'EsUY' not implemented"
+            Translations.EsUY
 
         Cldr.EsVE ->
-            Debug.todo "branch 'EsVE' not implemented"
+            Translations.EsVE
 
         Cldr.Et ->
-            Debug.todo "branch 'Et' not implemented"
+            Translations.Et
 
         Cldr.Eu ->
-            Debug.todo "branch 'Eu' not implemented"
+            Translations.Eu
 
         Cldr.Fa ->
-            Debug.todo "branch 'Fa' not implemented"
+            Translations.Fa
 
         Cldr.FaAF ->
-            Debug.todo "branch 'FaAF' not implemented"
+            Translations.FaAF
 
         Cldr.Fi ->
-            Debug.todo "branch 'Fi' not implemented"
+            Translations.Fi
 
         Cldr.Fil ->
-            Debug.todo "branch 'Fil' not implemented"
+            Translations.Fil
 
         Cldr.Fr ->
-            Debug.todo "branch 'Fr' not implemented"
+            Translations.Fr
 
         Cldr.FrBE ->
-            Debug.todo "branch 'FrBE' not implemented"
+            Translations.FrBE
 
         Cldr.FrBF ->
-            Debug.todo "branch 'FrBF' not implemented"
+            Translations.FrBF
 
         Cldr.FrBI ->
-            Debug.todo "branch 'FrBI' not implemented"
+            Translations.FrBI
 
         Cldr.FrBJ ->
-            Debug.todo "branch 'FrBJ' not implemented"
+            Translations.FrBJ
 
         Cldr.FrBL ->
-            Debug.todo "branch 'FrBL' not implemented"
+            Translations.FrBL
 
         Cldr.FrCA ->
-            Debug.todo "branch 'FrCA' not implemented"
+            Translations.FrCA
 
         Cldr.FrCD ->
-            Debug.todo "branch 'FrCD' not implemented"
+            Translations.FrCD
 
         Cldr.FrCF ->
-            Debug.todo "branch 'FrCF' not implemented"
+            Translations.FrCF
 
         Cldr.FrCG ->
-            Debug.todo "branch 'FrCG' not implemented"
+            Translations.FrCG
 
         Cldr.FrCH ->
-            Debug.todo "branch 'FrCH' not implemented"
+            Translations.FrCH
 
         Cldr.FrCI ->
-            Debug.todo "branch 'FrCI' not implemented"
+            Translations.FrCI
 
         Cldr.FrCM ->
-            Debug.todo "branch 'FrCM' not implemented"
+            Translations.FrCM
 
         Cldr.FrDJ ->
-            Debug.todo "branch 'FrDJ' not implemented"
+            Translations.FrDJ
 
         Cldr.FrDZ ->
-            Debug.todo "branch 'FrDZ' not implemented"
+            Translations.FrDZ
 
         Cldr.FrGA ->
-            Debug.todo "branch 'FrGA' not implemented"
+            Translations.FrGA
 
         Cldr.FrGF ->
-            Debug.todo "branch 'FrGF' not implemented"
+            Translations.FrGF
 
         Cldr.FrGN ->
-            Debug.todo "branch 'FrGN' not implemented"
+            Translations.FrGN
 
         Cldr.FrGP ->
-            Debug.todo "branch 'FrGP' not implemented"
+            Translations.FrGP
 
         Cldr.FrGQ ->
-            Debug.todo "branch 'FrGQ' not implemented"
+            Translations.FrGQ
 
         Cldr.FrHT ->
-            Debug.todo "branch 'FrHT' not implemented"
+            Translations.FrHT
 
         Cldr.FrKM ->
-            Debug.todo "branch 'FrKM' not implemented"
+            Translations.FrKM
 
         Cldr.FrLU ->
-            Debug.todo "branch 'FrLU' not implemented"
+            Translations.FrLU
 
         Cldr.FrMA ->
-            Debug.todo "branch 'FrMA' not implemented"
+            Translations.FrMA
 
         Cldr.FrMC ->
-            Debug.todo "branch 'FrMC' not implemented"
+            Translations.FrMC
 
         Cldr.FrMF ->
-            Debug.todo "branch 'FrMF' not implemented"
+            Translations.FrMF
 
         Cldr.FrMG ->
-            Debug.todo "branch 'FrMG' not implemented"
+            Translations.FrMG
 
         Cldr.FrML ->
-            Debug.todo "branch 'FrML' not implemented"
+            Translations.FrML
 
         Cldr.FrMQ ->
-            Debug.todo "branch 'FrMQ' not implemented"
+            Translations.FrMQ
 
         Cldr.FrMR ->
-            Debug.todo "branch 'FrMR' not implemented"
+            Translations.FrMR
 
         Cldr.FrMU ->
-            Debug.todo "branch 'FrMU' not implemented"
+            Translations.FrMU
 
         Cldr.FrNC ->
-            Debug.todo "branch 'FrNC' not implemented"
+            Translations.FrNC
 
         Cldr.FrNE ->
-            Debug.todo "branch 'FrNE' not implemented"
+            Translations.FrNE
 
         Cldr.FrPF ->
-            Debug.todo "branch 'FrPF' not implemented"
+            Translations.FrPF
 
         Cldr.FrPM ->
-            Debug.todo "branch 'FrPM' not implemented"
+            Translations.FrPM
 
         Cldr.FrRE ->
-            Debug.todo "branch 'FrRE' not implemented"
+            Translations.FrRE
 
         Cldr.FrRW ->
-            Debug.todo "branch 'FrRW' not implemented"
+            Translations.FrRW
 
         Cldr.FrSC ->
-            Debug.todo "branch 'FrSC' not implemented"
+            Translations.FrSC
 
         Cldr.FrSN ->
-            Debug.todo "branch 'FrSN' not implemented"
+            Translations.FrSN
 
         Cldr.FrSY ->
-            Debug.todo "branch 'FrSY' not implemented"
+            Translations.FrSY
 
         Cldr.FrTD ->
-            Debug.todo "branch 'FrTD' not implemented"
+            Translations.FrTD
 
         Cldr.FrTG ->
-            Debug.todo "branch 'FrTG' not implemented"
+            Translations.FrTG
 
         Cldr.FrTN ->
-            Debug.todo "branch 'FrTN' not implemented"
+            Translations.FrTN
 
         Cldr.FrVU ->
-            Debug.todo "branch 'FrVU' not implemented"
+            Translations.FrVU
 
         Cldr.FrWF ->
-            Debug.todo "branch 'FrWF' not implemented"
+            Translations.FrWF
 
         Cldr.FrYT ->
-            Debug.todo "branch 'FrYT' not implemented"
+            Translations.FrYT
 
         Cldr.Ga ->
-            Debug.todo "branch 'Ga' not implemented"
+            Translations.Ga
 
         Cldr.GaGB ->
-            Debug.todo "branch 'GaGB' not implemented"
+            Translations.GaGB
 
         Cldr.Gd ->
-            Debug.todo "branch 'Gd' not implemented"
+            Translations.Gd
 
         Cldr.Gl ->
-            Debug.todo "branch 'Gl' not implemented"
+            Translations.Gl
 
         Cldr.Gu ->
-            Debug.todo "branch 'Gu' not implemented"
+            Translations.Gu
 
         Cldr.Ha ->
-            Debug.todo "branch 'Ha' not implemented"
+            Translations.Ha
 
         Cldr.HaGH ->
-            Debug.todo "branch 'HaGH' not implemented"
+            Translations.HaGH
 
         Cldr.HaNE ->
-            Debug.todo "branch 'HaNE' not implemented"
+            Translations.HaNE
 
         Cldr.He ->
-            Debug.todo "branch 'He' not implemented"
+            Translations.He
 
         Cldr.Hi ->
-            Debug.todo "branch 'Hi' not implemented"
+            Translations.Hi
 
         Cldr.HiLatn ->
-            Debug.todo "branch 'HiLatn' not implemented"
+            Translations.HiLatn
 
         Cldr.Hr ->
-            Debug.todo "branch 'Hr' not implemented"
+            Translations.Hr
 
         Cldr.HrBA ->
-            Debug.todo "branch 'HrBA' not implemented"
+            Translations.HrBA
 
         Cldr.Hu ->
-            Debug.todo "branch 'Hu' not implemented"
+            Translations.Hu
 
         Cldr.Hy ->
-            Debug.todo "branch 'Hy' not implemented"
+            Translations.Hy
 
         Cldr.Id ->
-            Debug.todo "branch 'Id' not implemented"
+            Translations.Id
 
         Cldr.Ig ->
-            Debug.todo "branch 'Ig' not implemented"
+            Translations.Ig
 
         Cldr.Is ->
-            Debug.todo "branch 'Is' not implemented"
+            Translations.Is
+
+        Cldr.It ->
+            Translations.It
 
         Cldr.ItCH ->
-            Debug.todo "branch 'ItCH' not implemented"
+            Translations.ItCH
 
         Cldr.ItSM ->
-            Debug.todo "branch 'ItSM' not implemented"
+            Translations.ItSM
 
         Cldr.ItVA ->
-            Debug.todo "branch 'ItVA' not implemented"
+            Translations.ItVA
 
         Cldr.Ja ->
-            Debug.todo "branch 'Ja' not implemented"
+            Translations.Ja
 
         Cldr.Jv ->
-            Debug.todo "branch 'Jv' not implemented"
+            Translations.Jv
 
         Cldr.Ka ->
-            Debug.todo "branch 'Ka' not implemented"
+            Translations.Ka
 
         Cldr.Kk ->
-            Debug.todo "branch 'Kk' not implemented"
+            Translations.Kk
 
         Cldr.Km ->
-            Debug.todo "branch 'Km' not implemented"
+            Translations.Km
 
         Cldr.Kn ->
-            Debug.todo "branch 'Kn' not implemented"
+            Translations.Kn
 
         Cldr.Ko ->
-            Debug.todo "branch 'Ko' not implemented"
+            Translations.Ko
 
         Cldr.KoKP ->
-            Debug.todo "branch 'KoKP' not implemented"
+            Translations.KoKP
 
         Cldr.Kok ->
-            Debug.todo "branch 'Kok' not implemented"
+            Translations.Kok
 
         Cldr.Ky ->
-            Debug.todo "branch 'Ky' not implemented"
+            Translations.Ky
 
         Cldr.Lo ->
-            Debug.todo "branch 'Lo' not implemented"
+            Translations.Lo
 
         Cldr.Lt ->
-            Debug.todo "branch 'Lt' not implemented"
+            Translations.Lt
 
         Cldr.Lv ->
-            Debug.todo "branch 'Lv' not implemented"
+            Translations.Lv
 
         Cldr.Mk ->
-            Debug.todo "branch 'Mk' not implemented"
+            Translations.Mk
 
         Cldr.Ml ->
-            Debug.todo "branch 'Ml' not implemented"
+            Translations.Ml
 
         Cldr.Mn ->
-            Debug.todo "branch 'Mn' not implemented"
+            Translations.Mn
 
         Cldr.Mr ->
-            Debug.todo "branch 'Mr' not implemented"
+            Translations.Mr
 
         Cldr.Ms ->
-            Debug.todo "branch 'Ms' not implemented"
+            Translations.Ms
 
         Cldr.MsBN ->
-            Debug.todo "branch 'MsBN' not implemented"
+            Translations.MsBN
 
         Cldr.MsID ->
-            Debug.todo "branch 'MsID' not implemented"
+            Translations.MsID
 
         Cldr.MsSG ->
-            Debug.todo "branch 'MsSG' not implemented"
+            Translations.MsSG
 
         Cldr.My ->
-            Debug.todo "branch 'My' not implemented"
+            Translations.My
 
         Cldr.Nb ->
-            Debug.todo "branch 'Nb' not implemented"
+            Translations.Nb
 
         Cldr.NbSJ ->
-            Debug.todo "branch 'NbSJ' not implemented"
+            Translations.NbSJ
 
         Cldr.Ne ->
-            Debug.todo "branch 'Ne' not implemented"
+            Translations.Ne
 
         Cldr.NeIN ->
-            Debug.todo "branch 'NeIN' not implemented"
+            Translations.NeIN
 
         Cldr.Nl ->
-            Debug.todo "branch 'Nl' not implemented"
+            Translations.Nl
 
         Cldr.NlAW ->
-            Debug.todo "branch 'NlAW' not implemented"
+            Translations.NlAW
 
         Cldr.NlBE ->
-            Debug.todo "branch 'NlBE' not implemented"
+            Translations.NlBE
 
         Cldr.NlBQ ->
-            Debug.todo "branch 'NlBQ' not implemented"
+            Translations.NlBQ
 
         Cldr.NlCW ->
-            Debug.todo "branch 'NlCW' not implemented"
+            Translations.NlCW
 
         Cldr.NlSR ->
-            Debug.todo "branch 'NlSR' not implemented"
+            Translations.NlSR
 
         Cldr.NlSX ->
-            Debug.todo "branch 'NlSX' not implemented"
+            Translations.NlSX
 
         Cldr.Nn ->
-            Debug.todo "branch 'Nn' not implemented"
+            Translations.Nn
 
         Cldr.No ->
-            Debug.todo "branch 'No' not implemented"
+            Translations.No
 
         Cldr.Or ->
-            Debug.todo "branch 'Or' not implemented"
+            Translations.Or
 
         Cldr.Pa ->
-            Debug.todo "branch 'Pa' not implemented"
+            Translations.Pa
 
         Cldr.PaGuru ->
-            Debug.todo "branch 'PaGuru' not implemented"
+            Translations.PaGuru
 
         Cldr.Pcm ->
-            Debug.todo "branch 'Pcm' not implemented"
+            Translations.Pcm
 
         Cldr.Pl ->
-            Debug.todo "branch 'Pl' not implemented"
+            Translations.Pl
 
         Cldr.Ps ->
-            Debug.todo "branch 'Ps' not implemented"
+            Translations.Ps
 
         Cldr.PsPK ->
-            Debug.todo "branch 'PsPK' not implemented"
+            Translations.PsPK
 
         Cldr.Pt ->
-            Debug.todo "branch 'Pt' not implemented"
+            Translations.Pt
 
         Cldr.PtAO ->
-            Debug.todo "branch 'PtAO' not implemented"
+            Translations.PtAO
 
         Cldr.PtCH ->
-            Debug.todo "branch 'PtCH' not implemented"
+            Translations.PtCH
 
         Cldr.PtCV ->
-            Debug.todo "branch 'PtCV' not implemented"
+            Translations.PtCV
 
         Cldr.PtGQ ->
-            Debug.todo "branch 'PtGQ' not implemented"
+            Translations.PtGQ
 
         Cldr.PtGW ->
-            Debug.todo "branch 'PtGW' not implemented"
+            Translations.PtGW
 
         Cldr.PtLU ->
-            Debug.todo "branch 'PtLU' not implemented"
+            Translations.PtLU
 
         Cldr.PtMO ->
-            Debug.todo "branch 'PtMO' not implemented"
+            Translations.PtMO
 
         Cldr.PtMZ ->
-            Debug.todo "branch 'PtMZ' not implemented"
+            Translations.PtMZ
 
         Cldr.PtPT ->
-            Debug.todo "branch 'PtPT' not implemented"
+            Translations.PtPT
 
         Cldr.PtST ->
-            Debug.todo "branch 'PtST' not implemented"
+            Translations.PtST
 
         Cldr.PtTL ->
-            Debug.todo "branch 'PtTL' not implemented"
+            Translations.PtTL
 
         Cldr.Ro ->
-            Debug.todo "branch 'Ro' not implemented"
+            Translations.Ro
 
         Cldr.RoMD ->
-            Debug.todo "branch 'RoMD' not implemented"
+            Translations.RoMD
 
         Cldr.Ru ->
-            Debug.todo "branch 'Ru' not implemented"
+            Translations.Ru
 
         Cldr.RuBY ->
-            Debug.todo "branch 'RuBY' not implemented"
+            Translations.RuBY
 
         Cldr.RuKG ->
-            Debug.todo "branch 'RuKG' not implemented"
+            Translations.RuKG
 
         Cldr.RuKZ ->
-            Debug.todo "branch 'RuKZ' not implemented"
+            Translations.RuKZ
 
         Cldr.RuMD ->
-            Debug.todo "branch 'RuMD' not implemented"
+            Translations.RuMD
 
         Cldr.RuUA ->
-            Debug.todo "branch 'RuUA' not implemented"
+            Translations.RuUA
 
         Cldr.Sd ->
-            Debug.todo "branch 'Sd' not implemented"
+            Translations.Sd
 
         Cldr.SdArab ->
-            Debug.todo "branch 'SdArab' not implemented"
+            Translations.SdArab
 
         Cldr.Si ->
-            Debug.todo "branch 'Si' not implemented"
+            Translations.Si
 
         Cldr.Sk ->
-            Debug.todo "branch 'Sk' not implemented"
+            Translations.Sk
 
         Cldr.Sl ->
-            Debug.todo "branch 'Sl' not implemented"
+            Translations.Sl
 
         Cldr.So ->
-            Debug.todo "branch 'So' not implemented"
+            Translations.So
 
         Cldr.SoDJ ->
-            Debug.todo "branch 'SoDJ' not implemented"
+            Translations.SoDJ
 
         Cldr.SoET ->
-            Debug.todo "branch 'SoET' not implemented"
+            Translations.SoET
 
         Cldr.SoKE ->
-            Debug.todo "branch 'SoKE' not implemented"
+            Translations.SoKE
 
         Cldr.Sq ->
-            Debug.todo "branch 'Sq' not implemented"
+            Translations.Sq
 
         Cldr.SqMK ->
-            Debug.todo "branch 'SqMK' not implemented"
+            Translations.SqMK
 
         Cldr.SqXK ->
-            Debug.todo "branch 'SqXK' not implemented"
+            Translations.SqXK
 
         Cldr.Sr ->
-            Debug.todo "branch 'Sr' not implemented"
+            Translations.Sr
 
         Cldr.SrCyrl ->
-            Debug.todo "branch 'SrCyrl' not implemented"
+            Translations.SrCyrl
 
         Cldr.SrCyrlBA ->
-            Debug.todo "branch 'SrCyrlBA' not implemented"
+            Translations.SrCyrlBA
 
         Cldr.SrCyrlME ->
-            Debug.todo "branch 'SrCyrlME' not implemented"
+            Translations.SrCyrlME
 
         Cldr.SrCyrlXK ->
-            Debug.todo "branch 'SrCyrlXK' not implemented"
+            Translations.SrCyrlXK
 
         Cldr.SrLatn ->
-            Debug.todo "branch 'SrLatn' not implemented"
+            Translations.SrLatn
 
         Cldr.SrLatnBA ->
-            Debug.todo "branch 'SrLatnBA' not implemented"
+            Translations.SrLatnBA
 
         Cldr.SrLatnME ->
-            Debug.todo "branch 'SrLatnME' not implemented"
+            Translations.SrLatnME
 
         Cldr.SrLatnXK ->
-            Debug.todo "branch 'SrLatnXK' not implemented"
+            Translations.SrLatnXK
 
         Cldr.Sv ->
-            Debug.todo "branch 'Sv' not implemented"
+            Translations.Sv
 
         Cldr.SvAX ->
-            Debug.todo "branch 'SvAX' not implemented"
+            Translations.SvAX
 
         Cldr.SvFI ->
-            Debug.todo "branch 'SvFI' not implemented"
+            Translations.SvFI
 
         Cldr.Sw ->
-            Debug.todo "branch 'Sw' not implemented"
+            Translations.Sw
 
         Cldr.SwCD ->
-            Debug.todo "branch 'SwCD' not implemented"
+            Translations.SwCD
 
         Cldr.SwKE ->
-            Debug.todo "branch 'SwKE' not implemented"
+            Translations.SwKE
 
         Cldr.SwUG ->
-            Debug.todo "branch 'SwUG' not implemented"
+            Translations.SwUG
 
         Cldr.Ta ->
-            Debug.todo "branch 'Ta' not implemented"
+            Translations.Ta
 
         Cldr.TaLK ->
-            Debug.todo "branch 'TaLK' not implemented"
+            Translations.TaLK
 
         Cldr.TaMY ->
-            Debug.todo "branch 'TaMY' not implemented"
+            Translations.TaMY
 
         Cldr.TaSG ->
-            Debug.todo "branch 'TaSG' not implemented"
+            Translations.TaSG
 
         Cldr.Te ->
-            Debug.todo "branch 'Te' not implemented"
+            Translations.Te
 
         Cldr.Th ->
-            Debug.todo "branch 'Th' not implemented"
+            Translations.Th
 
         Cldr.Tk ->
-            Debug.todo "branch 'Tk' not implemented"
+            Translations.Tk
 
         Cldr.Tr ->
-            Debug.todo "branch 'Tr' not implemented"
+            Translations.Tr
 
         Cldr.TrCY ->
-            Debug.todo "branch 'TrCY' not implemented"
+            Translations.TrCY
 
         Cldr.Uk ->
-            Debug.todo "branch 'Uk' not implemented"
+            Translations.Uk
 
         Cldr.Ur ->
-            Debug.todo "branch 'Ur' not implemented"
+            Translations.Ur
 
         Cldr.UrIN ->
-            Debug.todo "branch 'UrIN' not implemented"
+            Translations.UrIN
 
         Cldr.Uz ->
-            Debug.todo "branch 'Uz' not implemented"
+            Translations.Uz
 
         Cldr.UzLatn ->
-            Debug.todo "branch 'UzLatn' not implemented"
+            Translations.UzLatn
 
         Cldr.Vi ->
-            Debug.todo "branch 'Vi' not implemented"
+            Translations.Vi
 
         Cldr.Yo ->
-            Debug.todo "branch 'Yo' not implemented"
+            Translations.Yo
 
         Cldr.YoBJ ->
-            Debug.todo "branch 'YoBJ' not implemented"
+            Translations.YoBJ
 
         Cldr.Yue ->
-            Debug.todo "branch 'Yue' not implemented"
+            Translations.Yue
 
         Cldr.YueHans ->
-            Debug.todo "branch 'YueHans' not implemented"
+            Translations.YueHans
 
         Cldr.YueHant ->
-            Debug.todo "branch 'YueHant' not implemented"
+            Translations.YueHant
 
         Cldr.Zh ->
-            Debug.todo "branch 'Zh' not implemented"
+            Translations.Zh
 
         Cldr.ZhHans ->
-            Debug.todo "branch 'ZhHans' not implemented"
+            Translations.ZhHans
 
         Cldr.ZhHansHK ->
-            Debug.todo "branch 'ZhHansHK' not implemented"
+            Translations.ZhHansHK
 
         Cldr.ZhHansMO ->
-            Debug.todo "branch 'ZhHansMO' not implemented"
+            Translations.ZhHansMO
 
         Cldr.ZhHansSG ->
-            Debug.todo "branch 'ZhHansSG' not implemented"
+            Translations.ZhHansSG
 
         Cldr.ZhHant ->
-            Debug.todo "branch 'ZhHant' not implemented"
+            Translations.ZhHant
 
         Cldr.ZhHantHK ->
-            Debug.todo "branch 'ZhHantHK' not implemented"
+            Translations.ZhHantHK
 
         Cldr.ZhHantMO ->
-            Debug.todo "branch 'ZhHantMO' not implemented"
+            Translations.ZhHantMO
 
         Cldr.Zu ->
-            Debug.todo "branch 'Zu' not implemented"
+            Translations.Zu
 
 
 textInvariant : String -> Element msg
