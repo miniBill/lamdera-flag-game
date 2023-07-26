@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, viewFlag, wrappedRow)
+module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, spacing, text, textInvariant, viewFlag, wrappedRow)
 
 import AspectRatios
 import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, rgba, shrink, width)
@@ -8,6 +8,7 @@ import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Html.Attributes
 import List.Extra
+import Translations exposing (I18n)
 import Types exposing (Context, Country)
 
 
@@ -232,3 +233,15 @@ viewFlag attrs config =
         { src = src
         , description = "A country flag"
         }
+
+
+text : (I18n -> String) -> Element msg
+text f =
+    Element.withContext <|
+        \{ language } ->
+            Element.text <| f <| Translations.init language
+
+
+textInvariant : String -> Element msg
+textInvariant msg =
+    Element.text msg

@@ -39,7 +39,8 @@ import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import List.Extra
 import Theme exposing (Attribute, Element, Gradient, viewFlag)
-import Types exposing (Country(..), FrontendMsg(..), Language(..), PlayingModel, Property(..))
+import Translations exposing (Language(..))
+import Types exposing (Country(..), FrontendMsg(..), PlayingModel, Property(..))
 
 
 view : PlayingModel -> Element FrontendMsg
@@ -54,7 +55,7 @@ view model =
             [ centerX
             , centerY
             , Theme.padding
-            , Theme.spacing
+            , Element.spacing (Theme.rythm * 5 // 2)
             ]
             [ case model.current.guessFrom of
                 Name ->
@@ -169,10 +170,6 @@ viewNameButton { current, picked } country =
         green : Bool
         green =
             picked /= Nothing && country == current.guessing
-
-        red : Bool
-        red =
-            Just country == picked
     in
     Theme.button
         attrs
@@ -180,7 +177,7 @@ viewNameButton { current, picked } country =
             if green then
                 Theme.colors.greenButtonBackground
 
-            else if red then
+            else if Just country == picked then
                 Theme.colors.redButtonBackground
 
             else
@@ -304,104 +301,76 @@ viewCountryName country =
             never ever
 
         Iso3166 countryCode ->
-            Element.with .language <|
-                \language ->
+            Element.withContext <|
+                \{ language } ->
                     case language of
-                        Arabic ->
-                            text <| Cldr.Arabic.countryCodeToName countryCode
-
-                        Chinese ->
-                            text <| Cldr.Chinese.countryCodeToName countryCode
-
-                        Czech ->
-                            text <| Cldr.Czech.countryCodeToName countryCode
-
-                        Danish ->
-                            text <| Cldr.Danish.countryCodeToName countryCode
-
-                        Dutch ->
-                            text <| Cldr.Dutch.countryCodeToName countryCode
-
-                        English ->
+                        -- Arabic ->
+                        --     text <| Cldr.Arabic.countryCodeToName countryCode
+                        -- Chinese ->
+                        --     text <| Cldr.Chinese.countryCodeToName countryCode
+                        -- Czech ->
+                        --     text <| Cldr.Czech.countryCodeToName countryCode
+                        -- Danish ->
+                        --     text <| Cldr.Danish.countryCodeToName countryCode
+                        -- Dutch ->
+                        --     text <| Cldr.Dutch.countryCodeToName countryCode
+                        En ->
                             text <| Cldr.English.countryCodeToName countryCode
 
-                        Estonian ->
-                            text <| Cldr.Estonian.countryCodeToName countryCode
-
-                        French ->
-                            text <| Cldr.French.countryCodeToName countryCode
-
-                        German ->
-                            text <| Cldr.German.countryCodeToName countryCode
-
-                        Greek ->
-                            text <| Cldr.Greek.countryCodeToName countryCode
-
-                        Hungarian ->
-                            text <| Cldr.Hungarian.countryCodeToName countryCode
-
-                        Italian ->
+                        -- Estonian ->
+                        --     text <| Cldr.Estonian.countryCodeToName countryCode
+                        -- French ->
+                        --     text <| Cldr.French.countryCodeToName countryCode
+                        -- German ->
+                        --     text <| Cldr.German.countryCodeToName countryCode
+                        -- Greek ->
+                        --     text <| Cldr.Greek.countryCodeToName countryCode
+                        -- Hungarian ->
+                        --     text <| Cldr.Hungarian.countryCodeToName countryCode
+                        It ->
                             text <| Cldr.Italian.countryCodeToName countryCode
 
-                        Japanese ->
-                            text <| Cldr.Japanese.countryCodeToName countryCode
 
-                        Lithuanian ->
-                            text <| Cldr.Lithuanian.countryCodeToName countryCode
 
-                        Norwegian ->
-                            text <| Cldr.Norwegian.countryCodeToName countryCode
-
-                        Polish ->
-                            text <| Cldr.Polish.countryCodeToName countryCode
-
-                        Portuguese ->
-                            text <| Cldr.Portuguese.countryCodeToName countryCode
-
-                        Romanian ->
-                            text <| Cldr.Romanian.countryCodeToName countryCode
-
-                        Russian ->
-                            text <| Cldr.Russian.countryCodeToName countryCode
-
-                        Slovak ->
-                            text <| Cldr.Slovak.countryCodeToName countryCode
-
-                        Spanish ->
-                            text <| Cldr.Spanish.countryCodeToName countryCode
-
-                        Thai ->
-                            text <| Cldr.Thai.countryCodeToName countryCode
-
-                        Ukrainian ->
-                            text <| Cldr.Ukrainian.countryCodeToName countryCode
-
-                        Armenian ->
-                            text <| Cldr.Armenian.countryCodeToName countryCode
-
-                        Basque ->
-                            text <| Cldr.Basque.countryCodeToName countryCode
-
-                        Bulgarian ->
-                            text <| Cldr.Bulgarian.countryCodeToName countryCode
-
-                        ChineseTraditional ->
-                            text <| Cldr.Chinese.Traditional.countryCodeToName countryCode
-
-                        Croatian ->
-                            text <| Cldr.Croatian.countryCodeToName countryCode
-
-                        Finnish ->
-                            text <| Cldr.Finnish.countryCodeToName countryCode
-
-                        Korean ->
-                            text <| Cldr.Korean.countryCodeToName countryCode
-
-                        Serbian ->
-                            text <| Cldr.Serbian.countryCodeToName countryCode
-
-                        Slovenian ->
-                            text <| Cldr.Slovenian.countryCodeToName countryCode
-
-                        Swedish ->
-                            text <| Cldr.Swedish.countryCodeToName countryCode
+-- Japanese ->
+--     text <| Cldr.Japanese.countryCodeToName countryCode
+-- Lithuanian ->
+--     text <| Cldr.Lithuanian.countryCodeToName countryCode
+-- Norwegian ->
+--     text <| Cldr.Norwegian.countryCodeToName countryCode
+-- Polish ->
+--     text <| Cldr.Polish.countryCodeToName countryCode
+-- Portuguese ->
+--     text <| Cldr.Portuguese.countryCodeToName countryCode
+-- Romanian ->
+--     text <| Cldr.Romanian.countryCodeToName countryCode
+-- Russian ->
+--     text <| Cldr.Russian.countryCodeToName countryCode
+-- Slovak ->
+--     text <| Cldr.Slovak.countryCodeToName countryCode
+-- Spanish ->
+--     text <| Cldr.Spanish.countryCodeToName countryCode
+-- Thai ->
+--     text <| Cldr.Thai.countryCodeToName countryCode
+-- Ukrainian ->
+--     text <| Cldr.Ukrainian.countryCodeToName countryCode
+-- Armenian ->
+--     text <| Cldr.Armenian.countryCodeToName countryCode
+-- Basque ->
+--     text <| Cldr.Basque.countryCodeToName countryCode
+-- Bulgarian ->
+--     text <| Cldr.Bulgarian.countryCodeToName countryCode
+-- ChineseTraditional ->
+--     text <| Cldr.Chinese.Traditional.countryCodeToName countryCode
+-- Croatian ->
+--     text <| Cldr.Croatian.countryCodeToName countryCode
+-- Finnish ->
+--     text <| Cldr.Finnish.countryCodeToName countryCode
+-- Korean ->
+--     text <| Cldr.Korean.countryCodeToName countryCode
+-- Serbian ->
+--     text <| Cldr.Serbian.countryCodeToName countryCode
+-- Slovenian ->
+--     text <| Cldr.Slovenian.countryCodeToName countryCode
+-- Swedish ->
+--     text <| Cldr.Swedish.countryCodeToName countryCode

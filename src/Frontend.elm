@@ -2,7 +2,7 @@ module Frontend exposing (app)
 
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
-import Element.WithContext as Element exposing (centerX, centerY, el, fill, height, rgb255, scrollbarY, shrink, text, width)
+import Element.WithContext as Element exposing (centerX, centerY, el, fill, height, rgb255, scrollbarY, shrink, width)
 import Element.WithContext.Font as Font
 import Flags exposing (allCards)
 import Frontend.Playing
@@ -11,8 +11,9 @@ import Lamdera
 import List.Extra
 import Random
 import Sorting
-import Theme exposing (Element)
-import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), Language(..), PlayingModel, ToFrontend(..))
+import Theme exposing (Element, text, textInvariant)
+import Translations exposing (I18n, Language(..))
+import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), PlayingModel, ToFrontend(..))
 import Url
 
 
@@ -42,7 +43,7 @@ init url key =
     let
         context : Context
         context =
-            { language = English }
+            { language = En }
     in
     ( { key = key
       , context = context
@@ -74,7 +75,7 @@ defaultGameOptions =
 
 
 update : FrontendMsg -> FrontendModel -> ( FrontendModel, Cmd FrontendMsg )
-update msg model =
+update msg ({ context } as model) =
     case msg of
         UrlClicked urlRequest ->
             case urlRequest of
@@ -111,6 +112,11 @@ update msg model =
                         Sorting _ ->
                             model.inner
               }
+            , Cmd.none
+            )
+
+        Language language ->
+            ( { model | context = { context | language = language } }
             , Cmd.none
             )
 
@@ -330,12 +336,12 @@ viewFinished finished =
         , centerY
         ]
         [ el [ width fill, Font.center ] <|
-            text <|
+            textInvariant <|
                 "Final score: "
                     ++ String.fromInt finished.score
                     ++ "/"
                     ++ String.fromInt finished.total
-        , el [ width fill, Font.center ] <| text "Play again"
+        , el [ width fill, Font.center ] <| textInvariant "Play again"
         , startButtons finished.options
         ]
 
@@ -345,8 +351,8 @@ startButtons options =
     let
         button :
             { selected : Bool
-            , label : String
-            , onPress : GameOptions
+            , label : I18n -> String
+            , onPress : FrontendMsg
             }
             -> Element FrontendMsg
         button config =
@@ -366,18 +372,18 @@ startButtons options =
                     else
                         Theme.colors.buttonBackground
                 , label = text config.label
-                , onPress = Just <| ChangeOptions config.onPress
+                , onPress = Just config.onPress
                 }
 
         checkboxes :
-            String
+            (I18n -> String)
             ->
                 { get : GameOptions -> List v
-                , toLabel : v -> String
+                , toLabel : v -> I18n -> String
                 , set : List v -> GameOptions
                 , all : List v
                 }
-            -> ( String, List (Element FrontendMsg) )
+            -> ( I18n -> String, List (Element FrontendMsg) )
         checkboxes label config =
             let
                 current : List v
@@ -396,26 +402,27 @@ startButtons options =
                         { label = config.toLabel value
                         , selected = selected
                         , onPress =
-                            config.set <|
-                                if selected then
-                                    List.Extra.remove value current
+                            ChangeOptions <|
+                                config.set <|
+                                    if selected then
+                                        List.Extra.remove value current
 
-                                else
-                                    value :: current
+                                    else
+                                        value :: current
                         }
                 )
                 config.all
             )
 
         radios :
-            String
+            (I18n -> String)
             ->
                 { get : GameOptions -> v
-                , toLabel : v -> String
+                , toLabel : v -> I18n -> String
                 , set : v -> GameOptions
                 , all : List v
                 }
-            -> ( String, List (Element FrontendMsg) )
+            -> ( I18n -> String, List (Element FrontendMsg) )
         radios label config =
             let
                 current : v
@@ -433,7 +440,7 @@ startButtons options =
                     button
                         { label = config.toLabel value
                         , selected = selected
-                        , onPress = config.set value
+                        , onPress = ChangeOptions <| config.set value
                         }
                 )
                 config.all
@@ -441,15 +448,15 @@ startButtons options =
 
         optionsGrid : List (List (Element FrontendMsg))
         optionsGrid =
-            [ radios "Difficulty"
+            [ radios (\_ -> "Difficulty")
                 { toLabel = difficultyToString
                 , all = [ Easy, Normal, Hard ]
                 , get = .difficulty
                 , set = \v -> { options | difficulty = v }
                 }
-            , checkboxes "Guess"
+            , checkboxes (\_ -> "Guess")
                 { toLabel =
-                    \( f, t ) ->
+                    \( f, t ) _ ->
                         Types.propertyToString f
                             ++ " → "
                             ++ Types.propertyToString t
@@ -457,15 +464,15 @@ startButtons options =
                 , get = .guessPatterns
                 , set = \v -> { options | guessPatterns = v }
                 }
-            , radios "Possible answers"
-                { toLabel = String.fromInt
+            , radios (\_ -> "Possible answers")
+                { toLabel = \i _ -> String.fromInt i
                 , all = [ 4, 6, 8 ]
                 , get = .answersPerCard
                 , set = \v -> { options | answersPerCard = v }
                 }
-            , radios "Include"
+            , radios (\_ -> "Include")
                 { toLabel =
-                    \sovereignOnly ->
+                    \sovereignOnly _ ->
                         if sovereignOnly then
                             "States"
 
@@ -475,13 +482,27 @@ startButtons options =
                 , get = .sovereignOnly
                 , set = \v -> { options | sovereignOnly = v }
                 }
-            , radios "Game length"
-                { toLabel = String.fromInt
+            , radios (\_ -> "Game length")
+                { toLabel = \i _ -> String.fromInt i
                 , all = [ defaultGameLength, 100, List.length <| Flags.all options ]
                 , get = .gameLength
                 , set = \v -> { options | gameLength = v }
                 }
-            , ( ""
+            , ( \_ -> "Game language"
+              , [ En, It ]
+                    |> List.map
+                        (\language ->
+                            Element.withContext
+                                (\context ->
+                                    button
+                                        { selected = context.language == language
+                                        , label = \_ -> Types.languageToString language
+                                        , onPress = Language language
+                                        }
+                                )
+                        )
+              )
+            , ( \_ -> ""
               , let
                     filler : Element msg
                     filler =
@@ -494,7 +515,7 @@ startButtons options =
                 [ filler
                 , Theme.button [ width fill, Font.center ]
                     { background = Theme.colors.buttonBackground
-                    , label = text "Play"
+                    , label = text Translations.play
                     , onPress = Just Play
                     }
                 , filler
@@ -514,17 +535,17 @@ startButtons options =
         }
 
 
-difficultyToString : Difficulty -> String
+difficultyToString : Difficulty -> I18n -> String
 difficultyToString difficulty =
     case difficulty of
         Easy ->
-            "Easy"
+            Translations.easy
 
         Normal ->
-            "Normal"
+            Translations.normal
 
         Hard ->
-            "Hard"
+            Translations.hard
 
 
 subscriptions : FrontendModel -> Sub FrontendMsg
