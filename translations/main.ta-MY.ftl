@@ -1,1 +1,1 @@
-# fallback-language: en
+# fallback-language: ta
