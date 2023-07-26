@@ -4,7 +4,7 @@ YARN_RUN = node_modules/.bin/travelm-agency
 all: generated/AspectRatios.elm src/Translations.elm
 
 src/Translations.elm: $(wildcard translations/*.ftl) $(YARN_RUN)
-	yarn travelm-agency --inline --i18n_arg_first translations
+	yarn travelm-agency --inline translations
 
 $(YARN_RUN): package.json yarn.lock
 	yarn && touch $@

@@ -23,6 +23,7 @@ import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
 import Cldr exposing (Locale)
 import Random
+import Translations exposing (I18n)
 import Url exposing (Url)
 
 
@@ -136,14 +137,14 @@ type ToFrontend
     = NoOpToFrontend
 
 
-propertyToString : Property -> String
+propertyToString : Property -> I18n -> String
 propertyToString property =
     case property of
         Name ->
-            "Name"
+            Translations.name
 
         Flag ->
-            "Flag"
+            Translations.flag
 
 
 countryToAlpha2 : Country -> String

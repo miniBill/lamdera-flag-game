@@ -395,14 +395,14 @@ viewFinished finished =
     Theme.column
         [ centerX
         , centerY
+        , Element.spacing <| 2 * Theme.rythm
         ]
         [ el [ width fill, Font.center ] <|
-            textInvariant <|
-                "Final score: "
-                    ++ String.fromInt finished.score
-                    ++ "/"
-                    ++ String.fromInt finished.total
-        , el [ width fill, Font.center ] <| textInvariant "Play again"
+            text <|
+                Translations.finalScore
+                    { points = String.fromInt finished.score
+                    , total = String.fromInt finished.total
+                    }
         , startButtons finished.options
         ]
 
@@ -483,47 +483,47 @@ startButtons options =
 
         optionsGrid : List (List (Element FrontendMsg))
         optionsGrid =
-            [ radios (\_ -> "Difficulty")
+            [ radios Translations.difficulty
                 { toLabel = difficultyToString
                 , all = [ Easy, Normal, Hard ]
                 , get = .difficulty
                 , set = \v -> { options | difficulty = v }
                 }
-            , checkboxes (\_ -> "Guess")
+            , checkboxes Translations.guess
                 { toLabel =
-                    \( f, t ) _ ->
-                        Types.propertyToString f
+                    \( f, t ) i18n ->
+                        Types.propertyToString f i18n
                             ++ " → "
-                            ++ Types.propertyToString t
+                            ++ Types.propertyToString t i18n
                 , all = Types.allGuessPatterns
                 , get = .guessPatterns
                 , set = \v -> { options | guessPatterns = v }
                 }
-            , radios (\_ -> "Possible answers")
+            , radios Translations.possibleAnswers
                 { toLabel = \i _ -> String.fromInt i
                 , all = [ 4, 6, 8 ]
                 , get = .answersPerCard
                 , set = \v -> { options | answersPerCard = v }
                 }
-            , radios (\_ -> "Include")
+            , radios Translations.include
                 { toLabel =
-                    \sovereignOnly _ ->
+                    \sovereignOnly ->
                         if sovereignOnly then
-                            "States"
+                            Translations.states
 
                         else
-                            "States and territories"
+                            Translations.statesAndTerritories
                 , all = [ True, False ]
                 , get = .sovereignOnly
                 , set = \v -> { options | sovereignOnly = v }
                 }
-            , radios (\_ -> "Game length")
+            , radios Translations.gameLength
                 { toLabel = \i _ -> String.fromInt i
                 , all = [ defaultGameLength, 100, List.length <| Flags.all options ]
                 , get = .gameLength
                 , set = \v -> { options | gameLength = v }
                 }
-            , ( \_ -> "Game language"
+            , ( Translations.gameLanguage
               , [ Element.withContext
                     (\context ->
                         Theme.selectableButton [ Font.center, width fill ]
@@ -534,7 +534,7 @@ startButtons options =
                     )
                 , Theme.selectableButton [ Font.center, width fill ]
                     { selected = False
-                    , label = \_ -> "Change"
+                    , label = Translations.change
                     , onPress = ChangingLocale ""
                     }
                 ]

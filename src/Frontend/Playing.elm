@@ -1,12 +1,13 @@
 module Frontend.Playing exposing (view)
 
 import Cldr.Localized
-import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, column, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, shrink, text, width)
+import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, column, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, shrink, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import List.Extra
-import Theme exposing (Attribute, Element, Gradient, viewFlag)
+import Theme exposing (Attribute, Element, Gradient, text, textInvariant, viewFlag)
+import Translations
 import Types exposing (Country(..), FrontendMsg(..), PlayingModel, Property(..))
 
 
@@ -109,7 +110,7 @@ nextButton { picked } =
 
             else
                 Theme.colors.buttonBackground
-        , label = text "Next"
+        , label = text Translations.next
         , onPress =
             if picked == Nothing then
                 Nothing
@@ -179,8 +180,8 @@ viewFlagButton { picked, current } country =
                     , paddingXY 6 2
                     ]
                 )
-                (text label)
-            , text " "
+                (textInvariant label)
+            , textInvariant " "
             ]
 
         maybeBadge : List (Element msg)
@@ -252,12 +253,12 @@ viewScore model =
             , height <| px 100
             ]
             (el [ centerX, centerY ] <|
-                text <|
+                textInvariant <|
                     String.fromInt (model.options.gameLength - List.length model.queue)
                         ++ "/"
                         ++ String.fromInt model.options.gameLength
             )
-        , paragraph [ Font.center ] [ text <| "score: " ++ String.fromInt model.score ]
+        , paragraph [ Font.center ] [ text <| Translations.score <| String.fromInt model.score ]
         ]
 
 
