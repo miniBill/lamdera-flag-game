@@ -9,7 +9,7 @@ import Cldr
 import Cldr.Catalan
 
 
-{-| Name for `CountryCode` in Catalan (Spain, Valencian).
+{-| Name for `CountryCode` in Catalan - Valencia.
 
 This is identical to the Catalan version.
 
