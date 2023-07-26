@@ -3,7 +3,7 @@ module Frontend exposing (app)
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
 import Cldr
-import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, rgb255, scrollbarY, scrollbars, shrink, width)
+import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, rgb255, scrollbarY, shrink, width)
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags exposing (allCards)

@@ -1,14 +1,13 @@
 module Frontend.Playing exposing (view)
 
+import Cldr.Localized
 import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, column, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, shrink, text, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import List.Extra
 import Theme exposing (Attribute, Element, Gradient, viewFlag)
-import Translations exposing (Language(..))
 import Types exposing (Country(..), FrontendMsg(..), PlayingModel, Property(..))
-import Cldr.Localized
 
 
 view : PlayingModel -> Element FrontendMsg

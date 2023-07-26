@@ -213,9 +213,11 @@ viewFlag attrs config =
         -- w < config.width * arw * 2 / 3 / arh
         -- w = min config.width (config.width * arw * 2 / 3 / arh)
         -- h = w * arh / arw
+        w : Int
         w =
             min config.width (config.width * aspectRatioWidth * 2 // (3 * aspectRatioHeight))
 
+        h : Int
         h =
             w * aspectRatioHeight // aspectRatioWidth
     in

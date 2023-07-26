@@ -23,7 +23,6 @@ import Browser exposing (UrlRequest)
 import Browser.Navigation exposing (Key)
 import Cldr exposing (Locale)
 import Random
-import Translations exposing (Language(..))
 import Url exposing (Url)
 
 

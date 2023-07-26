@@ -1970,16 +1970,11 @@ toSovereignity country =
 
 all : { a | sovereignOnly : Bool } -> List Country
 all { sovereignOnly } =
-    let
-        fromIso : List Country
-        fromIso =
-            if sovereignOnly then
-                List.filter isSovereign <| List.map Iso3166 Cldr.all
+    if sovereignOnly then
+        List.filter isSovereign <| List.map Iso3166 Cldr.all
 
-            else
-                List.map Iso3166 Cldr.all
-    in
-    fromIso
+    else
+        List.map Iso3166 Cldr.all
 
 
 isSovereign : Country -> Bool
