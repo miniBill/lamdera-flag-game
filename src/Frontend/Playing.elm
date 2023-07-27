@@ -1,7 +1,7 @@
 module Frontend.Playing exposing (view)
 
 import Cldr.Localized
-import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, column, el, fill, height, inFront, moveDown, moveLeft, paddingXY, paragraph, px, rgb, rgba, shrink, width)
+import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, column, el, fill, height, paddingXY, paragraph, px, rgb, rgba, shrink, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
@@ -13,13 +13,12 @@ import Types exposing (Country(..), FrontendMsg(..), PlayingModel, Property(..))
 
 view : PlayingModel -> Element FrontendMsg
 view model =
-    el
+    Theme.row
         [ width fill
         , height fill
-        , inFront <| viewScore model
         ]
-    <|
-        Theme.column
+        [ viewBack
+        , Theme.column
             [ centerX
             , centerY
             , Theme.padding
@@ -39,6 +38,8 @@ view model =
                     viewFlagAnswers model
             , nextButton model
             ]
+        , viewScore model
+        ]
 
 
 viewFlagClue : { a | current : Types.Card } -> Element msg
@@ -238,13 +239,26 @@ viewFlagButton { picked, current } country =
             ]
 
 
+viewBack : Element FrontendMsg
+viewBack =
+    el
+        [ alignTop
+        , Theme.padding
+        ]
+    <|
+        Theme.button []
+            { background = Theme.colors.buttonBackground
+            , label = text Translations.back
+            , onPress = Just Back
+            }
+
+
 viewScore : PlayingModel -> Element msg
 viewScore model =
     column
         [ alignTop
         , alignRight
-        , moveDown Theme.rythm
-        , moveLeft Theme.rythm
+        , Theme.padding
         ]
         [ el
             [ Theme.gradient Theme.colors.greenButtonBackground

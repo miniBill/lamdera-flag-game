@@ -117,6 +117,7 @@ type FrontendMsg
     | Seed Random.Seed
     | Pick Country
     | Next
+    | Back
     | ChangeOptions GameOptions
     | Locale Locale
     | ChangingLocale String

@@ -135,6 +135,16 @@ update msg ({ context } as model) =
             , Cmd.none
             )
 
+        Back ->
+            case model.inner of
+                Playing { options } ->
+                    ( { model | inner = Homepage options }
+                    , Cmd.none
+                    )
+
+                _ ->
+                    ( model, Cmd.none )
+
         Play ->
             let
                 maybeOptions : Maybe GameOptions

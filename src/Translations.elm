@@ -190,25 +190,25 @@ back (I18n lang) =
             "Back"
 
         De ->
-            "zurück"
+            "Zurück"
 
         DeAT ->
-            "zurück"
+            "Zurück"
 
         DeBE ->
-            "zurück"
+            "Zurück"
 
         DeCH ->
-            "zurück"
+            "Zurück"
 
         DeIT ->
-            "zurück"
+            "Zurück"
 
         DeLI ->
-            "zurück"
+            "Zurück"
 
         DeLU ->
-            "zurück"
+            "Zurück"
 
         El ->
             "Back"

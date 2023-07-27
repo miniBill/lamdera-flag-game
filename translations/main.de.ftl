@@ -3,7 +3,7 @@ title = Flaggenspiel
 
 search = Suche
 
-back = zurück
+back = Zurück
 
 difficulty = Schwierigkeitsgrad
 easy = Einfach
