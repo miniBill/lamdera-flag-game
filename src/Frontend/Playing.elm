@@ -251,6 +251,7 @@ viewScore model =
             , Border.rounded 999
             , width <| px 100
             , height <| px 100
+            , centerX
             ]
             (el [ centerX, centerY ] <|
                 textInvariant <|
