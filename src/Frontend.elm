@@ -13,7 +13,7 @@ import Lamdera
 import List.Extra
 import Random
 import Sorting
-import Theme exposing (Element, text, textInvariant)
+import Theme exposing (Element, text)
 import Translations exposing (I18n)
 import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), PlayingModel, ToFrontend(..))
 import Url
@@ -106,11 +106,11 @@ update msg ({ context } as model) =
             ( { model
                 | inner =
                     case model.inner of
-                        Finished finished ->
-                            Finished { finished | options = fixOptions options }
-
                         Homepage _ ->
                             Homepage <| fixOptions options
+
+                        Finished finished ->
+                            Finished { finished | options = fixOptions options }
 
                         Playing _ ->
                             -- Can't change options while playing
@@ -219,6 +219,11 @@ update msg ({ context } as model) =
                               }
                             , Cmd.none
                             )
+
+                Finished { options } ->
+                    ( { model | inner = Homepage options }
+                    , Cmd.none
+                    )
 
                 _ ->
                     ( model, Cmd.none )
@@ -403,7 +408,11 @@ viewFinished finished =
                     { points = String.fromInt finished.score
                     , total = String.fromInt finished.total
                     }
-        , startButtons finished.options
+        , Theme.button [ centerX ]
+            { background = Theme.colors.buttonBackground
+            , label = text Translations.playAgain
+            , onPress = Just Next
+            }
         ]
 
 

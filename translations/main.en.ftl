@@ -27,6 +27,7 @@ change = Change
 play = Play
 
 score = Score: {$score}
+playAgain = Play again
 next = Next
 
 finalScore = Final score: {$points}/{$total}
