@@ -1,6 +1,5 @@
 ## Needed
 
-- Back Burton
 - Sovereign note
 
 ## Tweaks
