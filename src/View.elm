@@ -16,7 +16,6 @@ import Browser
 import Element.WithContext as Element exposing (Element, fill, height, rgb255, scrollbarY, width)
 import Element.WithContext.Font as Font
 import Route exposing (Route)
-import Shared
 import Shared.Model exposing (Context)
 import Theme
 import Translations
@@ -30,7 +29,7 @@ type alias View msg =
 so it works with Elm's expected `Browser.Document msg` type.
 -}
 toBrowserDocument :
-    { shared : Shared.Model
+    { shared : Shared.Model.Model
     , route : Route ()
     , view : View msg
     }
