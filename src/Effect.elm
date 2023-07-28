@@ -1,7 +1,7 @@
 module Effect exposing
     ( Effect
-    , none, batch
-    , sendCmd, sendSharedMsg
+    , none
+    , sendCmd, changeOptions, locale, play, finished, seed
     , pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
     , map, toCmd
     )
@@ -9,8 +9,8 @@ module Effect exposing
 {-|
 
 @docs Effect
-@docs none, batch
-@docs sendCmd, sendSharedMsg
+@docs none
+@docs sendCmd, changeOptions, locale, play, finished, seed
 @docs pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
 
 @docs map, toCmd
@@ -18,7 +18,9 @@ module Effect exposing
 -}
 
 import Browser.Navigation
+import Cldr exposing (Locale)
 import Dict exposing (Dict)
+import Random exposing (Seed)
 import Route
 import Route.Path
 import Shared.Model
@@ -30,7 +32,6 @@ import Url exposing (Url)
 type Effect msg
     = -- BASICS
       None
-    | Batch (List (Effect msg))
     | SendCmd (Cmd msg)
       -- ROUTING
     | PushUrl String
@@ -52,13 +53,6 @@ none =
     None
 
 
-{-| Send multiple effects at once.
--}
-batch : List (Effect msg) -> Effect msg
-batch =
-    Batch
-
-
 {-| Send a normal `Cmd msg` as an effect, something like `Http.get` or `Random.generate`.
 -}
 sendCmd : Cmd msg -> Effect msg
@@ -66,9 +60,29 @@ sendCmd =
     SendCmd
 
 
-sendSharedMsg : Shared.Msg.Msg -> Effect msg
-sendSharedMsg =
-    SendSharedMsg
+changeOptions : Shared.Model.GameOptions -> Effect msg
+changeOptions options =
+    SendSharedMsg <| Shared.Msg.ChangeOptions options
+
+
+locale : Locale -> Effect msg
+locale newLocale =
+    SendSharedMsg <| Shared.Msg.Locale newLocale
+
+
+play : Effect msg
+play =
+    SendSharedMsg Shared.Msg.Play
+
+
+finished : { score : Int } -> Effect msg
+finished score =
+    SendSharedMsg <| Shared.Msg.Finished score
+
+
+seed : Seed -> Effect msg
+seed newSeed =
+    SendSharedMsg <| Shared.Msg.Seed newSeed
 
 
 goHome : Effect msg
@@ -134,9 +148,6 @@ map fn effect =
         None ->
             None
 
-        Batch list ->
-            Batch (List.map (map fn) list)
-
         SendCmd cmd ->
             SendCmd (Cmd.map fn cmd)
 
@@ -172,9 +183,6 @@ toCmd options effect =
     case effect of
         None ->
             Cmd.none
-
-        Batch list ->
-            Cmd.batch (List.map (toCmd options) list)
 
         SendCmd cmd ->
             cmd

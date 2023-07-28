@@ -12,7 +12,6 @@ import Page exposing (Page)
 import Route exposing (Route)
 import Shared
 import Shared.Model exposing (Card, Country(..), Property(..))
-import Shared.Msg
 import Theme exposing (Attribute, Element, Gradient, column, text, textInvariant, viewFlag)
 import Translations
 import View exposing (View)
@@ -61,7 +60,7 @@ init shared () =
                     }
             in
             ( Just model
-            , Effect.sendSharedMsg <| Shared.Msg.Seed newSeed
+            , Effect.seed newSeed
             )
 
 
@@ -100,8 +99,7 @@ update msg maybeModel =
                     case model.queue of
                         [] ->
                             ( maybeModel
-                            , Effect.sendSharedMsg <|
-                                Shared.Msg.Finished { score = model.score }
+                            , Effect.finished { score = model.score }
                             )
 
                         head :: tail ->

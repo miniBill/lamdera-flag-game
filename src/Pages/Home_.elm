@@ -12,7 +12,6 @@ import Page exposing (Page)
 import Route exposing (Route)
 import Shared
 import Shared.Model exposing (Difficulty(..), GameOptions, Property(..))
-import Shared.Msg
 import Theme exposing (Element, text)
 import Translations exposing (I18n)
 import View exposing (View)
@@ -59,17 +58,17 @@ update msg model =
     case msg of
         ChangeOptions options ->
             ( model
-            , Effect.sendSharedMsg <| Shared.Msg.ChangeOptions options
+            , Effect.changeOptions options
             )
 
         Locale locale ->
             ( { model | changingLocale = Nothing }
-            , Effect.sendSharedMsg <| Shared.Msg.Locale locale
+            , Effect.locale locale
             )
 
         Play ->
             ( model
-            , Effect.sendSharedMsg Shared.Msg.Play
+            , Effect.play
             )
 
         ChangingLocale locale ->
