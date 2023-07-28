@@ -56,4 +56,12 @@ config =
     , NoUnused.Variables.rule
     , Simplify.rule Simplify.defaults
     ]
-        |> List.map (Rule.ignoreErrorsForDirectories [ "src/Evergreen" ])
+        |> List.map
+            (Rule.ignoreErrorsForDirectories
+                [ "src/Evergreen"
+                , ".elm-land"
+                ]
+                >> Rule.ignoreErrorsForFiles
+                    [ "src/Translations.elm"
+                    ]
+            )

@@ -1,6 +1,6 @@
 module Frontend exposing (app)
 
-import Browser exposing (UrlRequest(..))
+import Browser exposing (UrlRequest)
 import Browser.Navigation as Nav
 import Json.Encode
 import Lamdera

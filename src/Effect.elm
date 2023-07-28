@@ -1,7 +1,7 @@
 module Effect exposing
     ( Effect
     , none, batch
-    , sendCmd, sendMsg, sendSharedMsg
+    , sendCmd, sendSharedMsg
     , pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
     , map, toCmd
     )
@@ -10,7 +10,7 @@ module Effect exposing
 
 @docs Effect
 @docs none, batch
-@docs sendCmd, sendMsg, sendSharedMsg
+@docs sendCmd, sendSharedMsg
 @docs pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
 
 @docs map, toCmd
@@ -64,15 +64,6 @@ batch =
 sendCmd : Cmd msg -> Effect msg
 sendCmd =
     SendCmd
-
-
-{-| Send a message as an effect. Useful when emitting events from UI components.
--}
-sendMsg : msg -> Effect msg
-sendMsg msg =
-    Task.succeed msg
-        |> Task.perform identity
-        |> SendCmd
 
 
 sendSharedMsg : Shared.Msg.Msg -> Effect msg

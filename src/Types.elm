@@ -8,9 +8,7 @@ module Types exposing
     )
 
 import Bridge
-import Browser.Navigation exposing (Key)
 import Main as ElmLand
-import Translations exposing (I18n)
 
 
 type alias FrontendModel =

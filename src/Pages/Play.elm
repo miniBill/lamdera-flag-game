@@ -1,4 +1,4 @@
-module Pages.Play exposing (Model, Msg, page)
+module Pages.Play exposing (InnerModel, Model, Msg, page)
 
 import Cldr.Localized
 import Effect exposing (Effect)
