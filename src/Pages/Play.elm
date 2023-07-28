@@ -15,6 +15,7 @@ import Shared.Model exposing (Card, Country(..), Property(..))
 import Shared.Msg
 import Theme exposing (Attribute, Element, Gradient, column, text, textInvariant, viewFlag)
 import Translations
+import View exposing (View)
 
 
 page : Shared.Model -> Route () -> Page Model Msg
@@ -127,7 +128,7 @@ subscriptions _ =
 -- VIEW
 
 
-view : Shared.Model -> Model -> Element Msg
+view : Shared.Model -> Model -> View Msg
 view shared maybeModel =
     case maybeModel of
         Nothing ->
