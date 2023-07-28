@@ -3,18 +3,18 @@ module Frontend exposing (app)
 import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
 import Cldr
-import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, rgb255, scrollbarY, shrink, width)
+import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, rgb255, scrollbarY, width)
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags exposing (allCards)
+import Frontend.Homepage
 import Frontend.Playing
-import Html.Attributes
 import Lamdera
 import List.Extra
 import Random
 import Sorting
 import Theme exposing (Element, text)
-import Translations exposing (I18n)
+import Translations
 import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), PlayingModel, ToFrontend(..))
 import Url
 
@@ -57,28 +57,13 @@ init url key =
                     Sorting Sorting.init
 
                 else
-                    Homepage defaultGameOptions
+                    Homepage Frontend.Homepage.init
             , seed = Random.initialSeed 0
             }
     in
     ( model
     , Random.generate Seed Random.independentSeed
     )
-
-
-defaultGameLength : Int
-defaultGameLength =
-    20
-
-
-defaultGameOptions : GameOptions
-defaultGameOptions =
-    { gameLength = defaultGameLength
-    , difficulty = Normal
-    , answersPerCard = 6
-    , guessPatterns = Types.allGuessPatterns
-    , sovereignOnly = True
-    }
 
 
 update : FrontendMsg -> FrontendModel -> ( FrontendModel, Cmd FrontendMsg )
@@ -384,7 +369,7 @@ innerView : InnerModel -> Element FrontendMsg
 innerView model =
     case model of
         Homepage options ->
-            viewHomepage options
+            Frontend.Homepage.view options
 
         Playing playing ->
             Frontend.Playing.view playing
@@ -394,15 +379,6 @@ innerView model =
 
         Sorting groups ->
             Sorting.view groups
-
-
-viewHomepage : GameOptions -> Element FrontendMsg
-viewHomepage options =
-    el
-        [ centerX
-        , centerY
-        ]
-        (startButtons options)
 
 
 viewFinished : { options : GameOptions, score : Int, total : Int } -> Element FrontendMsg
@@ -424,184 +400,6 @@ viewFinished finished =
             , onPress = Just Next
             }
         ]
-
-
-startButtons : GameOptions -> Element FrontendMsg
-startButtons options =
-    let
-        checkboxes :
-            (I18n -> String)
-            ->
-                { get : GameOptions -> List v
-                , toLabel : v -> I18n -> String
-                , set : List v -> GameOptions
-                , all : List v
-                }
-            -> ( I18n -> String, List (Element FrontendMsg) )
-        checkboxes label config =
-            let
-                current : List v
-                current =
-                    config.get options
-            in
-            ( label
-            , List.map
-                (\value ->
-                    let
-                        selected : Bool
-                        selected =
-                            List.member value current
-                    in
-                    Theme.selectableButton [ Font.center, width fill ]
-                        { label = config.toLabel value
-                        , selected = selected
-                        , onPress =
-                            ChangeOptions <|
-                                config.set <|
-                                    if selected then
-                                        List.Extra.remove value current
-
-                                    else
-                                        value :: current
-                        }
-                )
-                config.all
-            )
-
-        radios :
-            (I18n -> String)
-            ->
-                { get : GameOptions -> v
-                , toLabel : v -> I18n -> String
-                , set : v -> GameOptions
-                , all : List v
-                }
-            -> ( I18n -> String, List (Element FrontendMsg) )
-        radios label config =
-            let
-                current : v
-                current =
-                    config.get options
-            in
-            ( label
-            , List.map
-                (\value ->
-                    let
-                        selected : Bool
-                        selected =
-                            value == current
-                    in
-                    Theme.selectableButton [ Font.center, width fill ]
-                        { label = config.toLabel value
-                        , selected = selected
-                        , onPress = ChangeOptions <| config.set value
-                        }
-                )
-                config.all
-            )
-
-        optionsGrid : List (List (Element FrontendMsg))
-        optionsGrid =
-            [ radios Translations.difficulty
-                { toLabel = difficultyToString
-                , all = [ Easy, Normal, Hard ]
-                , get = .difficulty
-                , set = \v -> { options | difficulty = v }
-                }
-            , checkboxes Translations.guess
-                { toLabel =
-                    \( f, t ) i18n ->
-                        Types.propertyToString f i18n
-                            ++ " → "
-                            ++ Types.propertyToString t i18n
-                , all = Types.allGuessPatterns
-                , get = .guessPatterns
-                , set = \v -> { options | guessPatterns = v }
-                }
-            , radios Translations.possibleAnswers
-                { toLabel = \i _ -> String.fromInt i
-                , all = [ 4, 6, 8 ]
-                , get = .answersPerCard
-                , set = \v -> { options | answersPerCard = v }
-                }
-            , radios Translations.include
-                { toLabel =
-                    \sovereignOnly ->
-                        if sovereignOnly then
-                            Translations.states
-
-                        else
-                            Translations.statesAndTerritories
-                , all = [ True, False ]
-                , get = .sovereignOnly
-                , set = \v -> { options | sovereignOnly = v }
-                }
-            , radios Translations.gameLength
-                { toLabel = \i _ -> String.fromInt i
-                , all = [ defaultGameLength, 100, List.length <| Flags.all options ]
-                , get = .gameLength
-                , set = \v -> { options | gameLength = v }
-                }
-            , ( Translations.gameLanguage
-              , [ Element.withContext
-                    (\context ->
-                        Theme.selectableButton [ Font.center, width fill ]
-                            { selected = True
-                            , label = \_ -> Cldr.localeToName context.locale
-                            , onPress = Locale context.locale
-                            }
-                    )
-                , Theme.selectableButton [ Font.center, width fill ]
-                    { selected = False
-                    , label = Translations.change
-                    , onPress = ChangingLocale ""
-                    }
-                ]
-              )
-            , ( \_ -> ""
-              , let
-                    filler : Element msg
-                    filler =
-                        Theme.button
-                            [ width fill
-                            , Element.htmlAttribute <| Html.Attributes.style "visibility" "hidden"
-                            ]
-                            { background = [], label = Element.none, onPress = Nothing }
-                in
-                [ filler
-                , Theme.button [ width fill, Font.center ]
-                    { background = Theme.colors.buttonBackground
-                    , label = text Translations.play
-                    , onPress = Just Play
-                    }
-                , filler
-                ]
-              )
-            ]
-                |> List.map
-                    (\( label, cells ) ->
-                        [ el [ centerY ] (text label)
-                        , Theme.row [] cells
-                        ]
-                    )
-    in
-    Theme.grid []
-        { elements = optionsGrid
-        , widths = [ shrink ]
-        }
-
-
-difficultyToString : Difficulty -> I18n -> String
-difficultyToString difficulty =
-    case difficulty of
-        Easy ->
-            Translations.easy
-
-        Normal ->
-            Translations.normal
-
-        Hard ->
-            Translations.hard
 
 
 subscriptions : FrontendModel -> Sub FrontendMsg
