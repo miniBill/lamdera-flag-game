@@ -15,7 +15,7 @@ import Random
 import Sorting
 import Theme exposing (Element, text)
 import Translations
-import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, InnerModel(..), PlayingModel, ToFrontend(..))
+import Types exposing (Context, Difficulty(..), FrontendModel, FrontendMsg(..), GameOptions, HomepageMsg(..), InnerModel(..), PlayingModel, ToFrontend(..))
 import Url
 
 
@@ -87,21 +87,14 @@ update msg ({ context } as model) =
         Seed seed ->
             ( { model | seed = seed }, Cmd.none )
 
-        ChangeOptions options ->
+        HomepageMsg (ChangeOptions options) ->
             ( { model
                 | inner =
                     case model.inner of
                         Homepage _ ->
                             Homepage <| fixOptions options
 
-                        Finished finished ->
-                            Finished { finished | options = fixOptions options }
-
-                        Playing _ ->
-                            -- Can't change options while playing
-                            model.inner
-
-                        Sorting _ ->
+                        _ ->
                             model.inner
               }
             , Cmd.none

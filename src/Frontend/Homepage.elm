@@ -8,7 +8,7 @@ import Html.Attributes
 import List.Extra
 import Theme exposing (Element, text)
 import Translations exposing (I18n)
-import Types exposing (Difficulty(..), FrontendMsg(..), GameOptions)
+import Types exposing (Difficulty(..), FrontendMsg(..), GameOptions, HomepageMsg(..))
 
 
 view : GameOptions -> Element FrontendMsg
@@ -140,13 +140,14 @@ checkboxes label config =
                     { label = config.toLabel value
                     , selected = selected
                     , onPress =
-                        ChangeOptions <|
-                            config.set <|
-                                if selected then
-                                    List.Extra.remove value current
+                        HomepageMsg <|
+                            ChangeOptions <|
+                                config.set <|
+                                    if selected then
+                                        List.Extra.remove value current
 
-                                else
-                                    value :: current
+                                    else
+                                        value :: current
                     }
             )
             config.all
@@ -180,7 +181,7 @@ radios label config =
                 Theme.selectableButton [ Font.center, width fill ]
                     { label = config.toLabel value
                     , selected = selected
-                    , onPress = ChangeOptions <| config.set value
+                    , onPress = HomepageMsg <| ChangeOptions <| config.set value
                     }
             )
             config.all

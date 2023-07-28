@@ -8,6 +8,7 @@ module Types exposing
     , FrontendModel
     , FrontendMsg(..)
     , GameOptions
+    , HomepageMsg(..)
     , InnerModel(..)
     , PlayingModel
     , Property(..)
@@ -118,12 +119,16 @@ type FrontendMsg
     | Pick Country
     | Next
     | Back
-    | ChangeOptions GameOptions
+    | HomepageMsg HomepageMsg
     | Locale Locale
     | ChangingLocale String
       -- Used in the sorting module
     | Move Country Int
     | SelectForMove Country
+
+
+type HomepageMsg
+    = ChangeOptions GameOptions
 
 
 type ToBackend
