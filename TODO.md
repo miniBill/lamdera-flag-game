@@ -1,5 +1,6 @@
 ## Needed
 
+- Azerbaijiani (Latin)
 - Sovereign note
 - Better difficulty behavior
 
