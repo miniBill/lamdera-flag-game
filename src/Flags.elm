@@ -4,7 +4,7 @@ import Cldr exposing (CountryCode(..))
 import List.Extra
 import Random
 import Random.List
-import Types exposing (Card, Country(..), Difficulty(..), GameOptions, Property(..))
+import Shared.Model exposing (Card, Country(..), Difficulty(..), GameOptions, Property(..))
 
 
 allCards : GameOptions -> Random.Seed -> ( List Card, Random.Seed )

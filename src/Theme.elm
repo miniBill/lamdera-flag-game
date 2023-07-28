@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, wrappedRow, localeToLanguage)
+module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, localeToLanguage, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, wrappedRow)
 
 import AspectRatios
 import Cldr exposing (Locale)
@@ -9,8 +9,8 @@ import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Html.Attributes
 import List.Extra
+import Shared.Model exposing (Context, Country, countryToAlpha2)
 import Translations exposing (I18n)
-import Types exposing (Context, Country)
 
 
 type alias Element msg =
@@ -200,7 +200,7 @@ viewFlag attrs config =
     let
         src : String
         src =
-            "/" ++ Types.countryToAlpha2 config.country ++ ".svg"
+            "/" ++ countryToAlpha2 config.country ++ ".svg"
 
         ( aspectRatioWidth, aspectRatioHeight ) =
             AspectRatios.getAspectRatio config.country

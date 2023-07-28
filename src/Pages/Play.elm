@@ -1,48 +1,168 @@
-module Frontend.Playing exposing (view)
+module Pages.Play exposing (Model, Msg, page)
 
 import Cldr.Localized
-import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, column, el, fill, height, paddingXY, paragraph, px, rgb, rgba, shrink, width)
+import Effect exposing (Effect)
+import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, paddingXY, paragraph, px, rgb, rgba, shrink, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
+import Flags
 import List.Extra
-import Theme exposing (Attribute, Element, Gradient, text, textInvariant, viewFlag)
+import Page exposing (Page)
+import Route exposing (Route)
+import Shared
+import Shared.Model exposing (Card, Country(..), Property(..))
+import Shared.Msg
+import Theme exposing (Attribute, Element, Gradient, column, text, textInvariant, viewFlag)
 import Translations
-import Types exposing (Country(..), FrontendMsg(..), PlayingModel, Property(..))
 
 
-view : PlayingModel -> Element FrontendMsg
-view model =
-    Theme.row
-        [ width fill
-        , height fill
-        ]
-        [ viewBack
-        , Theme.column
-            [ centerX
-            , centerY
-            , Theme.padding
-            , Element.spacing (Theme.rythm * 5 // 2)
-            ]
-            [ case model.current.guessFrom of
-                Name ->
-                    viewNameClue model
-
-                Flag ->
-                    viewFlagClue model
-            , case model.current.guessTo of
-                Name ->
-                    viewNameAnswers model
-
-                Flag ->
-                    viewFlagAnswers model
-            , nextButton model
-            ]
-        , viewScore model
-        ]
+page : Shared.Model -> Route () -> Page Model Msg
+page shared _ =
+    Page.new
+        { init = init shared
+        , update = update
+        , subscriptions = subscriptions
+        , view = view shared
+        }
 
 
-viewFlagClue : { a | current : Types.Card } -> Element msg
+
+-- INIT
+
+
+type alias Model =
+    Maybe InnerModel
+
+
+type alias InnerModel =
+    { current : Card
+    , picked : Maybe Country
+    , queue : List Card
+    , score : Int
+    }
+
+
+init : Shared.Model -> () -> ( Model, Effect Msg )
+init shared () =
+    case Flags.allCards shared.options shared.seed of
+        ( [], _ ) ->
+            ( Nothing, Effect.goHome )
+
+        ( head :: tail, newSeed ) ->
+            let
+                model : InnerModel
+                model =
+                    { current = head
+                    , queue = tail
+                    , picked = Nothing
+                    , score = 0
+                    }
+            in
+            ( Just model
+            , Effect.sendSharedMsg <| Shared.Msg.Seed newSeed
+            )
+
+
+
+-- UPDATE
+
+
+type Msg
+    = Pick Country
+    | Next
+
+
+update : Msg -> Model -> ( Model, Effect Msg )
+update msg maybeModel =
+    case maybeModel of
+        Nothing ->
+            ( maybeModel, Effect.goHome )
+
+        Just model ->
+            case msg of
+                Pick countryCode ->
+                    ( { model
+                        | picked = Just countryCode
+                        , score =
+                            if countryCode == model.current.guessing then
+                                model.score + 1
+
+                            else
+                                model.score
+                      }
+                        |> Just
+                    , Effect.none
+                    )
+
+                Next ->
+                    case model.queue of
+                        [] ->
+                            ( maybeModel
+                            , Effect.sendSharedMsg <|
+                                Shared.Msg.Finished { score = model.score }
+                            )
+
+                        head :: tail ->
+                            ( { model
+                                | current = head
+                                , queue = tail
+                                , picked = Nothing
+                              }
+                                |> Just
+                            , Effect.none
+                            )
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none
+
+
+
+-- VIEW
+
+
+view : Shared.Model -> Model -> Element Msg
+view shared maybeModel =
+    case maybeModel of
+        Nothing ->
+            Element.none
+
+        Just model ->
+            Theme.row
+                [ width fill
+                , height fill
+                ]
+                [ Theme.column
+                    [ centerX
+                    , centerY
+                    , Theme.padding
+                    , Element.spacing (Theme.rythm * 5 // 2)
+                    ]
+                    [ case model.current.guessFrom of
+                        Name ->
+                            viewNameClue model
+
+                        Flag ->
+                            viewFlagClue model
+                    , case model.current.guessTo of
+                        Name ->
+                            viewNameAnswers model
+
+                        Flag ->
+                            viewFlagAnswers model
+                    , nextButton model
+                    ]
+                , viewScore shared model
+                ]
+
+
+viewFlagClue : { a | current : Card } -> Element msg
 viewFlagClue { current } =
     viewFlag [ centerX ]
         { country = current.guessing
@@ -50,7 +170,7 @@ viewFlagClue { current } =
         }
 
 
-viewNameClue : { a | current : Types.Card } -> Element msg
+viewNameClue : { a | current : Card } -> Element msg
 viewNameClue { current } =
     paragraph
         [ Font.center
@@ -60,7 +180,7 @@ viewNameClue { current } =
         [ viewCountryName current.guessing ]
 
 
-viewFlagAnswers : PlayingModel -> Element FrontendMsg
+viewFlagAnswers : InnerModel -> Element Msg
 viewFlagAnswers ({ current } as model) =
     el [ centerX ] <|
         Theme.grid [ width fill ]
@@ -73,7 +193,7 @@ viewFlagAnswers ({ current } as model) =
             }
 
 
-viewNameAnswers : PlayingModel -> Element FrontendMsg
+viewNameAnswers : InnerModel -> Element Msg
 viewNameAnswers ({ current } as model) =
     Element.table [ width fill, Theme.spacing ]
         { data =
@@ -102,7 +222,7 @@ viewNameAnswers ({ current } as model) =
         }
 
 
-nextButton : { a | picked : Maybe Country } -> Element FrontendMsg
+nextButton : { a | picked : Maybe Country } -> Element Msg
 nextButton { picked } =
     Theme.button [ centerX ]
         { background =
@@ -121,7 +241,7 @@ nextButton { picked } =
         }
 
 
-viewNameButton : PlayingModel -> Country -> Element FrontendMsg
+viewNameButton : InnerModel -> Country -> Element Msg
 viewNameButton { current, picked } country =
     let
         attrs : List (Attribute msg)
@@ -163,7 +283,7 @@ viewNameButton { current, picked } country =
         }
 
 
-viewFlagButton : PlayingModel -> Country -> List (Element FrontendMsg)
+viewFlagButton : InnerModel -> Country -> List (Element Msg)
 viewFlagButton { picked, current } country =
     let
         badge : String -> Color -> Gradient -> List (Element msg)
@@ -239,22 +359,8 @@ viewFlagButton { picked, current } country =
             ]
 
 
-viewBack : Element FrontendMsg
-viewBack =
-    el
-        [ alignTop
-        , Theme.padding
-        ]
-    <|
-        Theme.button []
-            { background = Theme.colors.buttonBackground
-            , label = text Translations.back
-            , onPress = Just Back
-            }
-
-
-viewScore : PlayingModel -> Element msg
-viewScore model =
+viewScore : Shared.Model -> InnerModel -> Element msg
+viewScore shared model =
     column
         [ alignTop
         , alignRight
@@ -269,9 +375,9 @@ viewScore model =
             ]
             (el [ centerX, centerY ] <|
                 textInvariant <|
-                    String.fromInt (model.options.gameLength - List.length model.queue)
+                    String.fromInt (shared.options.gameLength - List.length model.queue)
                         ++ "/"
-                        ++ String.fromInt model.options.gameLength
+                        ++ String.fromInt shared.options.gameLength
             )
         , paragraph [ Font.center ] [ text <| Translations.score <| String.fromInt model.score ]
         ]

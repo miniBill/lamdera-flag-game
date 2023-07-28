@@ -9,7 +9,7 @@ import Gen.Basics
 import Gen.Cldr
 import Gen.CodeGen.Generate as Generate
 import Gen.Debug
-import Gen.Types
+import Gen.Shared.Model
 import Json.Encode
 import List.Extra
 import Maybe.Extra
@@ -39,7 +39,7 @@ file (Generate.Directory { files }) =
                 |> Maybe.withDefault (Gen.Debug.todo key)
     in
     (\country ->
-        Gen.Types.caseOf_.country country
+        Gen.Shared.Model.caseOf_.country country
             { iso3166 =
                 \countryCode ->
                     Gen.Cldr.caseOf_.countryCode countryCode
@@ -299,7 +299,7 @@ file (Generate.Directory { files }) =
             }
             |> Elm.withType (Annotation.tuple Annotation.int Annotation.int)
     )
-        |> Elm.fn ( "country", Just Gen.Types.annotation_.country )
+        |> Elm.fn ( "country", Just Gen.Shared.Model.annotation_.country )
         |> Elm.declaration "getAspectRatio"
         |> Elm.expose
         |> List.singleton

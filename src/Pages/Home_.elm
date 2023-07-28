@@ -1,27 +1,165 @@
-module Frontend.Homepage exposing (init, view)
+module Pages.Home_ exposing (Model, Msg(..), page)
 
-import Cldr
-import Element.WithContext as Element exposing (centerX, centerY, el, fill, shrink, width)
+import Cldr exposing (Locale)
+import Effect exposing (Effect)
+import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, shrink, width)
 import Element.WithContext.Font as Font
+import Element.WithContext.Input as Input
 import Flags
 import Html.Attributes
 import List.Extra
+import Page exposing (Page)
+import Route exposing (Route)
+import Shared
+import Shared.Model exposing (Difficulty(..), GameOptions, Property(..))
+import Shared.Msg
 import Theme exposing (Element, text)
 import Translations exposing (I18n)
-import Types exposing (Difficulty(..), FrontendMsg(..), GameOptions, HomepageMsg(..))
+import View exposing (View)
 
 
-view : GameOptions -> Element FrontendMsg
-view options =
-    Theme.grid [ centerX, centerY ]
-        { elements = startButtons options
-        , widths = [ shrink ]
+page : Shared.Model -> Route () -> Page Model Msg
+page shared _ =
+    Page.new
+        { init = init
+        , update = update
+        , subscriptions = subscriptions
+        , view = view shared
         }
+
+
+
+-- INIT
+
+
+type alias Model =
+    { changingLocale : Maybe String }
+
+
+init : () -> ( Model, Effect Msg )
+init _ =
+    ( { changingLocale = Nothing }
+    , Effect.none
+    )
+
+
+
+-- UPDATE
+
+
+type Msg
+    = Play
+    | ChangeOptions GameOptions
+    | ChangingLocale String
+    | Locale Locale
+
+
+update : Msg -> Model -> ( Model, Effect Msg )
+update msg model =
+    case msg of
+        ChangeOptions options ->
+            ( model
+            , Effect.sendSharedMsg <| Shared.Msg.ChangeOptions options
+            )
+
+        Locale locale ->
+            ( { model | changingLocale = Nothing }
+            , Effect.sendSharedMsg <| Shared.Msg.Locale locale
+            )
+
+        Play ->
+            ( model
+            , Effect.sendSharedMsg Shared.Msg.Play
+            )
+
+        ChangingLocale locale ->
+            ( { model | changingLocale = Just locale }
+            , Effect.none
+            )
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Sub.none
+
+
+
+-- VIEW
+
+
+propertyToString : Property -> I18n -> String
+propertyToString property =
+    case property of
+        Name ->
+            Translations.name
+
+        Flag ->
+            Translations.flag
+
+
+changingLocalePopup : Maybe String -> Element Msg
+changingLocalePopup maybeInput =
+    case maybeInput of
+        Nothing ->
+            Element.none
+
+        Just input ->
+            Theme.column
+                [ Theme.padding
+                , width fill
+                , height fill
+                , Theme.gradient Theme.colors.buttonBackground
+                ]
+                [ Input.text []
+                    { onChange = ChangingLocale
+                    , text = input
+                    , placeholder = Nothing
+                    , label = Input.labelAbove [] <| Theme.text Translations.search
+                    }
+                , Cldr.allLocales
+                    |> List.filterMap
+                        (\locale ->
+                            let
+                                name : String
+                                name =
+                                    Cldr.localeToName locale
+                            in
+                            if String.contains (String.toLower input) (String.toLower name) then
+                                Theme.button [ alignTop ]
+                                    { background = Theme.colors.buttonBackground
+                                    , label = Theme.textInvariant name
+                                    , onPress = Just <| Locale locale
+                                    }
+                                    |> Just
+
+                            else
+                                Nothing
+                        )
+                    |> Theme.wrappedRow []
+                ]
+
+
+view : Shared.Model -> Model -> View Msg
+view shared model =
+    el
+        [ width fill
+        , height fill
+        , inFront <| changingLocalePopup model.changingLocale
+        ]
+    <|
+        Theme.grid [ centerX, centerY ]
+            { elements = startButtons shared.options
+            , widths = [ shrink ]
+            }
 
 
 startButtons :
     GameOptions
-    -> List (List (Element FrontendMsg))
+    -> List (List (Element Msg))
 startButtons options =
     [ radios Translations.difficulty
         { toLabel = difficultyToString
@@ -32,10 +170,10 @@ startButtons options =
     , checkboxes Translations.guess
         { toLabel =
             \( f, t ) i18n ->
-                Types.propertyToString f i18n
+                propertyToString f i18n
                     ++ " → "
-                    ++ Types.propertyToString t i18n
-        , all = Types.allGuessPatterns
+                    ++ propertyToString t i18n
+        , all = Shared.Model.allGuessPatterns
         , get = .guessPatterns
         , set = \v -> { options | guessPatterns = v }
         }
@@ -59,7 +197,7 @@ startButtons options =
         }
     , radios Translations.gameLength
         { toLabel = \i _ -> String.fromInt i
-        , all = [ defaultGameLength, 100, List.length <| Flags.all options ]
+        , all = [ Shared.Model.defaultGameLength, 100, List.length <| Flags.all options ]
         , get = .gameLength
         , set = \v -> { options | gameLength = v }
         }
@@ -119,7 +257,7 @@ checkboxes :
         }
     ->
         ( I18n -> String
-        , GameOptions -> List (Element FrontendMsg)
+        , GameOptions -> List (Element Msg)
         )
 checkboxes label config =
     ( label
@@ -140,14 +278,13 @@ checkboxes label config =
                     { label = config.toLabel value
                     , selected = selected
                     , onPress =
-                        HomepageMsg <|
-                            ChangeOptions <|
-                                config.set <|
-                                    if selected then
-                                        List.Extra.remove value current
+                        ChangeOptions <|
+                            config.set <|
+                                if selected then
+                                    List.Extra.remove value current
 
-                                    else
-                                        value :: current
+                                else
+                                    value :: current
                     }
             )
             config.all
@@ -162,7 +299,7 @@ radios :
         , set : v -> GameOptions
         , all : List v
         }
-    -> ( I18n -> String, GameOptions -> List (Element FrontendMsg) )
+    -> ( I18n -> String, GameOptions -> List (Element Msg) )
 radios label config =
     ( label
     , \options ->
@@ -181,7 +318,7 @@ radios label config =
                 Theme.selectableButton [ Font.center, width fill ]
                     { label = config.toLabel value
                     , selected = selected
-                    , onPress = HomepageMsg <| ChangeOptions <| config.set value
+                    , onPress = ChangeOptions <| config.set value
                     }
             )
             config.all
@@ -199,18 +336,3 @@ difficultyToString difficulty =
 
         Hard ->
             Translations.hard
-
-
-defaultGameLength : Int
-defaultGameLength =
-    20
-
-
-init : GameOptions
-init =
-    { gameLength = defaultGameLength
-    , difficulty = Normal
-    , answersPerCard = 6
-    , guessPatterns = Types.allGuessPatterns
-    , sovereignOnly = True
-    }

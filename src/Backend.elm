@@ -1,7 +1,8 @@
 module Backend exposing (app)
 
+import Bridge exposing (ToBackend(..))
 import Lamdera exposing (ClientId, SessionId)
-import Types exposing (BackendModel, BackendMsg(..), ToBackend(..))
+import Types exposing (BackendModel, BackendMsg(..))
 
 
 app :

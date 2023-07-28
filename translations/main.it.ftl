@@ -3,8 +3,6 @@ title = Indovina la bandiera
 
 search = Cerca
 
-back = Indietro
-
 difficulty = Difficoltà
 easy = Facile
 normal = Normale

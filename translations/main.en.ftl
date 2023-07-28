@@ -2,8 +2,6 @@ title = Flag game
 
 search = Search
 
-back = Back
-
 difficulty = Difficulty
 easy = Easy
 normal = Normal

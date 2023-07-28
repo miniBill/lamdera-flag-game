@@ -3,8 +3,6 @@ title = Flaggenspiel
 
 search = Suche
 
-back = Zurück
-
 difficulty = Schwierigkeitsgrad
 easy = Einfach
 normal = Normal

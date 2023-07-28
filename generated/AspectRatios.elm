@@ -6,13 +6,13 @@ module AspectRatios exposing (getAspectRatio)
 
 
 import Cldr
-import Types
+import Shared.Model
 
 
-getAspectRatio : Types.Country -> ( Int, Int )
+getAspectRatio : Shared.Model.Country -> ( Int, Int )
 getAspectRatio country =
     case country of
-        Types.Iso3166 cldrCountryCode ->
+        Shared.Model.Iso3166 cldrCountryCode ->
             case cldrCountryCode of
                 Cldr.AD ->
                     ( 10, 7 )
@@ -764,5 +764,5 @@ getAspectRatio country =
                 Cldr.ZW ->
                     ( 2, 1 )
 
-        Types.PartiallyRecognized never ->
+        Shared.Model.PartiallyRecognized never ->
             Basics.never never
