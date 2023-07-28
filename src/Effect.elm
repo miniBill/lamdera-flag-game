@@ -1,18 +1,17 @@
 module Effect exposing
     ( Effect
     , none, batch
-    , sendCmd, sendMsg
-    , pushRoute, replaceRoute, loadExternalUrl
+    , sendCmd, sendMsg, sendSharedMsg
+    , pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
     , map, toCmd
-    , goHome, sendSharedMsg
     )
 
 {-|
 
 @docs Effect
 @docs none, batch
-@docs sendCmd, sendMsg
-@docs pushRoute, replaceRoute, loadExternalUrl
+@docs sendCmd, sendMsg, sendSharedMsg
+@docs pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
 
 @docs map, toCmd
 
@@ -37,6 +36,7 @@ type Effect msg
     | PushUrl String
     | ReplaceUrl String
     | LoadExternalUrl String
+    | GoBack
       -- SHARED
     | SendSharedMsg Shared.Msg.Msg
 
@@ -87,6 +87,11 @@ goHome =
         , query = Dict.empty
         , hash = Nothing
         }
+
+
+goBack : Effect msg
+goBack =
+    GoBack
 
 
 
@@ -150,6 +155,9 @@ map fn effect =
         ReplaceUrl url ->
             ReplaceUrl url
 
+        GoBack ->
+            GoBack
+
         LoadExternalUrl url ->
             LoadExternalUrl url
 
@@ -182,6 +190,9 @@ toCmd options effect =
 
         PushUrl url ->
             Browser.Navigation.pushUrl options.key url
+
+        GoBack ->
+            Browser.Navigation.back options.key 1
 
         ReplaceUrl url ->
             Browser.Navigation.replaceUrl options.key url

@@ -1,12 +1,10 @@
 module Pages.Finished exposing (Model, Msg, page)
 
-import Dict
 import Effect exposing (Effect)
 import Element.WithContext as Element exposing (centerX, centerY, el, fill, width)
 import Element.WithContext.Font as Font
 import Page exposing (Page)
 import Route exposing (Route)
-import Route.Path
 import Shared
 import Theme exposing (text)
 import Translations
@@ -14,9 +12,9 @@ import View exposing (View)
 
 
 page : Shared.Model -> Route () -> Page Model Msg
-page shared _ =
+page shared route =
     Page.new
-        { init = init
+        { init = init route
         , update = update
         , subscriptions = subscriptions
         , view = view shared
@@ -31,9 +29,14 @@ type alias Model =
     Maybe { score : Int }
 
 
-init : () -> ( Model, Effect Msg )
-init () =
-    ( Nothing, Effect.goHome )
+init : Route () -> () -> ( Model, Effect Msg )
+init route () =
+    case Maybe.andThen String.toInt route.hash of
+        Nothing ->
+            ( Nothing, Effect.goHome )
+
+        Just score ->
+            ( Just { score = score }, Effect.none )
 
 
 
@@ -48,7 +51,7 @@ update : Msg -> Model -> ( Model, Effect Msg )
 update msg model =
     case msg of
         Play ->
-            ( model, Effect.goHome )
+            ( model, Effect.goBack )
 
 
 

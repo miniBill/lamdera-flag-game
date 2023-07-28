@@ -91,7 +91,13 @@ update _ msg model =
             )
 
         Shared.Msg.Finished { score } ->
-            Debug.todo "branch 'Finished' not implemented"
+            ( model
+            , Effect.replaceRoute
+                { path = Route.Path.Finished
+                , query = Dict.empty
+                , hash = Just <| String.fromInt score
+                }
+            )
 
         Shared.Msg.Play ->
             ( model
