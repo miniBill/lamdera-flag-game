@@ -1,6 +1,7 @@
 ## Needed
 
 - Sovereign note
+- Better difficulty behavior
 
 ## Tweaks
 
