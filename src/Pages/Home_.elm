@@ -151,10 +151,11 @@ view shared model =
         , inFront <| changingLocalePopup model.changingLocale
         ]
     <|
-        Theme.grid [ centerX, centerY ]
-            { elements = startButtons shared.options
-            , widths = [ shrink ]
-            }
+        el [ centerX, centerY ] <|
+            Theme.grid [ centerX, centerY ]
+                { elements = startButtons shared.options
+                , widths = [ shrink ]
+                }
 
 
 startButtons :

@@ -1,6 +1,7 @@
 ## Needed
 
-- Azerbaijiani (Latin)
+- Missing glyphs in font
+  - Azerbaijiani (Latin)
 - Sovereign note
 - Better difficulty behavior
 

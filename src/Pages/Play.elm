@@ -2,7 +2,7 @@ module Pages.Play exposing (Model, Msg, page)
 
 import Cldr.Localized
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, paddingXY, paragraph, px, rgb, rgba, shrink, width)
+import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, paddingXY, paragraph, px, rgb, rgba, shrink, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
@@ -138,6 +138,7 @@ view shared maybeModel =
             Theme.row
                 [ width fill
                 , height fill
+                , inFront <| viewScore shared model
                 ]
                 [ Theme.column
                     [ centerX
@@ -159,7 +160,6 @@ view shared maybeModel =
                             viewFlagAnswers model
                     , nextButton model
                     ]
-                , viewScore shared model
                 ]
 
 
