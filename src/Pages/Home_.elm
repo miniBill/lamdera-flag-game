@@ -125,7 +125,7 @@ changingLocalePopup maybeInput =
                             let
                                 name : String
                                 name =
-                                    Cldr.localeToName locale
+                                    Cldr.localeToEnglishName locale
                             in
                             if String.contains (String.toLower input) (String.toLower name) then
                                 Theme.button [ alignTop ]
@@ -207,7 +207,7 @@ startButtons options =
                 (\context ->
                     Theme.selectableButton [ Font.center, width fill ]
                         { selected = True
-                        , label = \_ -> Cldr.localeToName context.locale
+                        , label = \_ -> Cldr.localeToEnglishName context.locale
                         , onPress = Locale context.locale
                         }
                 )
