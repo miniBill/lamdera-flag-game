@@ -1,17 +1,16 @@
 module Effect exposing
     ( Effect
     , none, batch
-    , sendCmd, changeOptions, locale, play, finished, seed, initializeRandom, loadLocalStorage, saveToLocalStorage
+    , sendCmd, changeOptions, locale, play, finished, seed, loadLocalStorage, saveToLocalStorage, loadLocale
     , pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
     , map, toCmd
-    , loadLocale
     )
 
 {-|
 
 @docs Effect
 @docs none, batch
-@docs sendCmd, changeOptions, locale, play, finished, seed, initializeRandom, loadLocalStorage, saveToLocalStorage
+@docs sendCmd, changeOptions, locale, play, finished, seed, loadLocalStorage, saveToLocalStorage, loadLocale
 @docs pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
 
 @docs map, toCmd
@@ -44,7 +43,6 @@ type Effect msg
     | GoBack
       -- SHARED
     | SendSharedMsg Shared.Msg.Msg
-    | InitializeRandom (Seed -> msg)
     | LoadLocalStorage String
     | SaveToLocalStorage { key : String, value : Json.Encode.Value }
     | LoadLocale String
@@ -106,11 +104,6 @@ loadLocale =
 saveToLocalStorage : { key : String, value : Json.Encode.Value } -> Effect msg
 saveToLocalStorage pair =
     SaveToLocalStorage pair
-
-
-initializeRandom : (Random.Seed -> msg) -> Effect msg
-initializeRandom =
-    InitializeRandom
 
 
 goHome : Effect msg
@@ -202,9 +195,6 @@ map fn effect =
         SendSharedMsg sharedMsg ->
             SendSharedMsg sharedMsg
 
-        InitializeRandom toMsg ->
-            InitializeRandom (toMsg >> fn)
-
         LoadLocalStorage key ->
             LoadLocalStorage key
 
@@ -253,9 +243,6 @@ toCmd options effect =
         SendSharedMsg sharedMsg ->
             Task.succeed sharedMsg
                 |> Task.perform options.fromSharedMsg
-
-        InitializeRandom toMsg ->
-            Random.generate toMsg Random.independentSeed
 
         LoadLocalStorage key ->
             PkgPorts.loadLocalStorage key

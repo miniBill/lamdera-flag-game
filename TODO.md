@@ -1,14 +1,14 @@
 ## Needed
 
+- Have continent option
+
+- Load saved settings before starting game
 - Missing glyphs in font
   - Azerbaijiani (Latin)
 - Sovereign note
 - Better difficulty behavior
 
 ## Tweaks
-
-- Persist settings
-- Have continent option
 
 - Mobile layout
 - Prevent duplicates from showing up in the same question

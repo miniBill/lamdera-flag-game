@@ -59,6 +59,7 @@ config =
         |> List.map
             (Rule.ignoreErrorsForDirectories
                 [ "src/Evergreen"
+                , "generated"
                 , ".elm-land"
                 ]
                 >> Rule.ignoreErrorsForFiles

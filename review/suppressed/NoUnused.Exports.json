@@ -4,6 +4,7 @@
   "learn more": "elm-review suppress --help",
   "suppressions": [
     { "count": 1, "filePath": "src/Effect.elm" },
-    { "count": 1, "filePath": "src/Env.elm" }
+    { "count": 1, "filePath": "src/Env.elm" },
+    { "count": 1, "filePath": "src/PkgPorts.elm" }
   ]
 }
