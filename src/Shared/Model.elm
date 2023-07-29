@@ -1,4 +1,4 @@
-module Shared.Model exposing (Card, Context, Country(..), Difficulty(..), GameOptions, Model, Property(..), allGuessPatterns, countryToAlpha2, defaultGameLength, defaultGameOptions)
+module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, Property(..), allContinents, allGuessPatterns, countryToAlpha2, defaultGameLength, defaultGameOptions)
 
 {-| -}
 
@@ -72,7 +72,18 @@ type alias GameOptions =
     , answersPerCard : Int
     , guessPatterns : List ( Property, Property )
     , sovereignOnly : Bool
+    , continents : List Continent
     }
+
+
+type Continent
+    = Africa
+    | Antartica
+    | Asia
+    | Europe
+    | NorthAmerica
+    | Oceania
+    | SouthAmerica
 
 
 defaultGameLength : Int
@@ -87,6 +98,7 @@ defaultGameOptions =
     , answersPerCard = 6
     , guessPatterns = allGuessPatterns
     , sovereignOnly = True
+    , continents = allContinents
     }
 
 
@@ -94,4 +106,16 @@ allGuessPatterns : List ( Property, Property )
 allGuessPatterns =
     [ ( Flag, Name )
     , ( Name, Flag )
+    ]
+
+
+allContinents : List Continent
+allContinents =
+    [ Africa
+    , Antartica
+    , Asia
+    , Europe
+    , NorthAmerica
+    , Oceania
+    , SouthAmerica
     ]

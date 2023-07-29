@@ -22,6 +22,15 @@ gameLength = Game Length
 gameLanguage = Game Language
 change = Change
 
+continents = Continents
+africa = Africa
+antartica = Antartica
+asia = Asia
+europe = Europe
+northAmerica = North America
+oceania = Oceania
+southAmerica = South America
+
 play = Play
 
 score = Score: {$score}

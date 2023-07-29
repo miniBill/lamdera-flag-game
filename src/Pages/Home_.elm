@@ -11,7 +11,7 @@ import List.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
-import Shared.Model exposing (Difficulty(..), GameOptions, Property(..))
+import Shared.Model exposing (Continent(..), Difficulty(..), GameOptions, Property(..))
 import Theme exposing (Element, text)
 import Translations exposing (I18n)
 import View exposing (View)
@@ -218,6 +218,34 @@ startButtons options =
                 }
             ]
       )
+    , checkboxes Translations.continents
+        { toLabel =
+            \continent ->
+                case continent of
+                    Africa ->
+                        Translations.africa
+
+                    Antartica ->
+                        Translations.antartica
+
+                    Asia ->
+                        Translations.asia
+
+                    Europe ->
+                        Translations.europe
+
+                    NorthAmerica ->
+                        Translations.northAmerica
+
+                    Oceania ->
+                        Translations.oceania
+
+                    SouthAmerica ->
+                        Translations.southAmerica
+        , all = Shared.Model.allContinents
+        , get = .continents
+        , set = \v -> { options | continents = v }
+        }
     , ( \_ -> ""
       , let
             filler : Element msg
@@ -266,9 +294,9 @@ checkboxes label config =
             current : List v
             current =
                 config.get options
-        in
-        List.map
-            (\value ->
+
+            toButton : v -> Element Msg
+            toButton value =
                 let
                     selected : Bool
                     selected =
@@ -286,8 +314,12 @@ checkboxes label config =
                                 else
                                     value :: current
                     }
-            )
-            config.all
+        in
+        config.all
+            |> List.Extra.greedyGroupsOf 4
+            |> List.map (\group -> Theme.row [ width fill ] <| List.map toButton group)
+            |> Theme.column [ width fill ]
+            |> List.singleton
     )
 
 

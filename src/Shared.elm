@@ -22,7 +22,7 @@ import PkgPorts
 import Random
 import Route exposing (Route)
 import Route.Path
-import Shared.Model exposing (Context, Difficulty(..), GameOptions, Model, Property(..))
+import Shared.Model exposing (Context, Continent(..), Difficulty(..), GameOptions, Model, Property(..))
 import Shared.Msg exposing (Msg)
 
 
@@ -134,20 +134,59 @@ update _ msg model =
 gameOptionsCodec : Codec GameOptions
 gameOptionsCodec =
     Codec.object
-        (\gameLength difficulty answersPerCard guessPatterns sovereignOnly ->
+        (\gameLength difficulty answersPerCard guessPatterns sovereignOnly continents ->
             { gameLength = gameLength
             , difficulty = difficulty
             , answersPerCard = answersPerCard
             , guessPatterns = guessPatterns
             , sovereignOnly = sovereignOnly
+            , continents = Maybe.withDefault [] continents
             }
+                |> fixOptions
         )
         |> Codec.field "gameLength" .gameLength Codec.int
         |> Codec.field "difficulty" .difficulty difficultyCodec
         |> Codec.field "answersPerCard" .answersPerCard Codec.int
         |> Codec.field "guessPatterns" .guessPatterns (Codec.list (Codec.tuple propertyCodec propertyCodec))
         |> Codec.field "sovereignOnly" .sovereignOnly Codec.bool
+        |> Codec.maybeField "continents" (.continents >> Just) (Codec.list continentCodec)
         |> Codec.buildObject
+
+
+continentCodec : Codec Continent
+continentCodec =
+    Codec.custom
+        (\fAfrica fAntartica fAsia fEurope fNorthAmerica fOceania fSouthAmerica value ->
+            case value of
+                Africa ->
+                    fAfrica
+
+                Antartica ->
+                    fAntartica
+
+                Asia ->
+                    fAsia
+
+                Europe ->
+                    fEurope
+
+                NorthAmerica ->
+                    fNorthAmerica
+
+                Oceania ->
+                    fOceania
+
+                SouthAmerica ->
+                    fSouthAmerica
+        )
+        |> Codec.variant0 "Africa" Africa
+        |> Codec.variant0 "Antartica" Antartica
+        |> Codec.variant0 "Asia" Asia
+        |> Codec.variant0 "Europe" Europe
+        |> Codec.variant0 "NorthAmerica" NorthAmerica
+        |> Codec.variant0 "Oceania" Oceania
+        |> Codec.variant0 "SouthAmerica" SouthAmerica
+        |> Codec.buildCustom
 
 
 propertyCodec : Codec Property
@@ -203,15 +242,27 @@ localeCodec =
 
 fixOptions : GameOptions -> GameOptions
 fixOptions options =
+    let
+        fixed1 : GameOptions
+        fixed1 =
+            { options
+                | continents =
+                    if List.isEmpty options.continents then
+                        Shared.Model.allContinents
+
+                    else
+                        options.continents
+            }
+    in
     -- TODO: FIX THIS
-    if options.gameLength > 100 then
-        { options
+    if fixed1.gameLength > 100 then
+        { fixed1
             | gameLength =
-                List.length <| Flags.all options
+                List.length <| Flags.all fixed1
         }
 
     else
-        options
+        fixed1
 
 
 

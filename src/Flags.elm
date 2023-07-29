@@ -1,10 +1,10 @@
-module Flags exposing (Continent(..), Sovereignity, all, allCards, continentToString, getSimilarFlags, toContinent)
+module Flags exposing (Sovereignity, all, allCards, continentToString, getSimilarFlags, toContinent)
 
 import Cldr exposing (CountryCode(..))
 import List.Extra
 import Random
 import Random.List
-import Shared.Model exposing (Card, Country(..), Difficulty(..), GameOptions, Property(..))
+import Shared.Model exposing (Card, Continent(..), Country(..), Difficulty(..), GameOptions, Property(..))
 
 
 allCards : GameOptions -> Random.Seed -> ( List Card, Random.Seed )
@@ -158,16 +158,6 @@ propertyGenerator { guessPatterns } =
 
         phead :: ptail ->
             Random.uniform phead ptail
-
-
-type Continent
-    = Africa
-    | Antartica
-    | Asia
-    | Europe
-    | NorthAmerica
-    | Oceania
-    | SouthAmerica
 
 
 continentToString : Continent -> String
@@ -1968,13 +1958,19 @@ toSovereignity country =
                     Sovereign
 
 
-all : { a | sovereignOnly : Bool } -> List Country
-all { sovereignOnly } =
+all : { a | sovereignOnly : Bool, continents : List Continent } -> List Country
+all { sovereignOnly, continents } =
+    let
+        continentFiltered =
+            Cldr.all
+                |> List.map Iso3166
+                |> List.filter (\country -> List.member (toContinent country) continents)
+    in
     if sovereignOnly then
-        List.filter isSovereign <| List.map Iso3166 Cldr.all
+        List.filter isSovereign continentFiltered
 
     else
-        List.map Iso3166 Cldr.all
+        continentFiltered
 
 
 isSovereign : Country -> Bool
