@@ -1,16 +1,17 @@
 module Effect exposing
     ( Effect
-    , none
-    , sendCmd, changeOptions, locale, play, finished, seed
+    , none, batch
+    , sendCmd, changeOptions, locale, play, finished, seed, initializeRandom, loadLocalStorage, saveToLocalStorage
     , pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
     , map, toCmd
+    , loadLocale
     )
 
 {-|
 
 @docs Effect
-@docs none
-@docs sendCmd, changeOptions, locale, play, finished, seed
+@docs none, batch
+@docs sendCmd, changeOptions, locale, play, finished, seed, initializeRandom, loadLocalStorage, saveToLocalStorage
 @docs pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
 
 @docs map, toCmd
@@ -20,6 +21,8 @@ module Effect exposing
 import Browser.Navigation
 import Cldr exposing (Locale)
 import Dict exposing (Dict)
+import Json.Encode
+import PkgPorts
 import Random exposing (Seed)
 import Route
 import Route.Path
@@ -32,6 +35,7 @@ import Url exposing (Url)
 type Effect msg
     = -- BASICS
       None
+    | Batch (List (Effect msg))
     | SendCmd (Cmd msg)
       -- ROUTING
     | PushUrl String
@@ -40,6 +44,10 @@ type Effect msg
     | GoBack
       -- SHARED
     | SendSharedMsg Shared.Msg.Msg
+    | InitializeRandom (Seed -> msg)
+    | LoadLocalStorage String
+    | SaveToLocalStorage { key : String, value : Json.Encode.Value }
+    | LoadLocale String
 
 
 
@@ -51,6 +59,11 @@ type Effect msg
 none : Effect msg
 none =
     None
+
+
+batch : List (Effect msg) -> Effect msg
+batch =
+    Batch
 
 
 {-| Send a normal `Cmd msg` as an effect, something like `Http.get` or `Random.generate`.
@@ -85,6 +98,21 @@ seed newSeed =
     SendSharedMsg <| Shared.Msg.Seed newSeed
 
 
+loadLocale : String -> Effect msg
+loadLocale =
+    LoadLocale
+
+
+saveToLocalStorage : { key : String, value : Json.Encode.Value } -> Effect msg
+saveToLocalStorage pair =
+    SaveToLocalStorage pair
+
+
+initializeRandom : (Random.Seed -> msg) -> Effect msg
+initializeRandom =
+    InitializeRandom
+
+
 goHome : Effect msg
 goHome =
     replaceRoute
@@ -97,6 +125,11 @@ goHome =
 goBack : Effect msg
 goBack =
     GoBack
+
+
+loadLocalStorage : String -> Effect msg
+loadLocalStorage key =
+    LoadLocalStorage key
 
 
 
@@ -148,6 +181,9 @@ map fn effect =
         None ->
             None
 
+        Batch effects ->
+            Batch (List.map (map fn) effects)
+
         SendCmd cmd ->
             SendCmd (Cmd.map fn cmd)
 
@@ -165,6 +201,18 @@ map fn effect =
 
         SendSharedMsg sharedMsg ->
             SendSharedMsg sharedMsg
+
+        InitializeRandom toMsg ->
+            InitializeRandom (toMsg >> fn)
+
+        LoadLocalStorage key ->
+            LoadLocalStorage key
+
+        LoadLocale key ->
+            LoadLocale key
+
+        SaveToLocalStorage pair ->
+            SaveToLocalStorage pair
 
 
 {-| Elm Land depends on this function to perform your effects.
@@ -184,6 +232,9 @@ toCmd options effect =
         None ->
             Cmd.none
 
+        Batch effects ->
+            Cmd.batch (List.map (toCmd options) effects)
+
         SendCmd cmd ->
             cmd
 
@@ -202,3 +253,15 @@ toCmd options effect =
         SendSharedMsg sharedMsg ->
             Task.succeed sharedMsg
                 |> Task.perform options.fromSharedMsg
+
+        InitializeRandom toMsg ->
+            Random.generate toMsg Random.independentSeed
+
+        LoadLocalStorage key ->
+            PkgPorts.loadLocalStorage key
+
+        SaveToLocalStorage pair ->
+            PkgPorts.saveToLocalStorage pair
+
+        LoadLocale key ->
+            PkgPorts.loadLocale key

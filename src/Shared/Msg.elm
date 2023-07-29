@@ -20,3 +20,4 @@ type Msg
     | ChangeOptions GameOptions
     | Play
     | Finished { score : Int }
+    | Nop
