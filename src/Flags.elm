@@ -1961,6 +1961,7 @@ toSovereignity country =
 all : { a | sovereignOnly : Bool, continents : List Continent } -> List Country
 all { sovereignOnly, continents } =
     let
+        continentFiltered : List Country
         continentFiltered =
             Cldr.all
                 |> List.map Iso3166
