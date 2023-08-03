@@ -41,7 +41,10 @@ type alias Model =
 init : () -> ( Model, Effect Msg )
 init () =
     ( { groups =
-            Flags.all { sovereignOnly = False }
+            Flags.all
+                { sovereignOnly = False
+                , continents = Shared.Model.allContinents
+                }
                 |> List.foldl
                     (\country ( acc, setAcc ) ->
                         if Set.member (countryToAlpha2 country) setAcc then
