@@ -52,9 +52,9 @@ This is identical to the Belarusian version.
     BZ Беліз
     CA Канада
     CC Какосавыя (Кілінг) астравы
-    CD Конга (Кіншаса)
+    CD Конга (ДРК)
     CF Цэнтральна-Афрыканская Рэспубліка
-    CG Конга - Бразавіль
+    CG Рэспубліка Конга
     CH Швейцарыя
     CI Кот-д’Івуар
     CK Астравы Кука
@@ -68,7 +68,7 @@ This is identical to the Belarusian version.
     CW Кюрасаа
     CX Востраў Каляд
     CY Кіпр
-    CZ Чэхія
+    CZ Чэшская Рэспубліка
     DE Германія
     DJ Джыбуці
     DK Данія
@@ -107,7 +107,7 @@ This is identical to the Belarusian version.
     GU Гуам
     GW Гвінея-Бісау
     GY Гаяна
-    HK Ганконг, САР (Кітай)
+    HK Ганконг
     HM Астравы Херд і Макдональд
     HN Гандурас
     HR Харватыя
@@ -160,7 +160,7 @@ This is identical to the Belarusian version.
     ML Малі
     MM М’янма (Бірма)
     MN Манголія
-    MO Макаа, САР (Кітай)
+    MO Макаа
     MP Паўночныя Марыянскія астравы
     MQ Марцініка
     MR Маўрытанія
@@ -195,7 +195,7 @@ This is identical to the Belarusian version.
     PM Сен-П’ер і Мікелон
     PN Астравы Піткэрн
     PR Пуэрта-Рыка
-    PS Палесцінскія Тэрыторыі
+    PS Палесціна
     PT Партугалія
     PW Палау
     PY Парагвай
@@ -233,7 +233,7 @@ This is identical to the Belarusian version.
     TH Тайланд
     TJ Таджыкістан
     TK Такелау
-    TL Тымор-Лешці
+    TL Усходні Тымор
     TM Туркменістан
     TN Туніс
     TO Тонга

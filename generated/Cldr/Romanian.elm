@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Canada
     CC Insulele Cocos (Keeling)
-    CD Congo - Kinshasa
+    CD Congo (Republica Democrată Congo)
     CF Republica Centrafricană
-    CG Congo - Brazzaville
+    CG Congo (Republica)
     CH Elveția
     CI Côte d’Ivoire
     CK Insulele Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Insula Christmas
     CY Cipru
-    CZ Cehia
+    CZ Republica Cehă
     DE Germania
     DJ Djibouti
     DK Danemarca
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guineea-Bissau
     GY Guyana
-    HK R.A.S. Hong Kong, China
+    HK Hong Kong
     HM Insula Heard și Insulele McDonald
     HN Honduras
     HR Croația
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Birmania)
     MN Mongolia
-    MO R.A.S. Macao, China
+    MO Macao
     MP Insulele Mariane de Nord
     MQ Martinica
     MR Mauritania
@@ -192,7 +192,7 @@ import Cldr
     PM Saint-Pierre și Miquelon
     PN Insulele Pitcairn
     PR Puerto Rico
-    PS Teritoriile Palestiniene
+    PS Palestina
     PT Portugalia
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Thailanda
     TJ Tadjikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Timorul de Est
     TM Turkmenistan
     TN Tunisia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Insulele Cocos (Keeling)"
 
         Cldr.CD ->
-            "Congo - Kinshasa"
+            "Congo (Republica Democrată Congo)"
 
         Cldr.CF ->
             "Republica Centrafricană"
 
         Cldr.CG ->
-            "Congo - Brazzaville"
+            "Congo (Republica)"
 
         Cldr.CH ->
             "Elveția"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Cipru"
 
         Cldr.CZ ->
-            "Cehia"
+            "Republica Cehă"
 
         Cldr.DE ->
             "Germania"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "R.A.S. Hong Kong, China"
+            "Hong Kong"
 
         Cldr.HM ->
             "Insula Heard și Insulele McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolia"
 
         Cldr.MO ->
-            "R.A.S. Macao, China"
+            "Macao"
 
         Cldr.MP ->
             "Insulele Mariane de Nord"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Teritoriile Palestiniene"
+            "Palestina"
 
         Cldr.PT ->
             "Portugalia"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Timorul de Est"
 
         Cldr.TM ->
             "Turkmenistan"

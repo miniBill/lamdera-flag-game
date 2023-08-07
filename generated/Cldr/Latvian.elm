@@ -49,9 +49,9 @@ import Cldr
     BZ Beliza
     CA Kanāda
     CC Kokosu (Kīlinga) salas
-    CD Kongo (Kinšasa)
+    CD Kongo Demokrātiskā Republika
     CF Centrālāfrikas Republika
-    CG Kongo (Brazavila)
+    CG Kongo (Republika)
     CH Šveice
     CI Kotdivuāra
     CK Kuka salas
@@ -65,7 +65,7 @@ import Cldr
     CW Kirasao
     CX Ziemsvētku sala
     CY Kipra
-    CZ Čehija
+    CZ Čehijas Republika
     DE Vācija
     DJ Džibutija
     DK Dānija
@@ -104,7 +104,7 @@ import Cldr
     GU Guama
     GW Gvineja-Bisava
     GY Gajāna
-    HK Ķīnas īpašās pārvaldes apgabals Honkonga
+    HK Honkonga
     HM Hērda sala un Makdonalda salas
     HN Hondurasa
     HR Horvātija
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Mjanma (Birma)
     MN Mongolija
-    MO ĶTR īpašais administratīvais reģions Makao
+    MO Makao
     MP Ziemeļu Marianas salas
     MQ Martinika
     MR Mauritānija
@@ -192,7 +192,7 @@ import Cldr
     PM Senpjēra un Mikelona
     PN Pitkērnas salas
     PR Puertoriko
-    PS Palestīnas teritorijas
+    PS Palestīna
     PT Portugāle
     PW Palau
     PY Paragvaja
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokosu (Kīlinga) salas"
 
         Cldr.CD ->
-            "Kongo (Kinšasa)"
+            "Kongo Demokrātiskā Republika"
 
         Cldr.CF ->
             "Centrālāfrikas Republika"
 
         Cldr.CG ->
-            "Kongo (Brazavila)"
+            "Kongo (Republika)"
 
         Cldr.CH ->
             "Šveice"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kipra"
 
         Cldr.CZ ->
-            "Čehija"
+            "Čehijas Republika"
 
         Cldr.DE ->
             "Vācija"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gajāna"
 
         Cldr.HK ->
-            "Ķīnas īpašās pārvaldes apgabals Honkonga"
+            "Honkonga"
 
         Cldr.HM ->
             "Hērda sala un Makdonalda salas"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolija"
 
         Cldr.MO ->
-            "ĶTR īpašais administratīvais reģions Makao"
+            "Makao"
 
         Cldr.MP ->
             "Ziemeļu Marianas salas"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puertoriko"
 
         Cldr.PS ->
-            "Palestīnas teritorijas"
+            "Palestīna"
 
         Cldr.PT ->
             "Portugāle"

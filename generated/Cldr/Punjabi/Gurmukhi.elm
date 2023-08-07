@@ -52,9 +52,9 @@ This is identical to the Punjabi version.
     BZ ਬੇਲੀਜ਼
     CA ਕੈਨੇਡਾ
     CC ਕੋਕੋਸ (ਕੀਲਿੰਗ) ਟਾਪੂ
-    CD ਕਾਂਗੋ - ਕਿੰਸ਼ਾਸਾ
+    CD ਕਾਂਗੋ (ਡੀਆਰਸੀ)
     CF ਕੇਂਦਰੀ ਅਫ਼ਰੀਕੀ ਗਣਰਾਜ
-    CG ਕਾਂਗੋ - ਬ੍ਰਾਜ਼ਾਵਿਲੇ
+    CG ਕਾਂਗੋ ਗਣਰਾਜ
     CH ਸਵਿਟਜ਼ਰਲੈਂਡ
     CI ਕੋਟ ਡੀਵੋਆਰ
     CK ਕੁੱਕ ਟਾਪੂ
@@ -68,7 +68,7 @@ This is identical to the Punjabi version.
     CW ਕੁਰਾਕਾਓ
     CX ਕ੍ਰਿਸਮਿਸ ਟਾਪੂ
     CY ਸਾਇਪ੍ਰਸ
-    CZ ਚੈਕੀਆ
+    CZ ਚੈੱਕ ਗਣਰਾਜ
     DE ਜਰਮਨੀ
     DJ ਜ਼ੀਬੂਤੀ
     DK ਡੈਨਮਾਰਕ
@@ -107,7 +107,7 @@ This is identical to the Punjabi version.
     GU ਗੁਆਮ
     GW ਗਿਨੀ-ਬਿਸਾਉ
     GY ਗੁਯਾਨਾ
-    HK ਹਾਂਗ ਕਾਂਗ ਐਸਏਆਰ ਚੀਨ
+    HK ਹਾਂਗ ਕਾਂਗ
     HM ਹਰਡ ਤੇ ਮੈਕਡੋਨਾਲਡ ਟਾਪੂ
     HN ਹੋਂਡੁਰਸ
     HR ਕਰੋਏਸ਼ੀਆ
@@ -160,7 +160,7 @@ This is identical to the Punjabi version.
     ML ਮਾਲੀ
     MM ਮਿਆਂਮਾਰ (ਬਰਮਾ)
     MN ਮੰਗੋਲੀਆ
-    MO ਮਕਾਉ ਐਸਏਆਰ ਚੀਨ
+    MO ਮਕਾਉ
     MP ਉੱਤਰੀ ਮਾਰੀਆਨਾ ਟਾਪੂ
     MQ ਮਾਰਟੀਨਿਕ
     MR ਮੋਰਿਟਾਨੀਆ
@@ -195,7 +195,7 @@ This is identical to the Punjabi version.
     PM ਸੇਂਟ ਪੀਅਰੇ ਐਂਡ ਮਿਕੇਲਨ
     PN ਪਿਟਕੇਰਨ ਟਾਪੂ
     PR ਪਿਊਰਟੋ ਰਿਕੋ
-    PS ਫਿਲੀਸਤੀਨੀ ਇਲਾਕਾ
+    PS ਫਿਲੀਸਤੀਨ
     PT ਪੁਰਤਗਾਲ
     PW ਪਲਾਉ
     PY ਪੈਰਾਗਵੇ
@@ -233,7 +233,7 @@ This is identical to the Punjabi version.
     TH ਥਾਈਲੈਂਡ
     TJ ਤਾਜਿਕਿਸਤਾਨ
     TK ਟੋਕੇਲਾਉ
-    TL ਤਿਮੋਰ-ਲੇਸਤੇ
+    TL ਪੂਰਬ ਤਿਮੋਰ
     TM ਤੁਰਕਮੇਨਿਸਤਾਨ
     TN ਟਿਊਨੀਸ਼ੀਆ
     TO ਟੌਂਗਾ

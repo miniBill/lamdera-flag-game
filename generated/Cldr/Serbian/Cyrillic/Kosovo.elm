@@ -50,9 +50,9 @@ import Cldr.Serbian.Cyrillic
     BZ Белизе
     CA Канада
     CC Кокосова (Килингова) Острва
-    CD Конго - Киншаса
+    CD Конго (ДРК)
     CF Централноафричка Република
-    CG Конго
+    CG Конго (Република)
     CH Швајцарска
     CI Обала Слоноваче (Кот д’Ивоар)
     CK Кукова Острва
@@ -105,7 +105,7 @@ import Cldr.Serbian.Cyrillic
     GU Гуам
     GW Гвинеја-Бисао
     GY Гвајана
-    HK САР Хонгконг
+    HK Хонгконг
     HM Острво Херд и Мекдоналдова острва
     HN Хондурас
     HR Хрватска
@@ -158,7 +158,7 @@ import Cldr.Serbian.Cyrillic
     ML Мали
     MM Мијанмар (Бурма)
     MN Монголија
-    MO САР Макао
+    MO Макао
     MP Северна Маријанска Острва
     MQ Мартиник
     MR Мауританија
@@ -193,7 +193,7 @@ import Cldr.Serbian.Cyrillic
     PM Свети Пјер и Микелон
     PN Питкерн
     PR Порторико
-    PS Палестинске територије
+    PS Палестина
     PT Португалија
     PW Палау
     PY Парагвај
@@ -231,7 +231,7 @@ import Cldr.Serbian.Cyrillic
     TH Тајланд
     TJ Таџикистан
     TK Токелау
-    TL Тимор-Лесте (Источни Тимор)
+    TL Источни Тимор
     TM Туркменистан
     TN Тунис
     TO Тонга
@@ -265,23 +265,11 @@ import Cldr.Serbian.Cyrillic
 countryCodeToName : Cldr.CountryCode -> String
 countryCodeToName countryCode =
     case countryCode of
-        Cldr.CG ->
-            "Конго"
-
         Cldr.CV ->
             "Кабо Верде"
 
-        Cldr.CZ ->
-            "Чешка Република"
-
-        Cldr.HK ->
-            "САР Хонгконг"
-
         Cldr.KN ->
             "Свети Китс и Невис"
-
-        Cldr.MO ->
-            "САР Макао"
 
         Cldr.PM ->
             "Свети Пјер и Микелон"

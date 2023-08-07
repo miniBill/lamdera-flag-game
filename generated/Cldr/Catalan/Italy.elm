@@ -52,9 +52,9 @@ This is identical to the Catalan version.
     BZ Belize
     CA Canadà
     CC Illes Cocos
-    CD Congo - Kinshasa
+    CD República Democràtica del Congo
     CF República Centreafricana
-    CG Congo - Brazzaville
+    CG República del Congo
     CH Suïssa
     CI Côte d’Ivoire
     CK Illes Cook
@@ -68,7 +68,7 @@ This is identical to the Catalan version.
     CW Curaçao
     CX Illa Christmas
     CY Xipre
-    CZ Txèquia
+    CZ República Txeca
     DE Alemanya
     DJ Djibouti
     DK Dinamarca
@@ -107,7 +107,7 @@ This is identical to the Catalan version.
     GU Guam
     GW Guinea Bissau
     GY Guyana
-    HK Hong Kong (RAE Xina)
+    HK Hong Kong
     HM Illa Heard i Illes McDonald
     HN Hondures
     HR Croàcia
@@ -160,7 +160,7 @@ This is identical to the Catalan version.
     ML Mali
     MM Myanmar (Birmània)
     MN Mongòlia
-    MO Macau (RAE Xina)
+    MO Macau
     MP Illes Mariannes Septentrionals
     MQ Martinica
     MR Mauritània
@@ -195,7 +195,7 @@ This is identical to the Catalan version.
     PM Saint-Pierre-et-Miquelon
     PN Illes Pitcairn
     PR Puerto Rico
-    PS Territoris palestins
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguai
@@ -233,7 +233,7 @@ This is identical to the Catalan version.
     TH Tailàndia
     TJ Tadjikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Timor Oriental
     TM Turkmenistan
     TN Tunísia
     TO Tonga

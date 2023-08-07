@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kokosové ostrovy
-    CD Kongo – Kinshasa
+    CD Kongo (DRK)
     CF Středoafrická republika
-    CG Kongo – Brazzaville
+    CG Kongo (republika)
     CH Švýcarsko
     CI Pobřeží slonoviny
     CK Cookovy ostrovy
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Vánoční ostrov
     CY Kypr
-    CZ Česko
+    CZ Česká republika
     DE Německo
     DJ Džibutsko
     DK Dánsko
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hongkong – ZAO Číny
+    HK Hongkong
     HM Heardův ostrov a McDonaldovy ostrovy
     HN Honduras
     HR Chorvatsko
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Barma)
     MN Mongolsko
-    MO Macao – ZAO Číny
+    MO Macao
     MP Severní Mariany
     MQ Martinik
     MR Mauritánie
@@ -192,7 +192,7 @@ import Cldr
     PM Saint-Pierre a Miquelon
     PN Pitcairnovy ostrovy
     PR Portoriko
-    PS Palestinská území
+    PS Palestina
     PT Portugalsko
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Thajsko
     TJ Tádžikistán
     TK Tokelau
-    TL Východní Timor
+    TL Timor-Leste
     TM Turkmenistán
     TN Tunisko
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokosové ostrovy"
 
         Cldr.CD ->
-            "Kongo – Kinshasa"
+            "Kongo (DRK)"
 
         Cldr.CF ->
             "Středoafrická republika"
 
         Cldr.CG ->
-            "Kongo – Brazzaville"
+            "Kongo (republika)"
 
         Cldr.CH ->
             "Švýcarsko"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kypr"
 
         Cldr.CZ ->
-            "Česko"
+            "Česká republika"
 
         Cldr.DE ->
             "Německo"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hongkong – ZAO Číny"
+            "Hongkong"
 
         Cldr.HM ->
             "Heardův ostrov a McDonaldovy ostrovy"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolsko"
 
         Cldr.MO ->
-            "Macao – ZAO Číny"
+            "Macao"
 
         Cldr.MP ->
             "Severní Mariany"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Portoriko"
 
         Cldr.PS ->
-            "Palestinská území"
+            "Palestina"
 
         Cldr.PT ->
             "Portugalsko"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Východní Timor"
+            "Timor-Leste"
 
         Cldr.TM ->
             "Turkmenistán"

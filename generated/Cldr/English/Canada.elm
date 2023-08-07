@@ -50,9 +50,9 @@ import Cldr.English.UnitedKingdom
     BZ Belize
     CA Canada
     CC Cocos (Keeling) Islands
-    CD Congo - Kinshasa
+    CD Congo (DRC)
     CF Central African Republic
-    CG Congo - Brazzaville
+    CG Congo (Republic)
     CH Switzerland
     CI Côte d’Ivoire
     CK Cook Islands
@@ -66,7 +66,7 @@ import Cldr.English.UnitedKingdom
     CW Curaçao
     CX Christmas Island
     CY Cyprus
-    CZ Czechia
+    CZ Czech Republic
     DE Germany
     DJ Djibouti
     DK Denmark
@@ -105,7 +105,7 @@ import Cldr.English.UnitedKingdom
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Heard and McDonald Islands
     HN Honduras
     HR Croatia
@@ -158,7 +158,7 @@ import Cldr.English.UnitedKingdom
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macao SAR China
+    MO Macau
     MP Northern Mariana Islands
     MQ Martinique
     MR Mauritania
@@ -193,7 +193,7 @@ import Cldr.English.UnitedKingdom
     PM Saint-Pierre-et-Miquelon
     PN Pitcairn Islands
     PR Puerto Rico
-    PS Palestinian territories
+    PS Palestine
     PT Portugal
     PW Palau
     PY Paraguay
@@ -231,7 +231,7 @@ import Cldr.English.UnitedKingdom
     TH Thailand
     TJ Tajikistan
     TK Tokelau
-    TL Timor-Leste
+    TL East Timor
     TM Turkmenistan
     TN Tunisia
     TO Tonga
@@ -289,11 +289,11 @@ countryCodeToName countryCode =
         Cldr.MF ->
             "Saint Martin"
 
+        Cldr.MO ->
+            "Macau"
+
         Cldr.PM ->
             "Saint-Pierre-et-Miquelon"
-
-        Cldr.PS ->
-            "Palestinian territories"
 
         Cldr.SH ->
             "Saint Helena"

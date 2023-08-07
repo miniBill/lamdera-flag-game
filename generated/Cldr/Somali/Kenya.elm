@@ -52,9 +52,9 @@ This is identical to the Somali version.
     BZ Beliis
     CA Kanada
     CC Jasiiradda Kookoos
-    CD Jamhuuriyadda Dimuquraadiga Kongo
+    CD Jamhuuriyadda Dimuqaadiga Kongo
     CF Jamhuuriyadda Afrikada Dhexe
-    CG Kongo
+    CG Jamhuuriyadda Kongo
     CH Swiiserlaand
     CI Ayfori Koost
     CK Jasiiradda Kook
@@ -68,7 +68,7 @@ This is identical to the Somali version.
     CW Kurakaaw
     CX Jasiiradda Kirismas
     CY Qubrus
-    CZ Jekiya
+    CZ Jamhuuriyadda Jek
     DE Jarmal
     DJ Jabuuti
     DK Denmark
@@ -195,7 +195,7 @@ This is identical to the Somali version.
     PM St. Pierre iyo Miquelon
     PN Bitkairn
     PR Bueerto Riiko
-    PS Dhulka Falastiiniyiinta daanta galbeed iyo marinka qasa
+    PS Falastiin
     PT Bortugaal
     PW Balaaw
     PY Baraguaay
@@ -233,7 +233,7 @@ This is identical to the Somali version.
     TH Taylaand
     TJ Tajikistan
     TK Tokelaaw
-    TL Timoor
+    TL Bariga Timor
     TM Turkmenistan
     TN Tuniisiya
     TO Tonga

@@ -49,9 +49,9 @@ import Cldr
     BZ Beliis
     CA Kanada
     CC Jasiiradda Kookoos
-    CD Jamhuuriyadda Dimuquraadiga Kongo
+    CD Jamhuuriyadda Dimuqaadiga Kongo
     CF Jamhuuriyadda Afrikada Dhexe
-    CG Kongo
+    CG Jamhuuriyadda Kongo
     CH Swiiserlaand
     CI Ayfori Koost
     CK Jasiiradda Kook
@@ -65,7 +65,7 @@ import Cldr
     CW Kurakaaw
     CX Jasiiradda Kirismas
     CY Qubrus
-    CZ Jekiya
+    CZ Jamhuuriyadda Jek
     DE Jarmal
     DJ Jabuuti
     DK Denmark
@@ -192,7 +192,7 @@ import Cldr
     PM St. Pierre iyo Miquelon
     PN Bitkairn
     PR Bueerto Riiko
-    PS Dhulka Falastiiniyiinta daanta galbeed iyo marinka qasa
+    PS Falastiin
     PT Bortugaal
     PW Balaaw
     PY Baraguaay
@@ -230,7 +230,7 @@ import Cldr
     TH Taylaand
     TJ Tajikistan
     TK Tokelaaw
-    TL Timoor
+    TL Bariga Timor
     TM Turkmenistan
     TN Tuniisiya
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Jasiiradda Kookoos"
 
         Cldr.CD ->
-            "Jamhuuriyadda Dimuquraadiga Kongo"
+            "Jamhuuriyadda Dimuqaadiga Kongo"
 
         Cldr.CF ->
             "Jamhuuriyadda Afrikada Dhexe"
 
         Cldr.CG ->
-            "Kongo"
+            "Jamhuuriyadda Kongo"
 
         Cldr.CH ->
             "Swiiserlaand"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Qubrus"
 
         Cldr.CZ ->
-            "Jekiya"
+            "Jamhuuriyadda Jek"
 
         Cldr.DE ->
             "Jarmal"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Bueerto Riiko"
 
         Cldr.PS ->
-            "Dhulka Falastiiniyiinta daanta galbeed iyo marinka qasa"
+            "Falastiin"
 
         Cldr.PT ->
             "Bortugaal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelaaw"
 
         Cldr.TL ->
-            "Timoor"
+            "Bariga Timor"
 
         Cldr.TM ->
             "Turkmenistan"

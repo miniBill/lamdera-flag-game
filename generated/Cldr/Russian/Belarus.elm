@@ -52,9 +52,9 @@ This is identical to the Russian version.
     BZ Белиз
     CA Канада
     CC Кокосовые о-ва
-    CD Конго - Киншаса
+    CD Конго (ДРК)
     CF Центрально-Африканская Республика
-    CG Конго - Браззавиль
+    CG Республика Конго
     CH Швейцария
     CI Кот-д’Ивуар
     CK о-ва Кука
@@ -68,7 +68,7 @@ This is identical to the Russian version.
     CW Кюрасао
     CX о-в Рождества
     CY Кипр
-    CZ Чехия
+    CZ Чешская Республика
     DE Германия
     DJ Джибути
     DK Дания
@@ -107,7 +107,7 @@ This is identical to the Russian version.
     GU Гуам
     GW Гвинея-Бисау
     GY Гайана
-    HK Гонконг (САР)
+    HK Гонконг
     HM о-ва Херд и Макдональд
     HN Гондурас
     HR Хорватия
@@ -160,7 +160,7 @@ This is identical to the Russian version.
     ML Мали
     MM Мьянма (Бирма)
     MN Монголия
-    MO Макао (САР)
+    MO Макао
     MP Северные Марианские о-ва
     MQ Мартиника
     MR Мавритания
@@ -195,7 +195,7 @@ This is identical to the Russian version.
     PM Сен-Пьер и Микелон
     PN о-ва Питкэрн
     PR Пуэрто-Рико
-    PS Палестинские территории
+    PS Палестина
     PT Португалия
     PW Палау
     PY Парагвай
@@ -233,7 +233,7 @@ This is identical to the Russian version.
     TH Таиланд
     TJ Таджикистан
     TK Токелау
-    TL Восточный Тимор
+    TL Тимор-Лесте
     TM Туркменистан
     TN Тунис
     TO Тонга

@@ -50,9 +50,9 @@ import Cldr.English
     BZ Belize
     CA Canada
     CC Cocos (Keeling) Islands
-    CD Congo - Kinshasa
+    CD Congo (DRC)
     CF Central African Republic
-    CG Congo - Brazzaville
+    CG Congo (Republic)
     CH Switzerland
     CI Côte d’Ivoire
     CK Cook Islands
@@ -66,7 +66,7 @@ import Cldr.English
     CW Curaçao
     CX Christmas Island
     CY Cyprus
-    CZ Czechia
+    CZ Czech Republic
     DE Germany
     DJ Djibouti
     DK Denmark
@@ -105,7 +105,7 @@ import Cldr.English
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Heard & McDonald Islands
     HN Honduras
     HR Croatia
@@ -158,7 +158,7 @@ import Cldr.English
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macao SAR China
+    MO Macao
     MP Northern Mariana Islands
     MQ Martinique
     MR Mauritania
@@ -193,7 +193,7 @@ import Cldr.English
     PM St Pierre & Miquelon
     PN Pitcairn Islands
     PR Puerto Rico
-    PS Palestinian Territories
+    PS Palestine
     PT Portugal
     PW Palau
     PY Paraguay
@@ -231,7 +231,7 @@ import Cldr.English
     TH Thailand
     TJ Tajikistan
     TK Tokelau
-    TL Timor-Leste
+    TL East Timor
     TM Turkmenistan
     TN Tunisia
     TO Tonga

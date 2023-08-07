@@ -49,9 +49,9 @@ import Cldr
     BZ A’ Bheilìs
     CA Canada
     CC Na h-Eileanan Chocos (Keeling)
-    CD Congo - Kinshasa
+    CD A’ Chongo (PDC)
     CF Poblachd Meadhan Afraga
-    CG A’ Chongo - Brazzaville
+    CG A’ Chongo
     CH An Eilbheis
     CI Côte d’Ivoire
     CK Eileanan Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Eilean na Nollaig
     CY Cìopras
-    CZ An t-Seic
+    CZ Poblachd na Seice
     DE A’ Ghearmailt
     DJ Diobùtaidh
     DK An Danmhairg
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Gini-Bioso
     GY Guidheàna
-    HK Hong Kong SAR na Sìne
+    HK Hong Kong
     HM Eilean Heard is MhicDhòmhnaill
     HN Hondùras
     HR A’ Chròthais
@@ -157,7 +157,7 @@ import Cldr
     ML Màili
     MM Miànmar
     MN Dùthaich nam Mongol
-    MO Macàthu SAR na Sìne
+    MO Macàthu
     MP Na h-Eileanan Mairianach a Tuath
     MQ Mairtinic
     MR Moratàinea
@@ -192,7 +192,7 @@ import Cldr
     PM Saint Pierre agus Miquelon
     PN Eileanan Pheit a’ Chàirn
     PR Porto Rìceo
-    PS Ùghdarras nam Palastaineach
+    PS Palastain
     PT A’ Phortagail
     PW Palabh
     PY Paraguaidh
@@ -230,7 +230,7 @@ import Cldr
     TH Dùthaich nan Tàidh
     TJ Taidigeastàn
     TK Tokelau
-    TL Timor-Leste
+    TL Tìomor an Ear
     TM Turcmanastàn
     TN Tuinisea
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Na h-Eileanan Chocos (Keeling)"
 
         Cldr.CD ->
-            "Congo - Kinshasa"
+            "A’ Chongo (PDC)"
 
         Cldr.CF ->
             "Poblachd Meadhan Afraga"
 
         Cldr.CG ->
-            "A’ Chongo - Brazzaville"
+            "A’ Chongo"
 
         Cldr.CH ->
             "An Eilbheis"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Cìopras"
 
         Cldr.CZ ->
-            "An t-Seic"
+            "Poblachd na Seice"
 
         Cldr.DE ->
             "A’ Ghearmailt"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guidheàna"
 
         Cldr.HK ->
-            "Hong Kong SAR na Sìne"
+            "Hong Kong"
 
         Cldr.HM ->
             "Eilean Heard is MhicDhòmhnaill"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Dùthaich nam Mongol"
 
         Cldr.MO ->
-            "Macàthu SAR na Sìne"
+            "Macàthu"
 
         Cldr.MP ->
             "Na h-Eileanan Mairianach a Tuath"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Porto Rìceo"
 
         Cldr.PS ->
-            "Ùghdarras nam Palastaineach"
+            "Palastain"
 
         Cldr.PT ->
             "A’ Phortagail"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Tìomor an Ear"
 
         Cldr.TM ->
             "Turcmanastàn"

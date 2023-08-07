@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kokosöarna
-    CD Kongo-Kinshasa
+    CD Demokratiska republiken Kongo
     CF Centralafrikanska republiken
-    CG Kongo-Brazzaville
+    CG Republiken Kongo
     CH Schweiz
     CI Côte d’Ivoire
     CK Cooköarna
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hongkong SAR
+    HK Hongkong
     HM Heardön och McDonaldöarna
     HN Honduras
     HR Kroatien
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Burma)
     MN Mongoliet
-    MO Macao SAR
+    MO Macao
     MP Nordmarianerna
     MQ Martinique
     MR Mauretanien
@@ -192,7 +192,7 @@ import Cldr
     PM S:t Pierre och Miquelon
     PN Pitcairnöarna
     PR Puerto Rico
-    PS Palestinska territorierna
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Thailand
     TJ Tadzjikistan
     TK Tokelauöarna
-    TL Östtimor
+    TL Timor-Leste
     TM Turkmenistan
     TN Tunisien
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokosöarna"
 
         Cldr.CD ->
-            "Kongo-Kinshasa"
+            "Demokratiska republiken Kongo"
 
         Cldr.CF ->
             "Centralafrikanska republiken"
 
         Cldr.CG ->
-            "Kongo-Brazzaville"
+            "Republiken Kongo"
 
         Cldr.CH ->
             "Schweiz"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hongkong SAR"
+            "Hongkong"
 
         Cldr.HM ->
             "Heardön och McDonaldöarna"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongoliet"
 
         Cldr.MO ->
-            "Macao SAR"
+            "Macao"
 
         Cldr.MP ->
             "Nordmarianerna"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Palestinska territorierna"
+            "Palestina"
 
         Cldr.PT ->
             "Portugal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelauöarna"
 
         Cldr.TL ->
-            "Östtimor"
+            "Timor-Leste"
 
         Cldr.TM ->
             "Turkmenistan"

@@ -52,9 +52,9 @@ This is identical to the Bosnian version.
     BZ Belize
     CA Kanada
     CC Kokosova (Keelingova) ostrva
-    CD Demokratska Republika Kongo
+    CD DR Kongo
     CF Centralnoafrička Republika
-    CG Kongo
+    CG Republika Kongo
     CH Švicarska
     CI Obala Slonovače
     CK Kukova ostrva
@@ -68,7 +68,7 @@ This is identical to the Bosnian version.
     CW Kurasao
     CX Božićno ostrvo
     CY Kipar
-    CZ Češka
+    CZ Češka Republika
     DE Njemačka
     DJ Džibuti
     DK Danska
@@ -107,7 +107,7 @@ This is identical to the Bosnian version.
     GU Guam
     GW Gvineja-Bisao
     GY Gvajana
-    HK Hong Kong (SAR Kina)
+    HK Hong Kong
     HM Ostrvo Heard i arhipelag McDonald
     HN Honduras
     HR Hrvatska
@@ -160,7 +160,7 @@ This is identical to the Bosnian version.
     ML Mali
     MM Mjanmar
     MN Mongolija
-    MO Makao (SAR Kina)
+    MO Makao
     MP Sjeverna Marijanska ostrva
     MQ Martinik
     MR Mauritanija
@@ -195,7 +195,7 @@ This is identical to the Bosnian version.
     PM Sveti Petar i Mikelon
     PN Pitkernska Ostrva
     PR Porto Riko
-    PS Palestinska Teritorija
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paragvaj

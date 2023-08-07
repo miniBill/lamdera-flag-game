@@ -49,9 +49,9 @@ import Cldr
     BZ ベリーズ
     CA カナダ
     CC ココス(キーリング)諸島
-    CD コンゴ民主共和国(キンシャサ)
+    CD コンゴ民主共和国
     CF 中央アフリカ共和国
-    CG コンゴ共和国(ブラザビル)
+    CG コンゴ共和国
     CH スイス
     CI コートジボワール
     CK クック諸島
@@ -65,7 +65,7 @@ import Cldr
     CW キュラソー
     CX クリスマス島
     CY キプロス
-    CZ チェコ
+    CZ チェコ共和国
     DE ドイツ
     DJ ジブチ
     DK デンマーク
@@ -104,7 +104,7 @@ import Cldr
     GU グアム
     GW ギニアビサウ
     GY ガイアナ
-    HK 中華人民共和国香港特別行政区
+    HK 香港
     HM ハード島・マクドナルド諸島
     HN ホンジュラス
     HR クロアチア
@@ -157,7 +157,7 @@ import Cldr
     ML マリ
     MM ミャンマー (ビルマ)
     MN モンゴル
-    MO 中華人民共和国マカオ特別行政区
+    MO マカオ
     MP 北マリアナ諸島
     MQ マルティニーク
     MR モーリタニア
@@ -192,7 +192,7 @@ import Cldr
     PM サンピエール島・ミクロン島
     PN ピトケアン諸島
     PR プエルトリコ
-    PS パレスチナ自治区
+    PS パレスチナ
     PT ポルトガル
     PW パラオ
     PY パラグアイ
@@ -230,7 +230,7 @@ import Cldr
     TH タイ
     TJ タジキスタン
     TK トケラウ
-    TL 東ティモール
+    TL 東チモール
     TM トルクメニスタン
     TN チュニジア
     TO トンガ
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "ココス(キーリング)諸島"
 
         Cldr.CD ->
-            "コンゴ民主共和国(キンシャサ)"
+            "コンゴ民主共和国"
 
         Cldr.CF ->
             "中央アフリカ共和国"
 
         Cldr.CG ->
-            "コンゴ共和国(ブラザビル)"
+            "コンゴ共和国"
 
         Cldr.CH ->
             "スイス"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "キプロス"
 
         Cldr.CZ ->
-            "チェコ"
+            "チェコ共和国"
 
         Cldr.DE ->
             "ドイツ"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "ガイアナ"
 
         Cldr.HK ->
-            "中華人民共和国香港特別行政区"
+            "香港"
 
         Cldr.HM ->
             "ハード島・マクドナルド諸島"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "モンゴル"
 
         Cldr.MO ->
-            "中華人民共和国マカオ特別行政区"
+            "マカオ"
 
         Cldr.MP ->
             "北マリアナ諸島"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "プエルトリコ"
 
         Cldr.PS ->
-            "パレスチナ自治区"
+            "パレスチナ"
 
         Cldr.PT ->
             "ポルトガル"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "トケラウ"
 
         Cldr.TL ->
-            "東ティモール"
+            "東チモール"
 
         Cldr.TM ->
             "トルクメニスタン"

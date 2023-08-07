@@ -52,9 +52,9 @@ This is identical to the Uzbek version.
     BZ Beliz
     CA Kanada
     CC Kokos (Kiling) orollari
-    CD Kongo – Kinshasa
+    CD Kongo (KDR)
     CF Markaziy Afrika Respublikasi
-    CG Kongo – Brazzavil
+    CG Kongo (Respublika)
     CH Shveytsariya
     CI Kot-d’Ivuar
     CK Kuk orollari
@@ -68,7 +68,7 @@ This is identical to the Uzbek version.
     CW Kyurasao
     CX Rojdestvo oroli
     CY Kipr
-    CZ Chexiya
+    CZ Chexiya Respublikasi
     DE Germaniya
     DJ Jibuti
     DK Daniya
@@ -107,7 +107,7 @@ This is identical to the Uzbek version.
     GU Guam
     GW Gvineya-Bisau
     GY Gayana
-    HK Gonkong (Xitoy MMH)
+    HK Gonkong
     HM Xerd va Makdonald orollari
     HN Gonduras
     HR Xorvatiya
@@ -160,7 +160,7 @@ This is identical to the Uzbek version.
     ML Mali
     MM Myanma (Birma)
     MN Mongoliya
-    MO Makao (Xitoy MMH)
+    MO Makao
     MP Shimoliy Mariana orollari
     MQ Martinika
     MR Mavritaniya
@@ -195,7 +195,7 @@ This is identical to the Uzbek version.
     PM Sen-Pyer va Mikelon
     PN Pitkern orollari
     PR Puerto-Riko
-    PS Falastin hududlari
+    PS Falastin
     PT Portugaliya
     PW Palau
     PY Paragvay
@@ -233,7 +233,7 @@ This is identical to the Uzbek version.
     TH Tailand
     TJ Tojikiston
     TK Tokelau
-    TL Timor-Leste
+    TL Sharqiy Timor
     TM Turkmaniston
     TN Tunis
     TO Tonga

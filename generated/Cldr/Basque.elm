@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Cocos (Keeling) uharteak
-    CD Kongoko Errepublika Demokratikoa
+    CD Kongo (DR)
     CF Afrika Erdiko Errepublika
-    CG Kongo
+    CG Kongoko Errepublika
     CH Suitza
     CI Boli Kosta
     CK Cook uharteak
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Christmas uhartea
     CY Zipre
-    CZ Txekia
+    CZ Txekiar Errepublika
     DE Alemania
     DJ Djibuti
     DK Danimarka
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Ginea Bissau
     GY Guyana
-    HK Hong Kong Txinako AEB
+    HK Hong Kong
     HM Heard eta McDonald uharteak
     HN Honduras
     HR Kroazia
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Birmania)
     MN Mongolia
-    MO Macau Txinako AEB
+    MO Macau
     MP Ipar Mariana uharteak
     MQ Martinika
     MR Mauritania
@@ -192,7 +192,7 @@ import Cldr
     PM Saint-Pierre eta Mikelune
     PN Pitcairn uharteak
     PR Puerto Rico
-    PS Palestinar Lurralde Okupatuak
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguai
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Cocos (Keeling) uharteak"
 
         Cldr.CD ->
-            "Kongoko Errepublika Demokratikoa"
+            "Kongo (DR)"
 
         Cldr.CF ->
             "Afrika Erdiko Errepublika"
 
         Cldr.CG ->
-            "Kongo"
+            "Kongoko Errepublika"
 
         Cldr.CH ->
             "Suitza"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Zipre"
 
         Cldr.CZ ->
-            "Txekia"
+            "Txekiar Errepublika"
 
         Cldr.DE ->
             "Alemania"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hong Kong Txinako AEB"
+            "Hong Kong"
 
         Cldr.HM ->
             "Heard eta McDonald uharteak"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolia"
 
         Cldr.MO ->
-            "Macau Txinako AEB"
+            "Macau"
 
         Cldr.MP ->
             "Ipar Mariana uharteak"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Palestinar Lurralde Okupatuak"
+            "Palestina"
 
         Cldr.PT ->
             "Portugal"

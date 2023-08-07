@@ -49,9 +49,9 @@ import Cldr
     BZ i-Belize
     CA i-Canada
     CC i-Cocos (Keeling) Islands
-    CD i-Congo - Kinshasa
+    CD i-Congo (DRC)
     CF i-Central African Republic
-    CG i-Congo - Brazzaville
+    CG i-Congo (Republic)
     CH i-Switzerland
     CI i-Côte d’Ivoire
     CK i-Cook Islands
@@ -65,7 +65,7 @@ import Cldr
     CW i-Curaçao
     CX i-Christmas Island
     CY i-Cyprus
-    CZ i-Czechia
+    CZ i-Czech Republic
     DE i-Germany
     DJ i-Djibouti
     DK i-Denmark
@@ -104,7 +104,7 @@ import Cldr
     GU i-Guam
     GW i-Guinea-Bissau
     GY i-Guyana
-    HK i-Hong Kong SAR China
+    HK i-Hong Kong
     HM I-Heard & McDonald Island
     HN i-Honduras
     HR i-Croatia
@@ -157,7 +157,7 @@ import Cldr
     ML iMali
     MM i-Myanmar (Burma)
     MN i-Mongolia
-    MO i-Macau SAR China
+    MO i-Macau
     MP i-Northern Mariana Islands
     MQ i-Martinique
     MR i-Mauritania
@@ -192,7 +192,7 @@ import Cldr
     PM i-Saint Pierre kanye ne-Miquelon
     PN i-Pitcairn Islands
     PR i-Puerto Rico
-    PS i-Palestinian Territories
+    PS i-Palestine
     PT i-Portugal
     PW i-Palau
     PY i-Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH i-Thailand
     TJ i-Tajikistan
     TK i-Tokelau
-    TL i-Timor-Leste
+    TL i-East Timor
     TM i-Turkmenistan
     TN i-Tunisia
     TO i-Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "i-Cocos (Keeling) Islands"
 
         Cldr.CD ->
-            "i-Congo - Kinshasa"
+            "i-Congo (DRC)"
 
         Cldr.CF ->
             "i-Central African Republic"
 
         Cldr.CG ->
-            "i-Congo - Brazzaville"
+            "i-Congo (Republic)"
 
         Cldr.CH ->
             "i-Switzerland"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "i-Cyprus"
 
         Cldr.CZ ->
-            "i-Czechia"
+            "i-Czech Republic"
 
         Cldr.DE ->
             "i-Germany"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "i-Guyana"
 
         Cldr.HK ->
-            "i-Hong Kong SAR China"
+            "i-Hong Kong"
 
         Cldr.HM ->
             "I-Heard & McDonald Island"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "i-Mongolia"
 
         Cldr.MO ->
-            "i-Macau SAR China"
+            "i-Macau"
 
         Cldr.MP ->
             "i-Northern Mariana Islands"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "i-Puerto Rico"
 
         Cldr.PS ->
-            "i-Palestinian Territories"
+            "i-Palestine"
 
         Cldr.PT ->
             "i-Portugal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "i-Tokelau"
 
         Cldr.TL ->
-            "i-Timor-Leste"
+            "i-East Timor"
 
         Cldr.TM ->
             "i-Turkmenistan"

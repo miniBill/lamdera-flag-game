@@ -50,9 +50,9 @@ import Cldr.Norwegian
     BZ Belize
     CA Canada
     CC Kokosøyane
-    CD Kongo-Kinshasa
+    CD Den demokratiske republikken Kongo
     CF Den sentralafrikanske republikken
-    CG Kongo-Brazzaville
+    CG Republikken Kongo
     CH Sveits
     CI Elfenbeinskysten
     CK Cookøyane
@@ -66,7 +66,7 @@ import Cldr.Norwegian
     CW Curaçao
     CX Christmasøya
     CY Kypros
-    CZ Tsjekkia
+    CZ Den tsjekkiske republikk
     DE Tyskland
     DJ Djibouti
     DK Danmark
@@ -105,7 +105,7 @@ import Cldr.Norwegian
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hongkong SAR Kina
+    HK Hongkong
     HM Heardøya og McDonaldøyane
     HN Honduras
     HR Kroatia
@@ -158,7 +158,7 @@ import Cldr.Norwegian
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macao SAR Kina
+    MO Macao
     MP Nord-Marianane
     MQ Martinique
     MR Mauritania
@@ -193,7 +193,7 @@ import Cldr.Norwegian
     PM Saint-Pierre-et-Miquelon
     PN Pitcairn
     PR Puerto Rico
-    PS Det palestinske området
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -276,9 +276,6 @@ countryCodeToName countryCode =
 
         Cldr.CC ->
             "Kokosøyane"
-
-        Cldr.CD ->
-            "Kongo-Kinshasa"
 
         Cldr.CF ->
             "Den sentralafrikanske republikken"

@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Cocos (Keeling) Adaları
-    CD Kongo - Kinşasa
+    CD Kongo Demokratik Cumhuriyeti
     CF Orta Afrika Cumhuriyeti
-    CG Kongo - Brazavil
+    CG Kongo Cumhuriyeti
     CH İsviçre
     CI Côte d’Ivoire
     CK Cook Adaları
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Christmas Adası
     CY Kıbrıs
-    CZ Çekya
+    CZ Çek Cumhuriyeti
     DE Almanya
     DJ Cibuti
     DK Danimarka
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Gine-Bissau
     GY Guyana
-    HK Çin Hong Kong ÖİB
+    HK Hong Kong
     HM Heard Adası ve McDonald Adaları
     HN Honduras
     HR Hırvatistan
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Burma)
     MN Moğolistan
-    MO Çin Makao ÖİB
+    MO Makao
     MP Kuzey Mariana Adaları
     MQ Martinik
     MR Moritanya
@@ -192,7 +192,7 @@ import Cldr
     PM Saint Pierre ve Miquelon
     PN Pitcairn Adaları
     PR Porto Riko
-    PS Filistin Bölgeleri
+    PS Filistin
     PT Portekiz
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Tayland
     TJ Tacikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Doğu Timor
     TM Türkmenistan
     TN Tunus
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Cocos (Keeling) Adaları"
 
         Cldr.CD ->
-            "Kongo - Kinşasa"
+            "Kongo Demokratik Cumhuriyeti"
 
         Cldr.CF ->
             "Orta Afrika Cumhuriyeti"
 
         Cldr.CG ->
-            "Kongo - Brazavil"
+            "Kongo Cumhuriyeti"
 
         Cldr.CH ->
             "İsviçre"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kıbrıs"
 
         Cldr.CZ ->
-            "Çekya"
+            "Çek Cumhuriyeti"
 
         Cldr.DE ->
             "Almanya"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Çin Hong Kong ÖİB"
+            "Hong Kong"
 
         Cldr.HM ->
             "Heard Adası ve McDonald Adaları"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Moğolistan"
 
         Cldr.MO ->
-            "Çin Makao ÖİB"
+            "Makao"
 
         Cldr.MP ->
             "Kuzey Mariana Adaları"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Porto Riko"
 
         Cldr.PS ->
-            "Filistin Bölgeleri"
+            "Filistin"
 
         Cldr.PT ->
             "Portekiz"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Doğu Timor"
 
         Cldr.TM ->
             "Türkmenistan"

@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kokosova (Kilingova) Ostrva
-    CD Kongo - Kinšasa
+    CD Kongo (DRK)
     CF Centralnoafrička Republika
-    CG Kongo - Brazavil
+    CG Kongo (Republika)
     CH Švajcarska
     CI Obala Slonovače (Kot d’Ivoar)
     CK Kukova Ostrva
@@ -65,7 +65,7 @@ import Cldr
     CW Kurasao
     CX Božićno Ostrvo
     CY Kipar
-    CZ Češka
+    CZ Češka Republika
     DE Nemačka
     DJ Džibuti
     DK Danska
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Gvineja-Bisao
     GY Gvajana
-    HK SAR Hongkong (Kina)
+    HK Hongkong
     HM Ostrvo Herd i Mekdonaldova ostrva
     HN Honduras
     HR Hrvatska
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Mijanmar (Burma)
     MN Mongolija
-    MO SAR Makao (Kina)
+    MO Makao
     MP Severna Marijanska Ostrva
     MQ Martinik
     MR Mauritanija
@@ -192,7 +192,7 @@ import Cldr
     PM Sen Pjer i Mikelon
     PN Pitkern
     PR Portoriko
-    PS Palestinske teritorije
+    PS Palestina
     PT Portugalija
     PW Palau
     PY Paragvaj
@@ -230,7 +230,7 @@ import Cldr
     TH Tajland
     TJ Tadžikistan
     TK Tokelau
-    TL Timor-Leste (Istočni Timor)
+    TL Istočni Timor
     TM Turkmenistan
     TN Tunis
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokosova (Kilingova) Ostrva"
 
         Cldr.CD ->
-            "Kongo - Kinšasa"
+            "Kongo (DRK)"
 
         Cldr.CF ->
             "Centralnoafrička Republika"
 
         Cldr.CG ->
-            "Kongo - Brazavil"
+            "Kongo (Republika)"
 
         Cldr.CH ->
             "Švajcarska"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kipar"
 
         Cldr.CZ ->
-            "Češka"
+            "Češka Republika"
 
         Cldr.DE ->
             "Nemačka"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gvajana"
 
         Cldr.HK ->
-            "SAR Hongkong (Kina)"
+            "Hongkong"
 
         Cldr.HM ->
             "Ostrvo Herd i Mekdonaldova ostrva"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolija"
 
         Cldr.MO ->
-            "SAR Makao (Kina)"
+            "Makao"
 
         Cldr.MP ->
             "Severna Marijanska Ostrva"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Portoriko"
 
         Cldr.PS ->
-            "Palestinske teritorije"
+            "Palestina"
 
         Cldr.PT ->
             "Portugalija"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste (Istočni Timor)"
+            "Istočni Timor"
 
         Cldr.TM ->
             "Turkmenistan"

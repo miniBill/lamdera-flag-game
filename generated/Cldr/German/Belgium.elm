@@ -52,9 +52,9 @@ This is identical to the German version.
     BZ Belize
     CA Kanada
     CC Kokosinseln
-    CD Kongo-Kinshasa
+    CD Kongo (Demokratische Republik)
     CF Zentralafrikanische Republik
-    CG Kongo-Brazzaville
+    CG Kongo (Republik)
     CH Schweiz
     CI Côte d’Ivoire
     CK Cookinseln
@@ -68,7 +68,7 @@ This is identical to the German version.
     CW Curaçao
     CX Weihnachtsinsel
     CY Zypern
-    CZ Tschechien
+    CZ Tschechische Republik
     DE Deutschland
     DJ Dschibuti
     DK Dänemark
@@ -107,7 +107,7 @@ This is identical to the German version.
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Sonderverwaltungsregion Hongkong
+    HK Hongkong
     HM Heard und McDonaldinseln
     HN Honduras
     HR Kroatien
@@ -160,7 +160,7 @@ This is identical to the German version.
     ML Mali
     MM Myanmar
     MN Mongolei
-    MO Sonderverwaltungsregion Macau
+    MO Macau
     MP Nördliche Marianen
     MQ Martinique
     MR Mauretanien
@@ -195,7 +195,7 @@ This is identical to the German version.
     PM St. Pierre und Miquelon
     PN Pitcairninseln
     PR Puerto Rico
-    PS Palästinensische Autonomiegebiete
+    PS Palästina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the German version.
     TH Thailand
     TJ Tadschikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Osttimor
     TM Turkmenistan
     TN Tunesien
     TO Tonga

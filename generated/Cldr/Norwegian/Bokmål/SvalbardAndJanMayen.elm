@@ -52,9 +52,9 @@ This is identical to the Norwegian Bokmål version.
     BZ Belize
     CA Canada
     CC Kokosøyene
-    CD Kongo
+    CD Den demokratiske republikken Kongo
     CF Den sentralafrikanske republikk
-    CG Kongo-Brazzaville
+    CG Republikken Kongo
     CH Sveits
     CI Elfenbenskysten
     CK Cookøyene
@@ -68,7 +68,7 @@ This is identical to the Norwegian Bokmål version.
     CW Curaçao
     CX Christmasøya
     CY Kypros
-    CZ Tsjekkia
+    CZ Den tsjekkiske republikk
     DE Tyskland
     DJ Djibouti
     DK Danmark
@@ -107,7 +107,7 @@ This is identical to the Norwegian Bokmål version.
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hongkong SAR Kina
+    HK Hongkong
     HM Heard- og McDonaldøyene
     HN Honduras
     HR Kroatia
@@ -160,7 +160,7 @@ This is identical to the Norwegian Bokmål version.
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macao SAR Kina
+    MO Macao
     MP Nord-Marianene
     MQ Martinique
     MR Mauritania
@@ -195,7 +195,7 @@ This is identical to the Norwegian Bokmål version.
     PM Saint-Pierre-et-Miquelon
     PN Pitcairnøyene
     PR Puerto Rico
-    PS Det palestinske området
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the Norwegian Bokmål version.
     TH Thailand
     TJ Tadsjikistan
     TK Tokelau
-    TL Øst-Timor
+    TL Timor-Leste
     TM Turkmenistan
     TN Tunisia
     TO Tonga

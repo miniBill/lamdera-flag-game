@@ -52,9 +52,9 @@ This is identical to the Sindhi version.
     BZ بيليز
     CA ڪينيڊا
     CC ڪوڪوس ٻيٽ
-    CD ڪانگو -ڪنشاسا
+    CD ڪانگو
     CF وچ آفريقي جمهوريه
-    CG ڪانگو - برازاویل
+    CG ڪانگو (جمهوري)
     CH سوئزرلينڊ
     CI ڪوٽي ويرا
     CK ڪوڪ ٻيٽ
@@ -68,7 +68,7 @@ This is identical to the Sindhi version.
     CW ڪيوراسائو
     CX ڪرسمس ٻيٽ
     CY سائپرس
-    CZ چيڪيا
+    CZ چيڪ جهموريہ
     DE جرمني
     DJ ڊجبيوتي
     DK ڊينمارڪ
@@ -107,7 +107,7 @@ This is identical to the Sindhi version.
     GU گوام
     GW گني بسائو
     GY گيانا
-    HK هانگ ڪانگ SAR
+    HK هانگ ڪانگ
     HM هرڊ ۽ مڪڊونلڊ ٻيٽ
     HN هنڊورس
     HR ڪروئيشيا
@@ -160,7 +160,7 @@ This is identical to the Sindhi version.
     ML مالي
     MM ميانمار (برما)
     MN منگوليا
-    MO مڪائو SAR چين
+    MO مڪائو
     MP اتريان ماريانا ٻيٽ
     MQ مارتينڪ
     MR موريتانيا
@@ -195,7 +195,7 @@ This is identical to the Sindhi version.
     PM سینٽ پیئر و میڪوئیلون
     PN پٽڪئرن ٻيٽ
     PR پيوئرٽو ريڪو
-    PS فلسطيني علائقا
+    PS فلسطين
     PT پرتگال
     PW پلائو
     PY پيراگوءِ
@@ -233,7 +233,7 @@ This is identical to the Sindhi version.
     TH ٿائيليند
     TJ تاجڪستان
     TK ٽوڪلائو
-    TL تيمور ليستي
+    TL اوڀر تيمور
     TM ترڪمانستان
     TN تيونيسيا
     TO ٽونگا

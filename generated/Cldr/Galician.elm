@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA O Canadá
     CC Illas Cocos (Keeling)
-    CD República Democrática do Congo
+    CD Congo (RDC)
     CF República Centroafricana
-    CG República do Congo
+    CG Congo (RC)
     CH Suíza
     CI Côte d’Ivoire
     CK Illas Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Illa Christmas
     CY Chipre
-    CZ Chequia
+    CZ República Checa
     DE Alemaña
     DJ Djibuti
     DK Dinamarca
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW A Guinea Bissau
     GY Güiana
-    HK Hong Kong RAE da China
+    HK Hong Kong
     HM Illa Heard e Illas McDonald
     HN Honduras
     HR Croacia
@@ -157,7 +157,7 @@ import Cldr
     ML Malí
     MM Myanmar (Birmania)
     MN Mongolia
-    MO Macau RAE da China
+    MO Macau
     MP Illas Marianas do Norte
     MQ Martinica
     MR Mauritania
@@ -192,7 +192,7 @@ import Cldr
     PM Saint Pierre et Miquelon
     PN Illas Pitcairn
     PR Porto Rico
-    PS Territorios Palestinos
+    PS Palestina
     PT Portugal
     PW Palau
     PY O Paraguai
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Illas Cocos (Keeling)"
 
         Cldr.CD ->
-            "República Democrática do Congo"
+            "Congo (RDC)"
 
         Cldr.CF ->
             "República Centroafricana"
 
         Cldr.CG ->
-            "República do Congo"
+            "Congo (RC)"
 
         Cldr.CH ->
             "Suíza"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Chipre"
 
         Cldr.CZ ->
-            "Chequia"
+            "República Checa"
 
         Cldr.DE ->
             "Alemaña"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Güiana"
 
         Cldr.HK ->
-            "Hong Kong RAE da China"
+            "Hong Kong"
 
         Cldr.HM ->
             "Illa Heard e Illas McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolia"
 
         Cldr.MO ->
-            "Macau RAE da China"
+            "Macau"
 
         Cldr.MP ->
             "Illas Marianas do Norte"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Porto Rico"
 
         Cldr.PS ->
-            "Territorios Palestinos"
+            "Palestina"
 
         Cldr.PT ->
             "Portugal"

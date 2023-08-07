@@ -49,9 +49,9 @@ import Cldr
     BZ Bẹliz
     CA Kánáda
     CC Kókós Aílands
-    CD Kóngó – Kinshása
+    CD Kóngo (DRC)
     CF Sẹ́ntrál Áfríkán Ripọ́blik
-    CG Kóngo – Brázavil
+    CG Kóngó (Ripọ́blik)
     CH Swítsaland
     CI Aívri Kost
     CK Kúk Aílands
@@ -65,7 +65,7 @@ import Cldr
     CW Kiurásao
     CX Krísmás Aíland
     CY Saíprọs
-    CZ Chẹ́kia
+    CZ Chẹ́k Ripọ́blik
     DE Jámáni
     DJ Jibúti
     DK Dẹ́nmak
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Gíní-Bisáu
     GY Gayána
-    HK Họng Kọng SAR
+    HK Họng Kọng
     HM Hiád & MakDónáld Aílands
     HN Họndúras
     HR Kroéshia
@@ -157,7 +157,7 @@ import Cldr
     ML Máli
     MM Miánma (Bọ́ma)
     MN Mọngólia
-    MO Makáo SAR Chaína
+    MO Makáo
     MP Nọ́tán Mariána Aílands
     MQ Matínik
     MR Mọriténia
@@ -192,7 +192,7 @@ import Cldr
     PM Sent Piẹr & Míkẹlọn
     PN Pítkén Aílands
     PR Puẹ́rto Ríkọ
-    PS Pálẹ́staín Éria-dẹm
+    PS Pálẹ́stain
     PT Pọ́túgal
     PW Palau
     PY Párágwue
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kókós Aílands"
 
         Cldr.CD ->
-            "Kóngó – Kinshása"
+            "Kóngo (DRC)"
 
         Cldr.CF ->
             "Sẹ́ntrál Áfríkán Ripọ́blik"
 
         Cldr.CG ->
-            "Kóngo – Brázavil"
+            "Kóngó (Ripọ́blik)"
 
         Cldr.CH ->
             "Swítsaland"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Saíprọs"
 
         Cldr.CZ ->
-            "Chẹ́kia"
+            "Chẹ́k Ripọ́blik"
 
         Cldr.DE ->
             "Jámáni"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gayána"
 
         Cldr.HK ->
-            "Họng Kọng SAR"
+            "Họng Kọng"
 
         Cldr.HM ->
             "Hiád & MakDónáld Aílands"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mọngólia"
 
         Cldr.MO ->
-            "Makáo SAR Chaína"
+            "Makáo"
 
         Cldr.MP ->
             "Nọ́tán Mariána Aílands"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puẹ́rto Ríkọ"
 
         Cldr.PS ->
-            "Pálẹ́staín Éria-dẹm"
+            "Pálẹ́stain"
 
         Cldr.PT ->
             "Pọ́túgal"

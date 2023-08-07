@@ -1,4 +1,4 @@
-module Cldr.Hindi.Latin exposing (countryCodeToName)
+module Cldr.Catalan.Spain.Valencia exposing (countryCodeToName)
 
 {-| 
 @docs countryCodeToName
@@ -8,258 +8,258 @@ module Cldr.Hindi.Latin exposing (countryCodeToName)
 import Cldr
 
 
-{-| Name for `CountryCode` in Hindi (Latin).
+{-| Name for `CountryCode` in Catalan - Spain (Valencia).
 
     AD Andorra
-    AE United Arab Emirates
-    AF Afghanistan
-    AG Antigua & Barbuda
+    AE Emirats Àrabs Units
+    AF Afganistan
+    AG Antigua i Barbuda
     AI Anguilla
-    AL Albania
-    AM Armenia
+    AL Albània
+    AM Armènia
     AO Angola
-    AQ Antarctica
+    AQ Antàrtida
     AR Argentina
-    AS American Samoa
-    AT Austria
-    AU Australia
+    AS Samoa Nord-americana
+    AT Àustria
+    AU Austràlia
     AW Aruba
-    AX Aland Islands
-    AZ Azerbaijan
-    BA Bosnia & Herzegovina
+    AX Illes Åland
+    AZ Azerbaidjan
+    BA Bòsnia i Hercegovina
     BB Barbados
     BD Bangladesh
-    BE Belgium
+    BE Bèlgica
     BF Burkina Faso
-    BG Bulgaria
+    BG Bulgària
     BH Bahrain
     BI Burundi
-    BJ Benin
-    BL St. Barthelemy
-    BM Bermuda
+    BJ Benín
+    BL Saint-Barthélemy
+    BM Bermudes
     BN Brunei
-    BO Bolivia
-    BQ Caribbean Netherlands
-    BR Brazil
-    BS Bahamas
+    BO Bolívia
+    BQ Carib Neerlandès
+    BR Brasil
+    BS Bahames
     BT Bhutan
-    BV Bouvet Island
+    BV Bouvet
     BW Botswana
-    BY Belarus
+    BY Belarús
     BZ Belize
-    CA Canada
-    CC Cocos (Keeling) Islands
-    CD Congo (DRC)
-    CF Central African Republic
-    CG Congo (Republic)
-    CH Switzerland
-    CI Cote d’Ivoire
-    CK Cook Islands
-    CL Chile
-    CM Cameroon
-    CN China
-    CO Colombia
+    CA Canadà
+    CC Illes Cocos
+    CD República Democràtica del Congo
+    CF República Centreafricana
+    CG República del Congo
+    CH Suïssa
+    CI Côte d’Ivoire
+    CK Illes Cook
+    CL Xile
+    CM Camerun
+    CN Xina
+    CO Colòmbia
     CR Costa Rica
     CU Cuba
-    CV Cape Verde
-    CW Curacao
-    CX Christmas Island
-    CY Cyprus
-    CZ Czech Republic
-    DE Germany
+    CV Cap Verd
+    CW Curaçao
+    CX Illa Christmas
+    CY Xipre
+    CZ República Txeca
+    DE Alemanya
     DJ Djibouti
-    DK Denmark
+    DK Dinamarca
     DM Dominica
-    DO Dominican Republic
-    DZ Algeria
-    EC Ecuador
-    EE Estonia
-    EG Egypt
-    EH Western Sahara
+    DO República Dominicana
+    DZ Algèria
+    EC Equador
+    EE Estònia
+    EG Egipte
+    EH Sàhara Occidental
     ER Eritrea
-    ES Spain
-    ET Ethiopia
-    FI Finland
+    ES Espanya
+    ET Etiòpia
+    FI Finlàndia
     FJ Fiji
-    FK Falkland Islands
-    FM Micronesia
-    FO Faroe Islands
-    FR France
+    FK Illes Malvines
+    FM Micronèsia
+    FO Illes Fèroe
+    FR França
     GA Gabon
-    GB United Kingdom
+    GB Regne Unit
     GD Grenada
-    GE Georgia
-    GF French Guiana
+    GE Geòrgia
+    GF Guaiana Francesa
     GG Guernsey
     GH Ghana
     GI Gibraltar
-    GL Greenland
-    GM Gambia
+    GL Groenlàndia
+    GM Gàmbia
     GN Guinea
-    GP Guadeloupe
-    GQ Equatorial Guinea
-    GR Greece
-    GS South Georgia & South Sandwich Islands
+    GP Guadalupe
+    GQ Guinea Equatorial
+    GR Grècia
+    GS Illes Geòrgia del Sud i Sandwich del Sud
     GT Guatemala
     GU Guam
-    GW Guinea-Bissau
+    GW Guinea Bissau
     GY Guyana
     HK Hong Kong
-    HM Heard & McDonald Islands
-    HN Honduras
-    HR Croatia
-    HT Haiti
-    HU Hungary
-    ID Indonesia
-    IE Ireland
+    HM Illa Heard i Illes McDonald
+    HN Hondures
+    HR Croàcia
+    HT Haití
+    HU Hongria
+    ID Indonèsia
+    IE Irlanda
     IL Israel
-    IM Isle of Man
-    IN India
-    IO British Indian Ocean Territory
+    IM Illa de Man
+    IN Índia
+    IO Territori Britànic de l’Oceà Índic
     IQ Iraq
     IR Iran
-    IS Iceland
-    IT Italy
+    IS Islàndia
+    IT Itàlia
     JE Jersey
     JM Jamaica
-    JO Jordan
-    JP Japan
+    JO Jordània
+    JP Japó
     KE Kenya
-    KG Kyrgyzstan
-    KH Cambodia
+    KG Kirguizstan
+    KH Cambodja
     KI Kiribati
-    KM Comoros
-    KN St. Kitts & Nevis
-    KP North Korea
-    KR South Korea
+    KM Comores
+    KN Saint Kitts i Nevis
+    KP Corea del Nord
+    KR Corea del Sud
     KW Kuwait
-    KY Cayman Islands
+    KY Illes Caiman
     KZ Kazakhstan
     LA Laos
-    LB Lebanon
-    LC St. Lucia
+    LB Líban
+    LC Saint Lucia
     LI Liechtenstein
     LK Sri Lanka
-    LR Liberia
+    LR Libèria
     LS Lesotho
-    LT Lithuania
-    LU Luxembourg
-    LV Latvia
-    LY Libya
-    MA Morocco
-    MC Monaco
-    MD Moldova
+    LT Lituània
+    LU Luxemburg
+    LV Letònia
+    LY Líbia
+    MA Marroc
+    MC Mònaco
+    MD Moldàvia
     ME Montenegro
-    MF St. Martin
+    MF Saint Martin
     MG Madagascar
-    MH Marshall Islands
-    MK North Macedonia
+    MH Illes Marshall
+    MK Macedònia del Nord
     ML Mali
-    MM Myanmar (Burma)
-    MN Mongolia
-    MO Macao
-    MP Northern Mariana Islands
-    MQ Martinique
-    MR Mauritania
+    MM Myanmar (Birmània)
+    MN Mongòlia
+    MO Macau
+    MP Illes Mariannes Septentrionals
+    MQ Martinica
+    MR Mauritània
     MS Montserrat
     MT Malta
-    MU Mauritius
+    MU Maurici
     MV Maldives
     MW Malawi
-    MX Mexico
-    MY Malaysia
-    MZ Mozambique
-    NA Namibia
-    NC New Caledonia
-    NE Niger
-    NF Norfolk Island
-    NG Nigeria
+    MX Mèxic
+    MY Malàisia
+    MZ Moçambic
+    NA Namíbia
+    NC Nova Caledònia
+    NE Níger
+    NF Norfolk
+    NG Nigèria
     NI Nicaragua
-    NL Netherlands
-    NO Norway
+    NL Països Baixos
+    NO Noruega
     NP Nepal
     NR Nauru
     NU Niue
-    NZ New Zealand
+    NZ Nova Zelanda
     OM Oman
-    PA Panama
-    PE Peru
-    PF French Polynesia
-    PG Papua New Guinea
-    PH Philippines
+    PA Panamà
+    PE Perú
+    PF Polinèsia Francesa
+    PG Papua Nova Guinea
+    PH Filipines
     PK Pakistan
-    PL Poland
-    PM St. Pierre & Miquelon
-    PN Pitcairn Islands
+    PL Polònia
+    PM Saint-Pierre-et-Miquelon
+    PN Illes Pitcairn
     PR Puerto Rico
-    PS Palestine
+    PS Palestina
     PT Portugal
     PW Palau
-    PY Paraguay
+    PY Paraguai
     QA Qatar
-    RE Reunion
+    RE Illa de la Reunió
     RO Romania
-    RS Serbia
-    RU Russia
-    RW Rwanda
-    SA Saudi Arabia
-    SB Solomon Islands
+    RS Sèrbia
+    RU Rússia
+    RW Ruanda
+    SA Aràbia Saudita
+    SB Illes Salomó
     SC Seychelles
     SD Sudan
-    SE Sweden
-    SG Singapore
-    SH St. Helena
-    SI Slovenia
-    SJ Svalbard & Jan Mayen
-    SK Slovakia
+    SE Suècia
+    SG Singapur
+    SH Santa Helena
+    SI Eslovènia
+    SJ Svalbard i Jan Mayen
+    SK Eslovàquia
     SL Sierra Leone
     SM San Marino
     SN Senegal
-    SO Somalia
-    SR Suriname
-    SS South Sudan
-    ST Sao Tome & Principe
+    SO Somàlia
+    SR Surinam
+    SS Sudan del Sud
+    ST São Tomé i Príncipe
     SV El Salvador
     SX Sint Maarten
-    SY Syria
+    SY Síria
     SZ Eswatini
-    TC Turks & Caicos Islands
-    TD Chad
-    TF French Southern Territories
+    TC Illes Turks i Caicos
+    TD Txad
+    TF Territoris Australs Francesos
     TG Togo
-    TH Thailand
-    TJ Tajikistan
+    TH Tailàndia
+    TJ Tadjikistan
     TK Tokelau
-    TL East Timor
+    TL Timor Oriental
     TM Turkmenistan
-    TN Tunisia
+    TN Tunísia
     TO Tonga
-    TR Turkiye
-    TT Trinidad & Tobago
+    TR Turquia
+    TT Trinitat i Tobago
     TV Tuvalu
     TW Taiwan
-    TZ Tanzania
-    UA Ukraine
+    TZ Tanzània
+    UA Ucraïna
     UG Uganda
-    UM U.S. Outlying Islands
-    US United States
-    UY Uruguay
+    UM Illes Perifèriques Menors dels EUA
+    US Estats Units
+    UY Uruguai
     UZ Uzbekistan
-    VA Vatican City
-    VC St. Vincent & Grenadines
-    VE Venezuela
-    VG British Virgin Islands
-    VI U.S. Virgin Islands
+    VA Ciutat del Vaticà
+    VC Saint Vincent i les Grenadines
+    VE Veneçuela
+    VG Illes Verges britàniques
+    VI Illes Verges nord-americanes
     VN Vietnam
     VU Vanuatu
-    WF Wallis & Futuna
+    WF Wallis i Futuna
     WS Samoa
     XK Kosovo
-    YE Yemen
+    YE Iemen
     YT Mayotte
-    ZA South Africa
-    ZM Zambia
-    ZW Zimbabwe
+    ZA República de Sud-àfrica
+    ZM Zàmbia
+    ZW Zimbàbue
 -}
 countryCodeToName : Cldr.CountryCode -> String
 countryCodeToName countryCode =
@@ -268,52 +268,52 @@ countryCodeToName countryCode =
             "Andorra"
 
         Cldr.AE ->
-            "United Arab Emirates"
+            "Emirats Àrabs Units"
 
         Cldr.AF ->
-            "Afghanistan"
+            "Afganistan"
 
         Cldr.AG ->
-            "Antigua & Barbuda"
+            "Antigua i Barbuda"
 
         Cldr.AI ->
             "Anguilla"
 
         Cldr.AL ->
-            "Albania"
+            "Albània"
 
         Cldr.AM ->
-            "Armenia"
+            "Armènia"
 
         Cldr.AO ->
             "Angola"
 
         Cldr.AQ ->
-            "Antarctica"
+            "Antàrtida"
 
         Cldr.AR ->
             "Argentina"
 
         Cldr.AS ->
-            "American Samoa"
+            "Samoa Nord-americana"
 
         Cldr.AT ->
-            "Austria"
+            "Àustria"
 
         Cldr.AU ->
-            "Australia"
+            "Austràlia"
 
         Cldr.AW ->
             "Aruba"
 
         Cldr.AX ->
-            "Aland Islands"
+            "Illes Åland"
 
         Cldr.AZ ->
-            "Azerbaijan"
+            "Azerbaidjan"
 
         Cldr.BA ->
-            "Bosnia & Herzegovina"
+            "Bòsnia i Hercegovina"
 
         Cldr.BB ->
             "Barbados"
@@ -322,13 +322,13 @@ countryCodeToName countryCode =
             "Bangladesh"
 
         Cldr.BE ->
-            "Belgium"
+            "Bèlgica"
 
         Cldr.BF ->
             "Burkina Faso"
 
         Cldr.BG ->
-            "Bulgaria"
+            "Bulgària"
 
         Cldr.BH ->
             "Bahrain"
@@ -337,79 +337,79 @@ countryCodeToName countryCode =
             "Burundi"
 
         Cldr.BJ ->
-            "Benin"
+            "Benín"
 
         Cldr.BL ->
-            "St. Barthelemy"
+            "Saint-Barthélemy"
 
         Cldr.BM ->
-            "Bermuda"
+            "Bermudes"
 
         Cldr.BN ->
             "Brunei"
 
         Cldr.BO ->
-            "Bolivia"
+            "Bolívia"
 
         Cldr.BQ ->
-            "Caribbean Netherlands"
+            "Carib Neerlandès"
 
         Cldr.BR ->
-            "Brazil"
+            "Brasil"
 
         Cldr.BS ->
-            "Bahamas"
+            "Bahames"
 
         Cldr.BT ->
             "Bhutan"
 
         Cldr.BV ->
-            "Bouvet Island"
+            "Bouvet"
 
         Cldr.BW ->
             "Botswana"
 
         Cldr.BY ->
-            "Belarus"
+            "Belarús"
 
         Cldr.BZ ->
             "Belize"
 
         Cldr.CA ->
-            "Canada"
+            "Canadà"
 
         Cldr.CC ->
-            "Cocos (Keeling) Islands"
+            "Illes Cocos"
 
         Cldr.CD ->
-            "Congo (DRC)"
+            "República Democràtica del Congo"
 
         Cldr.CF ->
-            "Central African Republic"
+            "República Centreafricana"
 
         Cldr.CG ->
-            "Congo (Republic)"
+            "República del Congo"
 
         Cldr.CH ->
-            "Switzerland"
+            "Suïssa"
 
         Cldr.CI ->
-            "Cote d’Ivoire"
+            "Côte d’Ivoire"
 
         Cldr.CK ->
-            "Cook Islands"
+            "Illes Cook"
 
         Cldr.CL ->
-            "Chile"
+            "Xile"
 
         Cldr.CM ->
-            "Cameroon"
+            "Camerun"
 
         Cldr.CN ->
-            "China"
+            "Xina"
 
         Cldr.CO ->
-            "Colombia"
+            "Colòmbia"
 
         Cldr.CR ->
             "Costa Rica"
@@ -418,91 +418,91 @@ countryCodeToName countryCode =
             "Cuba"
 
         Cldr.CV ->
-            "Cape Verde"
+            "Cap Verd"
 
         Cldr.CW ->
-            "Curacao"
+            "Curaçao"
 
         Cldr.CX ->
-            "Christmas Island"
+            "Illa Christmas"
 
         Cldr.CY ->
-            "Cyprus"
+            "Xipre"
 
         Cldr.CZ ->
-            "Czech Republic"
+            "República Txeca"
 
         Cldr.DE ->
-            "Germany"
+            "Alemanya"
 
         Cldr.DJ ->
             "Djibouti"
 
         Cldr.DK ->
-            "Denmark"
+            "Dinamarca"
 
         Cldr.DM ->
             "Dominica"
 
         Cldr.DO ->
-            "Dominican Republic"
+            "República Dominicana"
 
         Cldr.DZ ->
-            "Algeria"
+            "Algèria"
 
         Cldr.EC ->
-            "Ecuador"
+            "Equador"
 
         Cldr.EE ->
-            "Estonia"
+            "Estònia"
 
         Cldr.EG ->
-            "Egypt"
+            "Egipte"
 
         Cldr.EH ->
-            "Western Sahara"
+            "Sàhara Occidental"
 
         Cldr.ER ->
             "Eritrea"
 
         Cldr.ES ->
-            "Spain"
+            "Espanya"
 
         Cldr.ET ->
-            "Ethiopia"
+            "Etiòpia"
 
         Cldr.FI ->
-            "Finland"
+            "Finlàndia"
 
         Cldr.FJ ->
             "Fiji"
 
         Cldr.FK ->
-            "Falkland Islands"
+            "Illes Malvines"
 
         Cldr.FM ->
-            "Micronesia"
+            "Micronèsia"
 
         Cldr.FO ->
-            "Faroe Islands"
+            "Illes Fèroe"
 
         Cldr.FR ->
-            "France"
+            "França"
 
         Cldr.GA ->
             "Gabon"
 
         Cldr.GB ->
-            "United Kingdom"
+            "Regne Unit"
 
         Cldr.GD ->
             "Grenada"
 
         Cldr.GE ->
-            "Georgia"
+            "Geòrgia"
 
         Cldr.GF ->
-            "French Guiana"
+            "Guaiana Francesa"
 
         Cldr.GG ->
             "Guernsey"
@@ -514,25 +514,25 @@ countryCodeToName countryCode =
             "Gibraltar"
 
         Cldr.GL ->
-            "Greenland"
+            "Groenlàndia"
 
         Cldr.GM ->
-            "Gambia"
+            "Gàmbia"
 
         Cldr.GN ->
             "Guinea"
 
         Cldr.GP ->
-            "Guadeloupe"
+            "Guadalupe"
 
         Cldr.GQ ->
-            "Equatorial Guinea"
+            "Guinea Equatorial"
 
         Cldr.GR ->
-            "Greece"
+            "Grècia"
 
         Cldr.GS ->
-            "South Georgia & South Sandwich Islands"
+            "Illes Geòrgia del Sud i Sandwich del Sud"
 
         Cldr.GT_ ->
             "Guatemala"
@@ -541,7 +541,7 @@ countryCodeToName countryCode =
             "Guam"
 
         Cldr.GW ->
-            "Guinea-Bissau"
+            "Guinea Bissau"
 
         Cldr.GY ->
             "Guyana"
@@ -550,37 +550,37 @@ countryCodeToName countryCode =
             "Hong Kong"
 
         Cldr.HM ->
-            "Heard & McDonald Islands"
+            "Illa Heard i Illes McDonald"
 
         Cldr.HN ->
-            "Honduras"
+            "Hondures"
 
         Cldr.HR ->
-            "Croatia"
+            "Croàcia"
 
         Cldr.HT ->
-            "Haiti"
+            "Haití"
 
         Cldr.HU ->
-            "Hungary"
+            "Hongria"
 
         Cldr.ID ->
-            "Indonesia"
+            "Indonèsia"
 
         Cldr.IE ->
-            "Ireland"
+            "Irlanda"
 
         Cldr.IL ->
             "Israel"
 
         Cldr.IM ->
-            "Isle of Man"
+            "Illa de Man"
 
         Cldr.IN ->
-            "India"
+            "Índia"
 
         Cldr.IO ->
-            "British Indian Ocean Territory"
+            "Territori Britànic de l’Oceà Índic"
 
         Cldr.IQ ->
             "Iraq"
@@ -589,10 +589,10 @@ countryCodeToName countryCode =
             "Iran"
 
         Cldr.IS ->
-            "Iceland"
+            "Islàndia"
 
         Cldr.IT ->
-            "Italy"
+            "Itàlia"
 
         Cldr.JE ->
             "Jersey"
@@ -601,40 +601,40 @@ countryCodeToName countryCode =
             "Jamaica"
 
         Cldr.JO ->
-            "Jordan"
+            "Jordània"
 
         Cldr.JP ->
-            "Japan"
+            "Japó"
 
         Cldr.KE ->
             "Kenya"
 
         Cldr.KG ->
-            "Kyrgyzstan"
+            "Kirguizstan"
 
         Cldr.KH ->
-            "Cambodia"
+            "Cambodja"
 
         Cldr.KI ->
             "Kiribati"
 
         Cldr.KM ->
-            "Comoros"
+            "Comores"
 
         Cldr.KN ->
-            "St. Kitts & Nevis"
+            "Saint Kitts i Nevis"
 
         Cldr.KP ->
-            "North Korea"
+            "Corea del Nord"
 
         Cldr.KR ->
-            "South Korea"
+            "Corea del Sud"
 
         Cldr.KW ->
             "Kuwait"
 
         Cldr.KY ->
-            "Cayman Islands"
+            "Illes Caiman"
 
         Cldr.KZ ->
             "Kazakhstan"
@@ -643,10 +643,10 @@ countryCodeToName countryCode =
             "Laos"
 
         Cldr.LB ->
-            "Lebanon"
+            "Líban"
 
         Cldr.LC ->
-            "St. Lucia"
+            "Saint Lucia"
 
         Cldr.LI ->
             "Liechtenstein"
@@ -655,67 +655,67 @@ countryCodeToName countryCode =
             "Sri Lanka"
 
         Cldr.LR ->
-            "Liberia"
+            "Libèria"
 
         Cldr.LS ->
             "Lesotho"
 
         Cldr.LT_ ->
-            "Lithuania"
+            "Lituània"
 
         Cldr.LU ->
-            "Luxembourg"
+            "Luxemburg"
 
         Cldr.LV ->
-            "Latvia"
+            "Letònia"
 
         Cldr.LY ->
-            "Libya"
+            "Líbia"
 
         Cldr.MA ->
-            "Morocco"
+            "Marroc"
 
         Cldr.MC ->
-            "Monaco"
+            "Mònaco"
 
         Cldr.MD ->
-            "Moldova"
+            "Moldàvia"
 
         Cldr.ME ->
             "Montenegro"
 
         Cldr.MF ->
-            "St. Martin"
+            "Saint Martin"
 
         Cldr.MG ->
             "Madagascar"
 
         Cldr.MH ->
-            "Marshall Islands"
+            "Illes Marshall"
 
         Cldr.MK ->
-            "North Macedonia"
+            "Macedònia del Nord"
 
         Cldr.ML ->
             "Mali"
 
         Cldr.MM ->
-            "Myanmar (Burma)"
+            "Myanmar (Birmània)"
 
         Cldr.MN ->
-            "Mongolia"
+            "Mongòlia"
 
         Cldr.MO ->
-            "Macao"
+            "Macau"
 
         Cldr.MP ->
-            "Northern Mariana Islands"
+            "Illes Mariannes Septentrionals"
 
         Cldr.MQ ->
-            "Martinique"
+            "Martinica"
 
         Cldr.MR ->
-            "Mauritania"
+            "Mauritània"
 
         Cldr.MS ->
             "Montserrat"
@@ -724,7 +724,7 @@ countryCodeToName countryCode =
             "Malta"
 
         Cldr.MU ->
-            "Mauritius"
+            "Maurici"
 
         Cldr.MV ->
             "Maldives"
@@ -733,37 +733,37 @@ countryCodeToName countryCode =
             "Malawi"
 
         Cldr.MX ->
-            "Mexico"
+            "Mèxic"
 
         Cldr.MY ->
-            "Malaysia"
+            "Malàisia"
 
         Cldr.MZ ->
-            "Mozambique"
+            "Moçambic"
 
         Cldr.NA ->
-            "Namibia"
+            "Namíbia"
 
         Cldr.NC ->
-            "New Caledonia"
+            "Nova Caledònia"
 
         Cldr.NE ->
-            "Niger"
+            "Níger"
 
         Cldr.NF ->
-            "Norfolk Island"
+            "Norfolk"
 
         Cldr.NG ->
-            "Nigeria"
+            "Nigèria"
 
         Cldr.NI ->
             "Nicaragua"
 
         Cldr.NL ->
-            "Netherlands"
+            "Països Baixos"
 
         Cldr.NO ->
-            "Norway"
+            "Noruega"
 
         Cldr.NP ->
             "Nepal"
@@ -775,43 +775,43 @@ countryCodeToName countryCode =
             "Niue"
 
         Cldr.NZ ->
-            "New Zealand"
+            "Nova Zelanda"
 
         Cldr.OM ->
             "Oman"
 
         Cldr.PA ->
-            "Panama"
+            "Panamà"
 
         Cldr.PE ->
-            "Peru"
+            "Perú"
 
         Cldr.PF ->
-            "French Polynesia"
+            "Polinèsia Francesa"
 
         Cldr.PG ->
-            "Papua New Guinea"
+            "Papua Nova Guinea"
 
         Cldr.PH ->
-            "Philippines"
+            "Filipines"
 
         Cldr.PK ->
             "Pakistan"
 
         Cldr.PL ->
-            "Poland"
+            "Polònia"
 
         Cldr.PM ->
-            "St. Pierre & Miquelon"
+            "Saint-Pierre-et-Miquelon"
 
         Cldr.PN ->
-            "Pitcairn Islands"
+            "Illes Pitcairn"
 
         Cldr.PR ->
             "Puerto Rico"
 
         Cldr.PS ->
-            "Palestine"
+            "Palestina"
 
         Cldr.PT ->
             "Portugal"
@@ -820,31 +820,31 @@ countryCodeToName countryCode =
             "Palau"
 
         Cldr.PY ->
-            "Paraguay"
+            "Paraguai"
 
         Cldr.QA ->
             "Qatar"
 
         Cldr.RE ->
-            "Reunion"
+            "Illa de la Reunió"
 
         Cldr.RO ->
             "Romania"
 
         Cldr.RS ->
-            "Serbia"
+            "Sèrbia"
 
         Cldr.RU ->
-            "Russia"
+            "Rússia"
 
         Cldr.RW ->
-            "Rwanda"
+            "Ruanda"
 
         Cldr.SA ->
-            "Saudi Arabia"
+            "Aràbia Saudita"
 
         Cldr.SB ->
-            "Solomon Islands"
+            "Illes Salomó"
 
         Cldr.SC ->
             "Seychelles"
@@ -853,22 +853,22 @@ countryCodeToName countryCode =
             "Sudan"
 
         Cldr.SE ->
-            "Sweden"
+            "Suècia"
 
         Cldr.SG ->
-            "Singapore"
+            "Singapur"
 
         Cldr.SH ->
-            "St. Helena"
+            "Santa Helena"
 
         Cldr.SI ->
-            "Slovenia"
+            "Eslovènia"
 
         Cldr.SJ ->
-            "Svalbard & Jan Mayen"
+            "Svalbard i Jan Mayen"
 
         Cldr.SK ->
-            "Slovakia"
+            "Eslovàquia"
 
         Cldr.SL ->
             "Sierra Leone"
@@ -880,16 +880,16 @@ countryCodeToName countryCode =
             "Senegal"
 
         Cldr.SO ->
-            "Somalia"
+            "Somàlia"
 
         Cldr.SR ->
-            "Suriname"
+            "Surinam"
 
         Cldr.SS ->
-            "South Sudan"
+            "Sudan del Sud"
 
         Cldr.ST ->
-            "Sao Tome & Principe"
+            "São Tomé i Príncipe"
 
         Cldr.SV ->
             "El Salvador"
@@ -898,49 +898,49 @@ countryCodeToName countryCode =
             "Sint Maarten"
 
         Cldr.SY ->
-            "Syria"
+            "Síria"
 
         Cldr.SZ ->
             "Eswatini"
 
         Cldr.TC ->
-            "Turks & Caicos Islands"
+            "Illes Turks i Caicos"
 
         Cldr.TD ->
-            "Chad"
+            "Txad"
 
         Cldr.TF ->
-            "French Southern Territories"
+            "Territoris Australs Francesos"
 
         Cldr.TG ->
             "Togo"
 
         Cldr.TH ->
-            "Thailand"
+            "Tailàndia"
 
         Cldr.TJ ->
-            "Tajikistan"
+            "Tadjikistan"
 
         Cldr.TK ->
             "Tokelau"
 
         Cldr.TL ->
-            "East Timor"
+            "Timor Oriental"
 
         Cldr.TM ->
             "Turkmenistan"
 
         Cldr.TN ->
-            "Tunisia"
+            "Tunísia"
 
         Cldr.TO ->
             "Tonga"
 
         Cldr.TR ->
-            "Turkiye"
+            "Turquia"
 
         Cldr.TT ->
-            "Trinidad & Tobago"
+            "Trinitat i Tobago"
 
         Cldr.TV ->
             "Tuvalu"
@@ -949,40 +949,40 @@ countryCodeToName countryCode =
             "Taiwan"
 
         Cldr.TZ ->
-            "Tanzania"
+            "Tanzània"
 
         Cldr.UA ->
-            "Ukraine"
+            "Ucraïna"
 
         Cldr.UG ->
             "Uganda"
 
         Cldr.UM ->
-            "U.S. Outlying Islands"
+            "Illes Perifèriques Menors dels EUA"
 
         Cldr.US ->
-            "United States"
+            "Estats Units"
 
         Cldr.UY ->
-            "Uruguay"
+            "Uruguai"
 
         Cldr.UZ ->
             "Uzbekistan"
 
         Cldr.VA ->
-            "Vatican City"
+            "Ciutat del Vaticà"
 
         Cldr.VC ->
-            "St. Vincent & Grenadines"
+            "Saint Vincent i les Grenadines"
 
         Cldr.VE ->
-            "Venezuela"
+            "Veneçuela"
 
         Cldr.VG ->
-            "British Virgin Islands"
+            "Illes Verges britàniques"
 
         Cldr.VI ->
-            "U.S. Virgin Islands"
+            "Illes Verges nord-americanes"
 
         Cldr.VN ->
             "Vietnam"
@@ -991,7 +991,7 @@ countryCodeToName countryCode =
             "Vanuatu"
 
         Cldr.WF ->
-            "Wallis & Futuna"
+            "Wallis i Futuna"
 
         Cldr.WS ->
             "Samoa"
@@ -1000,16 +1000,16 @@ countryCodeToName countryCode =
             "Kosovo"
 
         Cldr.YE ->
-            "Yemen"
+            "Iemen"
 
         Cldr.YT ->
             "Mayotte"
 
         Cldr.ZA ->
-            "South Africa"
+            "República de Sud-àfrica"
 
         Cldr.ZM ->
-            "Zambia"
+            "Zàmbia"
 
         Cldr.ZW ->
-            "Zimbabwe"
+            "Zimbàbue"

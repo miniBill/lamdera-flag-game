@@ -50,9 +50,9 @@ import Cldr.Pashto
     BZ بلیز
     CA کاناډا
     CC کوکوز (کيلنګ) ټاپوګان
-    CD کانګو - کینشاسا
+    CD کانګو (DRC)
     CF وسطي افريقا جمهور
-    CG کانګو - بروزوییل
+    CG کانګو (جمهوریه)
     CH سویس
     CI د عاج ساحل
     CK کوک ټاپوګان
@@ -66,7 +66,7 @@ import Cldr.Pashto
     CW کوراکاو
     CX د کريسمس ټاپو
     CY قبرس
-    CZ چکیا
+    CZ جمهوريه چيک
     DE المان
     DJ جبوتي
     DK ډنمارک
@@ -105,7 +105,7 @@ import Cldr.Pashto
     GU ګوام
     GW ګینه بیسو
     GY ګیانا
-    HK هانګ کانګ SAR چین
+    HK هانګ کانګ
     HM هارډ او ميکډانلډ ټاپوګان
     HN هانډوراس
     HR کرواشيا
@@ -158,7 +158,7 @@ import Cldr.Pashto
     ML مالي
     MM ميانمار (برما)
     MN منګوليا
-    MO مکاو SAR چین
+    MO مکاو
     MP شمالي ماريانا ټاپوګان
     MQ مارټینیک
     MR موریتانیا
@@ -193,7 +193,7 @@ import Cldr.Pashto
     PM سینټ پییر او میکولون
     PN پيټکيرن ټاپوګان
     PR پورتو ریکو
-    PS فلسطين سيمے
+    PS فلسطين
     PT پورتګال
     PW پلاؤ
     PY پاراګوی
@@ -231,7 +231,7 @@ import Cldr.Pashto
     TH تهايلنډ
     TJ تاجکستان
     TK توکیلو
-    TL تيمور-ليسټ
+    TL ختيځ تيمور
     TM تورکمنستان
     TN تونس
     TO تونګا
@@ -265,9 +265,6 @@ import Cldr.Pashto
 countryCodeToName : Cldr.CountryCode -> String
 countryCodeToName countryCode =
     case countryCode of
-        Cldr.PS ->
-            "فلسطين سيمے"
-
         Cldr.TC ->
             "د ترکیے او کیکاسو ټاپو"
 

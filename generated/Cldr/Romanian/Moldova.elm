@@ -50,9 +50,9 @@ import Cldr.Romanian
     BZ Belize
     CA Canada
     CC Insulele Cocos (Keeling)
-    CD Congo - Kinshasa
+    CD Congo (Republica Democrată Congo)
     CF Republica Centrafricană
-    CG Congo - Brazzaville
+    CG Congo (Republica)
     CH Elveția
     CI Côte d’Ivoire
     CK Insulele Cook
@@ -66,7 +66,7 @@ import Cldr.Romanian
     CW Curaçao
     CX Insula Christmas
     CY Cipru
-    CZ Cehia
+    CZ Republica Cehă
     DE Germania
     DJ Djibouti
     DK Danemarca
@@ -105,7 +105,7 @@ import Cldr.Romanian
     GU Guam
     GW Guineea-Bissau
     GY Guyana
-    HK R.A.S. Hong Kong, China
+    HK Hong Kong
     HM Insula Heard și Insulele McDonald
     HN Honduras
     HR Croația
@@ -158,7 +158,7 @@ import Cldr.Romanian
     ML Mali
     MM Myanmar
     MN Mongolia
-    MO R.A.S. Macao, China
+    MO Macao
     MP Insulele Mariane de Nord
     MQ Martinica
     MR Mauritania
@@ -193,7 +193,7 @@ import Cldr.Romanian
     PM Saint-Pierre și Miquelon
     PN Insulele Pitcairn
     PR Puerto Rico
-    PS Teritoriile Palestiniene
+    PS Palestina
     PT Portugalia
     PW Palau
     PY Paraguay
@@ -231,7 +231,7 @@ import Cldr.Romanian
     TH Thailanda
     TJ Tadjikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Timorul de Est
     TM Turkmenistan
     TN Tunisia
     TO Tonga

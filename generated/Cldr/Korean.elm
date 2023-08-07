@@ -49,9 +49,9 @@ import Cldr
     BZ 벨리즈
     CA 캐나다
     CC 코코스 제도
-    CD 콩고-킨샤사
+    CD 콩고민주공화국
     CF 중앙 아프리카 공화국
-    CG 콩고-브라자빌
+    CG 콩고 공화국
     CH 스위스
     CI 코트디부아르
     CK 쿡 제도
@@ -65,7 +65,7 @@ import Cldr
     CW 퀴라소
     CX 크리스마스섬
     CY 키프로스
-    CZ 체코
+    CZ 체코 공화국
     DE 독일
     DJ 지부티
     DK 덴마크
@@ -104,7 +104,7 @@ import Cldr
     GU 괌
     GW 기니비사우
     GY 가이아나
-    HK 홍콩(중국 특별행정구)
+    HK 홍콩
     HM 허드 맥도널드 제도
     HN 온두라스
     HR 크로아티아
@@ -157,7 +157,7 @@ import Cldr
     ML 말리
     MM 미얀마
     MN 몽골
-    MO 마카오(중국 특별행정구)
+    MO 마카오
     MP 북마리아나제도
     MQ 마르티니크
     MR 모리타니
@@ -192,7 +192,7 @@ import Cldr
     PM 생피에르 미클롱
     PN 핏케언 제도
     PR 푸에르토리코
-    PS 팔레스타인 지구
+    PS 팔레스타인
     PT 포르투갈
     PW 팔라우
     PY 파라과이
@@ -230,7 +230,7 @@ import Cldr
     TH 태국
     TJ 타지키스탄
     TK 토켈라우
-    TL 동티모르
+    TL 티모르레스테
     TM 투르크메니스탄
     TN 튀니지
     TO 통가
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "코코스 제도"
 
         Cldr.CD ->
-            "콩고-킨샤사"
+            "콩고민주공화국"
 
         Cldr.CF ->
             "중앙 아프리카 공화국"
 
         Cldr.CG ->
-            "콩고-브라자빌"
+            "콩고 공화국"
 
         Cldr.CH ->
             "스위스"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "키프로스"
 
         Cldr.CZ ->
-            "체코"
+            "체코 공화국"
 
         Cldr.DE ->
             "독일"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "가이아나"
 
         Cldr.HK ->
-            "홍콩(중국 특별행정구)"
+            "홍콩"
 
         Cldr.HM ->
             "허드 맥도널드 제도"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "몽골"
 
         Cldr.MO ->
-            "마카오(중국 특별행정구)"
+            "마카오"
 
         Cldr.MP ->
             "북마리아나제도"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "푸에르토리코"
 
         Cldr.PS ->
-            "팔레스타인 지구"
+            "팔레스타인"
 
         Cldr.PT ->
             "포르투갈"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "토켈라우"
 
         Cldr.TL ->
-            "동티모르"
+            "티모르레스테"
 
         Cldr.TM ->
             "투르크메니스탄"

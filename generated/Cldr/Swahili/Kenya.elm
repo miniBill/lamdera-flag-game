@@ -50,9 +50,9 @@ import Cldr.Swahili
     BZ Belize
     CA Kanada
     CC Visiwa vya Kokos (Keeling)
-    CD Kongo - Kinshasa
+    CD Kongo (DRC)
     CF Jamhuri ya Afrika ya Kati
-    CG Kongo - Brazzaville
+    CG Jamhuri ya Kongo
     CH Uswisi
     CI Cote d’Ivoire
     CK Visiwa vya Cook
@@ -66,7 +66,7 @@ import Cldr.Swahili
     CW Kurakao
     CX Kisiwa cha Krismasi
     CY Saiprasi
-    CZ Chechia
+    CZ Jamhuri ya Cheki
     DE Ujerumani
     DJ Jibuti
     DK Denmaki
@@ -105,7 +105,7 @@ import Cldr.Swahili
     GU Guami
     GW Ginebisau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Kisiwa cha Heard na Visiwa vya McDonald
     HN Honduras
     HR Kroashia
@@ -158,7 +158,7 @@ import Cldr.Swahili
     ML Mali
     MM Myama (Burma)
     MN Mongolia
-    MO Makau SAR China
+    MO Makau
     MP Visiwa vya Mariana vya Kaskazini
     MQ Martinique
     MR Moritania
@@ -193,7 +193,7 @@ import Cldr.Swahili
     PM St. Pierre na Miquelon
     PN Visiwa vya Pitcairn
     PR Pwetoriko
-    PS Himaya za Palestina
+    PS Palestina
     PT Ureno
     PW Palau
     PY Paragwai
@@ -231,7 +231,7 @@ import Cldr.Swahili
     TH Thailandi
     TJ Tajikistani
     TK Tokelau
-    TL Timor-Leste
+    TL Timor ya Mashariki
     TM Turukimenstani
     TN Tunisia
     TO Tonga
@@ -297,9 +297,6 @@ countryCodeToName countryCode =
 
         Cldr.CC ->
             "Visiwa vya Kokos (Keeling)"
-
-        Cldr.CD ->
-            "Kongo - Kinshasa"
 
         Cldr.CV ->
             "Kepuvede"
@@ -396,9 +393,6 @@ countryCodeToName countryCode =
 
         Cldr.PR ->
             "Pwetoriko"
-
-        Cldr.PS ->
-            "Himaya za Palestina"
 
         Cldr.PY ->
             "Paragwai"

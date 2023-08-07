@@ -52,9 +52,9 @@ This is identical to the Danish version.
     BZ Belize
     CA Canada
     CC Cocosøerne
-    CD Congo-Kinshasa
+    CD Den Demokratiske Republik Congo (DRC)
     CF Den Centralafrikanske Republik
-    CG Congo-Brazzaville
+    CG Republikken Congo
     CH Schweiz
     CI Elfenbenskysten
     CK Cookøerne
@@ -68,7 +68,7 @@ This is identical to the Danish version.
     CW Curaçao
     CX Juleøen
     CY Cypern
-    CZ Tjekkiet
+    CZ Den Tjekkiske Republik
     DE Tyskland
     DJ Djibouti
     DK Danmark
@@ -107,7 +107,7 @@ This is identical to the Danish version.
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK SAR Hongkong
+    HK Hongkong
     HM Heard Island og McDonald Islands
     HN Honduras
     HR Kroatien
@@ -160,7 +160,7 @@ This is identical to the Danish version.
     ML Mali
     MM Myanmar (Burma)
     MN Mongoliet
-    MO SAR Macao
+    MO Macao
     MP Nordmarianerne
     MQ Martinique
     MR Mauretanien
@@ -195,7 +195,7 @@ This is identical to the Danish version.
     PM Saint Pierre og Miquelon
     PN Pitcairn
     PR Puerto Rico
-    PS De palæstinensiske områder
+    PS Palæstina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the Danish version.
     TH Thailand
     TJ Tadsjikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Østtimor
     TM Turkmenistan
     TN Tunesien
     TO Tonga

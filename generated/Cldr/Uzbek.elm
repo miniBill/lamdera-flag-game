@@ -49,9 +49,9 @@ import Cldr
     BZ Beliz
     CA Kanada
     CC Kokos (Kiling) orollari
-    CD Kongo – Kinshasa
+    CD Kongo (KDR)
     CF Markaziy Afrika Respublikasi
-    CG Kongo – Brazzavil
+    CG Kongo (Respublika)
     CH Shveytsariya
     CI Kot-d’Ivuar
     CK Kuk orollari
@@ -65,7 +65,7 @@ import Cldr
     CW Kyurasao
     CX Rojdestvo oroli
     CY Kipr
-    CZ Chexiya
+    CZ Chexiya Respublikasi
     DE Germaniya
     DJ Jibuti
     DK Daniya
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Gvineya-Bisau
     GY Gayana
-    HK Gonkong (Xitoy MMH)
+    HK Gonkong
     HM Xerd va Makdonald orollari
     HN Gonduras
     HR Xorvatiya
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanma (Birma)
     MN Mongoliya
-    MO Makao (Xitoy MMH)
+    MO Makao
     MP Shimoliy Mariana orollari
     MQ Martinika
     MR Mavritaniya
@@ -192,7 +192,7 @@ import Cldr
     PM Sen-Pyer va Mikelon
     PN Pitkern orollari
     PR Puerto-Riko
-    PS Falastin hududlari
+    PS Falastin
     PT Portugaliya
     PW Palau
     PY Paragvay
@@ -230,7 +230,7 @@ import Cldr
     TH Tailand
     TJ Tojikiston
     TK Tokelau
-    TL Timor-Leste
+    TL Sharqiy Timor
     TM Turkmaniston
     TN Tunis
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokos (Kiling) orollari"
 
         Cldr.CD ->
-            "Kongo – Kinshasa"
+            "Kongo (KDR)"
 
         Cldr.CF ->
             "Markaziy Afrika Respublikasi"
 
         Cldr.CG ->
-            "Kongo – Brazzavil"
+            "Kongo (Respublika)"
 
         Cldr.CH ->
             "Shveytsariya"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kipr"
 
         Cldr.CZ ->
-            "Chexiya"
+            "Chexiya Respublikasi"
 
         Cldr.DE ->
             "Germaniya"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gayana"
 
         Cldr.HK ->
-            "Gonkong (Xitoy MMH)"
+            "Gonkong"
 
         Cldr.HM ->
             "Xerd va Makdonald orollari"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongoliya"
 
         Cldr.MO ->
-            "Makao (Xitoy MMH)"
+            "Makao"
 
         Cldr.MP ->
             "Shimoliy Mariana orollari"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto-Riko"
 
         Cldr.PS ->
-            "Falastin hududlari"
+            "Falastin"
 
         Cldr.PT ->
             "Portugaliya"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Sharqiy Timor"
 
         Cldr.TM ->
             "Turkmaniston"

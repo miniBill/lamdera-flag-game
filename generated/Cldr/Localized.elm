@@ -29,7 +29,7 @@ import Cldr.Arabic.Libya
 import Cldr.Arabic.Mauritania
 import Cldr.Arabic.Morocco
 import Cldr.Arabic.Oman
-import Cldr.Arabic.PalestinianTerritories
+import Cldr.Arabic.Palestine
 import Cldr.Arabic.Qatar
 import Cldr.Arabic.SaudiArabia
 import Cldr.Arabic.Somalia
@@ -60,15 +60,15 @@ import Cldr.Catalan
 import Cldr.Catalan.Andorra
 import Cldr.Catalan.France
 import Cldr.Catalan.Italy
-import Cldr.Catalan.Valencia
+import Cldr.Catalan.Spain.Valencia
 import Cldr.Chinese
 import Cldr.Chinese.Simplified
-import Cldr.Chinese.Simplified.HongKongSARChina
-import Cldr.Chinese.Simplified.MacaoSARChina
+import Cldr.Chinese.Simplified.HongKong
+import Cldr.Chinese.Simplified.Macao
 import Cldr.Chinese.Simplified.Singapore
 import Cldr.Chinese.Traditional
-import Cldr.Chinese.Traditional.HongKongSARChina
-import Cldr.Chinese.Traditional.MacaoSARChina
+import Cldr.Chinese.Traditional.HongKong
+import Cldr.Chinese.Traditional.Macao
 import Cldr.Croatian
 import Cldr.Croatian.BosniaAndHerzegovina
 import Cldr.Czech
@@ -120,7 +120,7 @@ import Cldr.English.Grenada
 import Cldr.English.Guam
 import Cldr.English.Guernsey
 import Cldr.English.Guyana
-import Cldr.English.HongKongSARChina
+import Cldr.English.HongKong
 import Cldr.English.India
 import Cldr.English.Ireland
 import Cldr.English.IsleofMan
@@ -131,7 +131,7 @@ import Cldr.English.Kenya
 import Cldr.English.Kiribati
 import Cldr.English.Lesotho
 import Cldr.English.Liberia
-import Cldr.English.MacaoSARChina
+import Cldr.English.Macao
 import Cldr.English.Madagascar
 import Cldr.English.Malawi
 import Cldr.English.Malaysia
@@ -201,8 +201,8 @@ import Cldr.French.Canada
 import Cldr.French.CentralAfricanRepublic
 import Cldr.French.Chad
 import Cldr.French.Comoros
-import Cldr.French.CongoBrazzaville
-import Cldr.French.CongoKinshasa
+import Cldr.French.CongoDRC
+import Cldr.French.CongoRepublic
 import Cldr.French.CôtedIvoire
 import Cldr.French.Djibouti
 import Cldr.French.EquatorialGuinea
@@ -302,15 +302,15 @@ import Cldr.Polish
 import Cldr.Portuguese
 import Cldr.Portuguese.Angola
 import Cldr.Portuguese.CapeVerde
+import Cldr.Portuguese.EastTimor
 import Cldr.Portuguese.EquatorialGuinea
 import Cldr.Portuguese.GuineaBissau
 import Cldr.Portuguese.Luxembourg
-import Cldr.Portuguese.MacaoSARChina
+import Cldr.Portuguese.Macao
 import Cldr.Portuguese.Mozambique
 import Cldr.Portuguese.Portugal
 import Cldr.Portuguese.Switzerland
 import Cldr.Portuguese.SãoToméAndPríncipe
-import Cldr.Portuguese.TimorLeste
 import Cldr.Punjabi
 import Cldr.Punjabi.Gurmukhi
 import Cldr.Romanian
@@ -368,7 +368,7 @@ import Cldr.Spanish.UnitedStates
 import Cldr.Spanish.Uruguay
 import Cldr.Spanish.Venezuela
 import Cldr.Swahili
-import Cldr.Swahili.CongoKinshasa
+import Cldr.Swahili.CongoDRC
 import Cldr.Swahili.Kenya
 import Cldr.Swahili.Uganda
 import Cldr.Swedish
@@ -462,7 +462,7 @@ countryCodeToName locale countryCode =
             Cldr.Arabic.Oman.countryCodeToName countryCode
 
         Cldr.ArPS ->
-            Cldr.Arabic.PalestinianTerritories.countryCodeToName countryCode
+            Cldr.Arabic.Palestine.countryCodeToName countryCode
 
         Cldr.ArQA ->
             Cldr.Arabic.Qatar.countryCodeToName countryCode
@@ -528,7 +528,7 @@ countryCodeToName locale countryCode =
             Cldr.Catalan.Andorra.countryCodeToName countryCode
 
         Cldr.CaESValencia ->
-            Cldr.Catalan.Valencia.countryCodeToName countryCode
+            Cldr.Catalan.Spain.Valencia.countryCodeToName countryCode
 
         Cldr.CaFR ->
             Cldr.Catalan.France.countryCodeToName countryCode
@@ -699,7 +699,7 @@ countryCodeToName locale countryCode =
             Cldr.English.Guyana.countryCodeToName countryCode
 
         Cldr.EnHK ->
-            Cldr.English.HongKongSARChina.countryCodeToName countryCode
+            Cldr.English.HongKong.countryCodeToName countryCode
 
         Cldr.EnIE ->
             Cldr.English.Ireland.countryCodeToName countryCode
@@ -751,7 +751,7 @@ countryCodeToName locale countryCode =
             Cldr.English.MarshallIslands.countryCodeToName countryCode
 
         Cldr.EnMO ->
-            Cldr.English.MacaoSARChina.countryCodeToName countryCode
+            Cldr.English.Macao.countryCodeToName countryCode
 
         Cldr.EnMP ->
             Cldr.English.NorthernMarianaIslands.countryCodeToName countryCode
@@ -1021,13 +1021,13 @@ countryCodeToName locale countryCode =
             Cldr.French.Canada.countryCodeToName countryCode
 
         Cldr.FrCD ->
-            Cldr.French.CongoKinshasa.countryCodeToName countryCode
+            Cldr.French.CongoDRC.countryCodeToName countryCode
 
         Cldr.FrCF ->
             Cldr.French.CentralAfricanRepublic.countryCodeToName countryCode
 
         Cldr.FrCG ->
-            Cldr.French.CongoBrazzaville.countryCodeToName countryCode
+            Cldr.French.CongoRepublic.countryCodeToName countryCode
 
         Cldr.FrCH ->
             Cldr.French.Switzerland.countryCodeToName countryCode
@@ -1352,7 +1352,7 @@ countryCodeToName locale countryCode =
             Cldr.Portuguese.Luxembourg.countryCodeToName countryCode
 
         Cldr.PtMO ->
-            Cldr.Portuguese.MacaoSARChina.countryCodeToName countryCode
+            Cldr.Portuguese.Macao.countryCodeToName countryCode
 
         Cldr.PtMZ ->
             Cldr.Portuguese.Mozambique.countryCodeToName countryCode
@@ -1364,7 +1364,7 @@ countryCodeToName locale countryCode =
             Cldr.Portuguese.SãoToméAndPríncipe.countryCodeToName countryCode
 
         Cldr.PtTL ->
-            Cldr.Portuguese.TimorLeste.countryCodeToName countryCode
+            Cldr.Portuguese.EastTimor.countryCodeToName countryCode
 
         Cldr.Ro ->
             Cldr.Romanian.countryCodeToName countryCode
@@ -1468,7 +1468,7 @@ countryCodeToName locale countryCode =
             Cldr.Swahili.countryCodeToName countryCode
 
         Cldr.SwCD ->
-            Cldr.Swahili.CongoKinshasa.countryCodeToName countryCode
+            Cldr.Swahili.CongoDRC.countryCodeToName countryCode
 
         Cldr.SwKE ->
             Cldr.Swahili.Kenya.countryCodeToName countryCode
@@ -1543,11 +1543,10 @@ countryCodeToName locale countryCode =
             Cldr.Chinese.Simplified.countryCodeToName countryCode
 
         Cldr.ZhHansHK ->
-            Cldr.Chinese.Simplified.HongKongSARChina.countryCodeToName
-                countryCode
+            Cldr.Chinese.Simplified.HongKong.countryCodeToName countryCode
 
         Cldr.ZhHansMO ->
-            Cldr.Chinese.Simplified.MacaoSARChina.countryCodeToName countryCode
+            Cldr.Chinese.Simplified.Macao.countryCodeToName countryCode
 
         Cldr.ZhHansSG ->
             Cldr.Chinese.Simplified.Singapore.countryCodeToName countryCode
@@ -1556,11 +1555,10 @@ countryCodeToName locale countryCode =
             Cldr.Chinese.Traditional.countryCodeToName countryCode
 
         Cldr.ZhHantHK ->
-            Cldr.Chinese.Traditional.HongKongSARChina.countryCodeToName
-                countryCode
+            Cldr.Chinese.Traditional.HongKong.countryCodeToName countryCode
 
         Cldr.ZhHantMO ->
-            Cldr.Chinese.Traditional.MacaoSARChina.countryCodeToName countryCode
+            Cldr.Chinese.Traditional.Macao.countryCodeToName countryCode
 
         Cldr.Zu ->
             Cldr.Zulu.countryCodeToName countryCode

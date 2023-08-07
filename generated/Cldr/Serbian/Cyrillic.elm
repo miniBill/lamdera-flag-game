@@ -52,9 +52,9 @@ This is identical to the Serbian version.
     BZ Белизе
     CA Канада
     CC Кокосова (Килингова) Острва
-    CD Конго - Киншаса
+    CD Конго (ДРК)
     CF Централноафричка Република
-    CG Конго - Бразавил
+    CG Конго (Република)
     CH Швајцарска
     CI Обала Слоноваче (Кот д’Ивоар)
     CK Кукова Острва
@@ -68,7 +68,7 @@ This is identical to the Serbian version.
     CW Курасао
     CX Божићно Острво
     CY Кипар
-    CZ Чешка
+    CZ Чешка Република
     DE Немачка
     DJ Џибути
     DK Данска
@@ -107,7 +107,7 @@ This is identical to the Serbian version.
     GU Гуам
     GW Гвинеја-Бисао
     GY Гвајана
-    HK САР Хонгконг (Кина)
+    HK Хонгконг
     HM Острво Херд и Мекдоналдова острва
     HN Хондурас
     HR Хрватска
@@ -160,7 +160,7 @@ This is identical to the Serbian version.
     ML Мали
     MM Мијанмар (Бурма)
     MN Монголија
-    MO САР Макао (Кина)
+    MO Макао
     MP Северна Маријанска Острва
     MQ Мартиник
     MR Мауританија
@@ -195,7 +195,7 @@ This is identical to the Serbian version.
     PM Сен Пјер и Микелон
     PN Питкерн
     PR Порторико
-    PS Палестинске територије
+    PS Палестина
     PT Португалија
     PW Палау
     PY Парагвај
@@ -233,7 +233,7 @@ This is identical to the Serbian version.
     TH Тајланд
     TJ Таџикистан
     TK Токелау
-    TL Тимор-Лесте (Источни Тимор)
+    TL Источни Тимор
     TM Туркменистан
     TN Тунис
     TO Тонга

@@ -49,9 +49,9 @@ import Cldr
     BZ Beliz
     CA Kanada
     CC Kokos (Kiling) adalary
-    CD Kongo - Kinşasa
+    CD Kongo (KDR)
     CF Merkezi Afrika Respublikasy
-    CG Kongo - Brazzawil
+    CG Kongo (Respublika)
     CH Şweýsariýa
     CI Kot-d’Iwuar
     CK Kuk adalary
@@ -65,7 +65,7 @@ import Cldr
     CW Kýurasao
     CX Roždestwo adasy
     CY Kipr
-    CZ Çehiýa
+    CZ Çeh Respublikasy
     DE Germaniýa
     DJ Jibuti
     DK Daniýa
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Gwineýa-Bisau
     GY Gaýana
-    HK Gonkong AAS Hytaý
+    HK Gonkong
     HM Herd we Makdonald adalary
     HN Gonduras
     HR Horwatiýa
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Mýanma (Birma)
     MN Mongoliýa
-    MO Makao AAS Hytaý
+    MO Makao
     MP Demirgazyk Mariana adalary
     MQ Martinika
     MR Mawritaniýa
@@ -192,7 +192,7 @@ import Cldr
     PM Sen-Pýer we Mikelon
     PN Pitkern adalary
     PR Puerto-Riko
-    PS Palestina territoriýasy
+    PS Palestina
     PT Portugaliýa
     PW Palau
     PY Paragwaý
@@ -230,7 +230,7 @@ import Cldr
     TH Taýland
     TJ Täjigistan
     TK Tokelau
-    TL Timor-Leste
+    TL Gündogar Timor
     TM Türkmenistan
     TN Tunis
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokos (Kiling) adalary"
 
         Cldr.CD ->
-            "Kongo - Kinşasa"
+            "Kongo (KDR)"
 
         Cldr.CF ->
             "Merkezi Afrika Respublikasy"
 
         Cldr.CG ->
-            "Kongo - Brazzawil"
+            "Kongo (Respublika)"
 
         Cldr.CH ->
             "Şweýsariýa"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kipr"
 
         Cldr.CZ ->
-            "Çehiýa"
+            "Çeh Respublikasy"
 
         Cldr.DE ->
             "Germaniýa"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gaýana"
 
         Cldr.HK ->
-            "Gonkong AAS Hytaý"
+            "Gonkong"
 
         Cldr.HM ->
             "Herd we Makdonald adalary"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongoliýa"
 
         Cldr.MO ->
-            "Makao AAS Hytaý"
+            "Makao"
 
         Cldr.MP ->
             "Demirgazyk Mariana adalary"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto-Riko"
 
         Cldr.PS ->
-            "Palestina territoriýasy"
+            "Palestina"
 
         Cldr.PT ->
             "Portugaliýa"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Gündogar Timor"
 
         Cldr.TM ->
             "Türkmenistan"

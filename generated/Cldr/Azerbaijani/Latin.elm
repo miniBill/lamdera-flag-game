@@ -52,9 +52,9 @@ This is identical to the Azerbaijani version.
     BZ Beliz
     CA Kanada
     CC Kokos (Kilinq) adaları
-    CD Konqo - Kinşasa
+    CD Konqo (KDR)
     CF Mərkəzi Afrika Respublikası
-    CG Konqo - Brazzavil
+    CG Konqo (Respublika)
     CH İsveçrə
     CI Kotd’ivuar
     CK Kuk adaları
@@ -68,7 +68,7 @@ This is identical to the Azerbaijani version.
     CW Kurasao
     CX Milad adası
     CY Kipr
-    CZ Çexiya
+    CZ Çex Respublikası
     DE Almaniya
     DJ Cibuti
     DK Danimarka
@@ -107,7 +107,7 @@ This is identical to the Azerbaijani version.
     GU Quam
     GW Qvineya-Bisau
     GY Qayana
-    HK Honq Konq Xüsusi İnzibati Rayonu Çin
+    HK Honq Konq
     HM Herd və Makdonald adaları
     HN Honduras
     HR Xorvatiya
@@ -160,7 +160,7 @@ This is identical to the Azerbaijani version.
     ML Mali
     MM Myanma
     MN Monqolustan
-    MO Makao XİR Çin
+    MO Makao
     MP Şimali Marian adaları
     MQ Martinik
     MR Mavritaniya
@@ -195,7 +195,7 @@ This is identical to the Azerbaijani version.
     PM Müqəddəs Pyer və Mikelon
     PN Pitkern adaları
     PR Puerto Riko
-    PS Fələstin Əraziləri
+    PS Fələstin
     PT Portuqaliya
     PW Palau
     PY Paraqvay

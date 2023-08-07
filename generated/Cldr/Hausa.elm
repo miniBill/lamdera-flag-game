@@ -49,9 +49,9 @@ import Cldr
     BZ Beliz
     CA Kanada
     CC Tsibirai Cocos (Keeling)
-    CD Jamhuriyar Dimokuraɗiyyar Kongo
+    CD Kongo (DRC)
     CF Jamhuriyar Afirka Ta Tsakiya
-    CG Kongo
+    CG Jamhuriyar Kongo
     CH Suwizalan
     CI Aibari Kwas
     CK Tsibiran Kuku
@@ -192,7 +192,7 @@ import Cldr
     PM San Piyar da Mikelan
     PN Pitakarin
     PR Porto Riko
-    PS Yankunan Palasɗinu
+    PS Palasɗinu
     PT Portugal
     PW Palau
     PY Faragwai
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Tsibirai Cocos (Keeling)"
 
         Cldr.CD ->
-            "Jamhuriyar Dimokuraɗiyyar Kongo"
+            "Kongo (DRC)"
 
         Cldr.CF ->
             "Jamhuriyar Afirka Ta Tsakiya"
 
         Cldr.CG ->
-            "Kongo"
+            "Jamhuriyar Kongo"
 
         Cldr.CH ->
             "Suwizalan"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Porto Riko"
 
         Cldr.PS ->
-            "Yankunan Palasɗinu"
+            "Palasɗinu"
 
         Cldr.PT ->
             "Portugal"

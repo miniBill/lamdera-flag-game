@@ -49,9 +49,9 @@ import Cldr
     BZ Belizas
     CA Kanada
     CC Kokosų (Kilingo) Salos
-    CD Kongas-Kinšasa
+    CD Kongo Demokratinė Respublika
     CF Centrinės Afrikos Respublika
-    CG Kongas-Brazavilis
+    CG Kongo Respublika
     CH Šveicarija
     CI Dramblio Kaulo Krantas
     CK Kuko Salos
@@ -65,7 +65,7 @@ import Cldr
     CW Kiurasao
     CX Kalėdų Sala
     CY Kipras
-    CZ Čekija
+    CZ Čekijos Respublika
     DE Vokietija
     DJ Džibutis
     DK Danija
@@ -104,7 +104,7 @@ import Cldr
     GU Guamas
     GW Bisau Gvinėja
     GY Gajana
-    HK Ypatingasis Administracinis Kinijos Regionas Honkongas
+    HK Honkongas
     HM Herdo ir Makdonaldo Salos
     HN Hondūras
     HR Kroatija
@@ -157,7 +157,7 @@ import Cldr
     ML Malis
     MM Mianmaras (Birma)
     MN Mongolija
-    MO Ypatingasis Administracinis Kinijos Regionas Makao
+    MO Makao
     MP Marianos Šiaurinės Salos
     MQ Martinika
     MR Mauritanija
@@ -192,7 +192,7 @@ import Cldr
     PM Sen Pjeras ir Mikelonas
     PN Pitkerno salos
     PR Puerto Rikas
-    PS Palestinos teritorija
+    PS Palestina
     PT Portugalija
     PW Palau
     PY Paragvajus
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokosų (Kilingo) Salos"
 
         Cldr.CD ->
-            "Kongas-Kinšasa"
+            "Kongo Demokratinė Respublika"
 
         Cldr.CF ->
             "Centrinės Afrikos Respublika"
 
         Cldr.CG ->
-            "Kongas-Brazavilis"
+            "Kongo Respublika"
 
         Cldr.CH ->
             "Šveicarija"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kipras"
 
         Cldr.CZ ->
-            "Čekija"
+            "Čekijos Respublika"
 
         Cldr.DE ->
             "Vokietija"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gajana"
 
         Cldr.HK ->
-            "Ypatingasis Administracinis Kinijos Regionas Honkongas"
+            "Honkongas"
 
         Cldr.HM ->
             "Herdo ir Makdonaldo Salos"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolija"
 
         Cldr.MO ->
-            "Ypatingasis Administracinis Kinijos Regionas Makao"
+            "Makao"
 
         Cldr.MP ->
             "Marianos Šiaurinės Salos"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rikas"
 
         Cldr.PS ->
-            "Palestinos teritorija"
+            "Palestina"
 
         Cldr.PT ->
             "Portugalija"

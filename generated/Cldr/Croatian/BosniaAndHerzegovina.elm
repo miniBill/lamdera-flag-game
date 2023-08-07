@@ -52,9 +52,9 @@ This is identical to the Croatian version.
     BZ Belize
     CA Kanada
     CC Kokosovi (Keelingovi) otoci
-    CD Kongo - Kinshasa
+    CD Kongo (DR)
     CF Srednjoafrička Republika
-    CG Kongo - Brazzaville
+    CG Kongo (RK)
     CH Švicarska
     CI Obala Bjelokosti
     CK Cookovi otoci
@@ -68,7 +68,7 @@ This is identical to the Croatian version.
     CW Curaçao
     CX Božićni otok
     CY Cipar
-    CZ Češka
+    CZ Češka Republika
     DE Njemačka
     DJ Džibuti
     DK Danska
@@ -107,7 +107,7 @@ This is identical to the Croatian version.
     GU Guam
     GW Gvineja Bisau
     GY Gvajana
-    HK PUP Hong Kong Kina
+    HK Hong Kong
     HM Otoci Heard i McDonald
     HN Honduras
     HR Hrvatska
@@ -160,7 +160,7 @@ This is identical to the Croatian version.
     ML Mali
     MM Mjanmar (Burma)
     MN Mongolija
-    MO PUP Makao Kina
+    MO Makao
     MP Sjevernomarijanski otoci
     MQ Martinik
     MR Mauretanija
@@ -195,7 +195,7 @@ This is identical to the Croatian version.
     PM Saint-Pierre-et-Miquelon
     PN Otoci Pitcairn
     PR Portoriko
-    PS Palestinsko područje
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paragvaj
@@ -233,7 +233,7 @@ This is identical to the Croatian version.
     TH Tajland
     TJ Tadžikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Istočni Timor
     TM Turkmenistan
     TN Tunis
     TO Tonga

@@ -49,9 +49,9 @@ import Cldr
     BZ Belís
     CA Kanada
     CC Kókoseyjar (Keeling)
-    CD Kongó-Kinshasa
+    CD Kongó (Lýðstjórnarlýðveldið)
     CF Mið-Afríkulýðveldið
-    CG Kongó-Brazzaville
+    CG Kongó (Lýðveldið)
     CH Sviss
     CI Fílabeinsströndin
     CK Cooks-eyjar
@@ -104,7 +104,7 @@ import Cldr
     GU Gvam
     GW Gínea-Bissá
     GY Gvæjana
-    HK sérstjórnarsvæðið Hong Kong
+    HK Hong Kong
     HM Heard og McDonaldseyjar
     HN Hondúras
     HR Króatía
@@ -157,7 +157,7 @@ import Cldr
     ML Malí
     MM Mjanmar (Búrma)
     MN Mongólía
-    MO sérstjórnarsvæðið Makaó
+    MO Makaó
     MP Norður-Maríanaeyjar
     MQ Martiník
     MR Máritanía
@@ -192,7 +192,7 @@ import Cldr
     PM Sankti Pierre og Miquelon
     PN Pitcairn-eyjar
     PR Púertó Ríkó
-    PS Heimastjórnarsvæði Palestínumanna
+    PS Palestína
     PT Portúgal
     PW Palá
     PY Paragvæ
@@ -230,7 +230,7 @@ import Cldr
     TH Taíland
     TJ Tadsíkistan
     TK Tókelá
-    TL Tímor-Leste
+    TL Austur-Tímor
     TM Túrkmenistan
     TN Túnis
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kókoseyjar (Keeling)"
 
         Cldr.CD ->
-            "Kongó-Kinshasa"
+            "Kongó (Lýðstjórnarlýðveldið)"
 
         Cldr.CF ->
             "Mið-Afríkulýðveldið"
 
         Cldr.CG ->
-            "Kongó-Brazzaville"
+            "Kongó (Lýðveldið)"
 
         Cldr.CH ->
             "Sviss"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gvæjana"
 
         Cldr.HK ->
-            "sérstjórnarsvæðið Hong Kong"
+            "Hong Kong"
 
         Cldr.HM ->
             "Heard og McDonaldseyjar"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongólía"
 
         Cldr.MO ->
-            "sérstjórnarsvæðið Makaó"
+            "Makaó"
 
         Cldr.MP ->
             "Norður-Maríanaeyjar"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Púertó Ríkó"
 
         Cldr.PS ->
-            "Heimastjórnarsvæði Palestínumanna"
+            "Palestína"
 
         Cldr.PT ->
             "Portúgal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tókelá"
 
         Cldr.TL ->
-            "Tímor-Leste"
+            "Austur-Tímor"
 
         Cldr.TM ->
             "Túrkmenistan"

@@ -49,9 +49,9 @@ import Cldr
     BZ በሊዝ
     CA ካናዳ
     CC ኮኮስ(ኬሊንግ) ደሴቶች
-    CD ኮንጎ-ኪንሻሳ
+    CD ኮንጎ (የዲሞክራቲክ ሪፐብሊክ ኮንጎ)
     CF ማዕከላዊ አፍሪካ ሪፑብሊክ
-    CG ኮንጎ ብራዛቪል
+    CG ኮንጎ (ሪፑብሊክ)
     CH ስዊዘርላንድ
     CI ኮት ዲቯር
     CK ኩክ ደሴቶች
@@ -65,7 +65,7 @@ import Cldr
     CW ኩራሳዎ
     CX ክሪስማስ ደሴት
     CY ሳይፕረስ
-    CZ ቼቺያ
+    CZ ቼክ ሪፑብሊክ
     DE ጀርመን
     DJ ጂቡቲ
     DK ዴንማርክ
@@ -104,7 +104,7 @@ import Cldr
     GU ጉዋም
     GW ጊኒ ቢሳኦ
     GY ጉያና
-    HK ሆንግ ኮንግ ልዩ የአስተዳደር ክልል ቻይና
+    HK ሆንግ ኮንግ
     HM ኽርድ ደሴቶችና ማክዶናልድ ደሴቶች
     HN ሆንዱራስ
     HR ክሮኤሽያ
@@ -157,7 +157,7 @@ import Cldr
     ML ማሊ
     MM ማይናማር(በርማ)
     MN ሞንጎሊያ
-    MO ማካኦ ልዩ የአስተዳደር ክልል ቻይና
+    MO ማካኦ
     MP የሰሜናዊ ማሪያና ደሴቶች
     MQ ማርቲኒክ
     MR ሞሪቴኒያ
@@ -192,7 +192,7 @@ import Cldr
     PM ቅዱስ ፒዬር እና ሚኩኤሎን
     PN ፒትካኢርን ደሴቶች
     PR ፖርታ ሪኮ
-    PS የፍልስጤም ግዛት
+    PS ፍልስጥኤም
     PT ፖርቱጋል
     PW ፓላው
     PY ፓራጓይ
@@ -230,7 +230,7 @@ import Cldr
     TH ታይላንድ
     TJ ታጃኪስታን
     TK ቶክላው
-    TL ቲሞር ሌስቴ
+    TL ምስራቅ ቲሞር
     TM ቱርክሜኒስታን
     TN ቱኒዚያ
     TO ቶንጋ
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "ኮኮስ(ኬሊንግ) ደሴቶች"
 
         Cldr.CD ->
-            "ኮንጎ-ኪንሻሳ"
+            "ኮንጎ (የዲሞክራቲክ ሪፐብሊክ ኮንጎ)"
 
         Cldr.CF ->
             "ማዕከላዊ አፍሪካ ሪፑብሊክ"
 
         Cldr.CG ->
-            "ኮንጎ ብራዛቪል"
+            "ኮንጎ (ሪፑብሊክ)"
 
         Cldr.CH ->
             "ስዊዘርላንድ"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "ሳይፕረስ"
 
         Cldr.CZ ->
-            "ቼቺያ"
+            "ቼክ ሪፑብሊክ"
 
         Cldr.DE ->
             "ጀርመን"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "ጉያና"
 
         Cldr.HK ->
-            "ሆንግ ኮንግ ልዩ የአስተዳደር ክልል ቻይና"
+            "ሆንግ ኮንግ"
 
         Cldr.HM ->
             "ኽርድ ደሴቶችና ማክዶናልድ ደሴቶች"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "ሞንጎሊያ"
 
         Cldr.MO ->
-            "ማካኦ ልዩ የአስተዳደር ክልል ቻይና"
+            "ማካኦ"
 
         Cldr.MP ->
             "የሰሜናዊ ማሪያና ደሴቶች"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "ፖርታ ሪኮ"
 
         Cldr.PS ->
-            "የፍልስጤም ግዛት"
+            "ፍልስጥኤም"
 
         Cldr.PT ->
             "ፖርቱጋል"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "ቶክላው"
 
         Cldr.TL ->
-            "ቲሞር ሌስቴ"
+            "ምስራቅ ቲሞር"
 
         Cldr.TM ->
             "ቱርክሜኒስታን"

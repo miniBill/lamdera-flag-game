@@ -52,9 +52,9 @@ This is identical to the Afrikaans version.
     BZ Belize
     CA Kanada
     CC Kokoseilande
-    CD Demokratiese Republiek van die Kongo
+    CD Kongo (DRK)
     CF Sentraal-Afrikaanse Republiek
-    CG Kongo - Brazzaville
+    CG Kongo (Republiek die)
     CH Switserland
     CI Ivoorkus
     CK Cookeilande
@@ -68,7 +68,7 @@ This is identical to the Afrikaans version.
     CW Curaçao
     CX Kerseiland
     CY Siprus
-    CZ Tsjeggië
+    CZ Tsjeggiese Republiek
     DE Duitsland
     DJ Djiboeti
     DK Denemarke
@@ -107,7 +107,7 @@ This is identical to the Afrikaans version.
     GU Guam
     GW Guinee-Bissau
     GY Guyana
-    HK Hongkong SAS China
+    HK Hongkong
     HM Heardeiland en McDonaldeilande
     HN Honduras
     HR Kroasië
@@ -160,7 +160,7 @@ This is identical to the Afrikaans version.
     ML Mali
     MM Mianmar (Birma)
     MN Mongolië
-    MO Macau SAS China
+    MO Macau
     MP Noord-Mariane-eilande
     MQ Martinique
     MR Mauritanië
@@ -195,7 +195,7 @@ This is identical to the Afrikaans version.
     PM Sint Pierre en Miquelon
     PN Pitcairneilande
     PR Puerto Rico
-    PS Palestynse Grondgebiede
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguay

@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Canada
     CC Quần đảo Cocos (Keeling)
-    CD Congo - Kinshasa
+    CD Cộng hòa Dân chủ Congo
     CF Cộng hòa Trung Phi
-    CG Congo - Brazzaville
+    CG Cộng hòa Congo
     CH Thụy Sĩ
     CI Côte d’Ivoire
     CK Quần đảo Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Đảo Giáng Sinh
     CY Síp
-    CZ Séc
+    CZ Cộng hòa Séc
     DE Đức
     DJ Djibouti
     DK Đan Mạch
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Đặc khu Hành chính Hồng Kông, Trung Quốc
+    HK Hồng Kông
     HM Quần đảo Heard và McDonald
     HN Honduras
     HR Croatia
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Miến Điện)
     MN Mông Cổ
-    MO Đặc khu Hành chính Macao, Trung Quốc
+    MO Macao
     MP Quần đảo Bắc Mariana
     MQ Martinique
     MR Mauritania
@@ -192,7 +192,7 @@ import Cldr
     PM Saint Pierre và Miquelon
     PN Quần đảo Pitcairn
     PR Puerto Rico
-    PS Lãnh thổ Palestine
+    PS Palestine
     PT Bồ Đào Nha
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Thái Lan
     TJ Tajikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Đông Timor
     TM Turkmenistan
     TN Tunisia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Quần đảo Cocos (Keeling)"
 
         Cldr.CD ->
-            "Congo - Kinshasa"
+            "Cộng hòa Dân chủ Congo"
 
         Cldr.CF ->
             "Cộng hòa Trung Phi"
 
         Cldr.CG ->
-            "Congo - Brazzaville"
+            "Cộng hòa Congo"
 
         Cldr.CH ->
             "Thụy Sĩ"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Síp"
 
         Cldr.CZ ->
-            "Séc"
+            "Cộng hòa Séc"
 
         Cldr.DE ->
             "Đức"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Đặc khu Hành chính Hồng Kông, Trung Quốc"
+            "Hồng Kông"
 
         Cldr.HM ->
             "Quần đảo Heard và McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mông Cổ"
 
         Cldr.MO ->
-            "Đặc khu Hành chính Macao, Trung Quốc"
+            "Macao"
 
         Cldr.MP ->
             "Quần đảo Bắc Mariana"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Lãnh thổ Palestine"
+            "Palestine"
 
         Cldr.PT ->
             "Bồ Đào Nha"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Đông Timor"
 
         Cldr.TM ->
             "Turkmenistan"

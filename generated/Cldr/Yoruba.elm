@@ -49,9 +49,9 @@ import Cldr
     BZ Bèlísẹ̀
     CA Kánádà
     CC Erékùsù Cocos (Keeling)
-    CD Kóńgò – Kinshasa
+    CD Kóńgò (Tiwantiwa)
     CF Àrin gùngun Áfíríkà
-    CG Kóńgò – Brazaville
+    CG Kóńgò (Olómìnira)
     CH switiṣilandi
     CI Kóútè forà
     CK Etíokun Kùúkù
@@ -104,7 +104,7 @@ import Cldr
     GU Guamu
     GW Gene-Busau
     GY Guyana
-    HK Agbègbè Ìṣàkóso Ìṣúná Hong Kong Tí Ṣánà Ń Darí
+    HK Hong Kong
     HM Erékùsù Heard àti Erékùsù McDonald
     HN Hondurasi
     HR Kòróátíà
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Manamari
     MN Mogolia
-    MO Agbègbè Ìṣàkóso Pàtàkì Macao
+    MO Màkáò
     MP Etikun Guusu Mariana
     MQ Matinikuwi
     MR Maritania
@@ -192,7 +192,7 @@ import Cldr
     PM Pẹẹri ati mikuloni
     PN Pikarini
     PR Pọto Riko
-    PS Agbègbè ara Palẹsítínì
+    PS Palẹsítínì
     PT Pọ́túgà
     PW Paalu
     PY Paraguye
@@ -230,7 +230,7 @@ import Cldr
     TH Tailandi
     TJ Takisitani
     TK Tokelau
-    TL ÌlàOòrùn Tímọ̀
+    TL Ìlà Òòrùn Tímọ̀
     TM Tọọkimenisita
     TN Tuniṣia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Erékùsù Cocos (Keeling)"
 
         Cldr.CD ->
-            "Kóńgò – Kinshasa"
+            "Kóńgò (Tiwantiwa)"
 
         Cldr.CF ->
             "Àrin gùngun Áfíríkà"
 
         Cldr.CG ->
-            "Kóńgò – Brazaville"
+            "Kóńgò (Olómìnira)"
 
         Cldr.CH ->
             "switiṣilandi"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Agbègbè Ìṣàkóso Ìṣúná Hong Kong Tí Ṣánà Ń Darí"
+            "Hong Kong"
 
         Cldr.HM ->
             "Erékùsù Heard àti Erékùsù McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mogolia"
 
         Cldr.MO ->
-            "Agbègbè Ìṣàkóso Pàtàkì Macao"
+            "Màkáò"
 
         Cldr.MP ->
             "Etikun Guusu Mariana"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Pọto Riko"
 
         Cldr.PS ->
-            "Agbègbè ara Palẹsítínì"
+            "Palẹsítínì"
 
         Cldr.PT ->
             "Pọ́túgà"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "ÌlàOòrùn Tímọ̀"
+            "Ìlà Òòrùn Tímọ̀"
 
         Cldr.TM ->
             "Tọọkimenisita"

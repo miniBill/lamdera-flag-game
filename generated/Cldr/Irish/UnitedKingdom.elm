@@ -52,9 +52,9 @@ This is identical to the Irish version.
     BZ an Bheilís
     CA Ceanada
     CC Oileáin Cocos (Keeling)
-    CD Poblacht Dhaonlathach an Chongó
+    CD an Congó (PDC)
     CF Poblacht na hAfraice Láir
-    CG Congó-Brazzaville
+    CG an Congó (Poblacht)
     CH an Eilvéis
     CI an Cósta Eabhair
     CK Oileáin Cook
@@ -68,7 +68,7 @@ This is identical to the Irish version.
     CW Cúrasó
     CX Oileán na Nollag
     CY an Chipir
-    CZ an tSeicia
+    CZ Poblacht na Seice
     DE an Ghearmáin
     DJ Djibouti
     DK an Danmhairg
@@ -107,7 +107,7 @@ This is identical to the Irish version.
     GU Guam
     GW Guine Bissau
     GY an Ghuáin
-    HK Sainréigiún Riaracháin Hong Cong, Daonphoblacht na Síne
+    HK Hong Cong
     HM Oileán Heard agus Oileáin McDonald
     HN Hondúras
     HR an Chróit
@@ -160,7 +160,7 @@ This is identical to the Irish version.
     ML Mailí
     MM Maenmar (Burma)
     MN an Mhongóil
-    MO Sainréigiún Riaracháin Macao, Daonphoblacht na Síne
+    MO Macao
     MP na hOileáin Mháirianacha Thuaidh
     MQ Martinique
     MR an Mháratáin
@@ -195,7 +195,7 @@ This is identical to the Irish version.
     PM San Pierre agus Miquelon
     PN Oileáin Pitcairn
     PR Pórtó Ríce
-    PS na Críocha Palaistíneacha
+    PS an Phalaistín
     PT an Phortaingéil
     PW Oileáin Palau
     PY Paragua

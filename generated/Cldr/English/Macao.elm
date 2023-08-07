@@ -1,4 +1,4 @@
-module Cldr.English.MacaoSARChina exposing (countryCodeToName)
+module Cldr.English.Macao exposing (countryCodeToName)
 
 {-| 
 @docs countryCodeToName
@@ -9,7 +9,7 @@ import Cldr
 import Cldr.English.UnitedKingdom
 
 
-{-| Name for `CountryCode` in English - Macao SAR China.
+{-| Name for `CountryCode` in English - Macao.
 
 This is identical to the English - United Kingdom version.
 
@@ -52,9 +52,9 @@ This is identical to the English - United Kingdom version.
     BZ Belize
     CA Canada
     CC Cocos (Keeling) Islands
-    CD Congo - Kinshasa
+    CD Congo (DRC)
     CF Central African Republic
-    CG Congo - Brazzaville
+    CG Congo (Republic)
     CH Switzerland
     CI Côte d’Ivoire
     CK Cook Islands
@@ -68,7 +68,7 @@ This is identical to the English - United Kingdom version.
     CW Curaçao
     CX Christmas Island
     CY Cyprus
-    CZ Czechia
+    CZ Czech Republic
     DE Germany
     DJ Djibouti
     DK Denmark
@@ -107,7 +107,7 @@ This is identical to the English - United Kingdom version.
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Heard & McDonald Islands
     HN Honduras
     HR Croatia
@@ -160,7 +160,7 @@ This is identical to the English - United Kingdom version.
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macao SAR China
+    MO Macao
     MP Northern Mariana Islands
     MQ Martinique
     MR Mauritania
@@ -195,7 +195,7 @@ This is identical to the English - United Kingdom version.
     PM St Pierre & Miquelon
     PN Pitcairn Islands
     PR Puerto Rico
-    PS Palestinian Territories
+    PS Palestine
     PT Portugal
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the English - United Kingdom version.
     TH Thailand
     TJ Tajikistan
     TK Tokelau
-    TL Timor-Leste
+    TL East Timor
     TM Turkmenistan
     TN Tunisia
     TO Tonga

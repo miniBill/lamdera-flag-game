@@ -50,9 +50,9 @@ import Cldr.Spanish.Argentina
     BZ Belice
     CA Canadá
     CC Islas Cocos
-    CD República Democrática del Congo
+    CD Congo (República Democrática del Congo)
     CF República Centroafricana
-    CG República del Congo
+    CG Congo (República)
     CH Suiza
     CI Costa de Marfil
     CK Islas Cook
@@ -66,7 +66,7 @@ import Cldr.Spanish.Argentina
     CW Curazao
     CX Isla de Navidad
     CY Chipre
-    CZ Chequia
+    CZ República Checa
     DE Alemania
     DJ Yibuti
     DK Dinamarca
@@ -105,7 +105,7 @@ import Cldr.Spanish.Argentina
     GU Guam
     GW Guinea-Bisáu
     GY Guyana
-    HK RAE de Hong Kong (China)
+    HK Hong Kong
     HM Islas Heard y McDonald
     HN Honduras
     HR Croacia
@@ -158,7 +158,7 @@ import Cldr.Spanish.Argentina
     ML Mali
     MM Myanmar (Birmania)
     MN Mongolia
-    MO RAE de Macao (China)
+    MO Macao
     MP Islas Marianas del Norte
     MQ Martinica
     MR Mauritania
@@ -193,7 +193,7 @@ import Cldr.Spanish.Argentina
     PM San Pedro y Miquelón
     PN Islas Pitcairn
     PR Puerto Rico
-    PS Territorios Palestinos
+    PS Palestina
     PT Portugal
     PW Palaos
     PY Paraguay
@@ -231,7 +231,7 @@ import Cldr.Spanish.Argentina
     TH Tailandia
     TJ Tayikistán
     TK Tokelau
-    TL Timor-Leste
+    TL Timor Oriental
     TM Turkmenistán
     TN Túnez
     TO Tonga

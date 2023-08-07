@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Canada
     CC Cocosøerne
-    CD Congo-Kinshasa
+    CD Den Demokratiske Republik Congo (DRC)
     CF Den Centralafrikanske Republik
-    CG Congo-Brazzaville
+    CG Republikken Congo
     CH Schweiz
     CI Elfenbenskysten
     CK Cookøerne
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Juleøen
     CY Cypern
-    CZ Tjekkiet
+    CZ Den Tjekkiske Republik
     DE Tyskland
     DJ Djibouti
     DK Danmark
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK SAR Hongkong
+    HK Hongkong
     HM Heard Island og McDonald Islands
     HN Honduras
     HR Kroatien
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Burma)
     MN Mongoliet
-    MO SAR Macao
+    MO Macao
     MP Nordmarianerne
     MQ Martinique
     MR Mauretanien
@@ -192,7 +192,7 @@ import Cldr
     PM Saint Pierre og Miquelon
     PN Pitcairn
     PR Puerto Rico
-    PS De palæstinensiske områder
+    PS Palæstina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Thailand
     TJ Tadsjikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Østtimor
     TM Turkmenistan
     TN Tunesien
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Cocosøerne"
 
         Cldr.CD ->
-            "Congo-Kinshasa"
+            "Den Demokratiske Republik Congo (DRC)"
 
         Cldr.CF ->
             "Den Centralafrikanske Republik"
 
         Cldr.CG ->
-            "Congo-Brazzaville"
+            "Republikken Congo"
 
         Cldr.CH ->
             "Schweiz"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Cypern"
 
         Cldr.CZ ->
-            "Tjekkiet"
+            "Den Tjekkiske Republik"
 
         Cldr.DE ->
             "Tyskland"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "SAR Hongkong"
+            "Hongkong"
 
         Cldr.HM ->
             "Heard Island og McDonald Islands"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongoliet"
 
         Cldr.MO ->
-            "SAR Macao"
+            "Macao"
 
         Cldr.MP ->
             "Nordmarianerne"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "De palæstinensiske områder"
+            "Palæstina"
 
         Cldr.PT ->
             "Portugal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Østtimor"
 
         Cldr.TM ->
             "Turkmenistan"

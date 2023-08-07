@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kookossaared
-    CD Kongo DV
+    CD Kongo-Kinshasa
     CF Kesk-Aafrika Vabariik
-    CG Kongo Vabariik
+    CG Kongo-Brazzaville
     CH Šveits
     CI Côte d’Ivoire
     CK Cooki saared
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Jõulusaar
     CY Küpros
-    CZ Tšehhi
+    CZ Tšehhi Vabariik
     DE Saksamaa
     DJ Djibouti
     DK Taani
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hongkongi erihalduspiirkond
+    HK Hongkong
     HM Heardi ja McDonaldi saared
     HN Honduras
     HR Horvaatia
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Birma)
     MN Mongoolia
-    MO Macau erihalduspiirkond
+    MO Macau
     MP Põhja-Mariaanid
     MQ Martinique
     MR Mauritaania
@@ -192,7 +192,7 @@ import Cldr
     PM Saint-Pierre ja Miquelon
     PN Pitcairni saared
     PR Puerto Rico
-    PS Palestiina alad
+    PS Palestiina
     PT Portugal
     PW Belau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Tai
     TJ Tadžikistan
     TK Tokelau
-    TL Ida-Timor
+    TL Timor-Leste
     TM Türkmenistan
     TN Tuneesia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kookossaared"
 
         Cldr.CD ->
-            "Kongo DV"
+            "Kongo-Kinshasa"
 
         Cldr.CF ->
             "Kesk-Aafrika Vabariik"
 
         Cldr.CG ->
-            "Kongo Vabariik"
+            "Kongo-Brazzaville"
 
         Cldr.CH ->
             "Šveits"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Küpros"
 
         Cldr.CZ ->
-            "Tšehhi"
+            "Tšehhi Vabariik"
 
         Cldr.DE ->
             "Saksamaa"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hongkongi erihalduspiirkond"
+            "Hongkong"
 
         Cldr.HM ->
             "Heardi ja McDonaldi saared"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongoolia"
 
         Cldr.MO ->
-            "Macau erihalduspiirkond"
+            "Macau"
 
         Cldr.MP ->
             "Põhja-Mariaanid"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Palestiina alad"
+            "Palestiina"
 
         Cldr.PT ->
             "Portugal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Ida-Timor"
+            "Timor-Leste"
 
         Cldr.TM ->
             "Türkmenistan"

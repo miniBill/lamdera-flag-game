@@ -50,9 +50,9 @@ import Cldr.German
     BZ Belize
     CA Kanada
     CC Kokosinseln
-    CD Kongo-Kinshasa
+    CD Kongo (Demokratische Republik)
     CF Zentralafrikanische Republik
-    CG Kongo-Brazzaville
+    CG Kongo (Republik)
     CH Schweiz
     CI Côte d’Ivoire
     CK Cookinseln
@@ -66,7 +66,7 @@ import Cldr.German
     CW Curaçao
     CX Weihnachtsinsel
     CY Zypern
-    CZ Tschechien
+    CZ Tschechische Republik
     DE Deutschland
     DJ Dschibuti
     DK Dänemark
@@ -105,7 +105,7 @@ import Cldr.German
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Sonderverwaltungsregion Hongkong
+    HK Hongkong
     HM Heard und McDonaldinseln
     HN Honduras
     HR Kroatien
@@ -158,7 +158,7 @@ import Cldr.German
     ML Mali
     MM Myanmar
     MN Mongolei
-    MO Sonderverwaltungsregion Macau
+    MO Macau
     MP Nördliche Marianen
     MQ Martinique
     MR Mauretanien
@@ -193,7 +193,7 @@ import Cldr.German
     PM St. Pierre und Miquelon
     PN Pitcairninseln
     PR Puerto Rico
-    PS Palästinensische Autonomiegebiete
+    PS Palästina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -276,9 +276,6 @@ countryCodeToName countryCode =
 
         Cldr.SB ->
             "Salomon-Inseln"
-
-        Cldr.TL ->
-            "Osttimor"
 
         Cldr.ZW ->
             "Zimbabwe"

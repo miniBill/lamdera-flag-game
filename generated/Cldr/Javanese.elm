@@ -49,9 +49,9 @@ import Cldr
     BZ Bélisé
     CA Kanada
     CC Kapuloan Cocos (Keeling)
-    CD Kongo - Kinshasa
+    CD Républik Dhémokratik Kongo
     CF Républik Afrika Tengah
-    CG Kongo - Brassaville
+    CG Républik Kongo
     CH Switserlan
     CI Pasisir Gadhing
     CK Kapuloan Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Kurasao
     CX Pulo Natal
     CY Siprus
-    CZ Céko
+    CZ Républik Céko
     DE Jérman
     DJ Jibuti
     DK Dhènemarken
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Laladan Administratif Astamiwa Hong Kong
+    HK Hong Kong
     HM Kapuloan Heard lan McDonald
     HN Honduras
     HR Kroasia
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Laladan Administratif Astamiwa Makau
+    MO Macau
     MP Kapuloan Mariana Lor
     MQ Martinik
     MR Mauritania
@@ -192,7 +192,7 @@ import Cldr
     PM Saint Pièr lan Mikuélon
     PN Kapuloan Pitcairn
     PR Puèrto Riko
-    PS Tlatah Palèstina
+    PS Palèstina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Tanah Thai
     TJ Tajikistan
     TK Tokelau
-    TL Timor Leste
+    TL Timor Wétan
     TM Turkménistan
     TN Tunisia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kapuloan Cocos (Keeling)"
 
         Cldr.CD ->
-            "Kongo - Kinshasa"
+            "Républik Dhémokratik Kongo"
 
         Cldr.CF ->
             "Républik Afrika Tengah"
 
         Cldr.CG ->
-            "Kongo - Brassaville"
+            "Républik Kongo"
 
         Cldr.CH ->
             "Switserlan"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Siprus"
 
         Cldr.CZ ->
-            "Céko"
+            "Républik Céko"
 
         Cldr.DE ->
             "Jérman"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Laladan Administratif Astamiwa Hong Kong"
+            "Hong Kong"
 
         Cldr.HM ->
             "Kapuloan Heard lan McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolia"
 
         Cldr.MO ->
-            "Laladan Administratif Astamiwa Makau"
+            "Macau"
 
         Cldr.MP ->
             "Kapuloan Mariana Lor"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puèrto Riko"
 
         Cldr.PS ->
-            "Tlatah Palèstina"
+            "Palèstina"
 
         Cldr.PT ->
             "Portugal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor Leste"
+            "Timor Wétan"
 
         Cldr.TM ->
             "Turkménistan"

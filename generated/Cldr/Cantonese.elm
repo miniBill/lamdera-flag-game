@@ -49,9 +49,9 @@ import Cldr
     BZ 貝里斯
     CA 加拿大
     CC 科科斯（基林）群島
-    CD 剛果（金夏沙）
+    CD 剛果民主共和國
     CF 中非共和國
-    CG 剛果（布拉薩）
+    CG 剛果共和國
     CH 瑞士
     CI 象牙海岸
     CK 庫克群島
@@ -65,7 +65,7 @@ import Cldr
     CW 庫拉索
     CX 聖誕島
     CY 賽普勒斯
-    CZ 捷克
+    CZ 捷克共和國
     DE 德國
     DJ 吉布地
     DK 丹麥
@@ -104,7 +104,7 @@ import Cldr
     GU 關島
     GW 幾內亞比索
     GY 蓋亞那
-    HK 中華人民共和國香港特別行政區
+    HK 香港
     HM 赫德島同麥克唐納群島
     HN 宏都拉斯
     HR 克羅埃西亞
@@ -157,7 +157,7 @@ import Cldr
     ML 馬利
     MM 緬甸
     MN 蒙古
-    MO 中華人民共和國澳門特別行政區
+    MO 澳門
     MP 北馬里亞納群島
     MQ 馬丁尼克島
     MR 茅利塔尼亞
@@ -192,7 +192,7 @@ import Cldr
     PM 聖皮埃爾同密克隆群島
     PN 皮特肯群島
     PR 波多黎各
-    PS 巴勒斯坦自治區
+    PS 巴勒斯坦
     PT 葡萄牙
     PW 帛琉
     PY 巴拉圭
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "科科斯（基林）群島"
 
         Cldr.CD ->
-            "剛果（金夏沙）"
+            "剛果民主共和國"
 
         Cldr.CF ->
             "中非共和國"
 
         Cldr.CG ->
-            "剛果（布拉薩）"
+            "剛果共和國"
 
         Cldr.CH ->
             "瑞士"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "賽普勒斯"
 
         Cldr.CZ ->
-            "捷克"
+            "捷克共和國"
 
         Cldr.DE ->
             "德國"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "蓋亞那"
 
         Cldr.HK ->
-            "中華人民共和國香港特別行政區"
+            "香港"
 
         Cldr.HM ->
             "赫德島同麥克唐納群島"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "蒙古"
 
         Cldr.MO ->
-            "中華人民共和國澳門特別行政區"
+            "澳門"
 
         Cldr.MP ->
             "北馬里亞納群島"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "波多黎各"
 
         Cldr.PS ->
-            "巴勒斯坦自治區"
+            "巴勒斯坦"
 
         Cldr.PT ->
             "葡萄牙"

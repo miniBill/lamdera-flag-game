@@ -49,9 +49,9 @@ import Cldr
     BZ Beliz
     CA Kanada
     CC Kokos (Kilinq) adaları
-    CD Konqo - Kinşasa
+    CD Konqo (KDR)
     CF Mərkəzi Afrika Respublikası
-    CG Konqo - Brazzavil
+    CG Konqo (Respublika)
     CH İsveçrə
     CI Kotd’ivuar
     CK Kuk adaları
@@ -65,7 +65,7 @@ import Cldr
     CW Kurasao
     CX Milad adası
     CY Kipr
-    CZ Çexiya
+    CZ Çex Respublikası
     DE Almaniya
     DJ Cibuti
     DK Danimarka
@@ -104,7 +104,7 @@ import Cldr
     GU Quam
     GW Qvineya-Bisau
     GY Qayana
-    HK Honq Konq Xüsusi İnzibati Rayonu Çin
+    HK Honq Konq
     HM Herd və Makdonald adaları
     HN Honduras
     HR Xorvatiya
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanma
     MN Monqolustan
-    MO Makao XİR Çin
+    MO Makao
     MP Şimali Marian adaları
     MQ Martinik
     MR Mavritaniya
@@ -192,7 +192,7 @@ import Cldr
     PM Müqəddəs Pyer və Mikelon
     PN Pitkern adaları
     PR Puerto Riko
-    PS Fələstin Əraziləri
+    PS Fələstin
     PT Portuqaliya
     PW Palau
     PY Paraqvay
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokos (Kilinq) adaları"
 
         Cldr.CD ->
-            "Konqo - Kinşasa"
+            "Konqo (KDR)"
 
         Cldr.CF ->
             "Mərkəzi Afrika Respublikası"
 
         Cldr.CG ->
-            "Konqo - Brazzavil"
+            "Konqo (Respublika)"
 
         Cldr.CH ->
             "İsveçrə"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kipr"
 
         Cldr.CZ ->
-            "Çexiya"
+            "Çex Respublikası"
 
         Cldr.DE ->
             "Almaniya"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Qayana"
 
         Cldr.HK ->
-            "Honq Konq Xüsusi İnzibati Rayonu Çin"
+            "Honq Konq"
 
         Cldr.HM ->
             "Herd və Makdonald adaları"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Monqolustan"
 
         Cldr.MO ->
-            "Makao XİR Çin"
+            "Makao"
 
         Cldr.MP ->
             "Şimali Marian adaları"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Riko"
 
         Cldr.PS ->
-            "Fələstin Əraziləri"
+            "Fələstin"
 
         Cldr.PT ->
             "Portuqaliya"

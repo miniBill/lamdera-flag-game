@@ -52,9 +52,9 @@ This is identical to the Malay version.
     BZ Belize
     CA Kanada
     CC Kepulauan Cocos (Keeling)
-    CD Congo - Kinshasa
+    CD Congo (DRC)
     CF Republik Afrika Tengah
-    CG Congo - Brazzaville
+    CG Congo (Republik)
     CH Switzerland
     CI Cote d’Ivoire
     CK Kepulauan Cook
@@ -68,7 +68,7 @@ This is identical to the Malay version.
     CW Curacao
     CX Pulau Krismas
     CY Cyprus
-    CZ Czechia
+    CZ Republik Czech
     DE Jerman
     DJ Djibouti
     DK Denmark
@@ -107,7 +107,7 @@ This is identical to the Malay version.
     GU Guam
     GW Guinea Bissau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Kepulauan Heard & McDonald
     HN Honduras
     HR Croatia
@@ -160,7 +160,7 @@ This is identical to the Malay version.
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macau SAR China
+    MO Macau
     MP Kepulauan Mariana Utara
     MQ Martinique
     MR Mauritania
@@ -195,7 +195,7 @@ This is identical to the Malay version.
     PM Saint Pierre dan Miquelon
     PN Kepulauan Pitcairn
     PR Puerto Rico
-    PS Wilayah Palestin
+    PS Palestin
     PT Portugal
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the Malay version.
     TH Thailand
     TJ Tajikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Timor Timur
     TM Turkmenistan
     TN Tunisia
     TO Tonga

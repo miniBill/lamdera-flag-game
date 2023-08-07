@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Canada
     CC Ynysoedd Cocos (Keeling)
-    CD Y Congo - Kinshasa
+    CD Y Congo (G.Dd.C.)
     CF Gweriniaeth Canolbarth Affrica
-    CG Y Congo - Brazzaville
+    CG Y Congo (Gweriniaeth)
     CH Y Swistir
     CI Côte d’Ivoire
     CK Ynysoedd Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Ynys y Nadolig
     CY Cyprus
-    CZ Tsiecia
+    CZ Gweriniaeth Tsiec
     DE Yr Almaen
     DJ Djibouti
     DK Denmarc
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guiné-Bissau
     GY Guyana
-    HK Hong Kong SAR Tsieina
+    HK Hong Kong
     HM Ynys Heard ac Ynysoedd McDonald
     HN Honduras
     HR Croatia
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macau SAR Tsieina
+    MO Macau
     MP Ynysoedd Gogledd Mariana
     MQ Martinique
     MR Mauritania
@@ -192,7 +192,7 @@ import Cldr
     PM Saint-Pierre-et-Miquelon
     PN Ynysoedd Pitcairn
     PR Puerto Rico
-    PS Tiriogaethau Palesteinaidd
+    PS Palesteina
     PT Portiwgal
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Gwlad Thai
     TJ Tajicistan
     TK Tokelau
-    TL Timor-Leste
+    TL Dwyrain Timor
     TM Tyrcmenistan
     TN Tiwnisia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Ynysoedd Cocos (Keeling)"
 
         Cldr.CD ->
-            "Y Congo - Kinshasa"
+            "Y Congo (G.Dd.C.)"
 
         Cldr.CF ->
             "Gweriniaeth Canolbarth Affrica"
 
         Cldr.CG ->
-            "Y Congo - Brazzaville"
+            "Y Congo (Gweriniaeth)"
 
         Cldr.CH ->
             "Y Swistir"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Cyprus"
 
         Cldr.CZ ->
-            "Tsiecia"
+            "Gweriniaeth Tsiec"
 
         Cldr.DE ->
             "Yr Almaen"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hong Kong SAR Tsieina"
+            "Hong Kong"
 
         Cldr.HM ->
             "Ynys Heard ac Ynysoedd McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolia"
 
         Cldr.MO ->
-            "Macau SAR Tsieina"
+            "Macau"
 
         Cldr.MP ->
             "Ynysoedd Gogledd Mariana"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Tiriogaethau Palesteinaidd"
+            "Palesteina"
 
         Cldr.PT ->
             "Portiwgal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Dwyrain Timor"
 
         Cldr.TM ->
             "Tyrcmenistan"

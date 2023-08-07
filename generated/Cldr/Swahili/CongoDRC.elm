@@ -1,4 +1,4 @@
-module Cldr.Swahili.CongoKinshasa exposing (countryCodeToName)
+module Cldr.Swahili.CongoDRC exposing (countryCodeToName)
 
 {-| 
 @docs countryCodeToName
@@ -9,7 +9,7 @@ import Cldr
 import Cldr.Swahili
 
 
-{-| Name for `CountryCode` in Swahili - Congo - Kinshasa.
+{-| Name for `CountryCode` in Swahili - Congo (DRC).
 
     AD Andorra
     AE Falme za Kiarabu
@@ -50,9 +50,9 @@ import Cldr.Swahili
     BZ Belize
     CA Kanada
     CC Visiwa vya Cocos (Keeling)
-    CD Jamhuri ya Kidemokrasia ya Kongo
+    CD Kongo (DRC)
     CF Jamhuri ya Afrika ya Kati
-    CG Kongo - Brazzaville
+    CG Jamhuri ya Kongo
     CH Uswisi
     CI Kodivaa
     CK Visiwa vya Cook
@@ -66,7 +66,7 @@ import Cldr.Swahili
     CW Curacao
     CX Kisiwa cha Christmas
     CY Saiprasi
-    CZ Chechia
+    CZ Jamhuri ya Cheki
     DE Ujerumani
     DJ Jibuti
     DK Denmaki
@@ -105,7 +105,7 @@ import Cldr.Swahili
     GU Guam
     GW Ginebisau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Kisiwa cha Heard na Visiwa vya McDonald
     HN Honduras
     HR Kroeshia
@@ -158,7 +158,7 @@ import Cldr.Swahili
     ML Mali
     MM Myama
     MN Mongolia
-    MO Makau SAR China
+    MO Makau
     MP Visiwa vya Mariana vya Kaskazini
     MQ Martinique
     MR Moritania
@@ -193,7 +193,7 @@ import Cldr.Swahili
     PM Santapierre na Miquelon
     PN Visiwa vya Pitcairn
     PR Puetoriko
-    PS Maeneo ya Palestina
+    PS Palestina
     PT Ureno
     PW Palau
     PY Paraguay
@@ -231,7 +231,7 @@ import Cldr.Swahili
     TH Tailandi
     TJ Tajikistani
     TK Tokelau
-    TL Timori ya Mashariki
+    TL Timor ya Mashariki
     TM Turkmenistan
     TN Tunisia
     TO Tonga
@@ -333,9 +333,6 @@ countryCodeToName countryCode =
 
         Cldr.TD ->
             "Chadi"
-
-        Cldr.TL ->
-            "Timori ya Mashariki"
 
         _ ->
             Cldr.Swahili.countryCodeToName countryCode

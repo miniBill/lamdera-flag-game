@@ -50,9 +50,9 @@ import Cldr.Portuguese
     BZ Belize
     CA Canadá
     CC Ilhas dos Cocos (Keeling)
-    CD Congo-Kinshasa
+    CD República Democrática do Congo
     CF República Centro-Africana
-    CG Congo-Brazzaville
+    CG República do Congo
     CH Suíça
     CI Côte d’Ivoire (Costa do Marfim)
     CK Ilhas Cook
@@ -66,7 +66,7 @@ import Cldr.Portuguese
     CW Curaçau
     CX Ilha do Natal
     CY Chipre
-    CZ Chéquia
+    CZ República Checa
     DE Alemanha
     DJ Jibuti
     DK Dinamarca
@@ -105,7 +105,7 @@ import Cldr.Portuguese
     GU Guame
     GW Guiné-Bissau
     GY Guiana
-    HK Hong Kong, RAE da China
+    HK Hong Kong
     HM Ilhas Heard e McDonald
     HN Honduras
     HR Croácia
@@ -158,7 +158,7 @@ import Cldr.Portuguese
     ML Mali
     MM Mianmar (Birmânia)
     MN Mongólia
-    MO Macau, RAE da China
+    MO Macau
     MP Ilhas Marianas do Norte
     MQ Martinica
     MR Mauritânia
@@ -193,7 +193,7 @@ import Cldr.Portuguese
     PM São Pedro e Miquelão
     PN Ilhas Pitcairn
     PR Porto Rico
-    PS Territórios palestinianos
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguai
@@ -231,7 +231,7 @@ import Cldr.Portuguese
     TH Tailândia
     TJ Tajiquistão
     TK Toquelau
-    TL Timor-Leste
+    TL República Democrática de Timor-Leste
     TM Turquemenistão
     TN Tunísia
     TO Tonga
@@ -286,11 +286,8 @@ countryCodeToName countryCode =
         Cldr.CC ->
             "Ilhas dos Cocos (Keeling)"
 
-        Cldr.CD ->
-            "Congo-Kinshasa"
-
         Cldr.CG ->
-            "Congo-Brazzaville"
+            "República do Congo"
 
         Cldr.CI ->
             "Côte d’Ivoire (Costa do Marfim)"
@@ -302,7 +299,7 @@ countryCodeToName countryCode =
             "Ilha do Natal"
 
         Cldr.CZ ->
-            "Chéquia"
+            "República Checa"
 
         Cldr.DJ ->
             "Jibuti"
@@ -384,9 +381,6 @@ countryCodeToName countryCode =
 
         Cldr.PL ->
             "Polónia"
-
-        Cldr.PS ->
-            "Territórios palestinianos"
 
         Cldr.RO ->
             "Roménia"

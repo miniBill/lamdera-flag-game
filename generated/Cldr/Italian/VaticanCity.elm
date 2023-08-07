@@ -52,9 +52,9 @@ This is identical to the Italian version.
     BZ Belize
     CA Canada
     CC Isole Cocos (Keeling)
-    CD Congo - Kinshasa
+    CD Congo (RDC)
     CF Repubblica Centrafricana
-    CG Congo-Brazzaville
+    CG Congo (Repubblica)
     CH Svizzera
     CI Costa d’Avorio
     CK Isole Cook
@@ -68,7 +68,7 @@ This is identical to the Italian version.
     CW Curaçao
     CX Isola Christmas
     CY Cipro
-    CZ Cechia
+    CZ Repubblica Ceca
     DE Germania
     DJ Gibuti
     DK Danimarca
@@ -107,7 +107,7 @@ This is identical to the Italian version.
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK RAS di Hong Kong
+    HK Hong Kong
     HM Isole Heard e McDonald
     HN Honduras
     HR Croazia
@@ -160,7 +160,7 @@ This is identical to the Italian version.
     ML Mali
     MM Myanmar (Birmania)
     MN Mongolia
-    MO RAS di Macao
+    MO Macao
     MP Isole Marianne settentrionali
     MQ Martinica
     MR Mauritania
@@ -195,7 +195,7 @@ This is identical to the Italian version.
     PM Saint-Pierre e Miquelon
     PN Isole Pitcairn
     PR Portorico
-    PS Territori palestinesi
+    PS Palestina
     PT Portogallo
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the Italian version.
     TH Thailandia
     TJ Tagikistan
     TK Tokelau
-    TL Timor Est
+    TL Timor Leste
     TM Turkmenistan
     TN Tunisia
     TO Tonga

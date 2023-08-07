@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kókusz (Keeling)-szigetek
-    CD Kongó – Kinshasa
+    CD Kongó (KDK)
     CF Közép-afrikai Köztársaság
-    CG Kongó – Brazzaville
+    CG Kongó (Köztársaság)
     CH Svájc
     CI Elefántcsontpart
     CK Cook-szigetek
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Karácsony-sziget
     CY Ciprus
-    CZ Csehország
+    CZ Cseh Köztársaság
     DE Németország
     DJ Dzsibuti
     DK Dánia
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Bissau-Guinea
     GY Guyana
-    HK Hongkong KKT
+    HK Hongkong
     HM Heard-sziget és McDonald-szigetek
     HN Honduras
     HR Horvátország
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Mianmar
     MN Mongólia
-    MO Makaó KKT
+    MO Makaó
     MP Északi Mariana-szigetek
     MQ Martinique
     MR Mauritánia
@@ -192,7 +192,7 @@ import Cldr
     PM Saint-Pierre és Miquelon
     PN Pitcairn-szigetek
     PR Puerto Rico
-    PS Palesztin Autonómia
+    PS Palesztina
     PT Portugália
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Thaiföld
     TJ Tádzsikisztán
     TK Tokelau
-    TL Kelet-Timor
+    TL Timor-Leste
     TM Türkmenisztán
     TN Tunézia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kókusz (Keeling)-szigetek"
 
         Cldr.CD ->
-            "Kongó – Kinshasa"
+            "Kongó (KDK)"
 
         Cldr.CF ->
             "Közép-afrikai Köztársaság"
 
         Cldr.CG ->
-            "Kongó – Brazzaville"
+            "Kongó (Köztársaság)"
 
         Cldr.CH ->
             "Svájc"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Ciprus"
 
         Cldr.CZ ->
-            "Csehország"
+            "Cseh Köztársaság"
 
         Cldr.DE ->
             "Németország"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hongkong KKT"
+            "Hongkong"
 
         Cldr.HM ->
             "Heard-sziget és McDonald-szigetek"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongólia"
 
         Cldr.MO ->
-            "Makaó KKT"
+            "Makaó"
 
         Cldr.MP ->
             "Északi Mariana-szigetek"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Palesztin Autonómia"
+            "Palesztina"
 
         Cldr.PT ->
             "Portugália"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Kelet-Timor"
+            "Timor-Leste"
 
         Cldr.TM ->
             "Türkmenisztán"

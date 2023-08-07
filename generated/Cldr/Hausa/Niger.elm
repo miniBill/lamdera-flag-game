@@ -52,9 +52,9 @@ This is identical to the Hausa version.
     BZ Beliz
     CA Kanada
     CC Tsibirai Cocos (Keeling)
-    CD Jamhuriyar Dimokuraɗiyyar Kongo
+    CD Kongo (DRC)
     CF Jamhuriyar Afirka Ta Tsakiya
-    CG Kongo
+    CG Jamhuriyar Kongo
     CH Suwizalan
     CI Aibari Kwas
     CK Tsibiran Kuku
@@ -195,7 +195,7 @@ This is identical to the Hausa version.
     PM San Piyar da Mikelan
     PN Pitakarin
     PR Porto Riko
-    PS Yankunan Palasɗinu
+    PS Palasɗinu
     PT Portugal
     PW Palau
     PY Faragwai

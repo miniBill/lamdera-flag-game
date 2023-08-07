@@ -52,9 +52,9 @@ This is identical to the Swedish version.
     BZ Belize
     CA Kanada
     CC Kokosöarna
-    CD Kongo-Kinshasa
+    CD Demokratiska republiken Kongo
     CF Centralafrikanska republiken
-    CG Kongo-Brazzaville
+    CG Republiken Kongo
     CH Schweiz
     CI Côte d’Ivoire
     CK Cooköarna
@@ -107,7 +107,7 @@ This is identical to the Swedish version.
     GU Guam
     GW Guinea-Bissau
     GY Guyana
-    HK Hongkong SAR
+    HK Hongkong
     HM Heardön och McDonaldöarna
     HN Honduras
     HR Kroatien
@@ -160,7 +160,7 @@ This is identical to the Swedish version.
     ML Mali
     MM Myanmar (Burma)
     MN Mongoliet
-    MO Macao SAR
+    MO Macao
     MP Nordmarianerna
     MQ Martinique
     MR Mauretanien
@@ -195,7 +195,7 @@ This is identical to the Swedish version.
     PM S:t Pierre och Miquelon
     PN Pitcairnöarna
     PR Puerto Rico
-    PS Palestinska territorierna
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the Swedish version.
     TH Thailand
     TJ Tadzjikistan
     TK Tokelauöarna
-    TL Östtimor
+    TL Timor-Leste
     TM Turkmenistan
     TN Tunisien
     TO Tonga

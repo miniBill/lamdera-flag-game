@@ -50,9 +50,9 @@ import Cldr.Yoruba
     BZ Bèlísɛ̀
     CA Kánádà
     CC Erékùsù Cocos (Keeling)
-    CD Kóńgò – Kinshasa
+    CD Kóńgò (Tiwantiwa)
     CF Àrin gùngun Áfíríkà
-    CG Kóńgò – Brazaville
+    CG Kóńgò (Olómìnira)
     CH switishilandi
     CI Kóútè forà
     CK Etíokun Kùúkù
@@ -105,7 +105,7 @@ import Cldr.Yoruba
     GU Guamu
     GW Gene-Busau
     GY Guyana
-    HK Agbègbè Ìshàkóso Ìshúná Hong Kong Tí Shánà Ń Darí
+    HK Hong Kong
     HM Erékùsù Heard àti Erékùsù McDonald
     HN Hondurasi
     HR Kòróátíà
@@ -158,7 +158,7 @@ import Cldr.Yoruba
     ML Mali
     MM Manamari
     MN Mogolia
-    MO Agbègbè Ìshàkóso Pàtàkì Macao
+    MO Màkáò
     MP Etikun Guusu Mariana
     MQ Matinikuwi
     MR Maritania
@@ -193,7 +193,7 @@ import Cldr.Yoruba
     PM Pɛɛri ati mikuloni
     PN Pikarini
     PR Pɔto Riko
-    PS Agbègbè ara Palɛsítínì
+    PS Palɛsítínì
     PT Pɔ́túgà
     PW Paalu
     PY Paraguye
@@ -231,7 +231,7 @@ import Cldr.Yoruba
     TH Tailandi
     TJ Takisitani
     TK Tokelau
-    TL ÌlàOòrùn Tímɔ̀
+    TL Ìlà Òòrùn Tímɔ̀
     TM Tɔɔkimenisita
     TN Tunishia
     TO Tonga
@@ -340,9 +340,6 @@ countryCodeToName countryCode =
         Cldr.GS ->
             "Gúúsù Georgia àti Gúúsù Àwɔn Erékùsù Sandwich"
 
-        Cldr.HK ->
-            "Agbègbè Ìshàkóso Ìshúná Hong Kong Tí Shánà Ń Darí"
-
         Cldr.IL ->
             "Iserɛli"
 
@@ -373,9 +370,6 @@ countryCodeToName countryCode =
         Cldr.MH ->
             "Etikun Máshali"
 
-        Cldr.MO ->
-            "Agbègbè Ìshàkóso Pàtàkì Macao"
-
         Cldr.MZ ->
             "Moshamibiku"
 
@@ -401,7 +395,7 @@ countryCodeToName countryCode =
             "Pɔto Riko"
 
         Cldr.PS ->
-            "Agbègbè ara Palɛsítínì"
+            "Palɛsítínì"
 
         Cldr.PT ->
             "Pɔ́túgà"
@@ -446,7 +440,7 @@ countryCodeToName countryCode =
             "Agbègbè Gúúsù Faranshé"
 
         Cldr.TL ->
-            "ÌlàOòrùn Tímɔ̀"
+            "Ìlà Òòrùn Tímɔ̀"
 
         Cldr.TM ->
             "Tɔɔkimenisita"

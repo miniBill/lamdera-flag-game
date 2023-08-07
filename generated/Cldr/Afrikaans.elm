@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kokoseilande
-    CD Demokratiese Republiek van die Kongo
+    CD Kongo (DRK)
     CF Sentraal-Afrikaanse Republiek
-    CG Kongo - Brazzaville
+    CG Kongo (Republiek die)
     CH Switserland
     CI Ivoorkus
     CK Cookeilande
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Kerseiland
     CY Siprus
-    CZ Tsjeggië
+    CZ Tsjeggiese Republiek
     DE Duitsland
     DJ Djiboeti
     DK Denemarke
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guinee-Bissau
     GY Guyana
-    HK Hongkong SAS China
+    HK Hongkong
     HM Heardeiland en McDonaldeilande
     HN Honduras
     HR Kroasië
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Mianmar (Birma)
     MN Mongolië
-    MO Macau SAS China
+    MO Macau
     MP Noord-Mariane-eilande
     MQ Martinique
     MR Mauritanië
@@ -192,7 +192,7 @@ import Cldr
     PM Sint Pierre en Miquelon
     PN Pitcairneilande
     PR Puerto Rico
-    PS Palestynse Grondgebiede
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokoseilande"
 
         Cldr.CD ->
-            "Demokratiese Republiek van die Kongo"
+            "Kongo (DRK)"
 
         Cldr.CF ->
             "Sentraal-Afrikaanse Republiek"
 
         Cldr.CG ->
-            "Kongo - Brazzaville"
+            "Kongo (Republiek die)"
 
         Cldr.CH ->
             "Switserland"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Siprus"
 
         Cldr.CZ ->
-            "Tsjeggië"
+            "Tsjeggiese Republiek"
 
         Cldr.DE ->
             "Duitsland"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hongkong SAS China"
+            "Hongkong"
 
         Cldr.HM ->
             "Heardeiland en McDonaldeilande"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolië"
 
         Cldr.MO ->
-            "Macau SAS China"
+            "Macau"
 
         Cldr.MP ->
             "Noord-Mariane-eilande"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Palestynse Grondgebiede"
+            "Palestina"
 
         Cldr.PT ->
             "Portugal"

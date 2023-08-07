@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Visiwa vya Cocos (Keeling)
-    CD Jamhuri ya Kidemokrasia ya Kongo
+    CD Kongo (DRC)
     CF Jamhuri ya Afrika ya Kati
-    CG Kongo - Brazzaville
+    CG Jamhuri ya Kongo
     CH Uswisi
     CI Cote d’Ivoire
     CK Visiwa vya Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Curacao
     CX Kisiwa cha Krismasi
     CY Saiprasi
-    CZ Chechia
+    CZ Jamhuri ya Cheki
     DE Ujerumani
     DJ Jibuti
     DK Denmaki
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Ginebisau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Kisiwa cha Heard na Visiwa vya McDonald
     HN Honduras
     HR Croatia
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Makau SAR China
+    MO Makau
     MP Visiwa vya Mariana vya Kaskazini
     MQ Martinique
     MR Moritania
@@ -192,7 +192,7 @@ import Cldr
     PM Santapierre na Miquelon
     PN Visiwa vya Pitcairn
     PR Puerto Rico
-    PS Maeneo ya Palestina
+    PS Palestina
     PT Ureno
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Tailandi
     TJ Tajikistani
     TK Tokelau
-    TL Timor-Leste
+    TL Timor ya Mashariki
     TM Turkmenistan
     TN Tunisia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Visiwa vya Cocos (Keeling)"
 
         Cldr.CD ->
-            "Jamhuri ya Kidemokrasia ya Kongo"
+            "Kongo (DRC)"
 
         Cldr.CF ->
             "Jamhuri ya Afrika ya Kati"
 
         Cldr.CG ->
-            "Kongo - Brazzaville"
+            "Jamhuri ya Kongo"
 
         Cldr.CH ->
             "Uswisi"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Saiprasi"
 
         Cldr.CZ ->
-            "Chechia"
+            "Jamhuri ya Cheki"
 
         Cldr.DE ->
             "Ujerumani"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hong Kong SAR China"
+            "Hong Kong"
 
         Cldr.HM ->
             "Kisiwa cha Heard na Visiwa vya McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolia"
 
         Cldr.MO ->
-            "Makau SAR China"
+            "Makau"
 
         Cldr.MP ->
             "Visiwa vya Mariana vya Kaskazini"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Maeneo ya Palestina"
+            "Palestina"
 
         Cldr.PT ->
             "Ureno"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Timor ya Mashariki"
 
         Cldr.TM ->
             "Turkmenistan"

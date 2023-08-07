@@ -50,9 +50,9 @@ import Cldr.French
     BZ Belize
     CA Canada
     CC îles Cocos (Keeling)
-    CD Congo-Kinshasa
+    CD Congo (RDC)
     CF République centrafricaine
-    CG Congo-Brazzaville
+    CG République du Congo
     CH Suisse
     CI Côte d’Ivoire
     CK îles Cook
@@ -66,7 +66,7 @@ import Cldr.French
     CW Curaçao
     CX île Christmas
     CY Chypre
-    CZ Tchéquie
+    CZ République tchèque
     DE Allemagne
     DJ Djibouti
     DK Danemark
@@ -105,7 +105,7 @@ import Cldr.French
     GU Guam
     GW Guinée-Bissau
     GY Guyana
-    HK R.A.S. chinoise de Hong Kong
+    HK Hong Kong
     HM îles Heard et McDonald
     HN Honduras
     HR Croatie
@@ -158,7 +158,7 @@ import Cldr.French
     ML Mali
     MM Myanmar
     MN Mongolie
-    MO R.A.S. chinoise de Macao
+    MO Macao
     MP Mariannes du Nord
     MQ Martinique
     MR Mauritanie
@@ -193,7 +193,7 @@ import Cldr.French
     PM Saint-Pierre-et-Miquelon
     PN îles Pitcairn
     PR Porto Rico
-    PS Territoires palestiniens
+    PS Palestine
     PT Portugal
     PW Palaos
     PY Paraguay
@@ -231,7 +231,7 @@ import Cldr.French
     TH Thaïlande
     TJ Tadjikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Timor oriental
     TM Turkménistan
     TN Tunisie
     TO Tonga
@@ -329,7 +329,7 @@ countryCodeToName countryCode =
             "Saint-Martin (Pays-Bas)"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Timor oriental"
 
         Cldr.UM ->
             "îles mineures éloignées des États-Unis"

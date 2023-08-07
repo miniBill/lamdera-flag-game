@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kokosovi otoki
-    CD Demokratična republika Kongo
+    CD Kongo (Demokratična republika Kongo)
     CF Srednjeafriška republika
-    CG Kongo - Brazzaville
+    CG Kongo (Republika)
     CH Švica
     CI Slonokoščena obala
     CK Cookovi otoki
@@ -65,7 +65,7 @@ import Cldr
     CW Curaçao
     CX Božični otok
     CY Ciper
-    CZ Češka
+    CZ Češka republika
     DE Nemčija
     DJ Džibuti
     DK Danska
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Gvineja Bissau
     GY Gvajana
-    HK Posebno upravno območje Ljudske republike Kitajske Hongkong
+    HK Hongkong
     HM Heardov otok in McDonaldovi otoki
     HN Honduras
     HR Hrvaška
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Mjanmar (Burma)
     MN Mongolija
-    MO Posebno upravno območje Ljudske republike Kitajske Macao
+    MO Macao
     MP Severni Marianski otoki
     MQ Martinik
     MR Mavretanija
@@ -192,7 +192,7 @@ import Cldr
     PM Saint Pierre in Miquelon
     PN Pitcairn
     PR Portoriko
-    PS Palestinsko ozemlje
+    PS Palestina
     PT Portugalska
     PW Palau
     PY Paragvaj
@@ -230,7 +230,7 @@ import Cldr
     TH Tajska
     TJ Tadžikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Vzhodni Timor
     TM Turkmenistan
     TN Tunizija
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokosovi otoki"
 
         Cldr.CD ->
-            "Demokratična republika Kongo"
+            "Kongo (Demokratična republika Kongo)"
 
         Cldr.CF ->
             "Srednjeafriška republika"
 
         Cldr.CG ->
-            "Kongo - Brazzaville"
+            "Kongo (Republika)"
 
         Cldr.CH ->
             "Švica"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Ciper"
 
         Cldr.CZ ->
-            "Češka"
+            "Češka republika"
 
         Cldr.DE ->
             "Nemčija"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gvajana"
 
         Cldr.HK ->
-            "Posebno upravno območje Ljudske republike Kitajske Hongkong"
+            "Hongkong"
 
         Cldr.HM ->
             "Heardov otok in McDonaldovi otoki"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolija"
 
         Cldr.MO ->
-            "Posebno upravno območje Ljudske republike Kitajske Macao"
+            "Macao"
 
         Cldr.MP ->
             "Severni Marianski otoki"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Portoriko"
 
         Cldr.PS ->
-            "Palestinsko ozemlje"
+            "Palestina"
 
         Cldr.PT ->
             "Portugalska"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Vzhodni Timor"
 
         Cldr.TM ->
             "Turkmenistan"

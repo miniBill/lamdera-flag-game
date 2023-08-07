@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kokosova (Keelingova) ostrva
-    CD Demokratska Republika Kongo
+    CD DR Kongo
     CF Centralnoafrička Republika
-    CG Kongo
+    CG Republika Kongo
     CH Švicarska
     CI Obala Slonovače
     CK Kukova ostrva
@@ -65,7 +65,7 @@ import Cldr
     CW Kurasao
     CX Božićno ostrvo
     CY Kipar
-    CZ Češka
+    CZ Češka Republika
     DE Njemačka
     DJ Džibuti
     DK Danska
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Gvineja-Bisao
     GY Gvajana
-    HK Hong Kong (SAR Kina)
+    HK Hong Kong
     HM Ostrvo Heard i arhipelag McDonald
     HN Honduras
     HR Hrvatska
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Mjanmar
     MN Mongolija
-    MO Makao (SAR Kina)
+    MO Makao
     MP Sjeverna Marijanska ostrva
     MQ Martinik
     MR Mauritanija
@@ -192,7 +192,7 @@ import Cldr
     PM Sveti Petar i Mikelon
     PN Pitkernska Ostrva
     PR Porto Riko
-    PS Palestinska Teritorija
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paragvaj
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kokosova (Keelingova) ostrva"
 
         Cldr.CD ->
-            "Demokratska Republika Kongo"
+            "DR Kongo"
 
         Cldr.CF ->
             "Centralnoafrička Republika"
 
         Cldr.CG ->
-            "Kongo"
+            "Republika Kongo"
 
         Cldr.CH ->
             "Švicarska"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Kipar"
 
         Cldr.CZ ->
-            "Češka"
+            "Češka Republika"
 
         Cldr.DE ->
             "Njemačka"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Gvajana"
 
         Cldr.HK ->
-            "Hong Kong (SAR Kina)"
+            "Hong Kong"
 
         Cldr.HM ->
             "Ostrvo Heard i arhipelag McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolija"
 
         Cldr.MO ->
-            "Makao (SAR Kina)"
+            "Makao"
 
         Cldr.MP ->
             "Sjeverna Marijanska ostrva"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Porto Riko"
 
         Cldr.PS ->
-            "Palestinska Teritorija"
+            "Palestina"
 
         Cldr.PT ->
             "Portugal"

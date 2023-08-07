@@ -3445,7 +3445,7 @@ localeToEnglishName locale =
             "Arabic - Oman"
 
         ArPS ->
-            "Arabic - Palestinian Territories"
+            "Arabic - Palestine"
 
         ArQA ->
             "Arabic - Qatar"
@@ -3511,7 +3511,7 @@ localeToEnglishName locale =
             "Catalan - Andorra"
 
         CaESValencia ->
-            "Catalan - Valencia"
+            "Catalan - Spain (Valencia)"
 
         CaFR ->
             "Catalan - France"
@@ -3682,7 +3682,7 @@ localeToEnglishName locale =
             "English - Guyana"
 
         EnHK ->
-            "English - Hong Kong SAR China"
+            "English - Hong Kong"
 
         EnIE ->
             "English - Ireland"
@@ -3733,7 +3733,7 @@ localeToEnglishName locale =
             "English - Marshall Islands"
 
         EnMO ->
-            "English - Macao SAR China"
+            "English - Macao"
 
         EnMP ->
             "English - Northern Mariana Islands"
@@ -4003,13 +4003,13 @@ localeToEnglishName locale =
             "French - Canada"
 
         FrCD ->
-            "French - Congo - Kinshasa"
+            "French - Congo (DRC)"
 
         FrCF ->
             "French - Central African Republic"
 
         FrCG ->
-            "French - Congo - Brazzaville"
+            "French - Congo (Republic)"
 
         FrCH ->
             "French - Switzerland"
@@ -4333,7 +4333,7 @@ localeToEnglishName locale =
             "Portuguese - Luxembourg"
 
         PtMO ->
-            "Portuguese - Macao SAR China"
+            "Portuguese - Macao"
 
         PtMZ ->
             "Portuguese - Mozambique"
@@ -4345,7 +4345,7 @@ localeToEnglishName locale =
             "Portuguese - São Tomé & Príncipe"
 
         PtTL ->
-            "Portuguese - Timor-Leste"
+            "Portuguese - East Timor"
 
         Ro ->
             "Romanian"
@@ -4447,7 +4447,7 @@ localeToEnglishName locale =
             "Swahili"
 
         SwCD ->
-            "Swahili - Congo - Kinshasa"
+            "Swahili - Congo (DRC)"
 
         SwKE ->
             "Swahili - Kenya"
@@ -4522,10 +4522,10 @@ localeToEnglishName locale =
             "Chinese (Simplified)"
 
         ZhHansHK ->
-            "Chinese (Simplified) - Hong Kong SAR China"
+            "Chinese (Simplified) - Hong Kong"
 
         ZhHansMO ->
-            "Chinese (Simplified) - Macao SAR China"
+            "Chinese (Simplified) - Macao"
 
         ZhHansSG ->
             "Chinese (Simplified) - Singapore"
@@ -4534,10 +4534,10 @@ localeToEnglishName locale =
             "Chinese (Traditional)"
 
         ZhHantHK ->
-            "Chinese (Traditional) - Hong Kong SAR China"
+            "Chinese (Traditional) - Hong Kong"
 
         ZhHantMO ->
-            "Chinese (Traditional) - Macao SAR China"
+            "Chinese (Traditional) - Macao"
 
         Zu ->
             "Zulu"

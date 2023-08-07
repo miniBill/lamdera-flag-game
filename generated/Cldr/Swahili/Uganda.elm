@@ -52,9 +52,9 @@ This is identical to the Swahili version.
     BZ Belize
     CA Kanada
     CC Visiwa vya Cocos (Keeling)
-    CD Jamhuri ya Kidemokrasia ya Kongo
+    CD Kongo (DRC)
     CF Jamhuri ya Afrika ya Kati
-    CG Kongo - Brazzaville
+    CG Jamhuri ya Kongo
     CH Uswisi
     CI Cote d’Ivoire
     CK Visiwa vya Cook
@@ -68,7 +68,7 @@ This is identical to the Swahili version.
     CW Curacao
     CX Kisiwa cha Krismasi
     CY Saiprasi
-    CZ Chechia
+    CZ Jamhuri ya Cheki
     DE Ujerumani
     DJ Jibuti
     DK Denmaki
@@ -107,7 +107,7 @@ This is identical to the Swahili version.
     GU Guam
     GW Ginebisau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Kisiwa cha Heard na Visiwa vya McDonald
     HN Honduras
     HR Croatia
@@ -160,7 +160,7 @@ This is identical to the Swahili version.
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Makau SAR China
+    MO Makau
     MP Visiwa vya Mariana vya Kaskazini
     MQ Martinique
     MR Moritania
@@ -195,7 +195,7 @@ This is identical to the Swahili version.
     PM Santapierre na Miquelon
     PN Visiwa vya Pitcairn
     PR Puerto Rico
-    PS Maeneo ya Palestina
+    PS Palestina
     PT Ureno
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the Swahili version.
     TH Tailandi
     TJ Tajikistani
     TK Tokelau
-    TL Timor-Leste
+    TL Timor ya Mashariki
     TM Turkmenistan
     TN Tunisia
     TO Tonga

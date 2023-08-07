@@ -11,8 +11,6 @@ import Cldr.Arabic
 
 {-| Name for `CountryCode` in Arabic - United Arab Emirates.
 
-This is identical to the Arabic version.
-
     AD أندورا
     AE الإمارات العربية المتحدة
     AF أفغانستان
@@ -52,9 +50,9 @@ This is identical to the Arabic version.
     BZ بليز
     CA كندا
     CC جزر كوكوس (كيلينغ)
-    CD الكونغو - كينشاسا
+    CD جمهورية الكونغو الديمقراطية
     CF جمهورية أفريقيا الوسطى
-    CG الكونغو - برازافيل
+    CG جمهورية الكونغو
     CH سويسرا
     CI ساحل العاج
     CK جزر كوك
@@ -68,7 +66,7 @@ This is identical to the Arabic version.
     CW كوراساو
     CX جزيرة كريسماس
     CY قبرص
-    CZ التشيك
+    CZ جمهورية التشيك
     DE ألمانيا
     DJ جيبوتي
     DK الدانمرك
@@ -107,7 +105,7 @@ This is identical to the Arabic version.
     GU غوام
     GW غينيا بيساو
     GY غيانا
-    HK هونغ كونغ الصينية (منطقة إدارية خاصة)
+    HK هونغ كونغ
     HM جزيرة هيرد وجزر ماكدونالد
     HN هندوراس
     HR كرواتيا
@@ -160,7 +158,7 @@ This is identical to the Arabic version.
     ML مالي
     MM ميانمار (بورما)
     MN منغوليا
-    MO منطقة ماكاو الإدارية الخاصة
+    MO مكاو
     MP جزر ماريانا الشمالية
     MQ جزر المارتينيك
     MR موريتانيا
@@ -195,7 +193,7 @@ This is identical to the Arabic version.
     PM سان بيير ومكويلون
     PN جزر بيتكيرن
     PR بورتوريكو
-    PS الأراضي الفلسطينية
+    PS فلسطين
     PT البرتغال
     PW بالاو
     PY باراغواي
@@ -233,7 +231,7 @@ This is identical to the Arabic version.
     TH تايلاند
     TJ طاجيكستان
     TK توكيلو
-    TL تيمور - ليشتي
+    TL التيمور الشرقية
     TM تركمانستان
     TN تونس
     TO تونغا
@@ -265,5 +263,10 @@ This is identical to the Arabic version.
     ZW زيمبابوي
 -}
 countryCodeToName : Cldr.CountryCode -> String
-countryCodeToName =
-    Cldr.Arabic.countryCodeToName
+countryCodeToName countryCode =
+    case countryCode of
+        Cldr.TL ->
+            "التيمور الشرقية"
+
+        _ ->
+            Cldr.Arabic.countryCodeToName countryCode

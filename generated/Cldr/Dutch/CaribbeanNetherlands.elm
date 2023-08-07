@@ -52,9 +52,9 @@ This is identical to the Dutch version.
     BZ Belize
     CA Canada
     CC Cocoseilanden
-    CD Congo-Kinshasa
+    CD Congo (DRC)
     CF Centraal-Afrikaanse Republiek
-    CG Congo-Brazzaville
+    CG Congo (Republiek)
     CH Zwitserland
     CI Ivoorkust
     CK Cookeilanden
@@ -68,7 +68,7 @@ This is identical to the Dutch version.
     CW Curaçao
     CX Christmaseiland
     CY Cyprus
-    CZ Tsjechië
+    CZ Tsjechische Republiek
     DE Duitsland
     DJ Djibouti
     DK Denemarken
@@ -107,7 +107,7 @@ This is identical to the Dutch version.
     GU Guam
     GW Guinee-Bissau
     GY Guyana
-    HK Hongkong SAR van China
+    HK Hongkong
     HM Heard en McDonaldeilanden
     HN Honduras
     HR Kroatië
@@ -160,7 +160,7 @@ This is identical to the Dutch version.
     ML Mali
     MM Myanmar (Birma)
     MN Mongolië
-    MO Macau SAR van China
+    MO Macau
     MP Noordelijke Marianen
     MQ Martinique
     MR Mauritanië
@@ -195,7 +195,7 @@ This is identical to the Dutch version.
     PM Saint-Pierre en Miquelon
     PN Pitcairneilanden
     PR Puerto Rico
-    PS Palestijnse gebieden
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the Dutch version.
     TH Thailand
     TJ Tadzjikistan
     TK Tokelau
-    TL Oost-Timor
+    TL Democratische Republiek Oost-Timor
     TM Turkmenistan
     TN Tunesië
     TO Tonga

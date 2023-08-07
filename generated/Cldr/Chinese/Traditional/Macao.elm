@@ -1,4 +1,4 @@
-module Cldr.Chinese.Traditional.HongKongSARChina exposing (countryCodeToName)
+module Cldr.Chinese.Traditional.Macao exposing (countryCodeToName)
 
 {-| 
 @docs countryCodeToName
@@ -9,7 +9,7 @@ import Cldr
 import Cldr.Chinese.Traditional
 
 
-{-| Name for `CountryCode` in Chinese (Traditional) - Hong Kong SAR China.
+{-| Name for `CountryCode` in Chinese (Traditional) - Macao.
 
     AD 安道爾
     AE 阿拉伯聯合酋長國
@@ -50,9 +50,9 @@ import Cldr.Chinese.Traditional
     BZ 伯利茲
     CA 加拿大
     CC 科科斯 (基林) 群島
-    CD 剛果（金夏沙）
+    CD 剛果民主共和國
     CF 中非共和國
-    CG 剛果（布拉薩）
+    CG 剛果共和國
     CH 瑞士
     CI 科特迪瓦
     CK 庫克群島
@@ -66,7 +66,7 @@ import Cldr.Chinese.Traditional
     CW 庫拉索
     CX 聖誕島
     CY 塞浦路斯
-    CZ 捷克
+    CZ 捷克共和國
     DE 德國
     DJ 吉布提
     DK 丹麥
@@ -105,7 +105,7 @@ import Cldr.Chinese.Traditional
     GU 關島
     GW 幾內亞比紹
     GY 圭亞那
-    HK 中國香港特別行政區
+    HK 香港
     HM 赫德島及麥唐納群島
     HN 洪都拉斯
     HR 克羅地亞
@@ -158,7 +158,7 @@ import Cldr.Chinese.Traditional
     ML 馬里
     MM 緬甸
     MN 蒙古
-    MO 中國澳門特別行政區
+    MO 澳門
     MP 北馬利安納群島
     MQ 馬丁尼克
     MR 毛里塔尼亞
@@ -193,7 +193,7 @@ import Cldr.Chinese.Traditional
     PM 聖皮埃與密克隆群島
     PN 皮特凱恩島
     PR 波多黎各
-    PS 巴勒斯坦領土
+    PS 巴勒斯坦
     PT 葡萄牙
     PW 帛琉
     PY 巴拉圭
@@ -441,9 +441,6 @@ countryCodeToName countryCode =
 
         Cldr.PN ->
             "皮特凱恩島"
-
-        Cldr.PS ->
-            "巴勒斯坦領土"
 
         Cldr.QA ->
             "卡塔爾"

@@ -1,4 +1,4 @@
-module Cldr.Portuguese.MacaoSARChina exposing (countryCodeToName)
+module Cldr.Portuguese.Macao exposing (countryCodeToName)
 
 {-| 
 @docs countryCodeToName
@@ -9,7 +9,7 @@ import Cldr
 import Cldr.Portuguese.Portugal
 
 
-{-| Name for `CountryCode` in Portuguese - Macao SAR China.
+{-| Name for `CountryCode` in Portuguese - Macao.
 
 This is identical to the Portuguese - Portugal version.
 
@@ -52,9 +52,9 @@ This is identical to the Portuguese - Portugal version.
     BZ Belize
     CA Canadá
     CC Ilhas dos Cocos (Keeling)
-    CD Congo-Kinshasa
+    CD República Democrática do Congo
     CF República Centro-Africana
-    CG Congo-Brazzaville
+    CG República do Congo
     CH Suíça
     CI Côte d’Ivoire (Costa do Marfim)
     CK Ilhas Cook
@@ -68,7 +68,7 @@ This is identical to the Portuguese - Portugal version.
     CW Curaçau
     CX Ilha do Natal
     CY Chipre
-    CZ Chéquia
+    CZ República Checa
     DE Alemanha
     DJ Jibuti
     DK Dinamarca
@@ -107,7 +107,7 @@ This is identical to the Portuguese - Portugal version.
     GU Guame
     GW Guiné-Bissau
     GY Guiana
-    HK Hong Kong, RAE da China
+    HK Hong Kong
     HM Ilhas Heard e McDonald
     HN Honduras
     HR Croácia
@@ -160,7 +160,7 @@ This is identical to the Portuguese - Portugal version.
     ML Mali
     MM Mianmar (Birmânia)
     MN Mongólia
-    MO Macau, RAE da China
+    MO Macau
     MP Ilhas Marianas do Norte
     MQ Martinica
     MR Mauritânia
@@ -195,7 +195,7 @@ This is identical to the Portuguese - Portugal version.
     PM São Pedro e Miquelão
     PN Ilhas Pitcairn
     PR Porto Rico
-    PS Territórios palestinianos
+    PS Palestina
     PT Portugal
     PW Palau
     PY Paraguai
@@ -233,7 +233,7 @@ This is identical to the Portuguese - Portugal version.
     TH Tailândia
     TJ Tajiquistão
     TK Toquelau
-    TL Timor-Leste
+    TL República Democrática de Timor-Leste
     TM Turquemenistão
     TN Tunísia
     TO Tonga

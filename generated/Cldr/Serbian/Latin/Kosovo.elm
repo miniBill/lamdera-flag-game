@@ -50,9 +50,9 @@ import Cldr.Serbian.Latin
     BZ Belize
     CA Kanada
     CC Kokosova (Kilingova) Ostrva
-    CD Kongo - Kinšasa
+    CD Kongo (DRK)
     CF Centralnoafrička Republika
-    CG Kongo
+    CG Kongo (Republika)
     CH Švajcarska
     CI Obala Slonovače (Kot d’Ivoar)
     CK Kukova Ostrva
@@ -105,7 +105,7 @@ import Cldr.Serbian.Latin
     GU Guam
     GW Gvineja-Bisao
     GY Gvajana
-    HK SAR Hongkong
+    HK Hongkong
     HM Ostrvo Herd i Mekdonaldova ostrva
     HN Honduras
     HR Hrvatska
@@ -158,7 +158,7 @@ import Cldr.Serbian.Latin
     ML Mali
     MM Mijanmar (Burma)
     MN Mongolija
-    MO SAR Makao
+    MO Makao
     MP Severna Marijanska Ostrva
     MQ Martinik
     MR Mauritanija
@@ -193,7 +193,7 @@ import Cldr.Serbian.Latin
     PM Sveti Pjer i Mikelon
     PN Pitkern
     PR Portoriko
-    PS Palestinske teritorije
+    PS Palestina
     PT Portugalija
     PW Palau
     PY Paragvaj
@@ -231,7 +231,7 @@ import Cldr.Serbian.Latin
     TH Tajland
     TJ Tadžikistan
     TK Tokelau
-    TL Timor-Leste (Istočni Timor)
+    TL Istočni Timor
     TM Turkmenistan
     TN Tunis
     TO Tonga
@@ -265,23 +265,11 @@ import Cldr.Serbian.Latin
 countryCodeToName : Cldr.CountryCode -> String
 countryCodeToName countryCode =
     case countryCode of
-        Cldr.CG ->
-            "Kongo"
-
         Cldr.CV ->
             "Kabo Verde"
 
-        Cldr.CZ ->
-            "Češka Republika"
-
-        Cldr.HK ->
-            "SAR Hongkong"
-
         Cldr.KN ->
             "Sveti Kits i Nevis"
-
-        Cldr.MO ->
-            "SAR Makao"
 
         Cldr.PM ->
             "Sveti Pjer i Mikelon"

@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Agwaetiti Cocos (Keeling)
-    CD Congo - Kinshasa
+    CD Congo (DRC)
     CF Central African Republik
-    CG Congo
+    CG Congo (Republik)
     CH Switzerland
     CI Côte d’Ivoire
     CK Agwaetiti Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Kurakao
     CX Agwaetiti Christmas
     CY Cyprus
-    CZ Czechia
+    CZ Czech Republik
     DE Jamanị
     DJ Djibouti
     DK Denmark
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macao SAR China
+    MO Macao
     MP Agwaetiti Northern Mariana
     MQ Martinique
     MR Mauritania
@@ -230,7 +230,7 @@ import Cldr
     TH Thailand
     TJ Tajikistan
     TK Tokelau
-    TL Timor-Leste
+    TL East Timor
     TM Turkmenistan
     TN Tunisia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Agwaetiti Cocos (Keeling)"
 
         Cldr.CD ->
-            "Congo - Kinshasa"
+            "Congo (DRC)"
 
         Cldr.CF ->
             "Central African Republik"
 
         Cldr.CG ->
-            "Congo"
+            "Congo (Republik)"
 
         Cldr.CH ->
             "Switzerland"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Cyprus"
 
         Cldr.CZ ->
-            "Czechia"
+            "Czech Republik"
 
         Cldr.DE ->
             "Jamanị"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolia"
 
         Cldr.MO ->
-            "Macao SAR China"
+            "Macao"
 
         Cldr.MP ->
             "Agwaetiti Northern Mariana"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "East Timor"
 
         Cldr.TM ->
             "Turkmenistan"

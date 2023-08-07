@@ -52,9 +52,9 @@ This is identical to the Turkish version.
     BZ Belize
     CA Kanada
     CC Cocos (Keeling) Adaları
-    CD Kongo - Kinşasa
+    CD Kongo Demokratik Cumhuriyeti
     CF Orta Afrika Cumhuriyeti
-    CG Kongo - Brazavil
+    CG Kongo Cumhuriyeti
     CH İsviçre
     CI Côte d’Ivoire
     CK Cook Adaları
@@ -68,7 +68,7 @@ This is identical to the Turkish version.
     CW Curaçao
     CX Christmas Adası
     CY Kıbrıs
-    CZ Çekya
+    CZ Çek Cumhuriyeti
     DE Almanya
     DJ Cibuti
     DK Danimarka
@@ -107,7 +107,7 @@ This is identical to the Turkish version.
     GU Guam
     GW Gine-Bissau
     GY Guyana
-    HK Çin Hong Kong ÖİB
+    HK Hong Kong
     HM Heard Adası ve McDonald Adaları
     HN Honduras
     HR Hırvatistan
@@ -160,7 +160,7 @@ This is identical to the Turkish version.
     ML Mali
     MM Myanmar (Burma)
     MN Moğolistan
-    MO Çin Makao ÖİB
+    MO Makao
     MP Kuzey Mariana Adaları
     MQ Martinik
     MR Moritanya
@@ -195,7 +195,7 @@ This is identical to the Turkish version.
     PM Saint Pierre ve Miquelon
     PN Pitcairn Adaları
     PR Porto Riko
-    PS Filistin Bölgeleri
+    PS Filistin
     PT Portekiz
     PW Palau
     PY Paraguay
@@ -233,7 +233,7 @@ This is identical to the Turkish version.
     TH Tayland
     TJ Tacikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Doğu Timor
     TM Türkmenistan
     TN Tunus
     TO Tonga

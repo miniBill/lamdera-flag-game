@@ -49,9 +49,9 @@ import Cldr
     BZ Belize
     CA Kanada
     CC Kepulauan Cocos (Keeling)
-    CD Congo - Kinshasa
+    CD Congo (DRC)
     CF Republik Afrika Tengah
-    CG Congo - Brazzaville
+    CG Congo (Republik)
     CH Switzerland
     CI Cote d’Ivoire
     CK Kepulauan Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Curacao
     CX Pulau Krismas
     CY Cyprus
-    CZ Czechia
+    CZ Republik Czech
     DE Jerman
     DJ Djibouti
     DK Denmark
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guinea Bissau
     GY Guyana
-    HK Hong Kong SAR China
+    HK Hong Kong
     HM Kepulauan Heard & McDonald
     HN Honduras
     HR Croatia
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Myanmar (Burma)
     MN Mongolia
-    MO Macau SAR China
+    MO Macau
     MP Kepulauan Mariana Utara
     MQ Martinique
     MR Mauritania
@@ -192,7 +192,7 @@ import Cldr
     PM Saint Pierre dan Miquelon
     PN Kepulauan Pitcairn
     PR Puerto Rico
-    PS Wilayah Palestin
+    PS Palestin
     PT Portugal
     PW Palau
     PY Paraguay
@@ -230,7 +230,7 @@ import Cldr
     TH Thailand
     TJ Tajikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Timor Timur
     TM Turkmenistan
     TN Tunisia
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Kepulauan Cocos (Keeling)"
 
         Cldr.CD ->
-            "Congo - Kinshasa"
+            "Congo (DRC)"
 
         Cldr.CF ->
             "Republik Afrika Tengah"
 
         Cldr.CG ->
-            "Congo - Brazzaville"
+            "Congo (Republik)"
 
         Cldr.CH ->
             "Switzerland"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Cyprus"
 
         Cldr.CZ ->
-            "Czechia"
+            "Republik Czech"
 
         Cldr.DE ->
             "Jerman"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guyana"
 
         Cldr.HK ->
-            "Hong Kong SAR China"
+            "Hong Kong"
 
         Cldr.HM ->
             "Kepulauan Heard & McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongolia"
 
         Cldr.MO ->
-            "Macau SAR China"
+            "Macau"
 
         Cldr.MP ->
             "Kepulauan Mariana Utara"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Puerto Rico"
 
         Cldr.PS ->
-            "Wilayah Palestin"
+            "Palestin"
 
         Cldr.PT ->
             "Portugal"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Timor Timur"
 
         Cldr.TM ->
             "Turkmenistan"

@@ -49,9 +49,9 @@ import Cldr
     BZ an Bheilís
     CA Ceanada
     CC Oileáin Cocos (Keeling)
-    CD Poblacht Dhaonlathach an Chongó
+    CD an Congó (PDC)
     CF Poblacht na hAfraice Láir
-    CG Congó-Brazzaville
+    CG an Congó (Poblacht)
     CH an Eilvéis
     CI an Cósta Eabhair
     CK Oileáin Cook
@@ -65,7 +65,7 @@ import Cldr
     CW Cúrasó
     CX Oileán na Nollag
     CY an Chipir
-    CZ an tSeicia
+    CZ Poblacht na Seice
     DE an Ghearmáin
     DJ Djibouti
     DK an Danmhairg
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guine Bissau
     GY an Ghuáin
-    HK Sainréigiún Riaracháin Hong Cong, Daonphoblacht na Síne
+    HK Hong Cong
     HM Oileán Heard agus Oileáin McDonald
     HN Hondúras
     HR an Chróit
@@ -157,7 +157,7 @@ import Cldr
     ML Mailí
     MM Maenmar (Burma)
     MN an Mhongóil
-    MO Sainréigiún Riaracháin Macao, Daonphoblacht na Síne
+    MO Macao
     MP na hOileáin Mháirianacha Thuaidh
     MQ Martinique
     MR an Mháratáin
@@ -192,7 +192,7 @@ import Cldr
     PM San Pierre agus Miquelon
     PN Oileáin Pitcairn
     PR Pórtó Ríce
-    PS na Críocha Palaistíneacha
+    PS an Phalaistín
     PT an Phortaingéil
     PW Oileáin Palau
     PY Paragua
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Oileáin Cocos (Keeling)"
 
         Cldr.CD ->
-            "Poblacht Dhaonlathach an Chongó"
+            "an Congó (PDC)"
 
         Cldr.CF ->
             "Poblacht na hAfraice Láir"
 
         Cldr.CG ->
-            "Congó-Brazzaville"
+            "an Congó (Poblacht)"
 
         Cldr.CH ->
             "an Eilvéis"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "an Chipir"
 
         Cldr.CZ ->
-            "an tSeicia"
+            "Poblacht na Seice"
 
         Cldr.DE ->
             "an Ghearmáin"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "an Ghuáin"
 
         Cldr.HK ->
-            "Sainréigiún Riaracháin Hong Cong, Daonphoblacht na Síne"
+            "Hong Cong"
 
         Cldr.HM ->
             "Oileán Heard agus Oileáin McDonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "an Mhongóil"
 
         Cldr.MO ->
-            "Sainréigiún Riaracháin Macao, Daonphoblacht na Síne"
+            "Macao"
 
         Cldr.MP ->
             "na hOileáin Mháirianacha Thuaidh"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Pórtó Ríce"
 
         Cldr.PS ->
-            "na Críocha Palaistíneacha"
+            "an Phalaistín"
 
         Cldr.PT ->
             "an Phortaingéil"

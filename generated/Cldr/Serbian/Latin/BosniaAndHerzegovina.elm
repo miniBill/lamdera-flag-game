@@ -50,9 +50,9 @@ import Cldr.Serbian.Latin
     BZ Belize
     CA Kanada
     CC Kokosova (Kiling) ostrva
-    CD Kongo - Kinšasa
+    CD Kongo (DRK)
     CF Centralnoafrička Republika
-    CG Kongo - Brazavil
+    CG Kongo (Republika)
     CH Švajcarska
     CI Obala Slonovače (Kot d’Ivoar)
     CK Kukova Ostrva
@@ -105,7 +105,7 @@ import Cldr.Serbian.Latin
     GU Gvam
     GW Gvineja Bisao
     GY Gvajana
-    HK Hongkong (SAO Kine)
+    HK Hongkong
     HM ostrvo Herd i ostrva Makdonald
     HN Honduras
     HR Hrvatska
@@ -158,7 +158,7 @@ import Cldr.Serbian.Latin
     ML Mali
     MM Mjanmar (Burma)
     MN Mongolija
-    MO SAR Makao (Kina)
+    MO Makao
     MP Sjeverna Marijanska ostrva
     MQ Martinik
     MR Mauritanija
@@ -193,7 +193,7 @@ import Cldr.Serbian.Latin
     PM Sen Pjer i Mikelon
     PN Pitkern
     PR Portoriko
-    PS palestinske teritorije
+    PS Palestina
     PT Portugalija
     PW Palau
     PY Paragvaj
@@ -231,7 +231,7 @@ import Cldr.Serbian.Latin
     TH Tajland
     TJ Tadžikistan
     TK Tokelau
-    TL Timor-Leste (Istočni Timor)
+    TL Istočni Timor
     TM Turkmenistan
     TN Tunis
     TO Tonga
@@ -283,9 +283,6 @@ countryCodeToName countryCode =
         Cldr.CC ->
             "Kokosova (Kiling) ostrva"
 
-        Cldr.CZ ->
-            "Češka Republika"
-
         Cldr.DE ->
             "Njemačka"
 
@@ -303,9 +300,6 @@ countryCodeToName countryCode =
 
         Cldr.GW ->
             "Gvineja Bisao"
-
-        Cldr.HK ->
-            "Hongkong (SAO Kine)"
 
         Cldr.HM ->
             "ostrvo Herd i ostrva Makdonald"
@@ -330,9 +324,6 @@ countryCodeToName countryCode =
 
         Cldr.NU ->
             "Nijue"
-
-        Cldr.PS ->
-            "palestinske teritorije"
 
         Cldr.RE ->
             "Reunion"

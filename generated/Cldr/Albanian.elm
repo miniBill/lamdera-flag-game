@@ -49,9 +49,9 @@ import Cldr
     BZ Belizë
     CA Kanada
     CC Ishujt Kokos
-    CD Kongo-Kinshasa
+    CD Kongo (RDK)
     CF Republika e Afrikës Qendrore
-    CG Kongo-Brazavilë
+    CG Kongo (Republika)
     CH Zvicër
     CI Côte d’Ivoire
     CK Ishujt Kuk
@@ -65,7 +65,7 @@ import Cldr
     CW Kurasao
     CX Ishulli i Krishtlindjes
     CY Qipro
-    CZ Çeki
+    CZ Republika Çeke
     DE Gjermani
     DJ Xhibuti
     DK Danimarkë
@@ -104,7 +104,7 @@ import Cldr
     GU Guam
     GW Guine-Bisau
     GY Guajanë
-    HK RPA i Hong-Kongut
+    HK Hong-Kong
     HM Ishujt Hërd e Mekdonald
     HN Honduras
     HR Kroaci
@@ -157,7 +157,7 @@ import Cldr
     ML Mali
     MM Mianmar (Burmë)
     MN Mongoli
-    MO RPA i Makaos
+    MO Makao
     MP Ishujt e Marianës Veriore
     MQ Martinikë
     MR Mauritani
@@ -192,7 +192,7 @@ import Cldr
     PM Shën-Pier dhe Mikelon
     PN Ishujt Pitkern
     PR Porto-Riko
-    PS Territoret Palestineze
+    PS Palestinë
     PT Portugali
     PW Palau
     PY Paraguai
@@ -230,7 +230,7 @@ import Cldr
     TH Tajlandë
     TJ Taxhikistan
     TK Tokelau
-    TL Timor-Leste
+    TL Timori Lindor
     TM Turkmenistan
     TN Tunizi
     TO Tonga
@@ -382,13 +382,13 @@ countryCodeToName countryCode =
             "Ishujt Kokos"
 
         Cldr.CD ->
-            "Kongo-Kinshasa"
+            "Kongo (RDK)"
 
         Cldr.CF ->
             "Republika e Afrikës Qendrore"
 
         Cldr.CG ->
-            "Kongo-Brazavilë"
+            "Kongo (Republika)"
 
         Cldr.CH ->
             "Zvicër"
@@ -430,7 +430,7 @@ countryCodeToName countryCode =
             "Qipro"
 
         Cldr.CZ ->
-            "Çeki"
+            "Republika Çeke"
 
         Cldr.DE ->
             "Gjermani"
@@ -547,7 +547,7 @@ countryCodeToName countryCode =
             "Guajanë"
 
         Cldr.HK ->
-            "RPA i Hong-Kongut"
+            "Hong-Kong"
 
         Cldr.HM ->
             "Ishujt Hërd e Mekdonald"
@@ -706,7 +706,7 @@ countryCodeToName countryCode =
             "Mongoli"
 
         Cldr.MO ->
-            "RPA i Makaos"
+            "Makao"
 
         Cldr.MP ->
             "Ishujt e Marianës Veriore"
@@ -811,7 +811,7 @@ countryCodeToName countryCode =
             "Porto-Riko"
 
         Cldr.PS ->
-            "Territoret Palestineze"
+            "Palestinë"
 
         Cldr.PT ->
             "Portugali"
@@ -925,7 +925,7 @@ countryCodeToName countryCode =
             "Tokelau"
 
         Cldr.TL ->
-            "Timor-Leste"
+            "Timori Lindor"
 
         Cldr.TM ->
             "Turkmenistan"
