@@ -43,7 +43,7 @@ backendModel old =
 
 frontendMsg : Evergreen.V34.Types.FrontendMsg -> MsgMigration Evergreen.V36.Types.FrontendMsg Evergreen.V36.Types.FrontendMsg
 frontendMsg old =
-    MsgMigrated ( migrate_Types_FrontendMsg old, Cmd.none )
+    MsgUnchanged
 
 
 toBackend : Evergreen.V34.Types.ToBackend -> MsgMigration Evergreen.V36.Types.ToBackend Evergreen.V36.Types.BackendMsg
@@ -64,11 +64,6 @@ toFrontend old =
 migrate_Types_FrontendModel : Evergreen.V34.Types.FrontendModel -> Evergreen.V36.Types.FrontendModel
 migrate_Types_FrontendModel old =
     old |> migrate_Main_Model
-
-
-migrate_Types_FrontendMsg : Evergreen.V34.Types.FrontendMsg -> Evergreen.V36.Types.FrontendMsg
-migrate_Types_FrontendMsg old =
-    old |> migrate_Main_Msg
 
 
 migrate_Cldr_CountryCode : Evergreen.V34.Cldr.CountryCode -> Evergreen.V36.Cldr.CountryCode
@@ -2000,28 +1995,6 @@ migrate_Main_Model old =
     }
 
 
-migrate_Main_Msg : Evergreen.V34.Main.Msg -> Evergreen.V36.Main.Msg
-migrate_Main_Msg old =
-    case old of
-        Evergreen.V34.Main.UrlRequested p0 ->
-            Evergreen.V36.Main.UrlRequested p0
-
-        Evergreen.V34.Main.UrlChanged p0 ->
-            Evergreen.V36.Main.UrlChanged p0
-
-        Evergreen.V34.Main.Page p0 ->
-            Evergreen.V36.Main.Page (p0 |> migrate_Main_Pages_Msg_Msg)
-
-        Evergreen.V34.Main.Layout p0 ->
-            Evergreen.V36.Main.Layout p0
-
-        Evergreen.V34.Main.Shared p0 ->
-            Evergreen.V36.Main.Shared (p0 |> migrate_Shared_Msg)
-
-        Evergreen.V34.Main.Batch p0 ->
-            Evergreen.V36.Main.Batch (p0 |> List.map migrate_Main_Msg)
-
-
 migrate_Main_Pages_Model_Model : Evergreen.V34.Main.Pages.Model.Model -> Evergreen.V36.Main.Pages.Model.Model
 migrate_Main_Pages_Model_Model old =
     case old of
@@ -2045,32 +2018,6 @@ migrate_Main_Pages_Model_Model old =
 
         Evergreen.V34.Main.Pages.Model.Loading_ ->
             Evergreen.V36.Main.Pages.Model.Loading_
-
-
-migrate_Main_Pages_Msg_Msg : Evergreen.V34.Main.Pages.Msg.Msg -> Evergreen.V36.Main.Pages.Msg.Msg
-migrate_Main_Pages_Msg_Msg old =
-    case old of
-        Evergreen.V34.Main.Pages.Msg.Home_ p0 ->
-            Evergreen.V36.Main.Pages.Msg.Home_ (p0 |> migrate_Pages_Home__Msg)
-
-        Evergreen.V34.Main.Pages.Msg.Finished p0 ->
-            Evergreen.V36.Main.Pages.Msg.Finished (p0 |> migrate_Pages_Finished_Msg)
-
-        Evergreen.V34.Main.Pages.Msg.Play p0 ->
-            Evergreen.V36.Main.Pages.Msg.Play (p0 |> migrate_Pages_Play_Msg)
-
-        Evergreen.V34.Main.Pages.Msg.Sort p0 ->
-            Evergreen.V36.Main.Pages.Msg.Sort (p0 |> migrate_Pages_Sort_Msg)
-
-        Evergreen.V34.Main.Pages.Msg.NotFound_ p0 ->
-            Evergreen.V36.Main.Pages.Msg.NotFound_ (p0 |> migrate_Pages_NotFound__Msg)
-
-
-migrate_Pages_Finished_Msg : Evergreen.V34.Pages.Finished.Msg -> Evergreen.V36.Pages.Finished.Msg
-migrate_Pages_Finished_Msg old =
-    case old of
-        Evergreen.V34.Pages.Finished.Play ->
-            Evergreen.V36.Pages.Finished.Play
 
 
 migrate_Pages_Home__Model : Evergreen.V34.Pages.Home_.Model -> Evergreen.V36.Pages.Home_.Model
@@ -2099,13 +2046,6 @@ migrate_Pages_NotFound__Model old =
     old
 
 
-migrate_Pages_NotFound__Msg : Evergreen.V34.Pages.NotFound_.Msg -> Evergreen.V36.Pages.NotFound_.Msg
-migrate_Pages_NotFound__Msg old =
-    case old of
-        Evergreen.V34.Pages.NotFound_.ExampleMsgReplaceMe ->
-            Evergreen.V36.Pages.NotFound_.ExampleMsgReplaceMe
-
-
 migrate_Pages_Play_InnerModel : Evergreen.V34.Pages.Play.InnerModel -> Evergreen.V36.Pages.Play.InnerModel
 migrate_Pages_Play_InnerModel old =
     { current = old.current |> migrate_Shared_Model_Card
@@ -2120,31 +2060,11 @@ migrate_Pages_Play_Model old =
     old |> Maybe.map migrate_Pages_Play_InnerModel
 
 
-migrate_Pages_Play_Msg : Evergreen.V34.Pages.Play.Msg -> Evergreen.V36.Pages.Play.Msg
-migrate_Pages_Play_Msg old =
-    case old of
-        Evergreen.V34.Pages.Play.Pick p0 ->
-            Evergreen.V36.Pages.Play.Pick (p0 |> migrate_Shared_Model_Country)
-
-        Evergreen.V34.Pages.Play.Next ->
-            Evergreen.V36.Pages.Play.Next
-
-
 migrate_Pages_Sort_Model : Evergreen.V34.Pages.Sort.Model -> Evergreen.V36.Pages.Sort.Model
 migrate_Pages_Sort_Model old =
     { groups = old.groups |> List.map (List.map migrate_Shared_Model_Country)
     , selected = old.selected |> Maybe.map migrate_Shared_Model_Country
     }
-
-
-migrate_Pages_Sort_Msg : Evergreen.V34.Pages.Sort.Msg -> Evergreen.V36.Pages.Sort.Msg
-migrate_Pages_Sort_Msg old =
-    case old of
-        Evergreen.V34.Pages.Sort.Move p0 p1 ->
-            Evergreen.V36.Pages.Sort.Move (p0 |> migrate_Shared_Model_Country) p1
-
-        Evergreen.V34.Pages.Sort.SelectForMove p0 ->
-            Evergreen.V36.Pages.Sort.SelectForMove (p0 |> migrate_Shared_Model_Country)
 
 
 migrate_Shared_Model : Evergreen.V34.Shared.Model -> Evergreen.V36.Shared.Model
