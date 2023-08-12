@@ -1,7 +1,7 @@
-module Cldr exposing (CountryCode(..), Locale(..), all, allLocales, fromAlpha2, localeFromAlpha2, localeToAlpha2, localeToEnglishName, toAlpha2)
+module Cldr exposing (CountryCode(..), allCountryCodes, allLocales, fromAlpha2, localeToEnglishName, toAlpha2)
 
 {-| 
-@docs CountryCode, Locale, allLocales, localeFromAlpha2, localeToAlpha2, localeToEnglishName, toAlpha2, fromAlpha2, all
+@docs CountryCode, allLocales, localeToEnglishName, toAlpha2, fromAlpha2, allCountryCodes
 -}
 
 
@@ -261,4286 +261,1565 @@ type CountryCode
 
 
 {-| All the supported locales. -}
-type Locale
-    = Af
-    | AfNA
-    | Am
-    | Ar
-    | ArAE
-    | ArBH
-    | ArDJ
-    | ArDZ
-    | ArEG
-    | ArEH
-    | ArER
-    | ArIL
-    | ArIQ
-    | ArJO
-    | ArKM
-    | ArKW
-    | ArLB
-    | ArLY
-    | ArMA
-    | ArMR
-    | ArOM
-    | ArPS
-    | ArQA
-    | ArSA
-    | ArSD
-    | ArSO
-    | ArSS
-    | ArSY
-    | ArTD
-    | ArTN
-    | ArYE
-    | As
-    | Az
-    | AzLatn
-    | Be
-    | BeTarask
-    | Bg
-    | Bn
-    | BnIN
-    | Bs
-    | BsLatn
-    | Ca
-    | CaAD
-    | CaESValencia
-    | CaFR
-    | CaIT
-    | Cs
-    | Cy
-    | Da
-    | DaGL
-    | De
-    | DeAT
-    | DeBE
-    | DeCH
-    | DeIT
-    | DeLI
-    | DeLU
-    | El
-    | ElCY
-    | ElPolyton
-    | En
-    | En001
-    | En150
-    | EnAE
-    | EnAG
-    | EnAI
-    | EnAS
-    | EnAT
-    | EnAU
-    | EnBB
-    | EnBE
-    | EnBI
-    | EnBM
-    | EnBS
-    | EnBW
-    | EnBZ
-    | EnCA
-    | EnCC
-    | EnCH
-    | EnCK
-    | EnCM
-    | EnCX
-    | EnCY
-    | EnDE
-    | EnDG
-    | EnDK
-    | EnDM
-    | EnER
-    | EnFI
-    | EnFJ
-    | EnFK
-    | EnFM
-    | EnGB
-    | EnGD
-    | EnGG
-    | EnGH
-    | EnGI
-    | EnGM
-    | EnGU
-    | EnGY
-    | EnHK
-    | EnIE
-    | EnIL
-    | EnIM
-    | EnIN
-    | EnIO
-    | EnJE
-    | EnJM
-    | EnKE
-    | EnKI
-    | EnKN
-    | EnKY
-    | EnLC
-    | EnLR
-    | EnLS
-    | EnMG
-    | EnMH
-    | EnMO
-    | EnMP
-    | EnMS
-    | EnMT
-    | EnMU
-    | EnMV
-    | EnMW
-    | EnMY
-    | EnNA
-    | EnNF
-    | EnNG
-    | EnNL
-    | EnNR
-    | EnNU
-    | EnNZ
-    | EnPG
-    | EnPH
-    | EnPK
-    | EnPN
-    | EnPR
-    | EnPW
-    | EnRW
-    | EnSB
-    | EnSC
-    | EnSD
-    | EnSE
-    | EnSG
-    | EnSH
-    | EnSI
-    | EnSL
-    | EnSS
-    | EnSX
-    | EnSZ
-    | EnTC
-    | EnTK
-    | EnTO
-    | EnTT
-    | EnTV
-    | EnTZ
-    | EnUG
-    | EnUM
-    | EnVC
-    | EnVG
-    | EnVI
-    | EnVU
-    | EnWS
-    | EnZA
-    | EnZM
-    | EnZW
-    | Es
-    | Es419
-    | EsAR
-    | EsBO
-    | EsBR
-    | EsBZ
-    | EsCL
-    | EsCO
-    | EsCR
-    | EsCU
-    | EsDO
-    | EsEA
-    | EsEC
-    | EsGQ
-    | EsGT
-    | EsHN
-    | EsIC
-    | EsMX
-    | EsNI
-    | EsPA
-    | EsPE
-    | EsPH
-    | EsPR
-    | EsPY
-    | EsSV
-    | EsUS
-    | EsUY
-    | EsVE
-    | Et
-    | Eu
-    | Fa
-    | FaAF
-    | Fi
-    | Fil
-    | Fr
-    | FrBE
-    | FrBF
-    | FrBI
-    | FrBJ
-    | FrBL
-    | FrCA
-    | FrCD
-    | FrCF
-    | FrCG
-    | FrCH
-    | FrCI
-    | FrCM
-    | FrDJ
-    | FrDZ
-    | FrGA
-    | FrGF
-    | FrGN
-    | FrGP
-    | FrGQ
-    | FrHT
-    | FrKM
-    | FrLU
-    | FrMA
-    | FrMC
-    | FrMF
-    | FrMG
-    | FrML
-    | FrMQ
-    | FrMR
-    | FrMU
-    | FrNC
-    | FrNE
-    | FrPF
-    | FrPM
-    | FrRE
-    | FrRW
-    | FrSC
-    | FrSN
-    | FrSY
-    | FrTD
-    | FrTG
-    | FrTN
-    | FrVU
-    | FrWF
-    | FrYT
-    | Ga
-    | GaGB
-    | Gd
-    | Gl
-    | Gu
-    | Ha
-    | HaGH
-    | HaNE
-    | He
-    | Hi
-    | HiLatn
-    | Hr
-    | HrBA
-    | Hu
-    | Hy
-    | Id
-    | Ig
-    | Is
-    | It
-    | ItCH
-    | ItSM
-    | ItVA
-    | Ja
-    | Jv
-    | Ka
-    | Kk
-    | Km
-    | Kn
-    | Ko
-    | KoKP
-    | Kok
-    | Ky
-    | Lo
-    | Lt
-    | Lv
-    | Mk
-    | Ml
-    | Mn
-    | Mr
-    | Ms
-    | MsBN
-    | MsID
-    | MsSG
-    | My
-    | Nb
-    | NbSJ
-    | Ne
-    | NeIN
-    | Nl
-    | NlAW
-    | NlBE
-    | NlBQ
-    | NlCW
-    | NlSR
-    | NlSX
-    | Nn
-    | No
-    | Or
-    | Pa
-    | PaGuru
-    | Pcm
-    | Pl
-    | Ps
-    | PsPK
-    | Pt
-    | PtAO
-    | PtCH
-    | PtCV
-    | PtGQ
-    | PtGW
-    | PtLU
-    | PtMO
-    | PtMZ
-    | PtPT
-    | PtST
-    | PtTL
-    | Ro
-    | RoMD
-    | Ru
-    | RuBY
-    | RuKG
-    | RuKZ
-    | RuMD
-    | RuUA
-    | Sd
-    | SdArab
-    | Si
-    | Sk
-    | Sl
-    | So
-    | SoDJ
-    | SoET
-    | SoKE
-    | Sq
-    | SqMK
-    | SqXK
-    | Sr
-    | SrCyrl
-    | SrCyrlBA
-    | SrCyrlME
-    | SrCyrlXK
-    | SrLatn
-    | SrLatnBA
-    | SrLatnME
-    | SrLatnXK
-    | Sv
-    | SvAX
-    | SvFI
-    | Sw
-    | SwCD
-    | SwKE
-    | SwUG
-    | Ta
-    | TaLK
-    | TaMY
-    | TaSG
-    | Te
-    | Th
-    | Tk
-    | Tr
-    | TrCY
-    | Uk
-    | Ur
-    | UrIN
-    | Uz
-    | UzLatn
-    | Vi
-    | Yo
-    | YoBJ
-    | Yue
-    | YueHans
-    | YueHant
-    | Zh
-    | ZhHans
-    | ZhHansHK
-    | ZhHansMO
-    | ZhHansSG
-    | ZhHant
-    | ZhHantHK
-    | ZhHantMO
-    | Zu
-
-
-{-| All the supported locales. -}
-allLocales : List Locale
+allLocales : List String
 allLocales =
-    [ Af
-    , AfNA
-    , Am
-    , Ar
-    , ArAE
-    , ArBH
-    , ArDJ
-    , ArDZ
-    , ArEG
-    , ArEH
-    , ArER
-    , ArIL
-    , ArIQ
-    , ArJO
-    , ArKM
-    , ArKW
-    , ArLB
-    , ArLY
-    , ArMA
-    , ArMR
-    , ArOM
-    , ArPS
-    , ArQA
-    , ArSA
-    , ArSD
-    , ArSO
-    , ArSS
-    , ArSY
-    , ArTD
-    , ArTN
-    , ArYE
-    , As
-    , Az
-    , AzLatn
-    , Be
-    , BeTarask
-    , Bg
-    , Bn
-    , BnIN
-    , Bs
-    , BsLatn
-    , Ca
-    , CaAD
-    , CaESValencia
-    , CaFR
-    , CaIT
-    , Cs
-    , Cy
-    , Da
-    , DaGL
-    , De
-    , DeAT
-    , DeBE
-    , DeCH
-    , DeIT
-    , DeLI
-    , DeLU
-    , El
-    , ElCY
-    , ElPolyton
-    , En
-    , En001
-    , En150
-    , EnAE
-    , EnAG
-    , EnAI
-    , EnAS
-    , EnAT
-    , EnAU
-    , EnBB
-    , EnBE
-    , EnBI
-    , EnBM
-    , EnBS
-    , EnBW
-    , EnBZ
-    , EnCA
-    , EnCC
-    , EnCH
-    , EnCK
-    , EnCM
-    , EnCX
-    , EnCY
-    , EnDE
-    , EnDG
-    , EnDK
-    , EnDM
-    , EnER
-    , EnFI
-    , EnFJ
-    , EnFK
-    , EnFM
-    , EnGB
-    , EnGD
-    , EnGG
-    , EnGH
-    , EnGI
-    , EnGM
-    , EnGU
-    , EnGY
-    , EnHK
-    , EnIE
-    , EnIL
-    , EnIM
-    , EnIN
-    , EnIO
-    , EnJE
-    , EnJM
-    , EnKE
-    , EnKI
-    , EnKN
-    , EnKY
-    , EnLC
-    , EnLR
-    , EnLS
-    , EnMG
-    , EnMH
-    , EnMO
-    , EnMP
-    , EnMS
-    , EnMT
-    , EnMU
-    , EnMV
-    , EnMW
-    , EnMY
-    , EnNA
-    , EnNF
-    , EnNG
-    , EnNL
-    , EnNR
-    , EnNU
-    , EnNZ
-    , EnPG
-    , EnPH
-    , EnPK
-    , EnPN
-    , EnPR
-    , EnPW
-    , EnRW
-    , EnSB
-    , EnSC
-    , EnSD
-    , EnSE
-    , EnSG
-    , EnSH
-    , EnSI
-    , EnSL
-    , EnSS
-    , EnSX
-    , EnSZ
-    , EnTC
-    , EnTK
-    , EnTO
-    , EnTT
-    , EnTV
-    , EnTZ
-    , EnUG
-    , EnUM
-    , EnVC
-    , EnVG
-    , EnVI
-    , EnVU
-    , EnWS
-    , EnZA
-    , EnZM
-    , EnZW
-    , Es
-    , Es419
-    , EsAR
-    , EsBO
-    , EsBR
-    , EsBZ
-    , EsCL
-    , EsCO
-    , EsCR
-    , EsCU
-    , EsDO
-    , EsEA
-    , EsEC
-    , EsGQ
-    , EsGT
-    , EsHN
-    , EsIC
-    , EsMX
-    , EsNI
-    , EsPA
-    , EsPE
-    , EsPH
-    , EsPR
-    , EsPY
-    , EsSV
-    , EsUS
-    , EsUY
-    , EsVE
-    , Et
-    , Eu
-    , Fa
-    , FaAF
-    , Fi
-    , Fil
-    , Fr
-    , FrBE
-    , FrBF
-    , FrBI
-    , FrBJ
-    , FrBL
-    , FrCA
-    , FrCD
-    , FrCF
-    , FrCG
-    , FrCH
-    , FrCI
-    , FrCM
-    , FrDJ
-    , FrDZ
-    , FrGA
-    , FrGF
-    , FrGN
-    , FrGP
-    , FrGQ
-    , FrHT
-    , FrKM
-    , FrLU
-    , FrMA
-    , FrMC
-    , FrMF
-    , FrMG
-    , FrML
-    , FrMQ
-    , FrMR
-    , FrMU
-    , FrNC
-    , FrNE
-    , FrPF
-    , FrPM
-    , FrRE
-    , FrRW
-    , FrSC
-    , FrSN
-    , FrSY
-    , FrTD
-    , FrTG
-    , FrTN
-    , FrVU
-    , FrWF
-    , FrYT
-    , Ga
-    , GaGB
-    , Gd
-    , Gl
-    , Gu
-    , Ha
-    , HaGH
-    , HaNE
-    , He
-    , Hi
-    , HiLatn
-    , Hr
-    , HrBA
-    , Hu
-    , Hy
-    , Id
-    , Ig
-    , Is
-    , It
-    , ItCH
-    , ItSM
-    , ItVA
-    , Ja
-    , Jv
-    , Ka
-    , Kk
-    , Km
-    , Kn
-    , Ko
-    , KoKP
-    , Kok
-    , Ky
-    , Lo
-    , Lt
-    , Lv
-    , Mk
-    , Ml
-    , Mn
-    , Mr
-    , Ms
-    , MsBN
-    , MsID
-    , MsSG
-    , My
-    , Nb
-    , NbSJ
-    , Ne
-    , NeIN
-    , Nl
-    , NlAW
-    , NlBE
-    , NlBQ
-    , NlCW
-    , NlSR
-    , NlSX
-    , Nn
-    , No
-    , Or
-    , Pa
-    , PaGuru
-    , Pcm
-    , Pl
-    , Ps
-    , PsPK
-    , Pt
-    , PtAO
-    , PtCH
-    , PtCV
-    , PtGQ
-    , PtGW
-    , PtLU
-    , PtMO
-    , PtMZ
-    , PtPT
-    , PtST
-    , PtTL
-    , Ro
-    , RoMD
-    , Ru
-    , RuBY
-    , RuKG
-    , RuKZ
-    , RuMD
-    , RuUA
-    , Sd
-    , SdArab
-    , Si
-    , Sk
-    , Sl
-    , So
-    , SoDJ
-    , SoET
-    , SoKE
-    , Sq
-    , SqMK
-    , SqXK
-    , Sr
-    , SrCyrl
-    , SrCyrlBA
-    , SrCyrlME
-    , SrCyrlXK
-    , SrLatn
-    , SrLatnBA
-    , SrLatnME
-    , SrLatnXK
-    , Sv
-    , SvAX
-    , SvFI
-    , Sw
-    , SwCD
-    , SwKE
-    , SwUG
-    , Ta
-    , TaLK
-    , TaMY
-    , TaSG
-    , Te
-    , Th
-    , Tk
-    , Tr
-    , TrCY
-    , Uk
-    , Ur
-    , UrIN
-    , Uz
-    , UzLatn
-    , Vi
-    , Yo
-    , YoBJ
-    , Yue
-    , YueHans
-    , YueHant
-    , Zh
-    , ZhHans
-    , ZhHansHK
-    , ZhHansMO
-    , ZhHansSG
-    , ZhHant
-    , ZhHantHK
-    , ZhHantMO
-    , Zu
+    [ "af"
+    , "af-NA"
+    , "am"
+    , "ar"
+    , "ar-AE"
+    , "ar-BH"
+    , "ar-DJ"
+    , "ar-DZ"
+    , "ar-EG"
+    , "ar-EH"
+    , "ar-ER"
+    , "ar-IL"
+    , "ar-IQ"
+    , "ar-JO"
+    , "ar-KM"
+    , "ar-KW"
+    , "ar-LB"
+    , "ar-LY"
+    , "ar-MA"
+    , "ar-MR"
+    , "ar-OM"
+    , "ar-PS"
+    , "ar-QA"
+    , "ar-SA"
+    , "ar-SD"
+    , "ar-SO"
+    , "ar-SS"
+    , "ar-SY"
+    , "ar-TD"
+    , "ar-TN"
+    , "ar-YE"
+    , "as"
+    , "az"
+    , "az-Latn"
+    , "be"
+    , "be-tarask"
+    , "bg"
+    , "bn"
+    , "bn-IN"
+    , "bs"
+    , "bs-Latn"
+    , "ca"
+    , "ca-AD"
+    , "ca-ES-valencia"
+    , "ca-FR"
+    , "ca-IT"
+    , "cs"
+    , "cy"
+    , "da"
+    , "da-GL"
+    , "de"
+    , "de-AT"
+    , "de-BE"
+    , "de-CH"
+    , "de-IT"
+    , "de-LI"
+    , "de-LU"
+    , "el"
+    , "el-CY"
+    , "el-polyton"
+    , "en"
+    , "en-001"
+    , "en-150"
+    , "en-AE"
+    , "en-AG"
+    , "en-AI"
+    , "en-AS"
+    , "en-AT"
+    , "en-AU"
+    , "en-BB"
+    , "en-BE"
+    , "en-BI"
+    , "en-BM"
+    , "en-BS"
+    , "en-BW"
+    , "en-BZ"
+    , "en-CA"
+    , "en-CC"
+    , "en-CH"
+    , "en-CK"
+    , "en-CM"
+    , "en-CX"
+    , "en-CY"
+    , "en-DE"
+    , "en-DG"
+    , "en-DK"
+    , "en-DM"
+    , "en-ER"
+    , "en-FI"
+    , "en-FJ"
+    , "en-FK"
+    , "en-FM"
+    , "en-GB"
+    , "en-GD"
+    , "en-GG"
+    , "en-GH"
+    , "en-GI"
+    , "en-GM"
+    , "en-GU"
+    , "en-GY"
+    , "en-HK"
+    , "en-IE"
+    , "en-IL"
+    , "en-IM"
+    , "en-IN"
+    , "en-IO"
+    , "en-JE"
+    , "en-JM"
+    , "en-KE"
+    , "en-KI"
+    , "en-KN"
+    , "en-KY"
+    , "en-LC"
+    , "en-LR"
+    , "en-LS"
+    , "en-MG"
+    , "en-MH"
+    , "en-MO"
+    , "en-MP"
+    , "en-MS"
+    , "en-MT"
+    , "en-MU"
+    , "en-MV"
+    , "en-MW"
+    , "en-MY"
+    , "en-NA"
+    , "en-NF"
+    , "en-NG"
+    , "en-NL"
+    , "en-NR"
+    , "en-NU"
+    , "en-NZ"
+    , "en-PG"
+    , "en-PH"
+    , "en-PK"
+    , "en-PN"
+    , "en-PR"
+    , "en-PW"
+    , "en-RW"
+    , "en-SB"
+    , "en-SC"
+    , "en-SD"
+    , "en-SE"
+    , "en-SG"
+    , "en-SH"
+    , "en-SI"
+    , "en-SL"
+    , "en-SS"
+    , "en-SX"
+    , "en-SZ"
+    , "en-TC"
+    , "en-TK"
+    , "en-TO"
+    , "en-TT"
+    , "en-TV"
+    , "en-TZ"
+    , "en-UG"
+    , "en-UM"
+    , "en-VC"
+    , "en-VG"
+    , "en-VI"
+    , "en-VU"
+    , "en-WS"
+    , "en-ZA"
+    , "en-ZM"
+    , "en-ZW"
+    , "es"
+    , "es-419"
+    , "es-AR"
+    , "es-BO"
+    , "es-BR"
+    , "es-BZ"
+    , "es-CL"
+    , "es-CO"
+    , "es-CR"
+    , "es-CU"
+    , "es-DO"
+    , "es-EA"
+    , "es-EC"
+    , "es-GQ"
+    , "es-GT"
+    , "es-HN"
+    , "es-IC"
+    , "es-MX"
+    , "es-NI"
+    , "es-PA"
+    , "es-PE"
+    , "es-PH"
+    , "es-PR"
+    , "es-PY"
+    , "es-SV"
+    , "es-US"
+    , "es-UY"
+    , "es-VE"
+    , "et"
+    , "eu"
+    , "fa"
+    , "fa-AF"
+    , "fi"
+    , "fil"
+    , "fr"
+    , "fr-BE"
+    , "fr-BF"
+    , "fr-BI"
+    , "fr-BJ"
+    , "fr-BL"
+    , "fr-CA"
+    , "fr-CD"
+    , "fr-CF"
+    , "fr-CG"
+    , "fr-CH"
+    , "fr-CI"
+    , "fr-CM"
+    , "fr-DJ"
+    , "fr-DZ"
+    , "fr-GA"
+    , "fr-GF"
+    , "fr-GN"
+    , "fr-GP"
+    , "fr-GQ"
+    , "fr-HT"
+    , "fr-KM"
+    , "fr-LU"
+    , "fr-MA"
+    , "fr-MC"
+    , "fr-MF"
+    , "fr-MG"
+    , "fr-ML"
+    , "fr-MQ"
+    , "fr-MR"
+    , "fr-MU"
+    , "fr-NC"
+    , "fr-NE"
+    , "fr-PF"
+    , "fr-PM"
+    , "fr-RE"
+    , "fr-RW"
+    , "fr-SC"
+    , "fr-SN"
+    , "fr-SY"
+    , "fr-TD"
+    , "fr-TG"
+    , "fr-TN"
+    , "fr-VU"
+    , "fr-WF"
+    , "fr-YT"
+    , "ga"
+    , "ga-GB"
+    , "gd"
+    , "gl"
+    , "gu"
+    , "ha"
+    , "ha-GH"
+    , "ha-NE"
+    , "he"
+    , "hi"
+    , "hi-Latn"
+    , "hr"
+    , "hr-BA"
+    , "hu"
+    , "hy"
+    , "id"
+    , "ig"
+    , "is"
+    , "it"
+    , "it-CH"
+    , "it-SM"
+    , "it-VA"
+    , "ja"
+    , "jv"
+    , "ka"
+    , "kk"
+    , "km"
+    , "kn"
+    , "ko"
+    , "ko-KP"
+    , "kok"
+    , "ky"
+    , "lo"
+    , "lt"
+    , "lv"
+    , "mk"
+    , "ml"
+    , "mn"
+    , "mr"
+    , "ms"
+    , "ms-BN"
+    , "ms-ID"
+    , "ms-SG"
+    , "my"
+    , "nb"
+    , "nb-SJ"
+    , "ne"
+    , "ne-IN"
+    , "nl"
+    , "nl-AW"
+    , "nl-BE"
+    , "nl-BQ"
+    , "nl-CW"
+    , "nl-SR"
+    , "nl-SX"
+    , "nn"
+    , "no"
+    , "or"
+    , "pa"
+    , "pa-Guru"
+    , "pcm"
+    , "pl"
+    , "ps"
+    , "ps-PK"
+    , "pt"
+    , "pt-AO"
+    , "pt-CH"
+    , "pt-CV"
+    , "pt-GQ"
+    , "pt-GW"
+    , "pt-LU"
+    , "pt-MO"
+    , "pt-MZ"
+    , "pt-PT"
+    , "pt-ST"
+    , "pt-TL"
+    , "ro"
+    , "ro-MD"
+    , "ru"
+    , "ru-BY"
+    , "ru-KG"
+    , "ru-KZ"
+    , "ru-MD"
+    , "ru-UA"
+    , "sd"
+    , "sd-Arab"
+    , "si"
+    , "sk"
+    , "sl"
+    , "so"
+    , "so-DJ"
+    , "so-ET"
+    , "so-KE"
+    , "sq"
+    , "sq-MK"
+    , "sq-XK"
+    , "sr"
+    , "sr-Cyrl"
+    , "sr-Cyrl-BA"
+    , "sr-Cyrl-ME"
+    , "sr-Cyrl-XK"
+    , "sr-Latn"
+    , "sr-Latn-BA"
+    , "sr-Latn-ME"
+    , "sr-Latn-XK"
+    , "sv"
+    , "sv-AX"
+    , "sv-FI"
+    , "sw"
+    , "sw-CD"
+    , "sw-KE"
+    , "sw-UG"
+    , "ta"
+    , "ta-LK"
+    , "ta-MY"
+    , "ta-SG"
+    , "te"
+    , "th"
+    , "tk"
+    , "tr"
+    , "tr-CY"
+    , "uk"
+    , "ur"
+    , "ur-IN"
+    , "uz"
+    , "uz-Latn"
+    , "vi"
+    , "yo"
+    , "yo-BJ"
+    , "yue"
+    , "yue-Hans"
+    , "yue-Hant"
+    , "zh"
+    , "zh-Hans"
+    , "zh-Hans-HK"
+    , "zh-Hans-MO"
+    , "zh-Hans-SG"
+    , "zh-Hant"
+    , "zh-Hant-HK"
+    , "zh-Hant-MO"
+    , "zu"
     ]
 
 
-localeFromAlpha2 : String -> Maybe Locale
-localeFromAlpha2 locale =
-    case locale of
-        "af" ->
-            Just Af
+{-| Get the english name of a locale. -}
+localeToEnglishName : String -> Maybe String
+localeToEnglishName locale =
+    case String.split "-" locale of
+        "af" :: "NA" :: _ ->
+            Just "Afrikaans - Namibia"
 
-        "af-NA" ->
-            Just AfNA
+        "af" :: _ ->
+            Just "Afrikaans"
 
-        "am" ->
-            Just Am
+        "am" :: _ ->
+            Just "Amharic"
 
-        "ar" ->
-            Just Ar
+        "ar" :: "AE" :: _ ->
+            Just "Arabic - United Arab Emirates"
 
-        "ar-AE" ->
-            Just ArAE
+        "ar" :: "BH" :: _ ->
+            Just "Arabic - Bahrain"
 
-        "ar-BH" ->
-            Just ArBH
+        "ar" :: "DJ" :: _ ->
+            Just "Arabic - Djibouti"
 
-        "ar-DJ" ->
-            Just ArDJ
+        "ar" :: "DZ" :: _ ->
+            Just "Arabic - Algeria"
 
-        "ar-DZ" ->
-            Just ArDZ
+        "ar" :: "EG" :: _ ->
+            Just "Arabic - Egypt"
 
-        "ar-EG" ->
-            Just ArEG
+        "ar" :: "EH" :: _ ->
+            Just "Arabic - Western Sahara"
 
-        "ar-EH" ->
-            Just ArEH
+        "ar" :: "ER" :: _ ->
+            Just "Arabic - Eritrea"
 
-        "ar-ER" ->
-            Just ArER
+        "ar" :: "IL" :: _ ->
+            Just "Arabic - Israel"
 
-        "ar-IL" ->
-            Just ArIL
+        "ar" :: "IQ" :: _ ->
+            Just "Arabic - Iraq"
 
-        "ar-IQ" ->
-            Just ArIQ
+        "ar" :: "JO" :: _ ->
+            Just "Arabic - Jordan"
 
-        "ar-JO" ->
-            Just ArJO
+        "ar" :: "KM" :: _ ->
+            Just "Arabic - Comoros"
 
-        "ar-KM" ->
-            Just ArKM
+        "ar" :: "KW" :: _ ->
+            Just "Arabic - Kuwait"
 
-        "ar-KW" ->
-            Just ArKW
+        "ar" :: "LB" :: _ ->
+            Just "Arabic - Lebanon"
 
-        "ar-LB" ->
-            Just ArLB
+        "ar" :: "LY" :: _ ->
+            Just "Arabic - Libya"
 
-        "ar-LY" ->
-            Just ArLY
+        "ar" :: "MA" :: _ ->
+            Just "Arabic - Morocco"
 
-        "ar-MA" ->
-            Just ArMA
+        "ar" :: "MR" :: _ ->
+            Just "Arabic - Mauritania"
 
-        "ar-MR" ->
-            Just ArMR
+        "ar" :: "OM" :: _ ->
+            Just "Arabic - Oman"
 
-        "ar-OM" ->
-            Just ArOM
+        "ar" :: "PS" :: _ ->
+            Just "Arabic - Palestine"
 
-        "ar-PS" ->
-            Just ArPS
+        "ar" :: "QA" :: _ ->
+            Just "Arabic - Qatar"
 
-        "ar-QA" ->
-            Just ArQA
+        "ar" :: "SA" :: _ ->
+            Just "Arabic - Saudi Arabia"
 
-        "ar-SA" ->
-            Just ArSA
+        "ar" :: "SD" :: _ ->
+            Just "Arabic - Sudan"
 
-        "ar-SD" ->
-            Just ArSD
+        "ar" :: "SO" :: _ ->
+            Just "Arabic - Somalia"
 
-        "ar-SO" ->
-            Just ArSO
+        "ar" :: "SS" :: _ ->
+            Just "Arabic - South Sudan"
 
-        "ar-SS" ->
-            Just ArSS
+        "ar" :: "SY" :: _ ->
+            Just "Arabic - Syria"
 
-        "ar-SY" ->
-            Just ArSY
+        "ar" :: "TD" :: _ ->
+            Just "Arabic - Chad"
 
-        "ar-TD" ->
-            Just ArTD
+        "ar" :: "TN" :: _ ->
+            Just "Arabic - Tunisia"
 
-        "ar-TN" ->
-            Just ArTN
+        "ar" :: "YE" :: _ ->
+            Just "Arabic - Yemen"
 
-        "ar-YE" ->
-            Just ArYE
+        "ar" :: _ ->
+            Just "Arabic"
 
-        "as" ->
-            Just As
+        "as" :: _ ->
+            Just "Assamese"
 
-        "az" ->
-            Just Az
+        "az" :: "Latn" :: _ ->
+            Just "Azerbaijani (Latin)"
 
-        "az-Latn" ->
-            Just AzLatn
+        "az" :: _ ->
+            Just "Azerbaijani"
 
-        "be" ->
-            Just Be
+        "be" :: "tarask" :: _ ->
+            Just "Belarusian (Taraškievica)"
 
-        "be-tarask" ->
-            Just BeTarask
+        "be" :: _ ->
+            Just "Belarusian"
 
-        "bg" ->
-            Just Bg
+        "bg" :: _ ->
+            Just "Bulgarian"
 
-        "bn" ->
-            Just Bn
+        "bn" :: "IN" :: _ ->
+            Just "Bangla - India"
 
-        "bn-IN" ->
-            Just BnIN
+        "bn" :: _ ->
+            Just "Bangla"
 
-        "bs" ->
-            Just Bs
+        "bs" :: "Latn" :: _ ->
+            Just "Bosnian (Latin)"
 
-        "bs-Latn" ->
-            Just BsLatn
+        "bs" :: _ ->
+            Just "Bosnian"
 
-        "ca" ->
-            Just Ca
+        "ca" :: "AD" :: _ ->
+            Just "Catalan - Andorra"
 
-        "ca-AD" ->
-            Just CaAD
+        "ca" :: "ES" :: "valencia" :: _ ->
+            Just "Catalan - Spain (Valencia)"
 
-        "ca-ES-valencia" ->
-            Just CaESValencia
+        "ca" :: "FR" :: _ ->
+            Just "Catalan - France"
 
-        "ca-FR" ->
-            Just CaFR
+        "ca" :: "IT" :: _ ->
+            Just "Catalan - Italy"
 
-        "ca-IT" ->
-            Just CaIT
+        "ca" :: _ ->
+            Just "Catalan"
 
-        "cs" ->
-            Just Cs
+        "cs" :: _ ->
+            Just "Czech"
 
-        "cy" ->
-            Just Cy
+        "cy" :: _ ->
+            Just "Welsh"
 
-        "da" ->
-            Just Da
+        "da" :: "GL" :: _ ->
+            Just "Danish - Greenland"
 
-        "da-GL" ->
-            Just DaGL
+        "da" :: _ ->
+            Just "Danish"
 
-        "de" ->
-            Just De
+        "de" :: "AT" :: _ ->
+            Just "German - Austria"
 
-        "de-AT" ->
-            Just DeAT
+        "de" :: "BE" :: _ ->
+            Just "German - Belgium"
 
-        "de-BE" ->
-            Just DeBE
+        "de" :: "CH" :: _ ->
+            Just "German - Switzerland"
 
-        "de-CH" ->
-            Just DeCH
+        "de" :: "IT" :: _ ->
+            Just "German - Italy"
 
-        "de-IT" ->
-            Just DeIT
+        "de" :: "LI" :: _ ->
+            Just "German - Liechtenstein"
 
-        "de-LI" ->
-            Just DeLI
+        "de" :: "LU" :: _ ->
+            Just "German - Luxembourg"
 
-        "de-LU" ->
-            Just DeLU
+        "de" :: _ ->
+            Just "German"
 
-        "el" ->
-            Just El
+        "el" :: "CY" :: _ ->
+            Just "Greek - Cyprus"
 
-        "el-CY" ->
-            Just ElCY
+        "el" :: "polyton" :: _ ->
+            Just "Greek (Polytonic)"
 
-        "el-polyton" ->
-            Just ElPolyton
+        "el" :: _ ->
+            Just "Greek"
 
-        "en" ->
-            Just En
+        "en" :: "001" :: _ ->
+            Just "English - world"
 
-        "en-001" ->
-            Just En001
+        "en" :: "150" :: _ ->
+            Just "English - Europe"
 
-        "en-150" ->
-            Just En150
+        "en" :: "AE" :: _ ->
+            Just "English - United Arab Emirates"
 
-        "en-AE" ->
-            Just EnAE
+        "en" :: "AG" :: _ ->
+            Just "English - Antigua & Barbuda"
 
-        "en-AG" ->
-            Just EnAG
+        "en" :: "AI" :: _ ->
+            Just "English - Anguilla"
 
-        "en-AI" ->
-            Just EnAI
+        "en" :: "AS" :: _ ->
+            Just "English - American Samoa"
 
-        "en-AS" ->
-            Just EnAS
+        "en" :: "AT" :: _ ->
+            Just "English - Austria"
 
-        "en-AT" ->
-            Just EnAT
+        "en" :: "AU" :: _ ->
+            Just "English - Australia"
 
-        "en-AU" ->
-            Just EnAU
+        "en" :: "BB" :: _ ->
+            Just "English - Barbados"
 
-        "en-BB" ->
-            Just EnBB
+        "en" :: "BE" :: _ ->
+            Just "English - Belgium"
 
-        "en-BE" ->
-            Just EnBE
+        "en" :: "BI" :: _ ->
+            Just "English - Burundi"
 
-        "en-BI" ->
-            Just EnBI
+        "en" :: "BM" :: _ ->
+            Just "English - Bermuda"
 
-        "en-BM" ->
-            Just EnBM
+        "en" :: "BS" :: _ ->
+            Just "English - Bahamas"
 
-        "en-BS" ->
-            Just EnBS
+        "en" :: "BW" :: _ ->
+            Just "English - Botswana"
 
-        "en-BW" ->
-            Just EnBW
+        "en" :: "BZ" :: _ ->
+            Just "English - Belize"
 
-        "en-BZ" ->
-            Just EnBZ
+        "en" :: "CA" :: _ ->
+            Just "English - Canada"
 
-        "en-CA" ->
-            Just EnCA
+        "en" :: "CC" :: _ ->
+            Just "English - Cocos (Keeling) Islands"
 
-        "en-CC" ->
-            Just EnCC
+        "en" :: "CH" :: _ ->
+            Just "English - Switzerland"
 
-        "en-CH" ->
-            Just EnCH
+        "en" :: "CK" :: _ ->
+            Just "English - Cook Islands"
 
-        "en-CK" ->
-            Just EnCK
+        "en" :: "CM" :: _ ->
+            Just "English - Cameroon"
 
-        "en-CM" ->
-            Just EnCM
+        "en" :: "CX" :: _ ->
+            Just "English - Christmas Island"
 
-        "en-CX" ->
-            Just EnCX
+        "en" :: "CY" :: _ ->
+            Just "English - Cyprus"
 
-        "en-CY" ->
-            Just EnCY
+        "en" :: "DE" :: _ ->
+            Just "English - Germany"
 
-        "en-DE" ->
-            Just EnDE
+        "en" :: "DG" :: _ ->
+            Just "English - Diego Garcia"
 
-        "en-DG" ->
-            Just EnDG
+        "en" :: "DK" :: _ ->
+            Just "English - Denmark"
 
-        "en-DK" ->
-            Just EnDK
+        "en" :: "DM" :: _ ->
+            Just "English - Dominica"
 
-        "en-DM" ->
-            Just EnDM
+        "en" :: "ER" :: _ ->
+            Just "English - Eritrea"
 
-        "en-ER" ->
-            Just EnER
+        "en" :: "FI" :: _ ->
+            Just "English - Finland"
 
-        "en-FI" ->
-            Just EnFI
+        "en" :: "FJ" :: _ ->
+            Just "English - Fiji"
 
-        "en-FJ" ->
-            Just EnFJ
+        "en" :: "FK" :: _ ->
+            Just "English - Falkland Islands"
 
-        "en-FK" ->
-            Just EnFK
+        "en" :: "FM" :: _ ->
+            Just "English - Micronesia"
 
-        "en-FM" ->
-            Just EnFM
+        "en" :: "GB" :: _ ->
+            Just "English - United Kingdom"
 
-        "en-GB" ->
-            Just EnGB
+        "en" :: "GD" :: _ ->
+            Just "English - Grenada"
 
-        "en-GD" ->
-            Just EnGD
+        "en" :: "GG" :: _ ->
+            Just "English - Guernsey"
 
-        "en-GG" ->
-            Just EnGG
+        "en" :: "GH" :: _ ->
+            Just "English - Ghana"
 
-        "en-GH" ->
-            Just EnGH
+        "en" :: "GI" :: _ ->
+            Just "English - Gibraltar"
 
-        "en-GI" ->
-            Just EnGI
+        "en" :: "GM" :: _ ->
+            Just "English - Gambia"
 
-        "en-GM" ->
-            Just EnGM
+        "en" :: "GU" :: _ ->
+            Just "English - Guam"
 
-        "en-GU" ->
-            Just EnGU
+        "en" :: "GY" :: _ ->
+            Just "English - Guyana"
 
-        "en-GY" ->
-            Just EnGY
+        "en" :: "HK" :: _ ->
+            Just "English - Hong Kong"
 
-        "en-HK" ->
-            Just EnHK
+        "en" :: "IE" :: _ ->
+            Just "English - Ireland"
 
-        "en-IE" ->
-            Just EnIE
+        "en" :: "IL" :: _ ->
+            Just "English - Israel"
 
-        "en-IL" ->
-            Just EnIL
+        "en" :: "IM" :: _ ->
+            Just "English - Isle of Man"
 
-        "en-IM" ->
-            Just EnIM
+        "en" :: "IN" :: _ ->
+            Just "English - India"
 
-        "en-IN" ->
-            Just EnIN
+        "en" :: "IO" :: _ ->
+            Just "English - British Indian Ocean Territory"
 
-        "en-IO" ->
-            Just EnIO
+        "en" :: "JE" :: _ ->
+            Just "English - Jersey"
 
-        "en-JE" ->
-            Just EnJE
+        "en" :: "JM" :: _ ->
+            Just "English - Jamaica"
 
-        "en-JM" ->
-            Just EnJM
+        "en" :: "KE" :: _ ->
+            Just "English - Kenya"
 
-        "en-KE" ->
-            Just EnKE
+        "en" :: "KI" :: _ ->
+            Just "English - Kiribati"
 
-        "en-KI" ->
-            Just EnKI
+        "en" :: "KN" :: _ ->
+            Just "English - St. Kitts & Nevis"
 
-        "en-KN" ->
-            Just EnKN
+        "en" :: "KY" :: _ ->
+            Just "English - Cayman Islands"
 
-        "en-KY" ->
-            Just EnKY
+        "en" :: "LC" :: _ ->
+            Just "English - St. Lucia"
 
-        "en-LC" ->
-            Just EnLC
+        "en" :: "LR" :: _ ->
+            Just "English - Liberia"
 
-        "en-LR" ->
-            Just EnLR
+        "en" :: "LS" :: _ ->
+            Just "English - Lesotho"
 
-        "en-LS" ->
-            Just EnLS
+        "en" :: "MG" :: _ ->
+            Just "English - Madagascar"
 
-        "en-MG" ->
-            Just EnMG
+        "en" :: "MH" :: _ ->
+            Just "English - Marshall Islands"
 
-        "en-MH" ->
-            Just EnMH
+        "en" :: "MO" :: _ ->
+            Just "English - Macao"
 
-        "en-MO" ->
-            Just EnMO
+        "en" :: "MP" :: _ ->
+            Just "English - Northern Mariana Islands"
 
-        "en-MP" ->
-            Just EnMP
+        "en" :: "MS" :: _ ->
+            Just "English - Montserrat"
 
-        "en-MS" ->
-            Just EnMS
+        "en" :: "MT" :: _ ->
+            Just "English - Malta"
 
-        "en-MT" ->
-            Just EnMT
+        "en" :: "MU" :: _ ->
+            Just "English - Mauritius"
 
-        "en-MU" ->
-            Just EnMU
+        "en" :: "MV" :: _ ->
+            Just "English - Maldives"
 
-        "en-MV" ->
-            Just EnMV
+        "en" :: "MW" :: _ ->
+            Just "English - Malawi"
 
-        "en-MW" ->
-            Just EnMW
+        "en" :: "MY" :: _ ->
+            Just "English - Malaysia"
 
-        "en-MY" ->
-            Just EnMY
+        "en" :: "NA" :: _ ->
+            Just "English - Namibia"
 
-        "en-NA" ->
-            Just EnNA
+        "en" :: "NF" :: _ ->
+            Just "English - Norfolk Island"
 
-        "en-NF" ->
-            Just EnNF
+        "en" :: "NG" :: _ ->
+            Just "English - Nigeria"
 
-        "en-NG" ->
-            Just EnNG
+        "en" :: "NL" :: _ ->
+            Just "English - Netherlands"
 
-        "en-NL" ->
-            Just EnNL
+        "en" :: "NR" :: _ ->
+            Just "English - Nauru"
 
-        "en-NR" ->
-            Just EnNR
+        "en" :: "NU" :: _ ->
+            Just "English - Niue"
 
-        "en-NU" ->
-            Just EnNU
+        "en" :: "NZ" :: _ ->
+            Just "English - New Zealand"
 
-        "en-NZ" ->
-            Just EnNZ
+        "en" :: "PG" :: _ ->
+            Just "English - Papua New Guinea"
 
-        "en-PG" ->
-            Just EnPG
+        "en" :: "PH" :: _ ->
+            Just "English - Philippines"
 
-        "en-PH" ->
-            Just EnPH
+        "en" :: "PK" :: _ ->
+            Just "English - Pakistan"
 
-        "en-PK" ->
-            Just EnPK
+        "en" :: "PN" :: _ ->
+            Just "English - Pitcairn Islands"
 
-        "en-PN" ->
-            Just EnPN
+        "en" :: "PR" :: _ ->
+            Just "English - Puerto Rico"
 
-        "en-PR" ->
-            Just EnPR
+        "en" :: "PW" :: _ ->
+            Just "English - Palau"
 
-        "en-PW" ->
-            Just EnPW
+        "en" :: "RW" :: _ ->
+            Just "English - Rwanda"
 
-        "en-RW" ->
-            Just EnRW
+        "en" :: "SB" :: _ ->
+            Just "English - Solomon Islands"
 
-        "en-SB" ->
-            Just EnSB
+        "en" :: "SC" :: _ ->
+            Just "English - Seychelles"
 
-        "en-SC" ->
-            Just EnSC
+        "en" :: "SD" :: _ ->
+            Just "English - Sudan"
 
-        "en-SD" ->
-            Just EnSD
+        "en" :: "SE" :: _ ->
+            Just "English - Sweden"
 
-        "en-SE" ->
-            Just EnSE
+        "en" :: "SG" :: _ ->
+            Just "English - Singapore"
 
-        "en-SG" ->
-            Just EnSG
+        "en" :: "SH" :: _ ->
+            Just "English - St. Helena"
 
-        "en-SH" ->
-            Just EnSH
+        "en" :: "SI" :: _ ->
+            Just "English - Slovenia"
 
-        "en-SI" ->
-            Just EnSI
+        "en" :: "SL" :: _ ->
+            Just "English - Sierra Leone"
 
-        "en-SL" ->
-            Just EnSL
+        "en" :: "SS" :: _ ->
+            Just "English - South Sudan"
 
-        "en-SS" ->
-            Just EnSS
+        "en" :: "SX" :: _ ->
+            Just "English - Sint Maarten"
 
-        "en-SX" ->
-            Just EnSX
+        "en" :: "SZ" :: _ ->
+            Just "English - Eswatini"
 
-        "en-SZ" ->
-            Just EnSZ
+        "en" :: "TC" :: _ ->
+            Just "English - Turks & Caicos Islands"
 
-        "en-TC" ->
-            Just EnTC
+        "en" :: "TK" :: _ ->
+            Just "English - Tokelau"
 
-        "en-TK" ->
-            Just EnTK
+        "en" :: "TO" :: _ ->
+            Just "English - Tonga"
 
-        "en-TO" ->
-            Just EnTO
+        "en" :: "TT" :: _ ->
+            Just "English - Trinidad & Tobago"
 
-        "en-TT" ->
-            Just EnTT
+        "en" :: "TV" :: _ ->
+            Just "English - Tuvalu"
 
-        "en-TV" ->
-            Just EnTV
+        "en" :: "TZ" :: _ ->
+            Just "English - Tanzania"
 
-        "en-TZ" ->
-            Just EnTZ
+        "en" :: "UG" :: _ ->
+            Just "English - Uganda"
 
-        "en-UG" ->
-            Just EnUG
+        "en" :: "UM" :: _ ->
+            Just "English - U.S. Outlying Islands"
 
-        "en-UM" ->
-            Just EnUM
+        "en" :: "VC" :: _ ->
+            Just "English - St. Vincent & Grenadines"
 
-        "en-VC" ->
-            Just EnVC
+        "en" :: "VG" :: _ ->
+            Just "English - British Virgin Islands"
 
-        "en-VG" ->
-            Just EnVG
+        "en" :: "VI" :: _ ->
+            Just "English - U.S. Virgin Islands"
 
-        "en-VI" ->
-            Just EnVI
+        "en" :: "VU" :: _ ->
+            Just "English - Vanuatu"
 
-        "en-VU" ->
-            Just EnVU
+        "en" :: "WS" :: _ ->
+            Just "English - Samoa"
 
-        "en-WS" ->
-            Just EnWS
+        "en" :: "ZA" :: _ ->
+            Just "English - South Africa"
 
-        "en-ZA" ->
-            Just EnZA
+        "en" :: "ZM" :: _ ->
+            Just "English - Zambia"
 
-        "en-ZM" ->
-            Just EnZM
+        "en" :: "ZW" :: _ ->
+            Just "English - Zimbabwe"
 
-        "en-ZW" ->
-            Just EnZW
+        "en" :: _ ->
+            Just "English"
 
-        "es" ->
-            Just Es
+        "es" :: "419" :: _ ->
+            Just "Spanish - Latin America"
 
-        "es-419" ->
-            Just Es419
+        "es" :: "AR" :: _ ->
+            Just "Spanish - Argentina"
 
-        "es-AR" ->
-            Just EsAR
+        "es" :: "BO" :: _ ->
+            Just "Spanish - Bolivia"
 
-        "es-BO" ->
-            Just EsBO
+        "es" :: "BR" :: _ ->
+            Just "Spanish - Brazil"
 
-        "es-BR" ->
-            Just EsBR
+        "es" :: "BZ" :: _ ->
+            Just "Spanish - Belize"
 
-        "es-BZ" ->
-            Just EsBZ
+        "es" :: "CL" :: _ ->
+            Just "Spanish - Chile"
 
-        "es-CL" ->
-            Just EsCL
+        "es" :: "CO" :: _ ->
+            Just "Spanish - Colombia"
 
-        "es-CO" ->
-            Just EsCO
+        "es" :: "CR" :: _ ->
+            Just "Spanish - Costa Rica"
 
-        "es-CR" ->
-            Just EsCR
+        "es" :: "CU" :: _ ->
+            Just "Spanish - Cuba"
 
-        "es-CU" ->
-            Just EsCU
+        "es" :: "DO" :: _ ->
+            Just "Spanish - Dominican Republic"
 
-        "es-DO" ->
-            Just EsDO
+        "es" :: "EA" :: _ ->
+            Just "Spanish - Ceuta & Melilla"
 
-        "es-EA" ->
-            Just EsEA
+        "es" :: "EC" :: _ ->
+            Just "Spanish - Ecuador"
 
-        "es-EC" ->
-            Just EsEC
+        "es" :: "GQ" :: _ ->
+            Just "Spanish - Equatorial Guinea"
 
-        "es-GQ" ->
-            Just EsGQ
+        "es" :: "GT" :: _ ->
+            Just "Spanish - Guatemala"
 
-        "es-GT" ->
-            Just EsGT
+        "es" :: "HN" :: _ ->
+            Just "Spanish - Honduras"
 
-        "es-HN" ->
-            Just EsHN
+        "es" :: "IC" :: _ ->
+            Just "Spanish - Canary Islands"
 
-        "es-IC" ->
-            Just EsIC
+        "es" :: "MX" :: _ ->
+            Just "Spanish - Mexico"
 
-        "es-MX" ->
-            Just EsMX
+        "es" :: "NI" :: _ ->
+            Just "Spanish - Nicaragua"
 
-        "es-NI" ->
-            Just EsNI
+        "es" :: "PA" :: _ ->
+            Just "Spanish - Panama"
 
-        "es-PA" ->
-            Just EsPA
+        "es" :: "PE" :: _ ->
+            Just "Spanish - Peru"
 
-        "es-PE" ->
-            Just EsPE
+        "es" :: "PH" :: _ ->
+            Just "Spanish - Philippines"
 
-        "es-PH" ->
-            Just EsPH
+        "es" :: "PR" :: _ ->
+            Just "Spanish - Puerto Rico"
 
-        "es-PR" ->
-            Just EsPR
+        "es" :: "PY" :: _ ->
+            Just "Spanish - Paraguay"
 
-        "es-PY" ->
-            Just EsPY
+        "es" :: "SV" :: _ ->
+            Just "Spanish - El Salvador"
 
-        "es-SV" ->
-            Just EsSV
+        "es" :: "US" :: _ ->
+            Just "Spanish - United States"
 
-        "es-US" ->
-            Just EsUS
+        "es" :: "UY" :: _ ->
+            Just "Spanish - Uruguay"
 
-        "es-UY" ->
-            Just EsUY
+        "es" :: "VE" :: _ ->
+            Just "Spanish - Venezuela"
 
-        "es-VE" ->
-            Just EsVE
+        "es" :: _ ->
+            Just "Spanish"
 
-        "et" ->
-            Just Et
+        "et" :: _ ->
+            Just "Estonian"
 
-        "eu" ->
-            Just Eu
+        "eu" :: _ ->
+            Just "Basque"
 
-        "fa" ->
-            Just Fa
+        "fa" :: "AF" :: _ ->
+            Just "Persian - Afghanistan"
 
-        "fa-AF" ->
-            Just FaAF
+        "fa" :: _ ->
+            Just "Persian"
 
-        "fi" ->
-            Just Fi
+        "fi" :: _ ->
+            Just "Finnish"
 
-        "fil" ->
-            Just Fil
+        "fil" :: _ ->
+            Just "Filipino"
 
-        "fr" ->
-            Just Fr
+        "fr" :: "BE" :: _ ->
+            Just "French - Belgium"
 
-        "fr-BE" ->
-            Just FrBE
+        "fr" :: "BF" :: _ ->
+            Just "French - Burkina Faso"
 
-        "fr-BF" ->
-            Just FrBF
+        "fr" :: "BI" :: _ ->
+            Just "French - Burundi"
 
-        "fr-BI" ->
-            Just FrBI
+        "fr" :: "BJ" :: _ ->
+            Just "French - Benin"
 
-        "fr-BJ" ->
-            Just FrBJ
+        "fr" :: "BL" :: _ ->
+            Just "French - St. Barthélemy"
 
-        "fr-BL" ->
-            Just FrBL
+        "fr" :: "CA" :: _ ->
+            Just "French - Canada"
 
-        "fr-CA" ->
-            Just FrCA
+        "fr" :: "CD" :: _ ->
+            Just "French - Congo (DRC)"
 
-        "fr-CD" ->
-            Just FrCD
+        "fr" :: "CF" :: _ ->
+            Just "French - Central African Republic"
 
-        "fr-CF" ->
-            Just FrCF
+        "fr" :: "CG" :: _ ->
+            Just "French - Congo (Republic)"
 
-        "fr-CG" ->
-            Just FrCG
+        "fr" :: "CH" :: _ ->
+            Just "French - Switzerland"
 
-        "fr-CH" ->
-            Just FrCH
+        "fr" :: "CI" :: _ ->
+            Just "French - Côte d’Ivoire"
 
-        "fr-CI" ->
-            Just FrCI
+        "fr" :: "CM" :: _ ->
+            Just "French - Cameroon"
 
-        "fr-CM" ->
-            Just FrCM
+        "fr" :: "DJ" :: _ ->
+            Just "French - Djibouti"
 
-        "fr-DJ" ->
-            Just FrDJ
+        "fr" :: "DZ" :: _ ->
+            Just "French - Algeria"
 
-        "fr-DZ" ->
-            Just FrDZ
+        "fr" :: "GA" :: _ ->
+            Just "French - Gabon"
 
-        "fr-GA" ->
-            Just FrGA
+        "fr" :: "GF" :: _ ->
+            Just "French - French Guiana"
 
-        "fr-GF" ->
-            Just FrGF
+        "fr" :: "GN" :: _ ->
+            Just "French - Guinea"
 
-        "fr-GN" ->
-            Just FrGN
+        "fr" :: "GP" :: _ ->
+            Just "French - Guadeloupe"
 
-        "fr-GP" ->
-            Just FrGP
+        "fr" :: "GQ" :: _ ->
+            Just "French - Equatorial Guinea"
 
-        "fr-GQ" ->
-            Just FrGQ
+        "fr" :: "HT" :: _ ->
+            Just "French - Haiti"
 
-        "fr-HT" ->
-            Just FrHT
+        "fr" :: "KM" :: _ ->
+            Just "French - Comoros"
 
-        "fr-KM" ->
-            Just FrKM
+        "fr" :: "LU" :: _ ->
+            Just "French - Luxembourg"
 
-        "fr-LU" ->
-            Just FrLU
+        "fr" :: "MA" :: _ ->
+            Just "French - Morocco"
 
-        "fr-MA" ->
-            Just FrMA
+        "fr" :: "MC" :: _ ->
+            Just "French - Monaco"
 
-        "fr-MC" ->
-            Just FrMC
+        "fr" :: "MF" :: _ ->
+            Just "French - St. Martin"
 
-        "fr-MF" ->
-            Just FrMF
+        "fr" :: "MG" :: _ ->
+            Just "French - Madagascar"
 
-        "fr-MG" ->
-            Just FrMG
+        "fr" :: "ML" :: _ ->
+            Just "French - Mali"
 
-        "fr-ML" ->
-            Just FrML
+        "fr" :: "MQ" :: _ ->
+            Just "French - Martinique"
 
-        "fr-MQ" ->
-            Just FrMQ
+        "fr" :: "MR" :: _ ->
+            Just "French - Mauritania"
 
-        "fr-MR" ->
-            Just FrMR
+        "fr" :: "MU" :: _ ->
+            Just "French - Mauritius"
 
-        "fr-MU" ->
-            Just FrMU
+        "fr" :: "NC" :: _ ->
+            Just "French - New Caledonia"
 
-        "fr-NC" ->
-            Just FrNC
+        "fr" :: "NE" :: _ ->
+            Just "French - Niger"
 
-        "fr-NE" ->
-            Just FrNE
+        "fr" :: "PF" :: _ ->
+            Just "French - French Polynesia"
 
-        "fr-PF" ->
-            Just FrPF
+        "fr" :: "PM" :: _ ->
+            Just "French - St. Pierre & Miquelon"
 
-        "fr-PM" ->
-            Just FrPM
+        "fr" :: "RE" :: _ ->
+            Just "French - Réunion"
 
-        "fr-RE" ->
-            Just FrRE
+        "fr" :: "RW" :: _ ->
+            Just "French - Rwanda"
 
-        "fr-RW" ->
-            Just FrRW
+        "fr" :: "SC" :: _ ->
+            Just "French - Seychelles"
 
-        "fr-SC" ->
-            Just FrSC
+        "fr" :: "SN" :: _ ->
+            Just "French - Senegal"
 
-        "fr-SN" ->
-            Just FrSN
+        "fr" :: "SY" :: _ ->
+            Just "French - Syria"
 
-        "fr-SY" ->
-            Just FrSY
+        "fr" :: "TD" :: _ ->
+            Just "French - Chad"
 
-        "fr-TD" ->
-            Just FrTD
+        "fr" :: "TG" :: _ ->
+            Just "French - Togo"
 
-        "fr-TG" ->
-            Just FrTG
+        "fr" :: "TN" :: _ ->
+            Just "French - Tunisia"
 
-        "fr-TN" ->
-            Just FrTN
+        "fr" :: "VU" :: _ ->
+            Just "French - Vanuatu"
 
-        "fr-VU" ->
-            Just FrVU
+        "fr" :: "WF" :: _ ->
+            Just "French - Wallis & Futuna"
 
-        "fr-WF" ->
-            Just FrWF
+        "fr" :: "YT" :: _ ->
+            Just "French - Mayotte"
 
-        "fr-YT" ->
-            Just FrYT
+        "fr" :: _ ->
+            Just "French"
 
-        "ga" ->
-            Just Ga
+        "ga" :: "GB" :: _ ->
+            Just "Irish - United Kingdom"
 
-        "ga-GB" ->
-            Just GaGB
+        "ga" :: _ ->
+            Just "Irish"
 
-        "gd" ->
-            Just Gd
+        "gd" :: _ ->
+            Just "Scottish Gaelic"
 
-        "gl" ->
-            Just Gl
+        "gl" :: _ ->
+            Just "Galician"
 
-        "gu" ->
-            Just Gu
+        "gu" :: _ ->
+            Just "Gujarati"
 
-        "ha" ->
-            Just Ha
+        "ha" :: "GH" :: _ ->
+            Just "Hausa - Ghana"
 
-        "ha-GH" ->
-            Just HaGH
+        "ha" :: "NE" :: _ ->
+            Just "Hausa - Niger"
 
-        "ha-NE" ->
-            Just HaNE
+        "ha" :: _ ->
+            Just "Hausa"
 
-        "he" ->
-            Just He
+        "he" :: _ ->
+            Just "Hebrew"
 
-        "hi" ->
-            Just Hi
+        "hi" :: "Latn" :: _ ->
+            Just "Hindi (Latin)"
 
-        "hi-Latn" ->
-            Just HiLatn
+        "hi" :: _ ->
+            Just "Hindi"
 
-        "hr" ->
-            Just Hr
+        "hr" :: "BA" :: _ ->
+            Just "Croatian - Bosnia & Herzegovina"
 
-        "hr-BA" ->
-            Just HrBA
+        "hr" :: _ ->
+            Just "Croatian"
 
-        "hu" ->
-            Just Hu
+        "hu" :: _ ->
+            Just "Hungarian"
 
-        "hy" ->
-            Just Hy
+        "hy" :: _ ->
+            Just "Armenian"
 
-        "id" ->
-            Just Id
+        "id" :: _ ->
+            Just "Indonesian"
 
-        "ig" ->
-            Just Ig
+        "ig" :: _ ->
+            Just "Igbo"
 
-        "is" ->
-            Just Is
+        "is" :: _ ->
+            Just "Icelandic"
 
-        "it" ->
-            Just It
+        "it" :: "CH" :: _ ->
+            Just "Italian - Switzerland"
 
-        "it-CH" ->
-            Just ItCH
+        "it" :: "SM" :: _ ->
+            Just "Italian - San Marino"
 
-        "it-SM" ->
-            Just ItSM
+        "it" :: "VA" :: _ ->
+            Just "Italian - Vatican City"
 
-        "it-VA" ->
-            Just ItVA
+        "it" :: _ ->
+            Just "Italian"
 
-        "ja" ->
-            Just Ja
+        "ja" :: _ ->
+            Just "Japanese"
 
-        "jv" ->
-            Just Jv
+        "jv" :: _ ->
+            Just "Javanese"
 
-        "ka" ->
-            Just Ka
+        "ka" :: _ ->
+            Just "Georgian"
 
-        "kk" ->
-            Just Kk
+        "kk" :: _ ->
+            Just "Kazakh"
 
-        "km" ->
-            Just Km
+        "km" :: _ ->
+            Just "Khmer"
 
-        "kn" ->
-            Just Kn
+        "kn" :: _ ->
+            Just "Kannada"
 
-        "ko" ->
-            Just Ko
+        "ko" :: "KP" :: _ ->
+            Just "Korean - North Korea"
 
-        "ko-KP" ->
-            Just KoKP
+        "ko" :: _ ->
+            Just "Korean"
 
-        "kok" ->
-            Just Kok
+        "kok" :: _ ->
+            Just "Konkani"
 
-        "ky" ->
-            Just Ky
+        "ky" :: _ ->
+            Just "Kyrgyz"
 
-        "lo" ->
-            Just Lo
+        "lo" :: _ ->
+            Just "Lao"
 
-        "lt" ->
-            Just Lt
+        "lt" :: _ ->
+            Just "Lithuanian"
 
-        "lv" ->
-            Just Lv
+        "lv" :: _ ->
+            Just "Latvian"
 
-        "mk" ->
-            Just Mk
+        "mk" :: _ ->
+            Just "Macedonian"
 
-        "ml" ->
-            Just Ml
+        "ml" :: _ ->
+            Just "Malayalam"
 
-        "mn" ->
-            Just Mn
+        "mn" :: _ ->
+            Just "Mongolian"
 
-        "mr" ->
-            Just Mr
+        "mr" :: _ ->
+            Just "Marathi"
 
-        "ms" ->
-            Just Ms
+        "ms" :: "BN" :: _ ->
+            Just "Malay - Brunei"
 
-        "ms-BN" ->
-            Just MsBN
+        "ms" :: "ID" :: _ ->
+            Just "Malay - Indonesia"
 
-        "ms-ID" ->
-            Just MsID
+        "ms" :: "SG" :: _ ->
+            Just "Malay - Singapore"
 
-        "ms-SG" ->
-            Just MsSG
+        "ms" :: _ ->
+            Just "Malay"
 
-        "my" ->
-            Just My
+        "my" :: _ ->
+            Just "Burmese"
 
-        "nb" ->
-            Just Nb
+        "nb" :: "SJ" :: _ ->
+            Just "Norwegian Bokmål - Svalbard & Jan Mayen"
 
-        "nb-SJ" ->
-            Just NbSJ
+        "nb" :: _ ->
+            Just "Norwegian Bokmål"
 
-        "ne" ->
-            Just Ne
+        "ne" :: "IN" :: _ ->
+            Just "Nepali - India"
 
-        "ne-IN" ->
-            Just NeIN
+        "ne" :: _ ->
+            Just "Nepali"
 
-        "nl" ->
-            Just Nl
+        "nl" :: "AW" :: _ ->
+            Just "Dutch - Aruba"
 
-        "nl-AW" ->
-            Just NlAW
+        "nl" :: "BE" :: _ ->
+            Just "Dutch - Belgium"
 
-        "nl-BE" ->
-            Just NlBE
+        "nl" :: "BQ" :: _ ->
+            Just "Dutch - Caribbean Netherlands"
 
-        "nl-BQ" ->
-            Just NlBQ
+        "nl" :: "CW" :: _ ->
+            Just "Dutch - Curaçao"
 
-        "nl-CW" ->
-            Just NlCW
+        "nl" :: "SR" :: _ ->
+            Just "Dutch - Suriname"
 
-        "nl-SR" ->
-            Just NlSR
+        "nl" :: "SX" :: _ ->
+            Just "Dutch - Sint Maarten"
 
-        "nl-SX" ->
-            Just NlSX
+        "nl" :: _ ->
+            Just "Dutch"
 
-        "nn" ->
-            Just Nn
+        "nn" :: _ ->
+            Just "Norwegian Nynorsk"
 
-        "no" ->
-            Just No
+        "no" :: _ ->
+            Just "Norwegian"
 
-        "or" ->
-            Just Or
+        "or" :: _ ->
+            Just "Odia"
 
-        "pa" ->
-            Just Pa
+        "pa" :: "Guru" :: _ ->
+            Just "Punjabi (Gurmukhi)"
 
-        "pa-Guru" ->
-            Just PaGuru
+        "pa" :: _ ->
+            Just "Punjabi"
 
-        "pcm" ->
-            Just Pcm
+        "pcm" :: _ ->
+            Just "Nigerian Pidgin"
 
-        "pl" ->
-            Just Pl
+        "pl" :: _ ->
+            Just "Polish"
 
-        "ps" ->
-            Just Ps
+        "ps" :: "PK" :: _ ->
+            Just "Pashto - Pakistan"
 
-        "ps-PK" ->
-            Just PsPK
+        "ps" :: _ ->
+            Just "Pashto"
 
-        "pt" ->
-            Just Pt
+        "pt" :: "AO" :: _ ->
+            Just "Portuguese - Angola"
 
-        "pt-AO" ->
-            Just PtAO
+        "pt" :: "CH" :: _ ->
+            Just "Portuguese - Switzerland"
 
-        "pt-CH" ->
-            Just PtCH
+        "pt" :: "CV" :: _ ->
+            Just "Portuguese - Cape Verde"
 
-        "pt-CV" ->
-            Just PtCV
+        "pt" :: "GQ" :: _ ->
+            Just "Portuguese - Equatorial Guinea"
 
-        "pt-GQ" ->
-            Just PtGQ
+        "pt" :: "GW" :: _ ->
+            Just "Portuguese - Guinea-Bissau"
 
-        "pt-GW" ->
-            Just PtGW
+        "pt" :: "LU" :: _ ->
+            Just "Portuguese - Luxembourg"
 
-        "pt-LU" ->
-            Just PtLU
+        "pt" :: "MO" :: _ ->
+            Just "Portuguese - Macao"
 
-        "pt-MO" ->
-            Just PtMO
+        "pt" :: "MZ" :: _ ->
+            Just "Portuguese - Mozambique"
 
-        "pt-MZ" ->
-            Just PtMZ
+        "pt" :: "PT" :: _ ->
+            Just "Portuguese - Portugal"
 
-        "pt-PT" ->
-            Just PtPT
+        "pt" :: "ST" :: _ ->
+            Just "Portuguese - São Tomé & Príncipe"
 
-        "pt-ST" ->
-            Just PtST
+        "pt" :: "TL" :: _ ->
+            Just "Portuguese - East Timor"
 
-        "pt-TL" ->
-            Just PtTL
+        "pt" :: _ ->
+            Just "Portuguese"
 
-        "ro" ->
-            Just Ro
+        "ro" :: "MD" :: _ ->
+            Just "Romanian - Moldova"
 
-        "ro-MD" ->
-            Just RoMD
+        "ro" :: _ ->
+            Just "Romanian"
 
-        "ru" ->
-            Just Ru
+        "ru" :: "BY" :: _ ->
+            Just "Russian - Belarus"
 
-        "ru-BY" ->
-            Just RuBY
+        "ru" :: "KG" :: _ ->
+            Just "Russian - Kyrgyzstan"
 
-        "ru-KG" ->
-            Just RuKG
+        "ru" :: "KZ" :: _ ->
+            Just "Russian - Kazakhstan"
 
-        "ru-KZ" ->
-            Just RuKZ
+        "ru" :: "MD" :: _ ->
+            Just "Russian - Moldova"
 
-        "ru-MD" ->
-            Just RuMD
+        "ru" :: "UA" :: _ ->
+            Just "Russian - Ukraine"
 
-        "ru-UA" ->
-            Just RuUA
+        "ru" :: _ ->
+            Just "Russian"
 
-        "sd" ->
-            Just Sd
+        "sd" :: "Arab" :: _ ->
+            Just "Sindhi (Arabic)"
 
-        "sd-Arab" ->
-            Just SdArab
+        "sd" :: _ ->
+            Just "Sindhi"
 
-        "si" ->
-            Just Si
+        "si" :: _ ->
+            Just "Sinhala"
 
-        "sk" ->
-            Just Sk
+        "sk" :: _ ->
+            Just "Slovak"
 
-        "sl" ->
-            Just Sl
+        "sl" :: _ ->
+            Just "Slovenian"
 
-        "so" ->
-            Just So
+        "so" :: "DJ" :: _ ->
+            Just "Somali - Djibouti"
 
-        "so-DJ" ->
-            Just SoDJ
+        "so" :: "ET" :: _ ->
+            Just "Somali - Ethiopia"
 
-        "so-ET" ->
-            Just SoET
+        "so" :: "KE" :: _ ->
+            Just "Somali - Kenya"
 
-        "so-KE" ->
-            Just SoKE
+        "so" :: _ ->
+            Just "Somali"
 
-        "sq" ->
-            Just Sq
+        "sq" :: "MK" :: _ ->
+            Just "Albanian - North Macedonia"
 
-        "sq-MK" ->
-            Just SqMK
+        "sq" :: "XK" :: _ ->
+            Just "Albanian - Kosovo"
 
-        "sq-XK" ->
-            Just SqXK
+        "sq" :: _ ->
+            Just "Albanian"
 
-        "sr" ->
-            Just Sr
+        "sr" :: "Cyrl" :: "BA" :: _ ->
+            Just "Serbian (Cyrillic) - Bosnia & Herzegovina"
 
-        "sr-Cyrl" ->
-            Just SrCyrl
+        "sr" :: "Cyrl" :: "ME" :: _ ->
+            Just "Serbian (Cyrillic) - Montenegro"
 
-        "sr-Cyrl-BA" ->
-            Just SrCyrlBA
+        "sr" :: "Cyrl" :: "XK" :: _ ->
+            Just "Serbian (Cyrillic) - Kosovo"
 
-        "sr-Cyrl-ME" ->
-            Just SrCyrlME
+        "sr" :: "Cyrl" :: _ ->
+            Just "Serbian (Cyrillic)"
 
-        "sr-Cyrl-XK" ->
-            Just SrCyrlXK
+        "sr" :: "Latn" :: "BA" :: _ ->
+            Just "Serbian (Latin) - Bosnia & Herzegovina"
 
-        "sr-Latn" ->
-            Just SrLatn
+        "sr" :: "Latn" :: "ME" :: _ ->
+            Just "Serbian (Latin) - Montenegro"
 
-        "sr-Latn-BA" ->
-            Just SrLatnBA
+        "sr" :: "Latn" :: "XK" :: _ ->
+            Just "Serbian (Latin) - Kosovo"
 
-        "sr-Latn-ME" ->
-            Just SrLatnME
+        "sr" :: "Latn" :: _ ->
+            Just "Serbian (Latin)"
 
-        "sr-Latn-XK" ->
-            Just SrLatnXK
+        "sr" :: _ ->
+            Just "Serbian"
 
-        "sv" ->
-            Just Sv
+        "sv" :: "AX" :: _ ->
+            Just "Swedish - Åland Islands"
 
-        "sv-AX" ->
-            Just SvAX
+        "sv" :: "FI" :: _ ->
+            Just "Swedish - Finland"
 
-        "sv-FI" ->
-            Just SvFI
+        "sv" :: _ ->
+            Just "Swedish"
 
-        "sw" ->
-            Just Sw
+        "sw" :: "CD" :: _ ->
+            Just "Swahili - Congo (DRC)"
 
-        "sw-CD" ->
-            Just SwCD
+        "sw" :: "KE" :: _ ->
+            Just "Swahili - Kenya"
 
-        "sw-KE" ->
-            Just SwKE
+        "sw" :: "UG" :: _ ->
+            Just "Swahili - Uganda"
 
-        "sw-UG" ->
-            Just SwUG
+        "sw" :: _ ->
+            Just "Swahili"
 
-        "ta" ->
-            Just Ta
+        "ta" :: "LK" :: _ ->
+            Just "Tamil - Sri Lanka"
 
-        "ta-LK" ->
-            Just TaLK
+        "ta" :: "MY" :: _ ->
+            Just "Tamil - Malaysia"
 
-        "ta-MY" ->
-            Just TaMY
+        "ta" :: "SG" :: _ ->
+            Just "Tamil - Singapore"
 
-        "ta-SG" ->
-            Just TaSG
+        "ta" :: _ ->
+            Just "Tamil"
 
-        "te" ->
-            Just Te
+        "te" :: _ ->
+            Just "Telugu"
 
-        "th" ->
-            Just Th
+        "th" :: _ ->
+            Just "Thai"
 
-        "tk" ->
-            Just Tk
+        "tk" :: _ ->
+            Just "Turkmen"
 
-        "tr" ->
-            Just Tr
+        "tr" :: "CY" :: _ ->
+            Just "Turkish - Cyprus"
 
-        "tr-CY" ->
-            Just TrCY
+        "tr" :: _ ->
+            Just "Turkish"
 
-        "uk" ->
-            Just Uk
+        "uk" :: _ ->
+            Just "Ukrainian"
 
-        "ur" ->
-            Just Ur
+        "ur" :: "IN" :: _ ->
+            Just "Urdu - India"
 
-        "ur-IN" ->
-            Just UrIN
+        "ur" :: _ ->
+            Just "Urdu"
 
-        "uz" ->
-            Just Uz
+        "uz" :: "Latn" :: _ ->
+            Just "Uzbek (Latin)"
 
-        "uz-Latn" ->
-            Just UzLatn
+        "uz" :: _ ->
+            Just "Uzbek"
 
-        "vi" ->
-            Just Vi
+        "vi" :: _ ->
+            Just "Vietnamese"
 
-        "yo" ->
-            Just Yo
+        "yo" :: "BJ" :: _ ->
+            Just "Yoruba - Benin"
 
-        "yo-BJ" ->
-            Just YoBJ
+        "yo" :: _ ->
+            Just "Yoruba"
 
-        "yue" ->
-            Just Yue
+        "yue" :: "Hans" :: _ ->
+            Just "Cantonese (Simplified)"
 
-        "yue-Hans" ->
-            Just YueHans
+        "yue" :: "Hant" :: _ ->
+            Just "Cantonese (Traditional)"
 
-        "yue-Hant" ->
-            Just YueHant
+        "yue" :: _ ->
+            Just "Cantonese"
 
-        "zh" ->
-            Just Zh
+        "zh" :: "Hans" :: "HK" :: _ ->
+            Just "Chinese (Simplified) - Hong Kong"
 
-        "zh-Hans" ->
-            Just ZhHans
+        "zh" :: "Hans" :: "MO" :: _ ->
+            Just "Chinese (Simplified) - Macao"
 
-        "zh-Hans-HK" ->
-            Just ZhHansHK
+        "zh" :: "Hans" :: "SG" :: _ ->
+            Just "Chinese (Simplified) - Singapore"
 
-        "zh-Hans-MO" ->
-            Just ZhHansMO
+        "zh" :: "Hans" :: _ ->
+            Just "Chinese (Simplified)"
 
-        "zh-Hans-SG" ->
-            Just ZhHansSG
+        "zh" :: "Hant" :: "HK" :: _ ->
+            Just "Chinese (Traditional) - Hong Kong"
 
-        "zh-Hant" ->
-            Just ZhHant
+        "zh" :: "Hant" :: "MO" :: _ ->
+            Just "Chinese (Traditional) - Macao"
 
-        "zh-Hant-HK" ->
-            Just ZhHantHK
+        "zh" :: "Hant" :: _ ->
+            Just "Chinese (Traditional)"
 
-        "zh-Hant-MO" ->
-            Just ZhHantMO
+        "zh" :: _ ->
+            Just "Chinese"
 
-        "zu" ->
-            Just Zu
+        "zu" :: _ ->
+            Just "Zulu"
 
         _ ->
             Nothing
-
-
-localeToAlpha2 : Locale -> String
-localeToAlpha2 locale =
-    case locale of
-        Af ->
-            "af"
-
-        AfNA ->
-            "af-NA"
-
-        Am ->
-            "am"
-
-        Ar ->
-            "ar"
-
-        ArAE ->
-            "ar-AE"
-
-        ArBH ->
-            "ar-BH"
-
-        ArDJ ->
-            "ar-DJ"
-
-        ArDZ ->
-            "ar-DZ"
-
-        ArEG ->
-            "ar-EG"
-
-        ArEH ->
-            "ar-EH"
-
-        ArER ->
-            "ar-ER"
-
-        ArIL ->
-            "ar-IL"
-
-        ArIQ ->
-            "ar-IQ"
-
-        ArJO ->
-            "ar-JO"
-
-        ArKM ->
-            "ar-KM"
-
-        ArKW ->
-            "ar-KW"
-
-        ArLB ->
-            "ar-LB"
-
-        ArLY ->
-            "ar-LY"
-
-        ArMA ->
-            "ar-MA"
-
-        ArMR ->
-            "ar-MR"
-
-        ArOM ->
-            "ar-OM"
-
-        ArPS ->
-            "ar-PS"
-
-        ArQA ->
-            "ar-QA"
-
-        ArSA ->
-            "ar-SA"
-
-        ArSD ->
-            "ar-SD"
-
-        ArSO ->
-            "ar-SO"
-
-        ArSS ->
-            "ar-SS"
-
-        ArSY ->
-            "ar-SY"
-
-        ArTD ->
-            "ar-TD"
-
-        ArTN ->
-            "ar-TN"
-
-        ArYE ->
-            "ar-YE"
-
-        As ->
-            "as"
-
-        Az ->
-            "az"
-
-        AzLatn ->
-            "az-Latn"
-
-        Be ->
-            "be"
-
-        BeTarask ->
-            "be-tarask"
-
-        Bg ->
-            "bg"
-
-        Bn ->
-            "bn"
-
-        BnIN ->
-            "bn-IN"
-
-        Bs ->
-            "bs"
-
-        BsLatn ->
-            "bs-Latn"
-
-        Ca ->
-            "ca"
-
-        CaAD ->
-            "ca-AD"
-
-        CaESValencia ->
-            "ca-ES-valencia"
-
-        CaFR ->
-            "ca-FR"
-
-        CaIT ->
-            "ca-IT"
-
-        Cs ->
-            "cs"
-
-        Cy ->
-            "cy"
-
-        Da ->
-            "da"
-
-        DaGL ->
-            "da-GL"
-
-        De ->
-            "de"
-
-        DeAT ->
-            "de-AT"
-
-        DeBE ->
-            "de-BE"
-
-        DeCH ->
-            "de-CH"
-
-        DeIT ->
-            "de-IT"
-
-        DeLI ->
-            "de-LI"
-
-        DeLU ->
-            "de-LU"
-
-        El ->
-            "el"
-
-        ElCY ->
-            "el-CY"
-
-        ElPolyton ->
-            "el-polyton"
-
-        En ->
-            "en"
-
-        En001 ->
-            "en-001"
-
-        En150 ->
-            "en-150"
-
-        EnAE ->
-            "en-AE"
-
-        EnAG ->
-            "en-AG"
-
-        EnAI ->
-            "en-AI"
-
-        EnAS ->
-            "en-AS"
-
-        EnAT ->
-            "en-AT"
-
-        EnAU ->
-            "en-AU"
-
-        EnBB ->
-            "en-BB"
-
-        EnBE ->
-            "en-BE"
-
-        EnBI ->
-            "en-BI"
-
-        EnBM ->
-            "en-BM"
-
-        EnBS ->
-            "en-BS"
-
-        EnBW ->
-            "en-BW"
-
-        EnBZ ->
-            "en-BZ"
-
-        EnCA ->
-            "en-CA"
-
-        EnCC ->
-            "en-CC"
-
-        EnCH ->
-            "en-CH"
-
-        EnCK ->
-            "en-CK"
-
-        EnCM ->
-            "en-CM"
-
-        EnCX ->
-            "en-CX"
-
-        EnCY ->
-            "en-CY"
-
-        EnDE ->
-            "en-DE"
-
-        EnDG ->
-            "en-DG"
-
-        EnDK ->
-            "en-DK"
-
-        EnDM ->
-            "en-DM"
-
-        EnER ->
-            "en-ER"
-
-        EnFI ->
-            "en-FI"
-
-        EnFJ ->
-            "en-FJ"
-
-        EnFK ->
-            "en-FK"
-
-        EnFM ->
-            "en-FM"
-
-        EnGB ->
-            "en-GB"
-
-        EnGD ->
-            "en-GD"
-
-        EnGG ->
-            "en-GG"
-
-        EnGH ->
-            "en-GH"
-
-        EnGI ->
-            "en-GI"
-
-        EnGM ->
-            "en-GM"
-
-        EnGU ->
-            "en-GU"
-
-        EnGY ->
-            "en-GY"
-
-        EnHK ->
-            "en-HK"
-
-        EnIE ->
-            "en-IE"
-
-        EnIL ->
-            "en-IL"
-
-        EnIM ->
-            "en-IM"
-
-        EnIN ->
-            "en-IN"
-
-        EnIO ->
-            "en-IO"
-
-        EnJE ->
-            "en-JE"
-
-        EnJM ->
-            "en-JM"
-
-        EnKE ->
-            "en-KE"
-
-        EnKI ->
-            "en-KI"
-
-        EnKN ->
-            "en-KN"
-
-        EnKY ->
-            "en-KY"
-
-        EnLC ->
-            "en-LC"
-
-        EnLR ->
-            "en-LR"
-
-        EnLS ->
-            "en-LS"
-
-        EnMG ->
-            "en-MG"
-
-        EnMH ->
-            "en-MH"
-
-        EnMO ->
-            "en-MO"
-
-        EnMP ->
-            "en-MP"
-
-        EnMS ->
-            "en-MS"
-
-        EnMT ->
-            "en-MT"
-
-        EnMU ->
-            "en-MU"
-
-        EnMV ->
-            "en-MV"
-
-        EnMW ->
-            "en-MW"
-
-        EnMY ->
-            "en-MY"
-
-        EnNA ->
-            "en-NA"
-
-        EnNF ->
-            "en-NF"
-
-        EnNG ->
-            "en-NG"
-
-        EnNL ->
-            "en-NL"
-
-        EnNR ->
-            "en-NR"
-
-        EnNU ->
-            "en-NU"
-
-        EnNZ ->
-            "en-NZ"
-
-        EnPG ->
-            "en-PG"
-
-        EnPH ->
-            "en-PH"
-
-        EnPK ->
-            "en-PK"
-
-        EnPN ->
-            "en-PN"
-
-        EnPR ->
-            "en-PR"
-
-        EnPW ->
-            "en-PW"
-
-        EnRW ->
-            "en-RW"
-
-        EnSB ->
-            "en-SB"
-
-        EnSC ->
-            "en-SC"
-
-        EnSD ->
-            "en-SD"
-
-        EnSE ->
-            "en-SE"
-
-        EnSG ->
-            "en-SG"
-
-        EnSH ->
-            "en-SH"
-
-        EnSI ->
-            "en-SI"
-
-        EnSL ->
-            "en-SL"
-
-        EnSS ->
-            "en-SS"
-
-        EnSX ->
-            "en-SX"
-
-        EnSZ ->
-            "en-SZ"
-
-        EnTC ->
-            "en-TC"
-
-        EnTK ->
-            "en-TK"
-
-        EnTO ->
-            "en-TO"
-
-        EnTT ->
-            "en-TT"
-
-        EnTV ->
-            "en-TV"
-
-        EnTZ ->
-            "en-TZ"
-
-        EnUG ->
-            "en-UG"
-
-        EnUM ->
-            "en-UM"
-
-        EnVC ->
-            "en-VC"
-
-        EnVG ->
-            "en-VG"
-
-        EnVI ->
-            "en-VI"
-
-        EnVU ->
-            "en-VU"
-
-        EnWS ->
-            "en-WS"
-
-        EnZA ->
-            "en-ZA"
-
-        EnZM ->
-            "en-ZM"
-
-        EnZW ->
-            "en-ZW"
-
-        Es ->
-            "es"
-
-        Es419 ->
-            "es-419"
-
-        EsAR ->
-            "es-AR"
-
-        EsBO ->
-            "es-BO"
-
-        EsBR ->
-            "es-BR"
-
-        EsBZ ->
-            "es-BZ"
-
-        EsCL ->
-            "es-CL"
-
-        EsCO ->
-            "es-CO"
-
-        EsCR ->
-            "es-CR"
-
-        EsCU ->
-            "es-CU"
-
-        EsDO ->
-            "es-DO"
-
-        EsEA ->
-            "es-EA"
-
-        EsEC ->
-            "es-EC"
-
-        EsGQ ->
-            "es-GQ"
-
-        EsGT ->
-            "es-GT"
-
-        EsHN ->
-            "es-HN"
-
-        EsIC ->
-            "es-IC"
-
-        EsMX ->
-            "es-MX"
-
-        EsNI ->
-            "es-NI"
-
-        EsPA ->
-            "es-PA"
-
-        EsPE ->
-            "es-PE"
-
-        EsPH ->
-            "es-PH"
-
-        EsPR ->
-            "es-PR"
-
-        EsPY ->
-            "es-PY"
-
-        EsSV ->
-            "es-SV"
-
-        EsUS ->
-            "es-US"
-
-        EsUY ->
-            "es-UY"
-
-        EsVE ->
-            "es-VE"
-
-        Et ->
-            "et"
-
-        Eu ->
-            "eu"
-
-        Fa ->
-            "fa"
-
-        FaAF ->
-            "fa-AF"
-
-        Fi ->
-            "fi"
-
-        Fil ->
-            "fil"
-
-        Fr ->
-            "fr"
-
-        FrBE ->
-            "fr-BE"
-
-        FrBF ->
-            "fr-BF"
-
-        FrBI ->
-            "fr-BI"
-
-        FrBJ ->
-            "fr-BJ"
-
-        FrBL ->
-            "fr-BL"
-
-        FrCA ->
-            "fr-CA"
-
-        FrCD ->
-            "fr-CD"
-
-        FrCF ->
-            "fr-CF"
-
-        FrCG ->
-            "fr-CG"
-
-        FrCH ->
-            "fr-CH"
-
-        FrCI ->
-            "fr-CI"
-
-        FrCM ->
-            "fr-CM"
-
-        FrDJ ->
-            "fr-DJ"
-
-        FrDZ ->
-            "fr-DZ"
-
-        FrGA ->
-            "fr-GA"
-
-        FrGF ->
-            "fr-GF"
-
-        FrGN ->
-            "fr-GN"
-
-        FrGP ->
-            "fr-GP"
-
-        FrGQ ->
-            "fr-GQ"
-
-        FrHT ->
-            "fr-HT"
-
-        FrKM ->
-            "fr-KM"
-
-        FrLU ->
-            "fr-LU"
-
-        FrMA ->
-            "fr-MA"
-
-        FrMC ->
-            "fr-MC"
-
-        FrMF ->
-            "fr-MF"
-
-        FrMG ->
-            "fr-MG"
-
-        FrML ->
-            "fr-ML"
-
-        FrMQ ->
-            "fr-MQ"
-
-        FrMR ->
-            "fr-MR"
-
-        FrMU ->
-            "fr-MU"
-
-        FrNC ->
-            "fr-NC"
-
-        FrNE ->
-            "fr-NE"
-
-        FrPF ->
-            "fr-PF"
-
-        FrPM ->
-            "fr-PM"
-
-        FrRE ->
-            "fr-RE"
-
-        FrRW ->
-            "fr-RW"
-
-        FrSC ->
-            "fr-SC"
-
-        FrSN ->
-            "fr-SN"
-
-        FrSY ->
-            "fr-SY"
-
-        FrTD ->
-            "fr-TD"
-
-        FrTG ->
-            "fr-TG"
-
-        FrTN ->
-            "fr-TN"
-
-        FrVU ->
-            "fr-VU"
-
-        FrWF ->
-            "fr-WF"
-
-        FrYT ->
-            "fr-YT"
-
-        Ga ->
-            "ga"
-
-        GaGB ->
-            "ga-GB"
-
-        Gd ->
-            "gd"
-
-        Gl ->
-            "gl"
-
-        Gu ->
-            "gu"
-
-        Ha ->
-            "ha"
-
-        HaGH ->
-            "ha-GH"
-
-        HaNE ->
-            "ha-NE"
-
-        He ->
-            "he"
-
-        Hi ->
-            "hi"
-
-        HiLatn ->
-            "hi-Latn"
-
-        Hr ->
-            "hr"
-
-        HrBA ->
-            "hr-BA"
-
-        Hu ->
-            "hu"
-
-        Hy ->
-            "hy"
-
-        Id ->
-            "id"
-
-        Ig ->
-            "ig"
-
-        Is ->
-            "is"
-
-        It ->
-            "it"
-
-        ItCH ->
-            "it-CH"
-
-        ItSM ->
-            "it-SM"
-
-        ItVA ->
-            "it-VA"
-
-        Ja ->
-            "ja"
-
-        Jv ->
-            "jv"
-
-        Ka ->
-            "ka"
-
-        Kk ->
-            "kk"
-
-        Km ->
-            "km"
-
-        Kn ->
-            "kn"
-
-        Ko ->
-            "ko"
-
-        KoKP ->
-            "ko-KP"
-
-        Kok ->
-            "kok"
-
-        Ky ->
-            "ky"
-
-        Lo ->
-            "lo"
-
-        Lt ->
-            "lt"
-
-        Lv ->
-            "lv"
-
-        Mk ->
-            "mk"
-
-        Ml ->
-            "ml"
-
-        Mn ->
-            "mn"
-
-        Mr ->
-            "mr"
-
-        Ms ->
-            "ms"
-
-        MsBN ->
-            "ms-BN"
-
-        MsID ->
-            "ms-ID"
-
-        MsSG ->
-            "ms-SG"
-
-        My ->
-            "my"
-
-        Nb ->
-            "nb"
-
-        NbSJ ->
-            "nb-SJ"
-
-        Ne ->
-            "ne"
-
-        NeIN ->
-            "ne-IN"
-
-        Nl ->
-            "nl"
-
-        NlAW ->
-            "nl-AW"
-
-        NlBE ->
-            "nl-BE"
-
-        NlBQ ->
-            "nl-BQ"
-
-        NlCW ->
-            "nl-CW"
-
-        NlSR ->
-            "nl-SR"
-
-        NlSX ->
-            "nl-SX"
-
-        Nn ->
-            "nn"
-
-        No ->
-            "no"
-
-        Or ->
-            "or"
-
-        Pa ->
-            "pa"
-
-        PaGuru ->
-            "pa-Guru"
-
-        Pcm ->
-            "pcm"
-
-        Pl ->
-            "pl"
-
-        Ps ->
-            "ps"
-
-        PsPK ->
-            "ps-PK"
-
-        Pt ->
-            "pt"
-
-        PtAO ->
-            "pt-AO"
-
-        PtCH ->
-            "pt-CH"
-
-        PtCV ->
-            "pt-CV"
-
-        PtGQ ->
-            "pt-GQ"
-
-        PtGW ->
-            "pt-GW"
-
-        PtLU ->
-            "pt-LU"
-
-        PtMO ->
-            "pt-MO"
-
-        PtMZ ->
-            "pt-MZ"
-
-        PtPT ->
-            "pt-PT"
-
-        PtST ->
-            "pt-ST"
-
-        PtTL ->
-            "pt-TL"
-
-        Ro ->
-            "ro"
-
-        RoMD ->
-            "ro-MD"
-
-        Ru ->
-            "ru"
-
-        RuBY ->
-            "ru-BY"
-
-        RuKG ->
-            "ru-KG"
-
-        RuKZ ->
-            "ru-KZ"
-
-        RuMD ->
-            "ru-MD"
-
-        RuUA ->
-            "ru-UA"
-
-        Sd ->
-            "sd"
-
-        SdArab ->
-            "sd-Arab"
-
-        Si ->
-            "si"
-
-        Sk ->
-            "sk"
-
-        Sl ->
-            "sl"
-
-        So ->
-            "so"
-
-        SoDJ ->
-            "so-DJ"
-
-        SoET ->
-            "so-ET"
-
-        SoKE ->
-            "so-KE"
-
-        Sq ->
-            "sq"
-
-        SqMK ->
-            "sq-MK"
-
-        SqXK ->
-            "sq-XK"
-
-        Sr ->
-            "sr"
-
-        SrCyrl ->
-            "sr-Cyrl"
-
-        SrCyrlBA ->
-            "sr-Cyrl-BA"
-
-        SrCyrlME ->
-            "sr-Cyrl-ME"
-
-        SrCyrlXK ->
-            "sr-Cyrl-XK"
-
-        SrLatn ->
-            "sr-Latn"
-
-        SrLatnBA ->
-            "sr-Latn-BA"
-
-        SrLatnME ->
-            "sr-Latn-ME"
-
-        SrLatnXK ->
-            "sr-Latn-XK"
-
-        Sv ->
-            "sv"
-
-        SvAX ->
-            "sv-AX"
-
-        SvFI ->
-            "sv-FI"
-
-        Sw ->
-            "sw"
-
-        SwCD ->
-            "sw-CD"
-
-        SwKE ->
-            "sw-KE"
-
-        SwUG ->
-            "sw-UG"
-
-        Ta ->
-            "ta"
-
-        TaLK ->
-            "ta-LK"
-
-        TaMY ->
-            "ta-MY"
-
-        TaSG ->
-            "ta-SG"
-
-        Te ->
-            "te"
-
-        Th ->
-            "th"
-
-        Tk ->
-            "tk"
-
-        Tr ->
-            "tr"
-
-        TrCY ->
-            "tr-CY"
-
-        Uk ->
-            "uk"
-
-        Ur ->
-            "ur"
-
-        UrIN ->
-            "ur-IN"
-
-        Uz ->
-            "uz"
-
-        UzLatn ->
-            "uz-Latn"
-
-        Vi ->
-            "vi"
-
-        Yo ->
-            "yo"
-
-        YoBJ ->
-            "yo-BJ"
-
-        Yue ->
-            "yue"
-
-        YueHans ->
-            "yue-Hans"
-
-        YueHant ->
-            "yue-Hant"
-
-        Zh ->
-            "zh"
-
-        ZhHans ->
-            "zh-Hans"
-
-        ZhHansHK ->
-            "zh-Hans-HK"
-
-        ZhHansMO ->
-            "zh-Hans-MO"
-
-        ZhHansSG ->
-            "zh-Hans-SG"
-
-        ZhHant ->
-            "zh-Hant"
-
-        ZhHantHK ->
-            "zh-Hant-HK"
-
-        ZhHantMO ->
-            "zh-Hant-MO"
-
-        Zu ->
-            "zu"
-
-
-{-| Get the english name of a locale. -}
-localeToEnglishName : Locale -> String
-localeToEnglishName locale =
-    case locale of
-        Af ->
-            "Afrikaans"
-
-        AfNA ->
-            "Afrikaans - Namibia"
-
-        Am ->
-            "Amharic"
-
-        Ar ->
-            "Arabic"
-
-        ArAE ->
-            "Arabic - United Arab Emirates"
-
-        ArBH ->
-            "Arabic - Bahrain"
-
-        ArDJ ->
-            "Arabic - Djibouti"
-
-        ArDZ ->
-            "Arabic - Algeria"
-
-        ArEG ->
-            "Arabic - Egypt"
-
-        ArEH ->
-            "Arabic - Western Sahara"
-
-        ArER ->
-            "Arabic - Eritrea"
-
-        ArIL ->
-            "Arabic - Israel"
-
-        ArIQ ->
-            "Arabic - Iraq"
-
-        ArJO ->
-            "Arabic - Jordan"
-
-        ArKM ->
-            "Arabic - Comoros"
-
-        ArKW ->
-            "Arabic - Kuwait"
-
-        ArLB ->
-            "Arabic - Lebanon"
-
-        ArLY ->
-            "Arabic - Libya"
-
-        ArMA ->
-            "Arabic - Morocco"
-
-        ArMR ->
-            "Arabic - Mauritania"
-
-        ArOM ->
-            "Arabic - Oman"
-
-        ArPS ->
-            "Arabic - Palestine"
-
-        ArQA ->
-            "Arabic - Qatar"
-
-        ArSA ->
-            "Arabic - Saudi Arabia"
-
-        ArSD ->
-            "Arabic - Sudan"
-
-        ArSO ->
-            "Arabic - Somalia"
-
-        ArSS ->
-            "Arabic - South Sudan"
-
-        ArSY ->
-            "Arabic - Syria"
-
-        ArTD ->
-            "Arabic - Chad"
-
-        ArTN ->
-            "Arabic - Tunisia"
-
-        ArYE ->
-            "Arabic - Yemen"
-
-        As ->
-            "Assamese"
-
-        Az ->
-            "Azerbaijani"
-
-        AzLatn ->
-            "Azerbaijani (Latin)"
-
-        Be ->
-            "Belarusian"
-
-        BeTarask ->
-            "Belarusian (Taraškievica)"
-
-        Bg ->
-            "Bulgarian"
-
-        Bn ->
-            "Bangla"
-
-        BnIN ->
-            "Bangla - India"
-
-        Bs ->
-            "Bosnian"
-
-        BsLatn ->
-            "Bosnian (Latin)"
-
-        Ca ->
-            "Catalan"
-
-        CaAD ->
-            "Catalan - Andorra"
-
-        CaESValencia ->
-            "Catalan - Spain (Valencia)"
-
-        CaFR ->
-            "Catalan - France"
-
-        CaIT ->
-            "Catalan - Italy"
-
-        Cs ->
-            "Czech"
-
-        Cy ->
-            "Welsh"
-
-        Da ->
-            "Danish"
-
-        DaGL ->
-            "Danish - Greenland"
-
-        De ->
-            "German"
-
-        DeAT ->
-            "German - Austria"
-
-        DeBE ->
-            "German - Belgium"
-
-        DeCH ->
-            "German - Switzerland"
-
-        DeIT ->
-            "German - Italy"
-
-        DeLI ->
-            "German - Liechtenstein"
-
-        DeLU ->
-            "German - Luxembourg"
-
-        El ->
-            "Greek"
-
-        ElCY ->
-            "Greek - Cyprus"
-
-        ElPolyton ->
-            "Greek (Polytonic)"
-
-        En ->
-            "English"
-
-        En001 ->
-            "English - world"
-
-        En150 ->
-            "English - Europe"
-
-        EnAE ->
-            "English - United Arab Emirates"
-
-        EnAG ->
-            "English - Antigua & Barbuda"
-
-        EnAI ->
-            "English - Anguilla"
-
-        EnAS ->
-            "English - American Samoa"
-
-        EnAT ->
-            "English - Austria"
-
-        EnAU ->
-            "English - Australia"
-
-        EnBB ->
-            "English - Barbados"
-
-        EnBE ->
-            "English - Belgium"
-
-        EnBI ->
-            "English - Burundi"
-
-        EnBM ->
-            "English - Bermuda"
-
-        EnBS ->
-            "English - Bahamas"
-
-        EnBW ->
-            "English - Botswana"
-
-        EnBZ ->
-            "English - Belize"
-
-        EnCA ->
-            "English - Canada"
-
-        EnCC ->
-            "English - Cocos (Keeling) Islands"
-
-        EnCH ->
-            "English - Switzerland"
-
-        EnCK ->
-            "English - Cook Islands"
-
-        EnCM ->
-            "English - Cameroon"
-
-        EnCX ->
-            "English - Christmas Island"
-
-        EnCY ->
-            "English - Cyprus"
-
-        EnDE ->
-            "English - Germany"
-
-        EnDG ->
-            "English - Diego Garcia"
-
-        EnDK ->
-            "English - Denmark"
-
-        EnDM ->
-            "English - Dominica"
-
-        EnER ->
-            "English - Eritrea"
-
-        EnFI ->
-            "English - Finland"
-
-        EnFJ ->
-            "English - Fiji"
-
-        EnFK ->
-            "English - Falkland Islands"
-
-        EnFM ->
-            "English - Micronesia"
-
-        EnGB ->
-            "English - United Kingdom"
-
-        EnGD ->
-            "English - Grenada"
-
-        EnGG ->
-            "English - Guernsey"
-
-        EnGH ->
-            "English - Ghana"
-
-        EnGI ->
-            "English - Gibraltar"
-
-        EnGM ->
-            "English - Gambia"
-
-        EnGU ->
-            "English - Guam"
-
-        EnGY ->
-            "English - Guyana"
-
-        EnHK ->
-            "English - Hong Kong"
-
-        EnIE ->
-            "English - Ireland"
-
-        EnIL ->
-            "English - Israel"
-
-        EnIM ->
-            "English - Isle of Man"
-
-        EnIN ->
-            "English - India"
-
-        EnIO ->
-            "English - British Indian Ocean Territory"
-
-        EnJE ->
-            "English - Jersey"
-
-        EnJM ->
-            "English - Jamaica"
-
-        EnKE ->
-            "English - Kenya"
-
-        EnKI ->
-            "English - Kiribati"
-
-        EnKN ->
-            "English - St. Kitts & Nevis"
-
-        EnKY ->
-            "English - Cayman Islands"
-
-        EnLC ->
-            "English - St. Lucia"
-
-        EnLR ->
-            "English - Liberia"
-
-        EnLS ->
-            "English - Lesotho"
-
-        EnMG ->
-            "English - Madagascar"
-
-        EnMH ->
-            "English - Marshall Islands"
-
-        EnMO ->
-            "English - Macao"
-
-        EnMP ->
-            "English - Northern Mariana Islands"
-
-        EnMS ->
-            "English - Montserrat"
-
-        EnMT ->
-            "English - Malta"
-
-        EnMU ->
-            "English - Mauritius"
-
-        EnMV ->
-            "English - Maldives"
-
-        EnMW ->
-            "English - Malawi"
-
-        EnMY ->
-            "English - Malaysia"
-
-        EnNA ->
-            "English - Namibia"
-
-        EnNF ->
-            "English - Norfolk Island"
-
-        EnNG ->
-            "English - Nigeria"
-
-        EnNL ->
-            "English - Netherlands"
-
-        EnNR ->
-            "English - Nauru"
-
-        EnNU ->
-            "English - Niue"
-
-        EnNZ ->
-            "English - New Zealand"
-
-        EnPG ->
-            "English - Papua New Guinea"
-
-        EnPH ->
-            "English - Philippines"
-
-        EnPK ->
-            "English - Pakistan"
-
-        EnPN ->
-            "English - Pitcairn Islands"
-
-        EnPR ->
-            "English - Puerto Rico"
-
-        EnPW ->
-            "English - Palau"
-
-        EnRW ->
-            "English - Rwanda"
-
-        EnSB ->
-            "English - Solomon Islands"
-
-        EnSC ->
-            "English - Seychelles"
-
-        EnSD ->
-            "English - Sudan"
-
-        EnSE ->
-            "English - Sweden"
-
-        EnSG ->
-            "English - Singapore"
-
-        EnSH ->
-            "English - St. Helena"
-
-        EnSI ->
-            "English - Slovenia"
-
-        EnSL ->
-            "English - Sierra Leone"
-
-        EnSS ->
-            "English - South Sudan"
-
-        EnSX ->
-            "English - Sint Maarten"
-
-        EnSZ ->
-            "English - Eswatini"
-
-        EnTC ->
-            "English - Turks & Caicos Islands"
-
-        EnTK ->
-            "English - Tokelau"
-
-        EnTO ->
-            "English - Tonga"
-
-        EnTT ->
-            "English - Trinidad & Tobago"
-
-        EnTV ->
-            "English - Tuvalu"
-
-        EnTZ ->
-            "English - Tanzania"
-
-        EnUG ->
-            "English - Uganda"
-
-        EnUM ->
-            "English - U.S. Outlying Islands"
-
-        EnVC ->
-            "English - St. Vincent & Grenadines"
-
-        EnVG ->
-            "English - British Virgin Islands"
-
-        EnVI ->
-            "English - U.S. Virgin Islands"
-
-        EnVU ->
-            "English - Vanuatu"
-
-        EnWS ->
-            "English - Samoa"
-
-        EnZA ->
-            "English - South Africa"
-
-        EnZM ->
-            "English - Zambia"
-
-        EnZW ->
-            "English - Zimbabwe"
-
-        Es ->
-            "Spanish"
-
-        Es419 ->
-            "Spanish - Latin America"
-
-        EsAR ->
-            "Spanish - Argentina"
-
-        EsBO ->
-            "Spanish - Bolivia"
-
-        EsBR ->
-            "Spanish - Brazil"
-
-        EsBZ ->
-            "Spanish - Belize"
-
-        EsCL ->
-            "Spanish - Chile"
-
-        EsCO ->
-            "Spanish - Colombia"
-
-        EsCR ->
-            "Spanish - Costa Rica"
-
-        EsCU ->
-            "Spanish - Cuba"
-
-        EsDO ->
-            "Spanish - Dominican Republic"
-
-        EsEA ->
-            "Spanish - Ceuta & Melilla"
-
-        EsEC ->
-            "Spanish - Ecuador"
-
-        EsGQ ->
-            "Spanish - Equatorial Guinea"
-
-        EsGT ->
-            "Spanish - Guatemala"
-
-        EsHN ->
-            "Spanish - Honduras"
-
-        EsIC ->
-            "Spanish - Canary Islands"
-
-        EsMX ->
-            "Spanish - Mexico"
-
-        EsNI ->
-            "Spanish - Nicaragua"
-
-        EsPA ->
-            "Spanish - Panama"
-
-        EsPE ->
-            "Spanish - Peru"
-
-        EsPH ->
-            "Spanish - Philippines"
-
-        EsPR ->
-            "Spanish - Puerto Rico"
-
-        EsPY ->
-            "Spanish - Paraguay"
-
-        EsSV ->
-            "Spanish - El Salvador"
-
-        EsUS ->
-            "Spanish - United States"
-
-        EsUY ->
-            "Spanish - Uruguay"
-
-        EsVE ->
-            "Spanish - Venezuela"
-
-        Et ->
-            "Estonian"
-
-        Eu ->
-            "Basque"
-
-        Fa ->
-            "Persian"
-
-        FaAF ->
-            "Persian - Afghanistan"
-
-        Fi ->
-            "Finnish"
-
-        Fil ->
-            "Filipino"
-
-        Fr ->
-            "French"
-
-        FrBE ->
-            "French - Belgium"
-
-        FrBF ->
-            "French - Burkina Faso"
-
-        FrBI ->
-            "French - Burundi"
-
-        FrBJ ->
-            "French - Benin"
-
-        FrBL ->
-            "French - St. Barthélemy"
-
-        FrCA ->
-            "French - Canada"
-
-        FrCD ->
-            "French - Congo (DRC)"
-
-        FrCF ->
-            "French - Central African Republic"
-
-        FrCG ->
-            "French - Congo (Republic)"
-
-        FrCH ->
-            "French - Switzerland"
-
-        FrCI ->
-            "French - Côte d’Ivoire"
-
-        FrCM ->
-            "French - Cameroon"
-
-        FrDJ ->
-            "French - Djibouti"
-
-        FrDZ ->
-            "French - Algeria"
-
-        FrGA ->
-            "French - Gabon"
-
-        FrGF ->
-            "French - French Guiana"
-
-        FrGN ->
-            "French - Guinea"
-
-        FrGP ->
-            "French - Guadeloupe"
-
-        FrGQ ->
-            "French - Equatorial Guinea"
-
-        FrHT ->
-            "French - Haiti"
-
-        FrKM ->
-            "French - Comoros"
-
-        FrLU ->
-            "French - Luxembourg"
-
-        FrMA ->
-            "French - Morocco"
-
-        FrMC ->
-            "French - Monaco"
-
-        FrMF ->
-            "French - St. Martin"
-
-        FrMG ->
-            "French - Madagascar"
-
-        FrML ->
-            "French - Mali"
-
-        FrMQ ->
-            "French - Martinique"
-
-        FrMR ->
-            "French - Mauritania"
-
-        FrMU ->
-            "French - Mauritius"
-
-        FrNC ->
-            "French - New Caledonia"
-
-        FrNE ->
-            "French - Niger"
-
-        FrPF ->
-            "French - French Polynesia"
-
-        FrPM ->
-            "French - St. Pierre & Miquelon"
-
-        FrRE ->
-            "French - Réunion"
-
-        FrRW ->
-            "French - Rwanda"
-
-        FrSC ->
-            "French - Seychelles"
-
-        FrSN ->
-            "French - Senegal"
-
-        FrSY ->
-            "French - Syria"
-
-        FrTD ->
-            "French - Chad"
-
-        FrTG ->
-            "French - Togo"
-
-        FrTN ->
-            "French - Tunisia"
-
-        FrVU ->
-            "French - Vanuatu"
-
-        FrWF ->
-            "French - Wallis & Futuna"
-
-        FrYT ->
-            "French - Mayotte"
-
-        Ga ->
-            "Irish"
-
-        GaGB ->
-            "Irish - United Kingdom"
-
-        Gd ->
-            "Scottish Gaelic"
-
-        Gl ->
-            "Galician"
-
-        Gu ->
-            "Gujarati"
-
-        Ha ->
-            "Hausa"
-
-        HaGH ->
-            "Hausa - Ghana"
-
-        HaNE ->
-            "Hausa - Niger"
-
-        He ->
-            "Hebrew"
-
-        Hi ->
-            "Hindi"
-
-        HiLatn ->
-            "Hindi (Latin)"
-
-        Hr ->
-            "Croatian"
-
-        HrBA ->
-            "Croatian - Bosnia & Herzegovina"
-
-        Hu ->
-            "Hungarian"
-
-        Hy ->
-            "Armenian"
-
-        Id ->
-            "Indonesian"
-
-        Ig ->
-            "Igbo"
-
-        Is ->
-            "Icelandic"
-
-        It ->
-            "Italian"
-
-        ItCH ->
-            "Italian - Switzerland"
-
-        ItSM ->
-            "Italian - San Marino"
-
-        ItVA ->
-            "Italian - Vatican City"
-
-        Ja ->
-            "Japanese"
-
-        Jv ->
-            "Javanese"
-
-        Ka ->
-            "Georgian"
-
-        Kk ->
-            "Kazakh"
-
-        Km ->
-            "Khmer"
-
-        Kn ->
-            "Kannada"
-
-        Ko ->
-            "Korean"
-
-        KoKP ->
-            "Korean - North Korea"
-
-        Kok ->
-            "Konkani"
-
-        Ky ->
-            "Kyrgyz"
-
-        Lo ->
-            "Lao"
-
-        Lt ->
-            "Lithuanian"
-
-        Lv ->
-            "Latvian"
-
-        Mk ->
-            "Macedonian"
-
-        Ml ->
-            "Malayalam"
-
-        Mn ->
-            "Mongolian"
-
-        Mr ->
-            "Marathi"
-
-        Ms ->
-            "Malay"
-
-        MsBN ->
-            "Malay - Brunei"
-
-        MsID ->
-            "Malay - Indonesia"
-
-        MsSG ->
-            "Malay - Singapore"
-
-        My ->
-            "Burmese"
-
-        Nb ->
-            "Norwegian Bokmål"
-
-        NbSJ ->
-            "Norwegian Bokmål - Svalbard & Jan Mayen"
-
-        Ne ->
-            "Nepali"
-
-        NeIN ->
-            "Nepali - India"
-
-        Nl ->
-            "Dutch"
-
-        NlAW ->
-            "Dutch - Aruba"
-
-        NlBE ->
-            "Dutch - Belgium"
-
-        NlBQ ->
-            "Dutch - Caribbean Netherlands"
-
-        NlCW ->
-            "Dutch - Curaçao"
-
-        NlSR ->
-            "Dutch - Suriname"
-
-        NlSX ->
-            "Dutch - Sint Maarten"
-
-        Nn ->
-            "Norwegian Nynorsk"
-
-        No ->
-            "Norwegian"
-
-        Or ->
-            "Odia"
-
-        Pa ->
-            "Punjabi"
-
-        PaGuru ->
-            "Punjabi (Gurmukhi)"
-
-        Pcm ->
-            "Nigerian Pidgin"
-
-        Pl ->
-            "Polish"
-
-        Ps ->
-            "Pashto"
-
-        PsPK ->
-            "Pashto - Pakistan"
-
-        Pt ->
-            "Portuguese"
-
-        PtAO ->
-            "Portuguese - Angola"
-
-        PtCH ->
-            "Portuguese - Switzerland"
-
-        PtCV ->
-            "Portuguese - Cape Verde"
-
-        PtGQ ->
-            "Portuguese - Equatorial Guinea"
-
-        PtGW ->
-            "Portuguese - Guinea-Bissau"
-
-        PtLU ->
-            "Portuguese - Luxembourg"
-
-        PtMO ->
-            "Portuguese - Macao"
-
-        PtMZ ->
-            "Portuguese - Mozambique"
-
-        PtPT ->
-            "Portuguese - Portugal"
-
-        PtST ->
-            "Portuguese - São Tomé & Príncipe"
-
-        PtTL ->
-            "Portuguese - East Timor"
-
-        Ro ->
-            "Romanian"
-
-        RoMD ->
-            "Romanian - Moldova"
-
-        Ru ->
-            "Russian"
-
-        RuBY ->
-            "Russian - Belarus"
-
-        RuKG ->
-            "Russian - Kyrgyzstan"
-
-        RuKZ ->
-            "Russian - Kazakhstan"
-
-        RuMD ->
-            "Russian - Moldova"
-
-        RuUA ->
-            "Russian - Ukraine"
-
-        Sd ->
-            "Sindhi"
-
-        SdArab ->
-            "Sindhi (Arabic)"
-
-        Si ->
-            "Sinhala"
-
-        Sk ->
-            "Slovak"
-
-        Sl ->
-            "Slovenian"
-
-        So ->
-            "Somali"
-
-        SoDJ ->
-            "Somali - Djibouti"
-
-        SoET ->
-            "Somali - Ethiopia"
-
-        SoKE ->
-            "Somali - Kenya"
-
-        Sq ->
-            "Albanian"
-
-        SqMK ->
-            "Albanian - North Macedonia"
-
-        SqXK ->
-            "Albanian - Kosovo"
-
-        Sr ->
-            "Serbian"
-
-        SrCyrl ->
-            "Serbian (Cyrillic)"
-
-        SrCyrlBA ->
-            "Serbian (Cyrillic) - Bosnia & Herzegovina"
-
-        SrCyrlME ->
-            "Serbian (Cyrillic) - Montenegro"
-
-        SrCyrlXK ->
-            "Serbian (Cyrillic) - Kosovo"
-
-        SrLatn ->
-            "Serbian (Latin)"
-
-        SrLatnBA ->
-            "Serbian (Latin) - Bosnia & Herzegovina"
-
-        SrLatnME ->
-            "Serbian (Latin) - Montenegro"
-
-        SrLatnXK ->
-            "Serbian (Latin) - Kosovo"
-
-        Sv ->
-            "Swedish"
-
-        SvAX ->
-            "Swedish - Åland Islands"
-
-        SvFI ->
-            "Swedish - Finland"
-
-        Sw ->
-            "Swahili"
-
-        SwCD ->
-            "Swahili - Congo (DRC)"
-
-        SwKE ->
-            "Swahili - Kenya"
-
-        SwUG ->
-            "Swahili - Uganda"
-
-        Ta ->
-            "Tamil"
-
-        TaLK ->
-            "Tamil - Sri Lanka"
-
-        TaMY ->
-            "Tamil - Malaysia"
-
-        TaSG ->
-            "Tamil - Singapore"
-
-        Te ->
-            "Telugu"
-
-        Th ->
-            "Thai"
-
-        Tk ->
-            "Turkmen"
-
-        Tr ->
-            "Turkish"
-
-        TrCY ->
-            "Turkish - Cyprus"
-
-        Uk ->
-            "Ukrainian"
-
-        Ur ->
-            "Urdu"
-
-        UrIN ->
-            "Urdu - India"
-
-        Uz ->
-            "Uzbek"
-
-        UzLatn ->
-            "Uzbek (Latin)"
-
-        Vi ->
-            "Vietnamese"
-
-        Yo ->
-            "Yoruba"
-
-        YoBJ ->
-            "Yoruba - Benin"
-
-        Yue ->
-            "Cantonese"
-
-        YueHans ->
-            "Cantonese (Simplified)"
-
-        YueHant ->
-            "Cantonese (Traditional)"
-
-        Zh ->
-            "Chinese"
-
-        ZhHans ->
-            "Chinese (Simplified)"
-
-        ZhHansHK ->
-            "Chinese (Simplified) - Hong Kong"
-
-        ZhHansMO ->
-            "Chinese (Simplified) - Macao"
-
-        ZhHansSG ->
-            "Chinese (Simplified) - Singapore"
-
-        ZhHant ->
-            "Chinese (Traditional)"
-
-        ZhHantHK ->
-            "Chinese (Traditional) - Hong Kong"
-
-        ZhHantMO ->
-            "Chinese (Traditional) - Macao"
-
-        Zu ->
-            "Zulu"
 
 
 {-| Two-letter `ISO 3166-1 alpha-2` code from `CountryCode`. -}
@@ -6057,8 +3336,8 @@ fromAlpha2 countryCode =
 
 
 {-| All `CountryCode`s sorted alphabetically. -}
-all : List CountryCode
-all =
+allCountryCodes : List CountryCode
+allCountryCodes =
     [ AD
     , AE
     , AF

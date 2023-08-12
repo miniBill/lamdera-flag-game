@@ -1,6 +1,6 @@
 module Pages.Home_ exposing (Model, Msg(..), page)
 
-import Cldr exposing (Locale)
+import Cldr
 import Effect exposing (Effect)
 import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, shrink, width)
 import Element.WithContext.Font as Font
@@ -8,6 +8,7 @@ import Element.WithContext.Input as Input
 import Flags
 import Html.Attributes
 import List.Extra
+import Maybe.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
@@ -50,7 +51,7 @@ type Msg
     = Play
     | ChangeOptions GameOptions
     | ChangingLocale String
-    | Locale Locale
+    | Locale String
 
 
 update : Msg -> Model -> ( Model, Effect Msg )
@@ -122,21 +123,19 @@ changingLocalePopup maybeInput =
                 , Cldr.allLocales
                     |> List.filterMap
                         (\locale ->
-                            let
-                                name : String
-                                name =
-                                    Cldr.localeToEnglishName locale
-                            in
-                            if String.contains (String.toLower input) (String.toLower name) then
-                                Theme.button [ alignTop ]
-                                    { background = Theme.colors.buttonBackground
-                                    , label = Theme.textInvariant name
-                                    , onPress = Just <| Locale locale
-                                    }
-                                    |> Just
-
-                            else
-                                Nothing
+                            Cldr.localeToEnglishName locale
+                                |> Maybe.Extra.filter
+                                    (\name ->
+                                        String.contains (String.toLower input) (String.toLower name)
+                                    )
+                                |> Maybe.map
+                                    (\name ->
+                                        Theme.button [ alignTop ]
+                                            { background = Theme.colors.buttonBackground
+                                            , label = Theme.textInvariant name
+                                            , onPress = Just <| Locale locale
+                                            }
+                                    )
                         )
                     |> Theme.wrappedRow []
                 ]
@@ -207,7 +206,11 @@ startButtons options =
                 (\context ->
                     Theme.selectableButton [ Font.center, width fill ]
                         { selected = True
-                        , label = \_ -> Cldr.localeToEnglishName context.locale
+                        , label =
+                            \_ ->
+                                Cldr.localeToEnglishName context.locale
+                                    -- This shouldn't happen?
+                                    |> Maybe.withDefault "Unknown language"
                         , onPress = Locale context.locale
                         }
                 )

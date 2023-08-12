@@ -2,7 +2,7 @@ module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficu
 
 {-| -}
 
-import Cldr exposing (Locale)
+import Cldr
 import Random
 
 
@@ -21,7 +21,7 @@ type alias Model =
 
 
 type alias Context =
-    { locale : Locale }
+    { locale : String }
 
 
 type Property

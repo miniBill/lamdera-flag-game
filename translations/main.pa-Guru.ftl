@@ -1,1 +1,0 @@
-# fallback-language: pa

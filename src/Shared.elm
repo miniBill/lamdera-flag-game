@@ -12,7 +12,6 @@ module Shared exposing
 
 -}
 
-import Cldr
 import Codec exposing (Codec)
 import Dict
 import Effect exposing (Effect)
@@ -52,7 +51,7 @@ init _ _ =
     let
         context : Context
         context =
-            { locale = Cldr.En }
+            { locale = "en-US" }
 
         model : Model
         model =
@@ -97,7 +96,7 @@ update _ msg model =
             ( { model | context = { locale = locale } }
             , Effect.saveToLocalStorage
                 { key = storageKeys.locale
-                , value = Codec.encodeToValue localeCodec locale
+                , value = Codec.encodeToValue Codec.string locale
                 }
             )
 
@@ -225,21 +224,6 @@ difficultyCodec =
         |> Codec.buildCustom
 
 
-localeCodec : Codec Cldr.Locale
-localeCodec =
-    Codec.andThen
-        (\localeString ->
-            case Cldr.localeFromAlpha2 localeString of
-                Just locale ->
-                    Codec.succeed locale
-
-                Nothing ->
-                    Codec.fail <| "\"" ++ localeString ++ "\" is not a valid locale"
-        )
-        Cldr.localeToAlpha2
-        Codec.string
-
-
 fixOptions : GameOptions -> GameOptions
 fixOptions options =
     let
@@ -274,7 +258,7 @@ subscriptions _ _ =
     PkgPorts.loadedLocalStorage
         (\{ key, value } ->
             if key == storageKeys.locale then
-                case Codec.decodeValue localeCodec value of
+                case Codec.decodeValue Codec.string value of
                     Ok locale ->
                         Shared.Msg.Locale locale
 

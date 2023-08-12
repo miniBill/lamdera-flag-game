@@ -18,7 +18,6 @@ module Effect exposing
 -}
 
 import Browser.Navigation
-import Cldr exposing (Locale)
 import Dict exposing (Dict)
 import Json.Encode
 import PkgPorts
@@ -76,7 +75,7 @@ changeOptions options =
     SendSharedMsg <| Shared.Msg.ChangeOptions options
 
 
-locale : Locale -> Effect msg
+locale : String -> Effect msg
 locale newLocale =
     SendSharedMsg <| Shared.Msg.Locale newLocale
 

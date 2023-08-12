@@ -2,7 +2,6 @@ module Shared.Msg exposing (Msg(..))
 
 {-| -}
 
-import Cldr exposing (Locale)
 import Random
 import Shared.Model exposing (GameOptions)
 
@@ -16,7 +15,7 @@ own file, so they can be imported by `Effect.elm`
 -}
 type Msg
     = Seed Random.Seed
-    | Locale Locale
+    | Locale String
     | ChangeOptions GameOptions
     | Play
     | Finished { score : Int }

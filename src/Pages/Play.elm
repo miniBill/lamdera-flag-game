@@ -1,5 +1,6 @@
 module Pages.Play exposing (InnerModel, Model, Msg, page)
 
+import Cldr.English
 import Cldr.Localized
 import Effect exposing (Effect)
 import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, paddingXY, paragraph, px, rgb, rgba, shrink, width)
@@ -391,5 +392,9 @@ viewCountryName country =
         Iso3166 countryCode ->
             Element.withContext <|
                 \{ locale } ->
-                    Theme.textInvariant <|
-                        Cldr.Localized.countryCodeToName locale countryCode
+                    case Cldr.Localized.countryCodeToName locale countryCode of
+                        Just name ->
+                            Theme.textInvariant name
+
+                        Nothing ->
+                            Theme.textInvariant (Cldr.English.countryCodeToName countryCode)

@@ -1963,7 +1963,7 @@ all { sovereignOnly, continents } =
     let
         continentFiltered : List Country
         continentFiltered =
-            Cldr.all
+            Cldr.allCountryCodes
                 |> List.map Iso3166
                 |> List.filter (\country -> List.member (toContinent country) continents)
     in
