@@ -2,10 +2,6 @@ module Pages.Sort exposing (Model, Msg(..), page)
 
 import Cldr exposing (CountryCode(..))
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (alignTop, centerX, el, fill, height, px, width)
-import Element.WithContext.Border as Border
-import Element.WithContext.Font as Font
-import Element.WithContext.Input as Input
 import Flags
 import Html
 import List.Extra
@@ -15,6 +11,8 @@ import Set
 import Shared
 import Shared.Model exposing (Country(..), countryToAlpha2)
 import Theme exposing (Element, textInvariant)
+import Ui.WithContext as Ui exposing (alignTop, centerX, el, fill, height, px, width)
+import Ui.WithContext.Font as Font
 import View exposing (View)
 
 
@@ -151,15 +149,13 @@ viewGroup { selected } index codes =
     in
     case selected of
         Nothing ->
-            Input.button
-                [ Border.width 1
+            el
+                [ Ui.border 1
                 , Theme.padding
                 , width fill
                 , alignTop
                 ]
-                { label = inner
-                , onPress = Nothing
-                }
+                inner
 
         Just countryCode ->
             Theme.button
@@ -212,7 +208,7 @@ toText groups =
     in
     Html.pre []
         [ Html.text content ]
-        |> Element.html
+        |> Ui.html
         |> el []
 
 

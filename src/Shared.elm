@@ -22,7 +22,7 @@ import PkgPorts
 import Random
 import Route exposing (Route)
 import Route.Path
-import Shared.Model exposing (Context, Continent(..), Difficulty(..), GameOptions, Model, Property(..))
+import Shared.Model exposing (Continent(..), Difficulty(..), GameOptions, Model, Property(..))
 import Shared.Msg exposing (Msg)
 
 
@@ -50,13 +50,9 @@ type alias Model =
 init : Result Json.Decode.Error Flags -> Route () -> ( Model, Effect Msg )
 init _ _ =
     let
-        context : Context
-        context =
-            { locale = "en-US" }
-
         model : Model
         model =
-            { context = context
+            { locale = "en-US"
             , options = Shared.Model.defaultGameOptions
             , seed = Random.initialSeed 0
             }
@@ -94,20 +90,33 @@ update _ msg model =
             )
 
         Shared.Msg.Locale locale ->
-            ( { model | context = { locale = locale } }
-            , Effect.saveToLocalStorage
-                { key = storageKeys.locale
-                , value = Codec.encodeToValue Codec.string locale
-                }
-            )
+            if locale == model.locale then
+                ( model, Effect.none )
+
+            else
+                ( { model | locale = locale }
+                , Effect.saveToLocalStorage
+                    { key = storageKeys.locale
+                    , value = Codec.encodeToValue Codec.string locale
+                    }
+                )
 
         Shared.Msg.ChangeOptions options ->
-            ( { model | options = fixOptions options }
-            , Effect.saveToLocalStorage
-                { key = storageKeys.gameOptions
-                , value = Codec.encodeToValue gameOptionsCodec options
-                }
-            )
+            let
+                fixed : GameOptions
+                fixed =
+                    fixOptions options
+            in
+            if fixed == model.options then
+                ( model, Effect.none )
+
+            else
+                ( { model | options = fixed }
+                , Effect.saveToLocalStorage
+                    { key = storageKeys.gameOptions
+                    , value = Codec.encodeToValue gameOptionsCodec options
+                    }
+                )
 
         Shared.Msg.Finished { score } ->
             ( model

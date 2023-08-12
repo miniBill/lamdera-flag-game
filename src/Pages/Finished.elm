@@ -1,13 +1,13 @@
 module Pages.Finished exposing (Model, Msg(..), page)
 
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (centerX, centerY, el, fill, width)
-import Element.WithContext.Font as Font
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
 import Theme exposing (text)
 import Translations
+import Ui.WithContext as Ui exposing (centerX, centerY, el, fill, width)
+import Ui.WithContext.Font as Font
 import View exposing (View)
 
 
@@ -71,20 +71,21 @@ view : Shared.Model -> Model -> View Msg
 view shared maybeModel =
     case maybeModel of
         Nothing ->
-            Element.none
+            Ui.none
 
         Just model ->
             Theme.column
                 [ centerX
                 , centerY
-                , Element.spacing <| 2 * Theme.rythm
+                , Ui.spacing <| 2 * Theme.rythm
                 ]
                 [ el [ width fill, Font.center ] <|
-                    text <|
-                        Translations.finalScore
+                    text
+                        (Translations.finalScore
                             { points = String.fromInt model.score
                             , total = String.fromInt shared.options.gameLength
                             }
+                        )
                 , Theme.button [ centerX ]
                     { background = Theme.colors.buttonBackground
                     , label = text Translations.playAgain

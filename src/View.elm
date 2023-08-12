@@ -13,12 +13,13 @@ module View exposing
 -}
 
 import Browser
-import Element.WithContext as Element exposing (Element, fill, height, rgb255, scrollbarY, width)
-import Element.WithContext.Font as Font
+import Color
 import Route exposing (Route)
 import Shared.Model exposing (Context)
 import Theme
-import Translations
+import Translations exposing (I18n)
+import Ui.WithContext as Ui exposing (Element, fill, height, width)
+import Ui.WithContext.Font as Font
 
 
 type alias View msg =
@@ -35,23 +36,27 @@ toBrowserDocument :
     }
     -> Browser.Document msg
 toBrowserDocument { shared, view } =
+    let
+        i18n : I18n
+        i18n =
+            Translations.init (Theme.localeToLanguage shared.locale)
+    in
     { title =
-        Translations.title <|
-            Translations.init <|
-                Theme.localeToLanguage shared.context.locale
+        Translations.title i18n
     , body =
-        [ Element.layout
-            shared.context
+        [ Ui.layout
+            { locale = shared.locale
+            , i18n = i18n
+            }
             [ width fill
             , height fill
             , Theme.gradient
-                [ ( 20, rgb255 0xFD 0xED 0xD6 )
-                , ( 100, rgb255 0x9F 0x88 0x67 )
+                [ ( 20, Color.rgb255 0xFD 0xED 0xD6 )
+                , ( 100, Color.rgb255 0x9F 0x88 0x67 )
                 ]
-            , scrollbarY
             , Font.family [ Font.typeface "urbane-rounded", Font.sansSerif ]
             ]
-            view
+            (Ui.scrollable [ width fill, height fill ] view)
         ]
     }
 
@@ -60,7 +65,7 @@ toBrowserDocument { shared, view } =
 -}
 map : (msg1 -> msg2) -> View msg1 -> View msg2
 map fn view =
-    Element.map fn view
+    Ui.map fn view
 
 
 {-| Used internally by Elm Land whenever transitioning between
@@ -68,7 +73,7 @@ authenticated pages.
 -}
 none : View msg
 none =
-    Element.none
+    Ui.none
 
 
 {-| If you customize the `View` module, anytime you run `elm-land add page`,

@@ -57,12 +57,16 @@ config =
     , Simplify.rule Simplify.defaults
     ]
         |> List.map
-            (Rule.ignoreErrorsForDirectories
-                [ "src/Evergreen"
-                , "generated"
-                , ".elm-land"
-                ]
-                >> Rule.ignoreErrorsForFiles
-                    [ "src/Translations.elm"
-                    ]
+            (\rule ->
+                rule
+                    |> Rule.ignoreErrorsForDirectories
+                        [ "src/Evergreen"
+                        , "generated"
+                        , ".elm-land"
+                        , "elm-ui"
+                        , "elm-animator"
+                        ]
+                    |> Rule.ignoreErrorsForFiles
+                        [ "src/Translations.elm"
+                        ]
             )

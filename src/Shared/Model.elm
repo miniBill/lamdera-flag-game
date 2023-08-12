@@ -4,6 +4,7 @@ module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficu
 
 import Cldr
 import Random
+import Translations exposing (I18n)
 
 
 {-| Normally, this value would live in "Shared.elm"
@@ -14,14 +15,16 @@ own file, so they can be imported by `Effect.elm`
 
 -}
 type alias Model =
-    { context : Context
+    { locale : String
     , options : GameOptions
     , seed : Random.Seed
     }
 
 
 type alias Context =
-    { locale : String }
+    { i18n : I18n
+    , locale : String
+    }
 
 
 type Property

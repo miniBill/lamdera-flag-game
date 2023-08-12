@@ -1,23 +1,25 @@
 module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, localeToLanguage, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, wrappedRow)
 
 import AspectRatios
-import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, rgba, shrink, width)
-import Element.WithContext.Background as Background
-import Element.WithContext.Border as Border
-import Element.WithContext.Font as Font
-import Element.WithContext.Input as Input
+import Color
 import Html.Attributes
 import List.Extra
 import Shared.Model exposing (Context, Country, countryToAlpha2)
 import Translations exposing (I18n)
+import Ui.WithContext as Ui exposing (Attribute, Color, Element, el, height, image, px, rgb, rgba, width)
+import Ui.WithContext.Events as Events
+import Ui.WithContext.Font as Font
+import Ui.WithContext.Layout as Layout
+import Ui.WithContext.Shadow as Shadow
+import Ui.WithContext.Table as Table
 
 
 type alias Element msg =
-    Element.Element Context msg
+    Ui.Element Context msg
 
 
 type alias Attribute msg =
-    Element.Attribute Context msg
+    Ui.Attribute Context msg
 
 
 rythm : number
@@ -27,40 +29,53 @@ rythm =
 
 spacing : Attribute msg
 spacing =
-    Element.spacing rythm
+    Ui.spacing rythm
 
 
 padding : Attribute msg
 padding =
-    Element.padding rythm
+    Ui.padding rythm
 
 
 button :
     List (Attribute msg)
     ->
-        { background : List ( Int, Color )
+        { background : Gradient
         , label : Element msg
         , onPress : Maybe msg
         }
     -> Element msg
 button attrs config =
-    Input.button
+    el
         (padding
-            :: Border.rounded 40
+            :: Ui.rounded 40
             :: gradient config.background
-            :: Font.color (rgb 1 1 1)
-            :: Element.mouseOver [ Background.color <| rgb255 0x9B 0x9B 0xFB ]
-            :: Border.shadow
-                { offset = ( 2.5, 2.5 )
-                , size = 2.5
-                , blur = 2.5
-                , color = rgba 0 0 0 0.15
-                }
+            :: Font.color (rgb 255 255 255)
+            :: (let
+                    _ =
+                        Debug.todo
+
+                    -- :: Ui.Anim.hovered (Ui.Anim.ms 100) [ Ui.Anim.backgroundColor <| rgb 0x9B 0x9B 0xFB ]
+                in
+                Shadow.shadows
+                    [ { x = 2.5
+                      , y = 2.5
+                      , size = 2.5
+                      , blur = 2.5
+                      , color = rgba 0 0 0 0.15
+                      }
+                    ]
+               )
+            :: (case config.onPress of
+                    Just msg ->
+                        Events.onClick msg
+
+                    Nothing ->
+                        Ui.noAttr
+               )
             :: attrs
         )
-        { label = config.label
-        , onPress = config.onPress
-        }
+        config.label
 
 
 gradient : Gradient -> Attribute msg
@@ -70,19 +85,19 @@ gradient stops =
         ++ ")"
     )
         |> Html.Attributes.style "background"
-        |> Element.htmlAttribute
+        |> Ui.htmlAttribute
 
 
-stopToCss : ( Int, Color ) -> String
+stopToCss : ( Int, Color.Color ) -> String
 stopToCss ( at, color ) =
     colorToCss color ++ " " ++ String.fromInt at ++ "%"
 
 
-colorToCss : Color -> String
+colorToCss : Color.Color -> String
 colorToCss color =
     let
         { red, green, blue, alpha } =
-            Element.toRgb color
+            Color.toRgba color
 
         colorString : String
         colorString =
@@ -104,7 +119,7 @@ colorToCss color =
 
 
 type alias Gradient =
-    List ( Int, Color )
+    List ( Int, Color.Color )
 
 
 colors :
@@ -116,41 +131,46 @@ colors :
     }
 colors =
     { buttonBackground =
-        [ ( 40, rgb255 0xC7 0x9D 0x69 )
-        , ( 100, rgb255 0x98 0x78 0x50 )
+        [ ( 40, Color.rgb255 0xC7 0x9D 0x69 )
+        , ( 100, Color.rgb255 0x98 0x78 0x50 )
         ]
     , greenButtonBackground =
-        [ ( 40, rgb255 0x8B 0xD1 0x78 )
-        , ( 100, rgb255 0x72 0xB0 0x61 )
+        [ ( 40, Color.rgb255 0x8B 0xD1 0x78 )
+        , ( 100, Color.rgb255 0x72 0xB0 0x61 )
         ]
     , redButtonBackground =
-        [ ( 40, rgb255 0xDC 0x4E 0x3B )
-        , ( 100, rgb255 0xAB 0x3A 0x2B )
+        [ ( 40, Color.rgb255 0xDC 0x4E 0x3B )
+        , ( 100, Color.rgb255 0xAB 0x3A 0x2B )
         ]
     , black = rgb 0 0 0
-    , white = rgb 1 1 1
+    , white = rgb 255 255 255
     }
 
 
 column : List (Attribute msg) -> List (Element msg) -> Element msg
 column attrs children =
-    Element.column (spacing :: attrs) children
+    Ui.column (spacing :: attrs) children
 
 
 row : List (Attribute msg) -> List (Element msg) -> Element msg
 row attrs children =
-    Element.row (spacing :: attrs) children
+    Ui.row (spacing :: attrs) children
 
 
 wrappedRow : List (Attribute msg) -> List (Element msg) -> Element msg
 wrappedRow attrs children =
-    Element.wrappedRow (spacing :: attrs) children
+    Layout.row
+        { wrap = True
+        , align = Layout.centered
+        }
+        (spacing :: attrs)
+        children
 
 
 grid :
     List (Attribute msg)
     ->
-        { widths : List Length
+        { widths : List { fill : Bool }
         , elements : List (List (Element msg))
         }
     -> Element msg
@@ -162,33 +182,35 @@ grid attrs { widths, elements } =
                 |> List.maximum
                 |> Maybe.withDefault 0
 
-        columns :
-            List
-                { header : Element msg
-                , width : Length
-                , view : List (Element msg) -> Element msg
-                }
+        columns : List (Table.Column Context state (List (Element msg)) msg)
         columns =
             List.map
                 (\i ->
-                    { header = Element.none
-                    , width =
-                        widths
-                            |> List.Extra.getAt i
-                            |> Maybe.withDefault shrink
-                    , view =
-                        \elementsRow ->
-                            elementsRow
-                                |> List.Extra.getAt i
-                                |> Maybe.withDefault Element.none
-                    }
+                    Table.column
+                        { header = Table.cell [] Ui.none
+                        , view =
+                            \elementsRow ->
+                                elementsRow
+                                    |> List.Extra.getAt i
+                                    |> Maybe.withDefault Ui.none
+                                    |> Table.cell []
+                        }
+                        |> Table.withWidth
+                            { fill =
+                                widths
+                                    |> List.Extra.getAt i
+                                    |> Maybe.map .fill
+                                    |> Maybe.withDefault False
+                            , min = Nothing
+                            , max = Nothing
+                            }
                 )
                 (List.range 0 (columnCount - 1))
     in
-    Element.table (spacing :: attrs)
-        { data = elements
-        , columns = columns
-        }
+    Table.view
+        (spacing :: attrs)
+        (Table.columns columns)
+        elements
 
 
 viewFlag :
@@ -221,27 +243,28 @@ viewFlag attrs config =
             w * aspectRatioHeight // aspectRatioWidth
     in
     image
-        ([ Border.shadow
-            { offset = ( 5, 5 )
-            , size = 5
-            , blur = 5
-            , color = rgba 0 0 0 0.15
-            }
+        ([ Shadow.shadows
+            [ { x = 5
+              , y = 5
+              , size = 5
+              , blur = 5
+              , color = rgba 0 0 0 0.15
+              }
+            ]
          , width <| px w
          , height <| px h
          ]
             ++ attrs
         )
-        { src = src
+        { source = src
         , description = "A country flag"
         }
 
 
 text : (I18n -> String) -> Element msg
 text f =
-    Element.withContext <|
-        \{ locale } ->
-            Element.text <| f <| Translations.init <| localeToLanguage locale
+    Ui.withContext
+        (\{ i18n } -> Ui.text <| f i18n)
 
 
 localeToLanguage : String -> Translations.Language
@@ -259,7 +282,7 @@ localeToLanguage locale =
 
 textInvariant : String -> Element msg
 textInvariant msg =
-    Element.text msg
+    Ui.text msg
 
 
 selectableButton :
