@@ -391,8 +391,6 @@ view shared model =
             Theme.grid
                 [ centerX
                 , centerY
-                , Ui.id "main_grid"
-                , Ui.explain Debug.todo
                 ]
                 { elements = startButtons shared.options
                 , widths = [ { fill = False } ]
