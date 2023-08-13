@@ -340,6 +340,7 @@ changingLocalePopup maybeInput =
                                                             )
                                                         -- This is actually just for Spanish
                                                         |> List.Extra.greedyGroupsOf 13
+                                                        |> List.concatMap (List.Extra.greedyGroupsOf 7)
                                                         |> List.map (Theme.row [])
                                             in
                                             [ localeButton Nothing
