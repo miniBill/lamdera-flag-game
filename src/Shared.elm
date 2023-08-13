@@ -17,6 +17,7 @@ import Dict
 import Effect exposing (Effect)
 import Flags
 import Json.Decode
+import List.Extra
 import PkgPorts
 import Random
 import Route exposing (Route)
@@ -227,15 +228,26 @@ difficultyCodec =
 fixOptions : GameOptions -> GameOptions
 fixOptions options =
     let
+        withoutAntartica : List Continent
+        withoutAntartica =
+            List.Extra.remove Antartica options.continents
+
+        almostAll : Int
+        almostAll =
+            List.length Shared.Model.allContinents - 1
+
         fixed1 : GameOptions
         fixed1 =
             { options
                 | continents =
-                    if List.isEmpty options.continents then
+                    if
+                        List.isEmpty withoutAntartica
+                            || (List.length withoutAntartica == almostAll)
+                    then
                         Shared.Model.allContinents
 
                     else
-                        options.continents
+                        withoutAntartica
             }
     in
     -- TODO: FIX THIS

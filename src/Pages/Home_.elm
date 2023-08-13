@@ -245,7 +245,7 @@ startButtons options =
 
                     SouthAmerica ->
                         Translations.southAmerica
-        , all = Shared.Model.allContinents
+        , all = [ Africa, Asia, Europe, NorthAmerica, Oceania, SouthAmerica ]
         , get = .continents
         , set = \v -> { options | continents = v }
         }
