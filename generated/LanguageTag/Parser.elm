@@ -1,8 +1,8 @@
-module LanguageTag.Parser exposing (parseBcp47, parseLangueTag)
+module LanguageTag.Parser exposing (parseBcp47, parseLanguageTag)
 
 {-| Parse BCP 47 language tags.
 
-@docs parseBcp47, parseLangueTag
+@docs parseBcp47, parseLanguageTag
 
 -}
 
@@ -18,8 +18,8 @@ import LanguageTag.Variant exposing (Variant)
 
 {-| This will attempt to parse the tag as a BCP47 tag. If it fails, it will construct a `LanguageTag` using `custom`, with no validation.
 -}
-parseLangueTag : String -> LanguageTag
-parseLangueTag inputString =
+parseLanguageTag : String -> LanguageTag
+parseLanguageTag inputString =
     case parseBcp47 inputString of
         Just ( language, options ) ->
             LanguageTag.build options language
