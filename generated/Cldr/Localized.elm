@@ -150,9 +150,6 @@ import Cldr.Zulu
 countryCodeToName : String -> Cldr.CountryCode -> Maybe String
 countryCodeToName locale countryCode =
     case String.split "-" locale of
-        "af" :: "NA" :: _ ->
-            Just (Cldr.Afrikaans.countryCodeToName countryCode)
-
         "af" :: _ ->
             Just (Cldr.Afrikaans.countryCodeToName countryCode)
 
@@ -162,83 +159,11 @@ countryCodeToName locale countryCode =
         "ar" :: "AE" :: _ ->
             Just (Cldr.Arabic.UnitedArabEmirates.countryCodeToName countryCode)
 
-        "ar" :: "BH" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "DJ" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "DZ" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "EG" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "EH" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "ER" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "IL" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "IQ" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "JO" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "KM" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "KW" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "LB" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
         "ar" :: "LY" :: _ ->
             Just (Cldr.Arabic.Libya.countryCodeToName countryCode)
 
-        "ar" :: "MA" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "MR" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "OM" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "PS" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "QA" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
         "ar" :: "SA" :: _ ->
             Just (Cldr.Arabic.SaudiArabia.countryCodeToName countryCode)
-
-        "ar" :: "SD" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "SO" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "SS" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "SY" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "TD" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "TN" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
-
-        "ar" :: "YE" :: _ ->
-            Just (Cldr.Arabic.countryCodeToName countryCode)
 
         "ar" :: _ ->
             Just (Cldr.Arabic.countryCodeToName countryCode)
@@ -246,14 +171,8 @@ countryCodeToName locale countryCode =
         "as" :: _ ->
             Just (Cldr.Assamese.countryCodeToName countryCode)
 
-        "az" :: "Latn" :: _ ->
-            Just (Cldr.Azerbaijani.countryCodeToName countryCode)
-
         "az" :: _ ->
             Just (Cldr.Azerbaijani.countryCodeToName countryCode)
-
-        "be" :: "tarask" :: _ ->
-            Just (Cldr.Belarusian.countryCodeToName countryCode)
 
         "be" :: _ ->
             Just (Cldr.Belarusian.countryCodeToName countryCode)
@@ -267,23 +186,11 @@ countryCodeToName locale countryCode =
         "bn" :: _ ->
             Just (Cldr.Bangla.countryCodeToName countryCode)
 
-        "bs" :: "Latn" :: _ ->
-            Just (Cldr.Bosnian.countryCodeToName countryCode)
-
         "bs" :: _ ->
             Just (Cldr.Bosnian.countryCodeToName countryCode)
 
-        "ca" :: "AD" :: _ ->
-            Just (Cldr.Catalan.countryCodeToName countryCode)
-
         "ca" :: "ES" :: "valencia" :: _ ->
             Just (Cldr.Catalan.Spain.Valencia.countryCodeToName countryCode)
-
-        "ca" :: "FR" :: _ ->
-            Just (Cldr.Catalan.countryCodeToName countryCode)
-
-        "ca" :: "IT" :: _ ->
-            Just (Cldr.Catalan.countryCodeToName countryCode)
 
         "ca" :: _ ->
             Just (Cldr.Catalan.countryCodeToName countryCode)
@@ -294,35 +201,17 @@ countryCodeToName locale countryCode =
         "cy" :: _ ->
             Just (Cldr.Welsh.countryCodeToName countryCode)
 
-        "da" :: "GL" :: _ ->
-            Just (Cldr.Danish.countryCodeToName countryCode)
-
         "da" :: _ ->
             Just (Cldr.Danish.countryCodeToName countryCode)
 
         "de" :: "AT" :: _ ->
             Just (Cldr.German.Austria.countryCodeToName countryCode)
 
-        "de" :: "BE" :: _ ->
-            Just (Cldr.German.countryCodeToName countryCode)
-
         "de" :: "CH" :: _ ->
             Just (Cldr.German.Switzerland.countryCodeToName countryCode)
 
-        "de" :: "IT" :: _ ->
-            Just (Cldr.German.countryCodeToName countryCode)
-
-        "de" :: "LI" :: _ ->
-            Just (Cldr.German.countryCodeToName countryCode)
-
-        "de" :: "LU" :: _ ->
-            Just (Cldr.German.countryCodeToName countryCode)
-
         "de" :: _ ->
             Just (Cldr.German.countryCodeToName countryCode)
-
-        "el" :: "CY" :: _ ->
-            Just (Cldr.Greek.countryCodeToName countryCode)
 
         "el" :: "polyton" :: _ ->
             Just (Cldr.Greek.Polytonic.countryCodeToName countryCode)
@@ -336,17 +225,11 @@ countryCodeToName locale countryCode =
         "en" :: "150" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
-        "en" :: "AE" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
-
         "en" :: "AG" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
         "en" :: "AI" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
-
-        "en" :: "AS" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
 
         "en" :: "AT" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
@@ -359,9 +242,6 @@ countryCodeToName locale countryCode =
 
         "en" :: "BE" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
-
-        "en" :: "BI" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
 
         "en" :: "BM" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
@@ -441,9 +321,6 @@ countryCodeToName locale countryCode =
         "en" :: "GM" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
-        "en" :: "GU" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
-
         "en" :: "GY" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
@@ -495,14 +372,8 @@ countryCodeToName locale countryCode =
         "en" :: "MG" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
-        "en" :: "MH" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
-
         "en" :: "MO" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
-
-        "en" :: "MP" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
 
         "en" :: "MS" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
@@ -546,17 +417,11 @@ countryCodeToName locale countryCode =
         "en" :: "PG" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
-        "en" :: "PH" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
-
         "en" :: "PK" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
         "en" :: "PN" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
-
-        "en" :: "PR" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
 
         "en" :: "PW" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
@@ -618,17 +483,11 @@ countryCodeToName locale countryCode =
         "en" :: "UG" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
-        "en" :: "UM" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
-
         "en" :: "VC" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
 
         "en" :: "VG" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
-
-        "en" :: "VI" :: _ ->
-            Just (Cldr.English.countryCodeToName countryCode)
 
         "en" :: "VU" :: _ ->
             Just (Cldr.English.UnitedKingdom.countryCodeToName countryCode)
@@ -753,143 +612,11 @@ countryCodeToName locale countryCode =
         "fr" :: "BE" :: _ ->
             Just (Cldr.French.Belgium.countryCodeToName countryCode)
 
-        "fr" :: "BF" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "BI" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "BJ" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "BL" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
         "fr" :: "CA" :: _ ->
             Just (Cldr.French.Canada.countryCodeToName countryCode)
 
-        "fr" :: "CD" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "CF" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "CG" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "CH" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "CI" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "CM" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "DJ" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "DZ" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "GA" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "GF" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "GN" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "GP" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "GQ" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "HT" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "KM" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "LU" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "MA" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "MC" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "MF" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "MG" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "ML" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "MQ" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "MR" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "MU" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "NC" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "NE" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "PF" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "PM" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "RE" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "RW" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "SC" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "SN" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "SY" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "TD" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "TG" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "TN" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "VU" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "WF" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
-        "fr" :: "YT" :: _ ->
-            Just (Cldr.French.countryCodeToName countryCode)
-
         "fr" :: _ ->
             Just (Cldr.French.countryCodeToName countryCode)
-
-        "ga" :: "GB" :: _ ->
-            Just (Cldr.Irish.countryCodeToName countryCode)
 
         "ga" :: _ ->
             Just (Cldr.Irish.countryCodeToName countryCode)
@@ -903,12 +630,6 @@ countryCodeToName locale countryCode =
         "gu" :: _ ->
             Just (Cldr.Gujarati.countryCodeToName countryCode)
 
-        "ha" :: "GH" :: _ ->
-            Just (Cldr.Hausa.countryCodeToName countryCode)
-
-        "ha" :: "NE" :: _ ->
-            Just (Cldr.Hausa.countryCodeToName countryCode)
-
         "ha" :: _ ->
             Just (Cldr.Hausa.countryCodeToName countryCode)
 
@@ -920,9 +641,6 @@ countryCodeToName locale countryCode =
 
         "hi" :: _ ->
             Just (Cldr.Hindi.countryCodeToName countryCode)
-
-        "hr" :: "BA" :: _ ->
-            Just (Cldr.Croatian.countryCodeToName countryCode)
 
         "hr" :: _ ->
             Just (Cldr.Croatian.countryCodeToName countryCode)
@@ -941,15 +659,6 @@ countryCodeToName locale countryCode =
 
         "is" :: _ ->
             Just (Cldr.Icelandic.countryCodeToName countryCode)
-
-        "it" :: "CH" :: _ ->
-            Just (Cldr.Italian.countryCodeToName countryCode)
-
-        "it" :: "SM" :: _ ->
-            Just (Cldr.Italian.countryCodeToName countryCode)
-
-        "it" :: "VA" :: _ ->
-            Just (Cldr.Italian.countryCodeToName countryCode)
 
         "it" :: _ ->
             Just (Cldr.Italian.countryCodeToName countryCode)
@@ -1005,50 +714,14 @@ countryCodeToName locale countryCode =
         "mr" :: _ ->
             Just (Cldr.Marathi.countryCodeToName countryCode)
 
-        "ms" :: "BN" :: _ ->
-            Just (Cldr.Malay.countryCodeToName countryCode)
-
-        "ms" :: "ID" :: _ ->
-            Just (Cldr.Malay.countryCodeToName countryCode)
-
-        "ms" :: "SG" :: _ ->
-            Just (Cldr.Malay.countryCodeToName countryCode)
-
         "ms" :: _ ->
             Just (Cldr.Malay.countryCodeToName countryCode)
 
         "my" :: _ ->
             Just (Cldr.Burmese.countryCodeToName countryCode)
 
-        "nb" :: "SJ" :: _ ->
-            Just (Cldr.Norwegian.countryCodeToName countryCode)
-
-        "nb" :: _ ->
-            Just (Cldr.Norwegian.countryCodeToName countryCode)
-
-        "ne" :: "IN" :: _ ->
-            Just (Cldr.Nepali.countryCodeToName countryCode)
-
         "ne" :: _ ->
             Just (Cldr.Nepali.countryCodeToName countryCode)
-
-        "nl" :: "AW" :: _ ->
-            Just (Cldr.Dutch.countryCodeToName countryCode)
-
-        "nl" :: "BE" :: _ ->
-            Just (Cldr.Dutch.countryCodeToName countryCode)
-
-        "nl" :: "BQ" :: _ ->
-            Just (Cldr.Dutch.countryCodeToName countryCode)
-
-        "nl" :: "CW" :: _ ->
-            Just (Cldr.Dutch.countryCodeToName countryCode)
-
-        "nl" :: "SR" :: _ ->
-            Just (Cldr.Dutch.countryCodeToName countryCode)
-
-        "nl" :: "SX" :: _ ->
-            Just (Cldr.Dutch.countryCodeToName countryCode)
 
         "nl" :: _ ->
             Just (Cldr.Dutch.countryCodeToName countryCode)
@@ -1061,9 +734,6 @@ countryCodeToName locale countryCode =
 
         "or" :: _ ->
             Just (Cldr.Odia.countryCodeToName countryCode)
-
-        "pa" :: "Guru" :: _ ->
-            Just (Cldr.Punjabi.countryCodeToName countryCode)
 
         "pa" :: _ ->
             Just (Cldr.Punjabi.countryCodeToName countryCode)
@@ -1122,26 +792,11 @@ countryCodeToName locale countryCode =
         "ro" :: _ ->
             Just (Cldr.Romanian.countryCodeToName countryCode)
 
-        "ru" :: "BY" :: _ ->
-            Just (Cldr.Russian.countryCodeToName countryCode)
-
-        "ru" :: "KG" :: _ ->
-            Just (Cldr.Russian.countryCodeToName countryCode)
-
-        "ru" :: "KZ" :: _ ->
-            Just (Cldr.Russian.countryCodeToName countryCode)
-
-        "ru" :: "MD" :: _ ->
-            Just (Cldr.Russian.countryCodeToName countryCode)
-
         "ru" :: "UA" :: _ ->
             Just (Cldr.Russian.Ukraine.countryCodeToName countryCode)
 
         "ru" :: _ ->
             Just (Cldr.Russian.countryCodeToName countryCode)
-
-        "sd" :: "Arab" :: _ ->
-            Just (Cldr.Sindhi.countryCodeToName countryCode)
 
         "sd" :: _ ->
             Just (Cldr.Sindhi.countryCodeToName countryCode)
@@ -1155,23 +810,8 @@ countryCodeToName locale countryCode =
         "sl" :: _ ->
             Just (Cldr.Slovenian.countryCodeToName countryCode)
 
-        "so" :: "DJ" :: _ ->
-            Just (Cldr.Somali.countryCodeToName countryCode)
-
-        "so" :: "ET" :: _ ->
-            Just (Cldr.Somali.countryCodeToName countryCode)
-
-        "so" :: "KE" :: _ ->
-            Just (Cldr.Somali.countryCodeToName countryCode)
-
         "so" :: _ ->
             Just (Cldr.Somali.countryCodeToName countryCode)
-
-        "sq" :: "MK" :: _ ->
-            Just (Cldr.Albanian.countryCodeToName countryCode)
-
-        "sq" :: "XK" :: _ ->
-            Just (Cldr.Albanian.countryCodeToName countryCode)
 
         "sq" :: _ ->
             Just (Cldr.Albanian.countryCodeToName countryCode)
@@ -1188,9 +828,6 @@ countryCodeToName locale countryCode =
 
         "sr" :: "Cyrl" :: "XK" :: _ ->
             Just (Cldr.Serbian.Cyrillic.Kosovo.countryCodeToName countryCode)
-
-        "sr" :: "Cyrl" :: _ ->
-            Just (Cldr.Serbian.countryCodeToName countryCode)
 
         "sr" :: "Latn" :: "BA" :: _ ->
             Just
@@ -1210,12 +847,6 @@ countryCodeToName locale countryCode =
         "sr" :: _ ->
             Just (Cldr.Serbian.countryCodeToName countryCode)
 
-        "sv" :: "AX" :: _ ->
-            Just (Cldr.Swedish.countryCodeToName countryCode)
-
-        "sv" :: "FI" :: _ ->
-            Just (Cldr.Swedish.countryCodeToName countryCode)
-
         "sv" :: _ ->
             Just (Cldr.Swedish.countryCodeToName countryCode)
 
@@ -1225,20 +856,8 @@ countryCodeToName locale countryCode =
         "sw" :: "KE" :: _ ->
             Just (Cldr.Swahili.Kenya.countryCodeToName countryCode)
 
-        "sw" :: "UG" :: _ ->
-            Just (Cldr.Swahili.countryCodeToName countryCode)
-
         "sw" :: _ ->
             Just (Cldr.Swahili.countryCodeToName countryCode)
-
-        "ta" :: "LK" :: _ ->
-            Just (Cldr.Tamil.countryCodeToName countryCode)
-
-        "ta" :: "MY" :: _ ->
-            Just (Cldr.Tamil.countryCodeToName countryCode)
-
-        "ta" :: "SG" :: _ ->
-            Just (Cldr.Tamil.countryCodeToName countryCode)
 
         "ta" :: _ ->
             Just (Cldr.Tamil.countryCodeToName countryCode)
@@ -1252,9 +871,6 @@ countryCodeToName locale countryCode =
         "tk" :: _ ->
             Just (Cldr.Turkmen.countryCodeToName countryCode)
 
-        "tr" :: "CY" :: _ ->
-            Just (Cldr.Turkish.countryCodeToName countryCode)
-
         "tr" :: _ ->
             Just (Cldr.Turkish.countryCodeToName countryCode)
 
@@ -1266,9 +882,6 @@ countryCodeToName locale countryCode =
 
         "ur" :: _ ->
             Just (Cldr.Urdu.countryCodeToName countryCode)
-
-        "uz" :: "Latn" :: _ ->
-            Just (Cldr.Uzbek.countryCodeToName countryCode)
 
         "uz" :: _ ->
             Just (Cldr.Uzbek.countryCodeToName countryCode)
@@ -1285,23 +898,8 @@ countryCodeToName locale countryCode =
         "yue" :: "Hans" :: _ ->
             Just (Cldr.Cantonese.Simplified.countryCodeToName countryCode)
 
-        "yue" :: "Hant" :: _ ->
-            Just (Cldr.Cantonese.countryCodeToName countryCode)
-
         "yue" :: _ ->
             Just (Cldr.Cantonese.countryCodeToName countryCode)
-
-        "zh" :: "Hans" :: "HK" :: _ ->
-            Just (Cldr.Chinese.countryCodeToName countryCode)
-
-        "zh" :: "Hans" :: "MO" :: _ ->
-            Just (Cldr.Chinese.countryCodeToName countryCode)
-
-        "zh" :: "Hans" :: "SG" :: _ ->
-            Just (Cldr.Chinese.countryCodeToName countryCode)
-
-        "zh" :: "Hans" :: _ ->
-            Just (Cldr.Chinese.countryCodeToName countryCode)
 
         "zh" :: "Hant" :: "HK" :: _ ->
             Just
