@@ -1,7 +1,7 @@
-module Cldr exposing (CountryCode(..), allCountryCodes, allLocales, allNontrivialLocales, fromAlpha2, localeToEnglishName, toAlpha2)
+module Cldr exposing (CountryCode(..), allCountryCodes, allLocales, allNontrivialLocales, defaultContent, fromAlpha2, localeToEnglishName, toAlpha2)
 
 {-| 
-@docs CountryCode, allLocales, allNontrivialLocales, localeToEnglishName, toAlpha2, fromAlpha2, allCountryCodes
+@docs CountryCode, allLocales, allNontrivialLocales, localeToEnglishName, toAlpha2, fromAlpha2, allCountryCodes, defaultContent
 -}
 
 
@@ -3734,3 +3734,289 @@ allCountryCodes =
     , ZM
     , ZW
     ]
+
+
+defaultContent : String -> Maybe String
+defaultContent locale =
+    case locale of
+        "af" ->
+            Just "af-ZA"
+
+        "am" ->
+            Just "am-ET"
+
+        "ar" ->
+            Just "ar-001"
+
+        "as" ->
+            Just "as-IN"
+
+        "az-Latn" ->
+            Just "az-Latn-AZ"
+
+        "be" ->
+            Just "be-BY"
+
+        "bg" ->
+            Just "bg-BG"
+
+        "bn" ->
+            Just "bn-BD"
+
+        "bs-Latn" ->
+            Just "bs-Latn-BA"
+
+        "ca" ->
+            Just "ca-ES"
+
+        "cs" ->
+            Just "cs-CZ"
+
+        "cy" ->
+            Just "cy-GB"
+
+        "da" ->
+            Just "da-DK"
+
+        "de" ->
+            Just "de-DE"
+
+        "el" ->
+            Just "el-GR"
+
+        "en" ->
+            Just "en-US"
+
+        "es" ->
+            Just "es-ES"
+
+        "et" ->
+            Just "et-EE"
+
+        "eu" ->
+            Just "eu-ES"
+
+        "fa" ->
+            Just "fa-IR"
+
+        "fi" ->
+            Just "fi-FI"
+
+        "fil" ->
+            Just "fil-PH"
+
+        "fr" ->
+            Just "fr-FR"
+
+        "ga" ->
+            Just "ga-IE"
+
+        "gd" ->
+            Just "gd-GB"
+
+        "gl" ->
+            Just "gl-ES"
+
+        "gu" ->
+            Just "gu-IN"
+
+        "ha" ->
+            Just "ha-NG"
+
+        "he" ->
+            Just "he-IL"
+
+        "hi" ->
+            Just "hi-IN"
+
+        "hi-Latn" ->
+            Just "hi-Latn-IN"
+
+        "hr" ->
+            Just "hr-HR"
+
+        "hu" ->
+            Just "hu-HU"
+
+        "hy" ->
+            Just "hy-AM"
+
+        "id" ->
+            Just "id-ID"
+
+        "ig" ->
+            Just "ig-NG"
+
+        "is" ->
+            Just "is-IS"
+
+        "it" ->
+            Just "it-IT"
+
+        "ja" ->
+            Just "ja-JP"
+
+        "jv" ->
+            Just "jv-ID"
+
+        "ka" ->
+            Just "ka-GE"
+
+        "kk" ->
+            Just "kk-KZ"
+
+        "km" ->
+            Just "km-KH"
+
+        "kn" ->
+            Just "kn-IN"
+
+        "ko" ->
+            Just "ko-KR"
+
+        "kok" ->
+            Just "kok-IN"
+
+        "ky" ->
+            Just "ky-KG"
+
+        "lo" ->
+            Just "lo-LA"
+
+        "lt" ->
+            Just "lt-LT"
+
+        "lv" ->
+            Just "lv-LV"
+
+        "mk" ->
+            Just "mk-MK"
+
+        "ml" ->
+            Just "ml-IN"
+
+        "mn" ->
+            Just "mn-MN"
+
+        "mr" ->
+            Just "mr-IN"
+
+        "ms" ->
+            Just "ms-MY"
+
+        "my" ->
+            Just "my-MM"
+
+        "nb" ->
+            Just "nb-NO"
+
+        "ne" ->
+            Just "ne-NP"
+
+        "nl" ->
+            Just "nl-NL"
+
+        "nn" ->
+            Just "nn-NO"
+
+        "or" ->
+            Just "or-IN"
+
+        "pa-Guru" ->
+            Just "pa-Guru-IN"
+
+        "pcm" ->
+            Just "pcm-NG"
+
+        "pl" ->
+            Just "pl-PL"
+
+        "ps" ->
+            Just "ps-AF"
+
+        "pt" ->
+            Just "pt-BR"
+
+        "ro" ->
+            Just "ro-RO"
+
+        "ru" ->
+            Just "ru-RU"
+
+        "sd-Arab" ->
+            Just "sd-Arab-PK"
+
+        "si" ->
+            Just "si-LK"
+
+        "sk" ->
+            Just "sk-SK"
+
+        "sl" ->
+            Just "sl-SI"
+
+        "so" ->
+            Just "so-SO"
+
+        "sq" ->
+            Just "sq-AL"
+
+        "sr-Cyrl" ->
+            Just "sr-Cyrl-RS"
+
+        "sr-Latn" ->
+            Just "sr-Latn-RS"
+
+        "sv" ->
+            Just "sv-SE"
+
+        "sw" ->
+            Just "sw-TZ"
+
+        "ta" ->
+            Just "ta-IN"
+
+        "te" ->
+            Just "te-IN"
+
+        "th" ->
+            Just "th-TH"
+
+        "tk" ->
+            Just "tk-TM"
+
+        "tr" ->
+            Just "tr-TR"
+
+        "uk" ->
+            Just "uk-UA"
+
+        "ur" ->
+            Just "ur-PK"
+
+        "uz-Latn" ->
+            Just "uz-Latn-UZ"
+
+        "vi" ->
+            Just "vi-VN"
+
+        "yo" ->
+            Just "yo-NG"
+
+        "yue-Hans" ->
+            Just "yue-Hans-CN"
+
+        "yue-Hant" ->
+            Just "yue-Hant-HK"
+
+        "zh-Hans" ->
+            Just "zh-Hans-CN"
+
+        "zh-Hant" ->
+            Just "zh-Hant-TW"
+
+        "zu" ->
+            Just "zu-ZA"
+
+        _ ->
+            Nothing
