@@ -2725,755 +2725,755 @@ toAlpha2 countryCode =
 {-| `CountryCode` from two-letter `ISO 3166-1 alpha-2`. -}
 fromAlpha2 : String -> Maybe CountryCode
 fromAlpha2 countryCode =
-    case countryCode of
-        "AD" ->
+    case String.toLower countryCode of
+        "ad" ->
             Just AD
 
-        "AE" ->
+        "ae" ->
             Just AE
 
-        "AF" ->
+        "af" ->
             Just AF
 
-        "AG" ->
+        "ag" ->
             Just AG
 
-        "AI" ->
+        "ai" ->
             Just AI
 
-        "AL" ->
+        "al" ->
             Just AL
 
-        "AM" ->
+        "am" ->
             Just AM
 
-        "AO" ->
+        "ao" ->
             Just AO
 
-        "AQ" ->
+        "aq" ->
             Just AQ
 
-        "AR" ->
+        "ar" ->
             Just AR
 
-        "AS" ->
+        "as" ->
             Just AS
 
-        "AT" ->
+        "at" ->
             Just AT
 
-        "AU" ->
+        "au" ->
             Just AU
 
-        "AW" ->
+        "aw" ->
             Just AW
 
-        "AX" ->
+        "ax" ->
             Just AX
 
-        "AZ" ->
+        "az" ->
             Just AZ
 
-        "BA" ->
+        "ba" ->
             Just BA
 
-        "BB" ->
+        "bb" ->
             Just BB
 
-        "BD" ->
+        "bd" ->
             Just BD
 
-        "BE" ->
+        "be" ->
             Just BE
 
-        "BF" ->
+        "bf" ->
             Just BF
 
-        "BG" ->
+        "bg" ->
             Just BG
 
-        "BH" ->
+        "bh" ->
             Just BH
 
-        "BI" ->
+        "bi" ->
             Just BI
 
-        "BJ" ->
+        "bj" ->
             Just BJ
 
-        "BL" ->
+        "bl" ->
             Just BL
 
-        "BM" ->
+        "bm" ->
             Just BM
 
-        "BN" ->
+        "bn" ->
             Just BN
 
-        "BO" ->
+        "bo" ->
             Just BO
 
-        "BQ" ->
+        "bq" ->
             Just BQ
 
-        "BR" ->
+        "br" ->
             Just BR
 
-        "BS" ->
+        "bs" ->
             Just BS
 
-        "BT" ->
+        "bt" ->
             Just BT
 
-        "BV" ->
+        "bv" ->
             Just BV
 
-        "BW" ->
+        "bw" ->
             Just BW
 
-        "BY" ->
+        "by" ->
             Just BY
 
-        "BZ" ->
+        "bz" ->
             Just BZ
 
-        "CA" ->
+        "ca" ->
             Just CA
 
-        "CC" ->
+        "cc" ->
             Just CC
 
-        "CD" ->
+        "cd" ->
             Just CD
 
-        "CF" ->
+        "cf" ->
             Just CF
 
-        "CG" ->
+        "cg" ->
             Just CG
 
-        "CH" ->
+        "ch" ->
             Just CH
 
-        "CI" ->
+        "ci" ->
             Just CI
 
-        "CK" ->
+        "ck" ->
             Just CK
 
-        "CL" ->
+        "cl" ->
             Just CL
 
-        "CM" ->
+        "cm" ->
             Just CM
 
-        "CN" ->
+        "cn" ->
             Just CN
 
-        "CO" ->
+        "co" ->
             Just CO
 
-        "CR" ->
+        "cr" ->
             Just CR
 
-        "CU" ->
+        "cu" ->
             Just CU
 
-        "CV" ->
+        "cv" ->
             Just CV
 
-        "CW" ->
+        "cw" ->
             Just CW
 
-        "CX" ->
+        "cx" ->
             Just CX
 
-        "CY" ->
+        "cy" ->
             Just CY
 
-        "CZ" ->
+        "cz" ->
             Just CZ
 
-        "DE" ->
+        "de" ->
             Just DE
 
-        "DJ" ->
+        "dj" ->
             Just DJ
 
-        "DK" ->
+        "dk" ->
             Just DK
 
-        "DM" ->
+        "dm" ->
             Just DM
 
-        "DO" ->
+        "do" ->
             Just DO
 
-        "DZ" ->
+        "dz" ->
             Just DZ
 
-        "EC" ->
+        "ec" ->
             Just EC
 
-        "EE" ->
+        "ee" ->
             Just EE
 
-        "EG" ->
+        "eg" ->
             Just EG
 
-        "EH" ->
+        "eh" ->
             Just EH
 
-        "ER" ->
+        "er" ->
             Just ER
 
-        "ES" ->
+        "es" ->
             Just ES
 
-        "ET" ->
+        "et" ->
             Just ET
 
-        "FI" ->
+        "fi" ->
             Just FI
 
-        "FJ" ->
+        "fj" ->
             Just FJ
 
-        "FK" ->
+        "fk" ->
             Just FK
 
-        "FM" ->
+        "fm" ->
             Just FM
 
-        "FO" ->
+        "fo" ->
             Just FO
 
-        "FR" ->
+        "fr" ->
             Just FR
 
-        "GA" ->
+        "ga" ->
             Just GA
 
-        "GB" ->
+        "gb" ->
             Just GB
 
-        "GD" ->
+        "gd" ->
             Just GD
 
-        "GE" ->
+        "ge" ->
             Just GE
 
-        "GF" ->
+        "gf" ->
             Just GF
 
-        "GG" ->
+        "gg" ->
             Just GG
 
-        "GH" ->
+        "gh" ->
             Just GH
 
-        "GI" ->
+        "gi" ->
             Just GI
 
-        "GL" ->
+        "gl" ->
             Just GL
 
-        "GM" ->
+        "gm" ->
             Just GM
 
-        "GN" ->
+        "gn" ->
             Just GN
 
-        "GP" ->
+        "gp" ->
             Just GP
 
-        "GQ" ->
+        "gq" ->
             Just GQ
 
-        "GR" ->
+        "gr" ->
             Just GR
 
-        "GS" ->
+        "gs" ->
             Just GS
 
-        "GT_" ->
+        "gt" ->
             Just GT_
 
-        "GU" ->
+        "gu" ->
             Just GU
 
-        "GW" ->
+        "gw" ->
             Just GW
 
-        "GY" ->
+        "gy" ->
             Just GY
 
-        "HK" ->
+        "hk" ->
             Just HK
 
-        "HM" ->
+        "hm" ->
             Just HM
 
-        "HN" ->
+        "hn" ->
             Just HN
 
-        "HR" ->
+        "hr" ->
             Just HR
 
-        "HT" ->
+        "ht" ->
             Just HT
 
-        "HU" ->
+        "hu" ->
             Just HU
 
-        "ID" ->
+        "id" ->
             Just ID
 
-        "IE" ->
+        "ie" ->
             Just IE
 
-        "IL" ->
+        "il" ->
             Just IL
 
-        "IM" ->
+        "im" ->
             Just IM
 
-        "IN" ->
+        "in" ->
             Just IN
 
-        "IO" ->
+        "io" ->
             Just IO
 
-        "IQ" ->
+        "iq" ->
             Just IQ
 
-        "IR" ->
+        "ir" ->
             Just IR
 
-        "IS" ->
+        "is" ->
             Just IS
 
-        "IT" ->
+        "it" ->
             Just IT
 
-        "JE" ->
+        "je" ->
             Just JE
 
-        "JM" ->
+        "jm" ->
             Just JM
 
-        "JO" ->
+        "jo" ->
             Just JO
 
-        "JP" ->
+        "jp" ->
             Just JP
 
-        "KE" ->
+        "ke" ->
             Just KE
 
-        "KG" ->
+        "kg" ->
             Just KG
 
-        "KH" ->
+        "kh" ->
             Just KH
 
-        "KI" ->
+        "ki" ->
             Just KI
 
-        "KM" ->
+        "km" ->
             Just KM
 
-        "KN" ->
+        "kn" ->
             Just KN
 
-        "KP" ->
+        "kp" ->
             Just KP
 
-        "KR" ->
+        "kr" ->
             Just KR
 
-        "KW" ->
+        "kw" ->
             Just KW
 
-        "KY" ->
+        "ky" ->
             Just KY
 
-        "KZ" ->
+        "kz" ->
             Just KZ
 
-        "LA" ->
+        "la" ->
             Just LA
 
-        "LB" ->
+        "lb" ->
             Just LB
 
-        "LC" ->
+        "lc" ->
             Just LC
 
-        "LI" ->
+        "li" ->
             Just LI
 
-        "LK" ->
+        "lk" ->
             Just LK
 
-        "LR" ->
+        "lr" ->
             Just LR
 
-        "LS" ->
+        "ls" ->
             Just LS
 
-        "LT_" ->
+        "lt" ->
             Just LT_
 
-        "LU" ->
+        "lu" ->
             Just LU
 
-        "LV" ->
+        "lv" ->
             Just LV
 
-        "LY" ->
+        "ly" ->
             Just LY
 
-        "MA" ->
+        "ma" ->
             Just MA
 
-        "MC" ->
+        "mc" ->
             Just MC
 
-        "MD" ->
+        "md" ->
             Just MD
 
-        "ME" ->
+        "me" ->
             Just ME
 
-        "MF" ->
+        "mf" ->
             Just MF
 
-        "MG" ->
+        "mg" ->
             Just MG
 
-        "MH" ->
+        "mh" ->
             Just MH
 
-        "MK" ->
+        "mk" ->
             Just MK
 
-        "ML" ->
+        "ml" ->
             Just ML
 
-        "MM" ->
+        "mm" ->
             Just MM
 
-        "MN" ->
+        "mn" ->
             Just MN
 
-        "MO" ->
+        "mo" ->
             Just MO
 
-        "MP" ->
+        "mp" ->
             Just MP
 
-        "MQ" ->
+        "mq" ->
             Just MQ
 
-        "MR" ->
+        "mr" ->
             Just MR
 
-        "MS" ->
+        "ms" ->
             Just MS
 
-        "MT" ->
+        "mt" ->
             Just MT
 
-        "MU" ->
+        "mu" ->
             Just MU
 
-        "MV" ->
+        "mv" ->
             Just MV
 
-        "MW" ->
+        "mw" ->
             Just MW
 
-        "MX" ->
+        "mx" ->
             Just MX
 
-        "MY" ->
+        "my" ->
             Just MY
 
-        "MZ" ->
+        "mz" ->
             Just MZ
 
-        "NA" ->
+        "na" ->
             Just NA
 
-        "NC" ->
+        "nc" ->
             Just NC
 
-        "NE" ->
+        "ne" ->
             Just NE
 
-        "NF" ->
+        "nf" ->
             Just NF
 
-        "NG" ->
+        "ng" ->
             Just NG
 
-        "NI" ->
+        "ni" ->
             Just NI
 
-        "NL" ->
+        "nl" ->
             Just NL
 
-        "NO" ->
+        "no" ->
             Just NO
 
-        "NP" ->
+        "np" ->
             Just NP
 
-        "NR" ->
+        "nr" ->
             Just NR
 
-        "NU" ->
+        "nu" ->
             Just NU
 
-        "NZ" ->
+        "nz" ->
             Just NZ
 
-        "OM" ->
+        "om" ->
             Just OM
 
-        "PA" ->
+        "pa" ->
             Just PA
 
-        "PE" ->
+        "pe" ->
             Just PE
 
-        "PF" ->
+        "pf" ->
             Just PF
 
-        "PG" ->
+        "pg" ->
             Just PG
 
-        "PH" ->
+        "ph" ->
             Just PH
 
-        "PK" ->
+        "pk" ->
             Just PK
 
-        "PL" ->
+        "pl" ->
             Just PL
 
-        "PM" ->
+        "pm" ->
             Just PM
 
-        "PN" ->
+        "pn" ->
             Just PN
 
-        "PR" ->
+        "pr" ->
             Just PR
 
-        "PS" ->
+        "ps" ->
             Just PS
 
-        "PT" ->
+        "pt" ->
             Just PT
 
-        "PW" ->
+        "pw" ->
             Just PW
 
-        "PY" ->
+        "py" ->
             Just PY
 
-        "QA" ->
+        "qa" ->
             Just QA
 
-        "RE" ->
+        "re" ->
             Just RE
 
-        "RO" ->
+        "ro" ->
             Just RO
 
-        "RS" ->
+        "rs" ->
             Just RS
 
-        "RU" ->
+        "ru" ->
             Just RU
 
-        "RW" ->
+        "rw" ->
             Just RW
 
-        "SA" ->
+        "sa" ->
             Just SA
 
-        "SB" ->
+        "sb" ->
             Just SB
 
-        "SC" ->
+        "sc" ->
             Just SC
 
-        "SD" ->
+        "sd" ->
             Just SD
 
-        "SE" ->
+        "se" ->
             Just SE
 
-        "SG" ->
+        "sg" ->
             Just SG
 
-        "SH" ->
+        "sh" ->
             Just SH
 
-        "SI" ->
+        "si" ->
             Just SI
 
-        "SJ" ->
+        "sj" ->
             Just SJ
 
-        "SK" ->
+        "sk" ->
             Just SK
 
-        "SL" ->
+        "sl" ->
             Just SL
 
-        "SM" ->
+        "sm" ->
             Just SM
 
-        "SN" ->
+        "sn" ->
             Just SN
 
-        "SO" ->
+        "so" ->
             Just SO
 
-        "SR" ->
+        "sr" ->
             Just SR
 
-        "SS" ->
+        "ss" ->
             Just SS
 
-        "ST" ->
+        "st" ->
             Just ST
 
-        "SV" ->
+        "sv" ->
             Just SV
 
-        "SX" ->
+        "sx" ->
             Just SX
 
-        "SY" ->
+        "sy" ->
             Just SY
 
-        "SZ" ->
+        "sz" ->
             Just SZ
 
-        "TC" ->
+        "tc" ->
             Just TC
 
-        "TD" ->
+        "td" ->
             Just TD
 
-        "TF" ->
+        "tf" ->
             Just TF
 
-        "TG" ->
+        "tg" ->
             Just TG
 
-        "TH" ->
+        "th" ->
             Just TH
 
-        "TJ" ->
+        "tj" ->
             Just TJ
 
-        "TK" ->
+        "tk" ->
             Just TK
 
-        "TL" ->
+        "tl" ->
             Just TL
 
-        "TM" ->
+        "tm" ->
             Just TM
 
-        "TN" ->
+        "tn" ->
             Just TN
 
-        "TO" ->
+        "to" ->
             Just TO
 
-        "TR" ->
+        "tr" ->
             Just TR
 
-        "TT" ->
+        "tt" ->
             Just TT
 
-        "TV" ->
+        "tv" ->
             Just TV
 
-        "TW" ->
+        "tw" ->
             Just TW
 
-        "TZ" ->
+        "tz" ->
             Just TZ
 
-        "UA" ->
+        "ua" ->
             Just UA
 
-        "UG" ->
+        "ug" ->
             Just UG
 
-        "UM" ->
+        "um" ->
             Just UM
 
-        "US" ->
+        "us" ->
             Just US
 
-        "UY" ->
+        "uy" ->
             Just UY
 
-        "UZ" ->
+        "uz" ->
             Just UZ
 
-        "VA" ->
+        "va" ->
             Just VA
 
-        "VC" ->
+        "vc" ->
             Just VC
 
-        "VE" ->
+        "ve" ->
             Just VE
 
-        "VG" ->
+        "vg" ->
             Just VG
 
-        "VI" ->
+        "vi" ->
             Just VI
 
-        "VN" ->
+        "vn" ->
             Just VN
 
-        "VU" ->
+        "vu" ->
             Just VU
 
-        "WF" ->
+        "wf" ->
             Just WF
 
-        "WS" ->
+        "ws" ->
             Just WS
 
-        "XK" ->
+        "xk" ->
             Just XK
 
-        "YE" ->
+        "ye" ->
             Just YE
 
-        "YT" ->
+        "yt" ->
             Just YT
 
-        "ZA" ->
+        "za" ->
             Just ZA
 
-        "ZM" ->
+        "zm" ->
             Just ZM
 
-        "ZW" ->
+        "zw" ->
             Just ZW
 
         _ ->
