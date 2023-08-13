@@ -1,7 +1,7 @@
-module Cldr exposing (CountryCode(..), allCountryCodes, allLocales, allNontrivialLocales, defaultContent, fromAlpha2, localeToEnglishName, toAlpha2)
+module Cldr exposing (CountryCode(..), allCountryCodes, allLocales, allNontrivialLocales, fromAlpha2, likelySubtags, localeToEnglishName, toAlpha2)
 
 {-| 
-@docs CountryCode, allLocales, allNontrivialLocales, localeToEnglishName, toAlpha2, fromAlpha2, allCountryCodes, defaultContent
+@docs CountryCode, allLocales, allNontrivialLocales, localeToEnglishName, toAlpha2, fromAlpha2, allCountryCodes, likelySubtags
 -}
 
 
@@ -3736,8 +3736,8 @@ allCountryCodes =
     ]
 
 
-defaultContent : String -> Maybe String
-defaultContent locale =
+likelySubtags : String -> Maybe String
+likelySubtags locale =
     case locale of
         "af" ->
             Just "af-ZA"
@@ -3751,6 +3751,9 @@ defaultContent locale =
         "as" ->
             Just "as-IN"
 
+        "az" ->
+            Just "az-Latn-AZ"
+
         "az-Latn" ->
             Just "az-Latn-AZ"
 
@@ -3762,6 +3765,9 @@ defaultContent locale =
 
         "bn" ->
             Just "bn-BD"
+
+        "bs" ->
+            Just "bs-Latn-BA"
 
         "bs-Latn" ->
             Just "bs-Latn-BA"
@@ -3785,7 +3791,7 @@ defaultContent locale =
             Just "el-GR"
 
         "en" ->
-            Just "en-US"
+            Just "en-Latn-US"
 
         "es" ->
             Just "es-ES"
@@ -3821,13 +3827,13 @@ defaultContent locale =
             Just "gu-IN"
 
         "ha" ->
-            Just "ha-NG"
+            Just "ha-Latn-NG"
 
         "he" ->
             Just "he-IL"
 
         "hi" ->
-            Just "hi-IN"
+            Just "hi-Deva-IN"
 
         "hi-Latn" ->
             Just "hi-Latn-IN"
@@ -3896,13 +3902,13 @@ defaultContent locale =
             Just "ml-IN"
 
         "mn" ->
-            Just "mn-MN"
+            Just "mn-Cyrl-MN"
 
         "mr" ->
             Just "mr-IN"
 
         "ms" ->
-            Just "ms-MY"
+            Just "ms-Latn-MY"
 
         "my" ->
             Just "my-MM"
@@ -3919,8 +3925,14 @@ defaultContent locale =
         "nn" ->
             Just "nn-NO"
 
+        "no" ->
+            Just "no-Latn-NO"
+
         "or" ->
             Just "or-IN"
+
+        "pa" ->
+            Just "pa-Guru-IN"
 
         "pa-Guru" ->
             Just "pa-Guru-IN"
@@ -3943,6 +3955,9 @@ defaultContent locale =
         "ru" ->
             Just "ru-RU"
 
+        "sd" ->
+            Just "sd-Arab-PK"
+
         "sd-Arab" ->
             Just "sd-Arab-PK"
 
@@ -3960,6 +3975,9 @@ defaultContent locale =
 
         "sq" ->
             Just "sq-AL"
+
+        "sr" ->
+            Just "sr-Cyrl-RS"
 
         "sr-Cyrl" ->
             Just "sr-Cyrl-RS"
@@ -3994,6 +4012,9 @@ defaultContent locale =
         "ur" ->
             Just "ur-PK"
 
+        "uz" ->
+            Just "uz-Latn-UZ"
+
         "uz-Latn" ->
             Just "uz-Latn-UZ"
 
@@ -4003,11 +4024,17 @@ defaultContent locale =
         "yo" ->
             Just "yo-NG"
 
+        "yue" ->
+            Just "yue-Hant-HK"
+
         "yue-Hans" ->
             Just "yue-Hans-CN"
 
         "yue-Hant" ->
             Just "yue-Hant-HK"
+
+        "zh" ->
+            Just "zh-Hans-CN"
 
         "zh-Hans" ->
             Just "zh-Hans-CN"

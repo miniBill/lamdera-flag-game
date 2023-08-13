@@ -7,12 +7,14 @@ import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags
 import Html.Attributes
+import LanguageTag.Country
+import LanguageTag.Parser
 import List.Extra
 import Maybe.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
-import Shared.Model exposing (Continent(..), Difficulty(..), GameOptions, Property(..))
+import Shared.Model exposing (Continent(..), Country(..), Difficulty(..), GameOptions, Property(..))
 import Theme exposing (Element, text)
 import Translations exposing (I18n)
 import View exposing (View)
@@ -132,13 +134,57 @@ changingLocalePopup maybeInput =
                                     (\name ->
                                         Theme.button [ alignTop ]
                                             { background = Theme.colors.buttonBackground
-                                            , label = Theme.textInvariant name
+                                            , label =
+                                                case getCountry locale of
+                                                    Just countryCode ->
+                                                        Theme.row []
+                                                            [ Theme.viewFlag []
+                                                                { country = countryCode
+                                                                , width = 30
+                                                                }
+                                                            , Theme.textInvariant name
+                                                            ]
+
+                                                    Nothing ->
+                                                        Theme.textInvariant name
                                             , onPress = Just <| Locale locale
                                             }
                                     )
                         )
                     |> Theme.wrappedRow []
                 ]
+
+
+getCountry : String -> Maybe Country
+getCountry locale =
+    let
+        extractCountry : String -> Maybe Country
+        extractCountry input =
+            input
+                |> LanguageTag.Parser.parseBcp47
+                |> Maybe.andThen (\( _, { region } ) -> Maybe.map LanguageTag.Country.toCodeString region)
+                |> Maybe.andThen Cldr.fromAlpha2
+                |> Maybe.map Iso3166
+    in
+    locale
+        |> extractCountry
+        |> Maybe.Extra.orElseLazy
+            (\_ ->
+                locale
+                    |> Cldr.likelySubtags
+                    |> Maybe.andThen extractCountry
+            )
+        |> (\l ->
+                let
+                    _ =
+                        if l == Nothing then
+                            Debug.log ":(" locale
+
+                        else
+                            locale
+                in
+                l
+           )
 
 
 view : Shared.Model -> Model -> View Msg
