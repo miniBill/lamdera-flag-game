@@ -164,7 +164,12 @@ changingLocalePopup maybeInput =
             let
                 cutName : String
                 cutName =
-                    String.dropLeft (String.length title + 3) englishName
+                    englishName
+                        |> String.dropLeft (String.length title + 3)
+
+                flagWidth : number
+                flagWidth =
+                    40
             in
             case localeToCountry locale of
                 Just alpha2 ->
@@ -173,13 +178,16 @@ changingLocalePopup maybeInput =
                             Theme.row
                                 [ centerX
                                 , centerY
-                                , height <| px 20
+                                , height <| px 26
                                 ]
                                 [ Theme.viewFlag [ centerX, centerY ]
                                     { country = Iso3166 countryCode
-                                    , width = 30
+                                    , width = flagWidth
                                     }
-                                , if String.contains "(" cutName then
+                                , if
+                                    String.contains "(" cutName
+                                        && not (String.contains "DRC" cutName)
+                                  then
                                     cutName
                                         |> String.Extra.leftOfBack ")"
                                         |> String.Extra.rightOf "("
@@ -199,8 +207,8 @@ changingLocalePopup maybeInput =
                                         , blur = 5
                                         , color = rgba 0 0 0 0.15
                                         }
-                                    , width <| px 20
-                                    , height <| px 20
+                                    , width <| px (flagWidth * 2 // 3)
+                                    , height <| px (flagWidth * 2 // 3)
                                     , centerX
                                     , centerY
                                     ]
@@ -219,8 +227,29 @@ changingLocalePopup maybeInput =
                     if String.isEmpty cutName then
                         Nothing
 
+                    else if englishName == "Greek (Polytonic)" then
+                        Theme.row
+                            [ centerX
+                            , centerY
+                            ]
+                            [ Theme.viewFlag [ centerX, centerY ]
+                                { country = Iso3166 Cldr.GR
+                                , width = flagWidth
+                                }
+                            , Theme.textInvariant "Polytonic"
+                            ]
+                            |> Just
+
                     else
                         Theme.textInvariant cutName |> Just
+
+        englishNameToTitle : String -> Maybe String
+        englishNameToTitle englishName =
+            englishName
+                |> String.split "-"
+                |> List.head
+                |> Maybe.map String.trim
+                |> Maybe.map (String.replace "Greek (Polytonic)" "Greek")
     in
     case maybeInput of
         Nothing ->
@@ -254,22 +283,14 @@ changingLocalePopup maybeInput =
                         (\{ englishName } ->
                             String.contains (String.toLower input) (String.toLower englishName)
                         )
-                    |> List.Extra.gatherEqualsBy
-                        (\{ englishName } ->
-                            englishName
-                                |> String.split "-"
-                                |> List.head
-                                |> Maybe.map String.trim
-                        )
+                    |> List.sortBy .englishName
+                    |> List.Extra.gatherEqualsBy (\{ englishName } -> englishNameToTitle englishName)
                     |> List.concatMap
                         (\( first, rest ) ->
                             let
                                 maybeTitle : Maybe String
                                 maybeTitle =
-                                    first.englishName
-                                        |> String.split "-"
-                                        |> List.head
-                                        |> Maybe.map String.trim
+                                    englishNameToTitle first.englishName
 
                                 group : List { locale : String, englishName : String }
                                 group =
