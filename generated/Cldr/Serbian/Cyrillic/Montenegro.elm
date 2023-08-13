@@ -6,7 +6,7 @@ module Cldr.Serbian.Cyrillic.Montenegro exposing (countryCodeToName)
 
 
 import Cldr
-import Cldr.Serbian.Cyrillic
+import Cldr.Serbian
 
 
 {-| Name for `CountryCode` in Serbian (Cyrillic) - Montenegro.
@@ -293,4 +293,4 @@ countryCodeToName countryCode =
             "Америчка Дјевичанска Острва"
 
         _ ->
-            Cldr.Serbian.Cyrillic.countryCodeToName countryCode
+            Cldr.Serbian.countryCodeToName countryCode

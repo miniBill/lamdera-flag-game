@@ -6,7 +6,7 @@ module Cldr.Serbian.Cyrillic.BosniaAndHerzegovina exposing (countryCodeToName)
 
 
 import Cldr
-import Cldr.Serbian.Cyrillic
+import Cldr.Serbian
 
 
 {-| Name for `CountryCode` in Serbian (Cyrillic) - Bosnia & Herzegovina.
@@ -344,4 +344,4 @@ countryCodeToName countryCode =
             "Америчка Дјевичанска острва"
 
         _ ->
-            Cldr.Serbian.Cyrillic.countryCodeToName countryCode
+            Cldr.Serbian.countryCodeToName countryCode

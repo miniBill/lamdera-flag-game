@@ -6,7 +6,7 @@ module Cldr.Serbian.Cyrillic.Kosovo exposing (countryCodeToName)
 
 
 import Cldr
-import Cldr.Serbian.Cyrillic
+import Cldr.Serbian
 
 
 {-| Name for `CountryCode` in Serbian (Cyrillic) - Kosovo.
@@ -284,4 +284,4 @@ countryCodeToName countryCode =
             "Свети Винсент и Гренадини"
 
         _ ->
-            Cldr.Serbian.Cyrillic.countryCodeToName countryCode
+            Cldr.Serbian.countryCodeToName countryCode
