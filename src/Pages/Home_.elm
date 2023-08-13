@@ -120,7 +120,7 @@ changingLocalePopup maybeInput =
                     , placeholder = Nothing
                     , label = Input.labelAbove [] <| Theme.text Translations.search
                     }
-                , Cldr.allLocales
+                , Cldr.allNontrivialLocales
                     |> List.filterMap
                         (\locale ->
                             Cldr.localeToEnglishName locale
