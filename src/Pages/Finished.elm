@@ -1,4 +1,4 @@
-module Pages.Finished exposing (Model, Msg, page)
+module Pages.Finished exposing (Model, Msg(..), page)
 
 import Effect exposing (Effect)
 import Element.WithContext as Element exposing (centerX, centerY, el, fill, width)

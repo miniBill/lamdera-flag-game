@@ -1,4 +1,4 @@
-module Pages.Sort exposing (Model, Msg, page)
+module Pages.Sort exposing (Model, Msg(..), page)
 
 import Cldr exposing (CountryCode(..))
 import Effect exposing (Effect)
