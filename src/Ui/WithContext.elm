@@ -5,7 +5,7 @@ module Ui.WithContext exposing
     , width
     , height
     , centerX, centerY, alignTop
-    , Color, Edges, alignRight, border, column, el, explain, heightMax, heightMin, html, htmlAttribute, id, image, inFront, layout, map, noAttr, none, padding, paddingWith, px, rgb, rgba, rounded, row, scrollable, spacing, text, widthMax, widthMin, withContext
+    , Color, Edges, Length, alignRight, border, borderColor, column, el, explain, heightMax, heightMin, html, htmlAttribute, id, image, inFront, layout, map, noAttr, none, padding, paddingWith, px, rgb, rgba, rounded, row, scrollable, spacing, text, widthMax, widthMin, withContext
     )
 
 {-|
@@ -55,6 +55,10 @@ type alias Edges =
 
 type alias Color =
     Ui.Color
+
+
+type alias Length =
+    Ui.Length
 
 
 withContext : (context -> Element context msg) -> Element context msg
@@ -159,17 +163,17 @@ noAttr =
     pureAttribute Ui.noAttr
 
 
-fill : Ui.Length
+fill : Length
 fill =
     Ui.fill
 
 
-shrink : Ui.Length
+shrink : Length
 shrink =
     Ui.shrink
 
 
-px : Int -> Ui.Length
+px : Int -> Length
 px =
     Ui.px
 
@@ -216,7 +220,7 @@ rgba =
     Ui.rgba
 
 
-height : Ui.Length -> Attribute context msg
+height : Length -> Attribute context msg
 height length =
     pureAttribute (Ui.height length)
 
@@ -231,7 +235,7 @@ heightMin length =
     pureAttribute (Ui.heightMin length)
 
 
-width : Ui.Length -> Attribute context msg
+width : Length -> Attribute context msg
 width length =
     pureAttribute (Ui.width length)
 
@@ -261,6 +265,6 @@ border value =
     pureAttribute (Ui.border value)
 
 
-
--- table attrs =
---     containerOther Ui.table attrs (\_ -> config)
+borderColor : Color -> Attribute context msg
+borderColor value =
+    pureAttribute (Ui.borderColor value)

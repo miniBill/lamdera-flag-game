@@ -15,9 +15,10 @@ import Shared.Model exposing (Continent(..), Country(..), Difficulty(..), GameOp
 import String.Extra
 import Theme exposing (Attribute, Element, text)
 import Translations exposing (I18n)
-import Ui.WithContext as Ui exposing (alignTop, centerX, centerY, el, fill, height, inFront, width)
+import Ui.WithContext as Ui exposing (alignTop, centerX, centerY, el, fill, height, heightMin, inFront, px, rgb, rgba, width)
 import Ui.WithContext.Font as Font
 import Ui.WithContext.Input as Input
+import Ui.WithContext.Shadow as Shadow
 import View exposing (View)
 
 
@@ -111,11 +112,11 @@ changingLocalePopup maybeInput =
         nonButton attrs label =
             el
                 ([ alignTop
-                 , height <| Element.minimum 52 shrink
-                 , Border.rounded 40
-                 , Border.width 1
-                 , Border.color <| rgb255 0x98 0x78 0x50
-                 , Font.color (rgb 1 1 1)
+                 , heightMin 52
+                 , Ui.rounded 40
+                 , Ui.border 1
+                 , Ui.borderColor <| rgb 0x98 0x78 0x50
+                 , Font.color (rgb 255 255 255)
                  , Theme.padding
                  ]
                     ++ attrs
@@ -128,7 +129,7 @@ changingLocalePopup maybeInput =
                 Just locale ->
                     Theme.button
                         [ alignTop
-                        , height <| Element.minimum 52 shrink
+                        , heightMin 52
                         ]
                         { background = Theme.colors.buttonBackground
                         , label = label
@@ -151,7 +152,7 @@ changingLocalePopup maybeInput =
                                     }
 
                             Nothing ->
-                                Element.none
+                                Ui.none
                         , Theme.textInvariant englishName
                         ]
 
@@ -193,25 +194,27 @@ changingLocalePopup maybeInput =
                                         |> Theme.textInvariant
 
                                   else
-                                    Element.none
+                                    Ui.none
                                 ]
                                 |> Just
 
                         Nothing ->
                             if alpha2 == "001" then
-                                image
-                                    [ Border.shadow
-                                        { offset = ( 5, 5 )
-                                        , size = 5
-                                        , blur = 5
-                                        , color = rgba 0 0 0 0.15
-                                        }
+                                Ui.image
+                                    [ Shadow.shadows
+                                        [ { x = 2.5
+                                          , y = 2.5
+                                          , size = 2.5
+                                          , blur = 2.5
+                                          , color = rgba 0 0 0 0.15
+                                          }
+                                        ]
                                     , width <| px (flagWidth * 2 // 3)
                                     , height <| px (flagWidth * 2 // 3)
                                     , centerX
                                     , centerY
                                     ]
-                                    { src = "/favicon.svg"
+                                    { source = "/favicon.svg"
                                     , description = "The world symbol"
                                     }
                                     |> Just
@@ -308,7 +311,7 @@ changingLocalePopup maybeInput =
                                                     [ Theme.textInvariant title
                                                     , flagLabel title pair
                                                         |> Maybe.map (nonButton [ centerX ])
-                                                        |> Maybe.withDefault Element.none
+                                                        |> Maybe.withDefault Ui.none
                                                     ]
                                                 )
                                             ]
@@ -335,7 +338,7 @@ changingLocalePopup maybeInput =
                                                             (\pair ->
                                                                 localeButton
                                                                     (Just pair.locale)
-                                                                    (Maybe.withDefault Element.none <| flagLabel title pair)
+                                                                    (Maybe.withDefault Ui.none <| flagLabel title pair)
                                                             )
                                                         -- This is actually just for Spanish
                                                         |> List.Extra.greedyGroupsOf 13
@@ -514,7 +517,12 @@ startButtons options =
         |> List.map
             (\( label, cells ) ->
                 [ el [ centerY ] (text label)
-                , Theme.row [] (cells options)
+                , case cells options of
+                    [ singleton ] ->
+                        singleton
+
+                    _ ->
+                        Theme.row [ width fill ] (cells options)
                 ]
             )
 
