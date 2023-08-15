@@ -4,6 +4,7 @@ module Effect exposing
     , sendCmd, changeOptions, locale, play, finished, seed, loadLocalStorage, saveToLocalStorage, loadLocale
     , pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
     , map, toCmd
+    , measureScreen
     )
 
 {-|
@@ -17,6 +18,7 @@ module Effect exposing
 
 -}
 
+import Browser.Dom
 import Browser.Navigation
 import Dict exposing (Dict)
 import Json.Encode
@@ -45,6 +47,7 @@ type Effect msg
     | LoadLocalStorage String
     | SaveToLocalStorage { key : String, value : Json.Encode.Value }
     | LoadLocale String
+    | MeasureScreen
 
 
 
@@ -122,6 +125,11 @@ goBack =
 loadLocalStorage : String -> Effect msg
 loadLocalStorage key =
     LoadLocalStorage key
+
+
+measureScreen : Effect msg
+measureScreen =
+    MeasureScreen
 
 
 
@@ -203,6 +211,9 @@ map fn effect =
         SaveToLocalStorage pair ->
             SaveToLocalStorage pair
 
+        MeasureScreen ->
+            MeasureScreen
+
 
 {-| Elm Land depends on this function to perform your effects.
 -}
@@ -251,3 +262,13 @@ toCmd options effect =
 
         LoadLocale key ->
             PkgPorts.loadLocale key
+
+        MeasureScreen ->
+            Browser.Dom.getViewport
+                |> Task.perform
+                    (\{ viewport } ->
+                        options.fromSharedMsg <|
+                            Shared.Msg.Resized
+                                (floor viewport.width)
+                                (floor viewport.height)
+                    )

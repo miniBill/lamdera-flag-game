@@ -15,7 +15,7 @@ import Maybe.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
-import Shared.Model exposing (Continent(..), Country(..), Difficulty(..), GameOptions, Property(..))
+import Shared.Model exposing (Continent(..), Country(..), Difficulty(..), GameOptions, Property(..), Screen)
 import String.Extra
 import Theme exposing (Attribute, Element, text)
 import Translations exposing (I18n)
@@ -105,8 +105,8 @@ propertyToString property =
             Translations.flag
 
 
-changingLocalePopup : Maybe String -> Element Msg
-changingLocalePopup maybeInput =
+changingLocalePopup : Screen -> Maybe String -> Element Msg
+changingLocalePopup screen maybeInput =
     let
         nonButton : List (Attribute msg) -> Element msg -> Element msg
         nonButton attrs label =
@@ -297,32 +297,30 @@ changingLocalePopup maybeInput =
                             , otherItems
                             ]
                         )
+
+        columnWidth : number
+        columnWidth =
+            500
+
+        localeColumn : List { locale : String, nativeName : String } -> Element Msg
+        localeColumn locales =
+            locales
+                |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
+                |> List.map viewGroup
+                |> Theme.column
+                    [ centerX
+                    , width <| Element.maximum columnWidth shrink
+                    ]
     in
     case maybeInput of
         Nothing ->
             Element.none
 
         Just input ->
-            el
-                [ width fill
-                , height fill
-                , scrollbarY
-                , Theme.gradient Theme.colors.buttonBackground
-                ]
-            <|
-                Theme.column
-                    [ Theme.padding
-                    , centerX
-                    , height fill
-                    , width <| Element.maximum 500 fill
-                    ]
-                    [ Input.text [ width fill ]
-                        { onChange = ChangingLocale
-                        , text = input
-                        , placeholder = Nothing
-                        , label = Input.labelAbove [] <| Theme.text Translations.search
-                        }
-                    , Cldr.allNontrivialLocales
+            let
+                filteredLocales : List { locale : String, nativeName : String }
+                filteredLocales =
+                    Cldr.allNontrivialLocales
                         |> List.filterMap
                             (\locale ->
                                 Maybe.map
@@ -338,9 +336,45 @@ changingLocalePopup maybeInput =
                                 String.contains (String.toLower input) (String.toLower nativeName)
                             )
                         |> List.sortBy .nativeName
-                        |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
-                        |> List.map viewGroup
-                        |> Theme.column [ centerX ]
+            in
+            el
+                [ width fill
+                , height fill
+                , scrollbarY
+                , Theme.gradient Theme.colors.buttonBackground
+                ]
+            <|
+                Theme.column
+                    [ Theme.padding
+                    , centerX
+                    , height fill
+                    ]
+                    [ Input.text [ width fill ]
+                        { onChange = ChangingLocale
+                        , text = input
+                        , placeholder = Nothing
+                        , label = Input.labelAbove [] <| Theme.text Translations.search
+                        }
+                    , if screen.width > columnWidth * 2 + Theme.rythm * 3 then
+                        filteredLocales
+                            |> List.Extra.gatherEqualsBy
+                                (\{ nativeName } ->
+                                    case String.uncons nativeName of
+                                        Nothing ->
+                                            1
+
+                                        Just ( h, _ ) ->
+                                            if Char.isAlpha h then
+                                                0
+
+                                            else
+                                                1
+                                )
+                            |> List.map (\( head, tail ) -> localeColumn (head :: tail))
+                            |> Theme.row []
+
+                      else
+                        localeColumn filteredLocales
                     ]
 
 
@@ -368,20 +402,33 @@ view shared model =
     el
         [ width fill
         , height fill
-        , inFront <| changingLocalePopup model.changingLocale
+        , inFront <| changingLocalePopup shared.screen model.changingLocale
         ]
     <|
-        el [ centerX, centerY ] <|
-            Theme.grid [ centerX, centerY ]
-                { elements = startButtons shared.options
-                , widths = [ shrink ]
-                }
+        el
+            [ centerX
+            , centerY
+            , Theme.padding
+            ]
+        <|
+            if shared.screen.width > 500 + Theme.rythm * 2 then
+                Theme.grid []
+                    { elements =
+                        mainMenuRows shared.options
+                            |> List.map (\( label, options ) -> [ label, Theme.row [] options ])
+                    , widths = [ shrink ]
+                    }
+
+            else
+                mainMenuRows shared.options
+                    |> List.concatMap (\( label, options ) -> [ label, Theme.wrappedRow [ width fill ] options ])
+                    |> Theme.column []
 
 
-startButtons :
+mainMenuRows :
     GameOptions
-    -> List (List (Element Msg))
-startButtons options =
+    -> List ( Element Msg, List (Element Msg) )
+mainMenuRows options =
     [ radios Translations.difficulty
         { toLabel = difficultyToString
         , all = [ Easy, Normal, Hard ]
@@ -494,9 +541,9 @@ startButtons options =
     ]
         |> List.map
             (\( label, cells ) ->
-                [ el [ centerY ] (text label)
-                , Theme.row [] (cells options)
-                ]
+                ( el [ centerY ] (text label)
+                , cells options
+                )
             )
 
 
@@ -540,11 +587,7 @@ checkboxes label config =
                                     value :: current
                     }
         in
-        config.all
-            |> List.Extra.greedyGroupsOf 4
-            |> List.map (\group -> Theme.row [ width fill ] <| List.map toButton group)
-            |> Theme.column [ width fill ]
-            |> List.singleton
+        List.map toButton config.all
     )
 
 

@@ -12,6 +12,7 @@ module Shared exposing
 
 -}
 
+import Browser.Events
 import Codec exposing (Codec)
 import Dict
 import Effect exposing (Effect)
@@ -59,12 +60,14 @@ init _ _ =
             { context = context
             , options = Shared.Model.defaultGameOptions
             , seed = Random.initialSeed 0
+            , screen = { width = 1024, height = 768 }
             }
     in
     ( model
     , Effect.batch
         [ Effect.loadLocale storageKeys.locale
         , Effect.loadLocalStorage storageKeys.gameOptions
+        , Effect.measureScreen
         , Effect.sendCmd (Random.generate Shared.Msg.Seed Random.independentSeed)
         ]
     )
@@ -129,6 +132,9 @@ update _ msg model =
 
         Shared.Msg.Nop ->
             ( model, Effect.none )
+
+        Shared.Msg.Resized width height ->
+            ( { model | screen = { width = width, height = height } }, Effect.none )
 
 
 gameOptionsCodec : Codec GameOptions
@@ -267,24 +273,27 @@ fixOptions options =
 
 subscriptions : Route () -> Model -> Sub Msg
 subscriptions _ _ =
-    PkgPorts.loadedLocalStorage
-        (\{ key, value } ->
-            if key == storageKeys.locale then
-                case Codec.decodeValue Codec.string value of
-                    Ok locale ->
-                        Shared.Msg.Locale locale
+    Sub.batch
+        [ Browser.Events.onResize Shared.Msg.Resized
+        , PkgPorts.loadedLocalStorage
+            (\{ key, value } ->
+                if key == storageKeys.locale then
+                    case Codec.decodeValue Codec.string value of
+                        Ok locale ->
+                            Shared.Msg.Locale locale
 
-                    Err _ ->
-                        Shared.Msg.Nop
+                        Err _ ->
+                            Shared.Msg.Nop
 
-            else if key == storageKeys.gameOptions then
-                case Codec.decodeValue gameOptionsCodec value of
-                    Ok gameOptions ->
-                        Shared.Msg.ChangeOptions gameOptions
+                else if key == storageKeys.gameOptions then
+                    case Codec.decodeValue gameOptionsCodec value of
+                        Ok gameOptions ->
+                            Shared.Msg.ChangeOptions gameOptions
 
-                    Err _ ->
-                        Shared.Msg.Nop
+                        Err _ ->
+                            Shared.Msg.Nop
 
-            else
-                Shared.Msg.Nop
-        )
+                else
+                    Shared.Msg.Nop
+            )
+        ]

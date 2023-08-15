@@ -20,3 +20,4 @@ type Msg
     | Play
     | Finished { score : Int }
     | Nop
+    | Resized Int Int

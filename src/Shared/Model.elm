@@ -1,4 +1,4 @@
-module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, Property(..), allContinents, allGuessPatterns, countryToAlpha2, defaultGameLength, defaultGameOptions)
+module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, Property(..), Screen, allContinents, allGuessPatterns, countryToAlpha2, defaultGameLength, defaultGameOptions)
 
 {-| -}
 
@@ -17,6 +17,13 @@ type alias Model =
     { context : Context
     , options : GameOptions
     , seed : Random.Seed
+    , screen : Screen
+    }
+
+
+type alias Screen =
+    { width : Int
+    , height : Int
     }
 
 
