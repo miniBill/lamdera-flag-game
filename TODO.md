@@ -1,7 +1,5 @@
 ## Needed
 
-- Have continent option
-
 - Load saved settings before starting game
 - Missing glyphs in font
   - Azerbaijiani (Latin)
@@ -11,7 +9,8 @@
 ## Tweaks
 
 - Mobile layout
-- Prevent duplicates from showing up in the same question
+  - Score positioning
+- Prevent duplicate flags from showing up in the same question if including territories
 
 ## Nice to have
 
@@ -22,5 +21,4 @@
 - Capitals
 
 - Historical variants
-- Add an option for tiny territories (but avoiding flag dupes)
 - Smart mode (Ankify)
