@@ -1,7 +1,7 @@
-module Cldr exposing (CountryCode(..), allCountryCodes, allLocales, allNontrivialLocales, fromAlpha2, likelySubtags, localeToEnglishName, toAlpha2)
+module Cldr exposing (CountryCode(..), allCountryCodes, allLocales, allNontrivialLocales, fromAlpha2, likelySubtags, localeToEnglishName, localeToNativeName, toAlpha2)
 
 {-| 
-@docs CountryCode, allLocales, allNontrivialLocales, localeToEnglishName, toAlpha2, fromAlpha2, allCountryCodes, likelySubtags
+@docs CountryCode, allLocales, allNontrivialLocales, localeToEnglishName, localeToNativeName, toAlpha2, fromAlpha2, allCountryCodes, likelySubtags
 -}
 
 
@@ -1962,6 +1962,1145 @@ localeToEnglishName locale =
 
         "zu" :: _ ->
             Just "Zulu"
+
+        _ ->
+            Nothing
+
+
+{-| Get the english name of a locale. -}
+localeToNativeName : String -> Maybe String
+localeToNativeName locale =
+    case String.split "-" locale of
+        "af" :: "NA" :: _ ->
+            Just "Afrikaans - Namibië"
+
+        "af" :: _ ->
+            Just "Afrikaans"
+
+        "am" :: _ ->
+            Just "አማርኛ"
+
+        "ar" :: "AE" :: _ ->
+            Just "العربية - الإمارات العربية المتحدة"
+
+        "ar" :: "BH" :: _ ->
+            Just "العربية - البحرين"
+
+        "ar" :: "DJ" :: _ ->
+            Just "العربية - جيبوتي"
+
+        "ar" :: "DZ" :: _ ->
+            Just "العربية - الجزائر"
+
+        "ar" :: "EG" :: _ ->
+            Just "العربية - مصر"
+
+        "ar" :: "EH" :: _ ->
+            Just "العربية - الصحراء الغربية"
+
+        "ar" :: "ER" :: _ ->
+            Just "العربية - إريتريا"
+
+        "ar" :: "IL" :: _ ->
+            Just "العربية - إسرائيل"
+
+        "ar" :: "IQ" :: _ ->
+            Just "العربية - العراق"
+
+        "ar" :: "JO" :: _ ->
+            Just "العربية - الأردن"
+
+        "ar" :: "KM" :: _ ->
+            Just "العربية - جزر القمر"
+
+        "ar" :: "KW" :: _ ->
+            Just "العربية - الكويت"
+
+        "ar" :: "LB" :: _ ->
+            Just "العربية - لبنان"
+
+        "ar" :: "LY" :: _ ->
+            Just "العربية - ليبيا"
+
+        "ar" :: "MA" :: _ ->
+            Just "العربية - المغرب"
+
+        "ar" :: "MR" :: _ ->
+            Just "العربية - موريتانيا"
+
+        "ar" :: "OM" :: _ ->
+            Just "العربية - عُمان"
+
+        "ar" :: "PS" :: _ ->
+            Just "العربية - فلسطين"
+
+        "ar" :: "QA" :: _ ->
+            Just "العربية - قطر"
+
+        "ar" :: "SA" :: _ ->
+            Just "العربية - المملكة العربية السعودية"
+
+        "ar" :: "SD" :: _ ->
+            Just "العربية - السودان"
+
+        "ar" :: "SO" :: _ ->
+            Just "العربية - الصومال"
+
+        "ar" :: "SS" :: _ ->
+            Just "العربية - جنوب السودان"
+
+        "ar" :: "SY" :: _ ->
+            Just "العربية - سوريا"
+
+        "ar" :: "TD" :: _ ->
+            Just "العربية - تشاد"
+
+        "ar" :: "TN" :: _ ->
+            Just "العربية - تونس"
+
+        "ar" :: "YE" :: _ ->
+            Just "العربية - اليمن"
+
+        "ar" :: _ ->
+            Just "العربية"
+
+        "as" :: _ ->
+            Just "অসমীয়া"
+
+        "az" :: "Latn" :: _ ->
+            Just "azərbaycan (latın)"
+
+        "az" :: _ ->
+            Just "azərbaycan"
+
+        "be" :: _ ->
+            Just "беларуская"
+
+        "bg" :: _ ->
+            Just "български"
+
+        "bn" :: "IN" :: _ ->
+            Just "বাংলা - ভারত"
+
+        "bn" :: _ ->
+            Just "বাংলা"
+
+        "bs" :: "Latn" :: _ ->
+            Just "bosanski (latinica)"
+
+        "bs" :: _ ->
+            Just "bosanski"
+
+        "ca" :: "AD" :: _ ->
+            Just "català - Andorra"
+
+        "ca" :: "ES" :: "valencia" :: _ ->
+            Just "català - Espanya (valencià)"
+
+        "ca" :: "FR" :: _ ->
+            Just "català - França"
+
+        "ca" :: "IT" :: _ ->
+            Just "català - Itàlia"
+
+        "ca" :: _ ->
+            Just "català"
+
+        "cs" :: _ ->
+            Just "čeština"
+
+        "cy" :: _ ->
+            Just "Cymraeg"
+
+        "da" :: "GL" :: _ ->
+            Just "dansk - Grønland"
+
+        "da" :: _ ->
+            Just "dansk"
+
+        "de" :: "AT" :: _ ->
+            Just "Deutsch - Österreich"
+
+        "de" :: "BE" :: _ ->
+            Just "Deutsch - Belgien"
+
+        "de" :: "CH" :: _ ->
+            Just "Deutsch - Schweiz"
+
+        "de" :: "IT" :: _ ->
+            Just "Deutsch - Italien"
+
+        "de" :: "LI" :: _ ->
+            Just "Deutsch - Liechtenstein"
+
+        "de" :: "LU" :: _ ->
+            Just "Deutsch - Luxemburg"
+
+        "de" :: _ ->
+            Just "Deutsch"
+
+        "el" :: "CY" :: _ ->
+            Just "Ελληνικά - Κύπρος"
+
+        "el" :: "polyton" :: _ ->
+            Just "Ἑλληνικά (Πολυτονικό)"
+
+        "el" :: _ ->
+            Just "Ελληνικά"
+
+        "en" :: "001" :: _ ->
+            Just "English - world"
+
+        "en" :: "150" :: _ ->
+            Just "English - Europe"
+
+        "en" :: "AE" :: _ ->
+            Just "English - United Arab Emirates"
+
+        "en" :: "AG" :: _ ->
+            Just "English - Antigua & Barbuda"
+
+        "en" :: "AI" :: _ ->
+            Just "English - Anguilla"
+
+        "en" :: "AS" :: _ ->
+            Just "English - American Samoa"
+
+        "en" :: "AT" :: _ ->
+            Just "English - Austria"
+
+        "en" :: "AU" :: _ ->
+            Just "English - Australia"
+
+        "en" :: "BB" :: _ ->
+            Just "English - Barbados"
+
+        "en" :: "BE" :: _ ->
+            Just "English - Belgium"
+
+        "en" :: "BI" :: _ ->
+            Just "English - Burundi"
+
+        "en" :: "BM" :: _ ->
+            Just "English - Bermuda"
+
+        "en" :: "BS" :: _ ->
+            Just "English - Bahamas"
+
+        "en" :: "BW" :: _ ->
+            Just "English - Botswana"
+
+        "en" :: "BZ" :: _ ->
+            Just "English - Belize"
+
+        "en" :: "CA" :: _ ->
+            Just "English - Canada"
+
+        "en" :: "CC" :: _ ->
+            Just "English - Cocos (Keeling) Islands"
+
+        "en" :: "CH" :: _ ->
+            Just "English - Switzerland"
+
+        "en" :: "CK" :: _ ->
+            Just "English - Cook Islands"
+
+        "en" :: "CM" :: _ ->
+            Just "English - Cameroon"
+
+        "en" :: "CX" :: _ ->
+            Just "English - Christmas Island"
+
+        "en" :: "CY" :: _ ->
+            Just "English - Cyprus"
+
+        "en" :: "DE" :: _ ->
+            Just "English - Germany"
+
+        "en" :: "DG" :: _ ->
+            Just "English - Diego Garcia"
+
+        "en" :: "DK" :: _ ->
+            Just "English - Denmark"
+
+        "en" :: "DM" :: _ ->
+            Just "English - Dominica"
+
+        "en" :: "ER" :: _ ->
+            Just "English - Eritrea"
+
+        "en" :: "FI" :: _ ->
+            Just "English - Finland"
+
+        "en" :: "FJ" :: _ ->
+            Just "English - Fiji"
+
+        "en" :: "FK" :: _ ->
+            Just "English - Falkland Islands"
+
+        "en" :: "FM" :: _ ->
+            Just "English - Micronesia"
+
+        "en" :: "GB" :: _ ->
+            Just "English - United Kingdom"
+
+        "en" :: "GD" :: _ ->
+            Just "English - Grenada"
+
+        "en" :: "GG" :: _ ->
+            Just "English - Guernsey"
+
+        "en" :: "GH" :: _ ->
+            Just "English - Ghana"
+
+        "en" :: "GI" :: _ ->
+            Just "English - Gibraltar"
+
+        "en" :: "GM" :: _ ->
+            Just "English - Gambia"
+
+        "en" :: "GU" :: _ ->
+            Just "English - Guam"
+
+        "en" :: "GY" :: _ ->
+            Just "English - Guyana"
+
+        "en" :: "HK" :: _ ->
+            Just "English - Hong Kong"
+
+        "en" :: "IE" :: _ ->
+            Just "English - Ireland"
+
+        "en" :: "IL" :: _ ->
+            Just "English - Israel"
+
+        "en" :: "IM" :: _ ->
+            Just "English - Isle of Man"
+
+        "en" :: "IN" :: _ ->
+            Just "English - India"
+
+        "en" :: "IO" :: _ ->
+            Just "English - British Indian Ocean Territory"
+
+        "en" :: "JE" :: _ ->
+            Just "English - Jersey"
+
+        "en" :: "JM" :: _ ->
+            Just "English - Jamaica"
+
+        "en" :: "KE" :: _ ->
+            Just "English - Kenya"
+
+        "en" :: "KI" :: _ ->
+            Just "English - Kiribati"
+
+        "en" :: "KN" :: _ ->
+            Just "English - St Kitts & Nevis"
+
+        "en" :: "KY" :: _ ->
+            Just "English - Cayman Islands"
+
+        "en" :: "LC" :: _ ->
+            Just "English - St Lucia"
+
+        "en" :: "LR" :: _ ->
+            Just "English - Liberia"
+
+        "en" :: "LS" :: _ ->
+            Just "English - Lesotho"
+
+        "en" :: "MG" :: _ ->
+            Just "English - Madagascar"
+
+        "en" :: "MH" :: _ ->
+            Just "English - Marshall Islands"
+
+        "en" :: "MO" :: _ ->
+            Just "English - Macao"
+
+        "en" :: "MP" :: _ ->
+            Just "English - Northern Mariana Islands"
+
+        "en" :: "MS" :: _ ->
+            Just "English - Montserrat"
+
+        "en" :: "MT" :: _ ->
+            Just "English - Malta"
+
+        "en" :: "MU" :: _ ->
+            Just "English - Mauritius"
+
+        "en" :: "MV" :: _ ->
+            Just "English - Maldives"
+
+        "en" :: "MW" :: _ ->
+            Just "English - Malawi"
+
+        "en" :: "MY" :: _ ->
+            Just "English - Malaysia"
+
+        "en" :: "NA" :: _ ->
+            Just "English - Namibia"
+
+        "en" :: "NF" :: _ ->
+            Just "English - Norfolk Island"
+
+        "en" :: "NG" :: _ ->
+            Just "English - Nigeria"
+
+        "en" :: "NL" :: _ ->
+            Just "English - Netherlands"
+
+        "en" :: "NR" :: _ ->
+            Just "English - Nauru"
+
+        "en" :: "NU" :: _ ->
+            Just "English - Niue"
+
+        "en" :: "NZ" :: _ ->
+            Just "English - New Zealand"
+
+        "en" :: "PG" :: _ ->
+            Just "English - Papua New Guinea"
+
+        "en" :: "PH" :: _ ->
+            Just "English - Philippines"
+
+        "en" :: "PK" :: _ ->
+            Just "English - Pakistan"
+
+        "en" :: "PN" :: _ ->
+            Just "English - Pitcairn Islands"
+
+        "en" :: "PR" :: _ ->
+            Just "English - Puerto Rico"
+
+        "en" :: "PW" :: _ ->
+            Just "English - Palau"
+
+        "en" :: "RW" :: _ ->
+            Just "English - Rwanda"
+
+        "en" :: "SB" :: _ ->
+            Just "English - Solomon Islands"
+
+        "en" :: "SC" :: _ ->
+            Just "English - Seychelles"
+
+        "en" :: "SD" :: _ ->
+            Just "English - Sudan"
+
+        "en" :: "SE" :: _ ->
+            Just "English - Sweden"
+
+        "en" :: "SG" :: _ ->
+            Just "English - Singapore"
+
+        "en" :: "SH" :: _ ->
+            Just "English - St Helena"
+
+        "en" :: "SI" :: _ ->
+            Just "English - Slovenia"
+
+        "en" :: "SL" :: _ ->
+            Just "English - Sierra Leone"
+
+        "en" :: "SS" :: _ ->
+            Just "English - South Sudan"
+
+        "en" :: "SX" :: _ ->
+            Just "English - Sint Maarten"
+
+        "en" :: "SZ" :: _ ->
+            Just "English - Eswatini"
+
+        "en" :: "TC" :: _ ->
+            Just "English - Turks & Caicos Islands"
+
+        "en" :: "TK" :: _ ->
+            Just "English - Tokelau"
+
+        "en" :: "TO" :: _ ->
+            Just "English - Tonga"
+
+        "en" :: "TT" :: _ ->
+            Just "English - Trinidad & Tobago"
+
+        "en" :: "TV" :: _ ->
+            Just "English - Tuvalu"
+
+        "en" :: "TZ" :: _ ->
+            Just "English - Tanzania"
+
+        "en" :: "UG" :: _ ->
+            Just "English - Uganda"
+
+        "en" :: "UM" :: _ ->
+            Just "English - U.S. Outlying Islands"
+
+        "en" :: "VC" :: _ ->
+            Just "English - St Vincent & the Grenadines"
+
+        "en" :: "VG" :: _ ->
+            Just "English - British Virgin Islands"
+
+        "en" :: "VI" :: _ ->
+            Just "English - U.S. Virgin Islands"
+
+        "en" :: "VU" :: _ ->
+            Just "English - Vanuatu"
+
+        "en" :: "WS" :: _ ->
+            Just "English - Samoa"
+
+        "en" :: "ZA" :: _ ->
+            Just "English - South Africa"
+
+        "en" :: "ZM" :: _ ->
+            Just "English - Zambia"
+
+        "en" :: "ZW" :: _ ->
+            Just "English - Zimbabwe"
+
+        "en" :: _ ->
+            Just "English"
+
+        "es" :: "419" :: _ ->
+            Just "español - Latinoamérica"
+
+        "es" :: "AR" :: _ ->
+            Just "español - Argentina"
+
+        "es" :: "BO" :: _ ->
+            Just "español - Bolivia"
+
+        "es" :: "BR" :: _ ->
+            Just "español - Brasil"
+
+        "es" :: "BZ" :: _ ->
+            Just "español - Belice"
+
+        "es" :: "CL" :: _ ->
+            Just "español - Chile"
+
+        "es" :: "CO" :: _ ->
+            Just "español - Colombia"
+
+        "es" :: "CR" :: _ ->
+            Just "español - Costa Rica"
+
+        "es" :: "CU" :: _ ->
+            Just "español - Cuba"
+
+        "es" :: "DO" :: _ ->
+            Just "español - República Dominicana"
+
+        "es" :: "EA" :: _ ->
+            Just "español - Ceuta y Melilla"
+
+        "es" :: "EC" :: _ ->
+            Just "español - Ecuador"
+
+        "es" :: "GQ" :: _ ->
+            Just "español - Guinea Ecuatorial"
+
+        "es" :: "GT" :: _ ->
+            Just "español - Guatemala"
+
+        "es" :: "HN" :: _ ->
+            Just "español - Honduras"
+
+        "es" :: "IC" :: _ ->
+            Just "español - Canarias"
+
+        "es" :: "MX" :: _ ->
+            Just "español - México"
+
+        "es" :: "NI" :: _ ->
+            Just "español - Nicaragua"
+
+        "es" :: "PA" :: _ ->
+            Just "español - Panamá"
+
+        "es" :: "PE" :: _ ->
+            Just "español - Perú"
+
+        "es" :: "PH" :: _ ->
+            Just "español - Filipinas"
+
+        "es" :: "PR" :: _ ->
+            Just "español - Puerto Rico"
+
+        "es" :: "PY" :: _ ->
+            Just "español - Paraguay"
+
+        "es" :: "SV" :: _ ->
+            Just "español - El Salvador"
+
+        "es" :: "US" :: _ ->
+            Just "español - Estados Unidos"
+
+        "es" :: "UY" :: _ ->
+            Just "español - Uruguay"
+
+        "es" :: "VE" :: _ ->
+            Just "español - Venezuela"
+
+        "es" :: _ ->
+            Just "español"
+
+        "et" :: _ ->
+            Just "eesti"
+
+        "eu" :: _ ->
+            Just "euskara"
+
+        "fa" :: "AF" :: _ ->
+            Just "فارسی - افغانستان"
+
+        "fa" :: _ ->
+            Just "فارسی"
+
+        "fi" :: _ ->
+            Just "suomi"
+
+        "fil" :: _ ->
+            Just "Filipino"
+
+        "fr" :: "BE" :: _ ->
+            Just "français - Belgique"
+
+        "fr" :: "BF" :: _ ->
+            Just "français - Burkina Faso"
+
+        "fr" :: "BI" :: _ ->
+            Just "français - Burundi"
+
+        "fr" :: "BJ" :: _ ->
+            Just "français - Bénin"
+
+        "fr" :: "BL" :: _ ->
+            Just "français - Saint-Barthélemy"
+
+        "fr" :: "CA" :: _ ->
+            Just "français - Canada"
+
+        "fr" :: "CD" :: _ ->
+            Just "français - Congo (RDC)"
+
+        "fr" :: "CF" :: _ ->
+            Just "français - République centrafricaine"
+
+        "fr" :: "CG" :: _ ->
+            Just "français - République du Congo"
+
+        "fr" :: "CH" :: _ ->
+            Just "français - Suisse"
+
+        "fr" :: "CI" :: _ ->
+            Just "français - Côte d’Ivoire"
+
+        "fr" :: "CM" :: _ ->
+            Just "français - Cameroun"
+
+        "fr" :: "DJ" :: _ ->
+            Just "français - Djibouti"
+
+        "fr" :: "DZ" :: _ ->
+            Just "français - Algérie"
+
+        "fr" :: "GA" :: _ ->
+            Just "français - Gabon"
+
+        "fr" :: "GF" :: _ ->
+            Just "français - Guyane française"
+
+        "fr" :: "GN" :: _ ->
+            Just "français - Guinée"
+
+        "fr" :: "GP" :: _ ->
+            Just "français - Guadeloupe"
+
+        "fr" :: "GQ" :: _ ->
+            Just "français - Guinée équatoriale"
+
+        "fr" :: "HT" :: _ ->
+            Just "français - Haïti"
+
+        "fr" :: "KM" :: _ ->
+            Just "français - Comores"
+
+        "fr" :: "LU" :: _ ->
+            Just "français - Luxembourg"
+
+        "fr" :: "MA" :: _ ->
+            Just "français - Maroc"
+
+        "fr" :: "MC" :: _ ->
+            Just "français - Monaco"
+
+        "fr" :: "MF" :: _ ->
+            Just "français - Saint-Martin"
+
+        "fr" :: "MG" :: _ ->
+            Just "français - Madagascar"
+
+        "fr" :: "ML" :: _ ->
+            Just "français - Mali"
+
+        "fr" :: "MQ" :: _ ->
+            Just "français - Martinique"
+
+        "fr" :: "MR" :: _ ->
+            Just "français - Mauritanie"
+
+        "fr" :: "MU" :: _ ->
+            Just "français - Maurice"
+
+        "fr" :: "NC" :: _ ->
+            Just "français - Nouvelle-Calédonie"
+
+        "fr" :: "NE" :: _ ->
+            Just "français - Niger"
+
+        "fr" :: "PF" :: _ ->
+            Just "français - Polynésie française"
+
+        "fr" :: "PM" :: _ ->
+            Just "français - Saint-Pierre-et-Miquelon"
+
+        "fr" :: "RE" :: _ ->
+            Just "français - La Réunion"
+
+        "fr" :: "RW" :: _ ->
+            Just "français - Rwanda"
+
+        "fr" :: "SC" :: _ ->
+            Just "français - Seychelles"
+
+        "fr" :: "SN" :: _ ->
+            Just "français - Sénégal"
+
+        "fr" :: "SY" :: _ ->
+            Just "français - Syrie"
+
+        "fr" :: "TD" :: _ ->
+            Just "français - Tchad"
+
+        "fr" :: "TG" :: _ ->
+            Just "français - Togo"
+
+        "fr" :: "TN" :: _ ->
+            Just "français - Tunisie"
+
+        "fr" :: "VU" :: _ ->
+            Just "français - Vanuatu"
+
+        "fr" :: "WF" :: _ ->
+            Just "français - Wallis-et-Futuna"
+
+        "fr" :: "YT" :: _ ->
+            Just "français - Mayotte"
+
+        "fr" :: _ ->
+            Just "français"
+
+        "ga" :: "GB" :: _ ->
+            Just "Gaeilge - an Ríocht Aontaithe"
+
+        "ga" :: _ ->
+            Just "Gaeilge"
+
+        "gd" :: _ ->
+            Just "Gàidhlig"
+
+        "gl" :: _ ->
+            Just "galego"
+
+        "gu" :: _ ->
+            Just "ગુજરાતી"
+
+        "ha" :: "GH" :: _ ->
+            Just "Hausa - Gana"
+
+        "ha" :: "NE" :: _ ->
+            Just "Hausa - Nijar"
+
+        "ha" :: _ ->
+            Just "Hausa"
+
+        "he" :: _ ->
+            Just "עברית"
+
+        "hi" :: "Latn" :: _ ->
+            Just "Hindi (Latin)"
+
+        "hi" :: _ ->
+            Just "हिन्दी"
+
+        "hr" :: "BA" :: _ ->
+            Just "hrvatski - Bosna i Hercegovina"
+
+        "hr" :: _ ->
+            Just "hrvatski"
+
+        "hu" :: _ ->
+            Just "magyar"
+
+        "hy" :: _ ->
+            Just "հայերեն"
+
+        "id" :: _ ->
+            Just "Indonesia"
+
+        "ig" :: _ ->
+            Just "Igbo"
+
+        "is" :: _ ->
+            Just "íslenska"
+
+        "it" :: "CH" :: _ ->
+            Just "italiano - Svizzera"
+
+        "it" :: "SM" :: _ ->
+            Just "italiano - San Marino"
+
+        "it" :: "VA" :: _ ->
+            Just "italiano - Città del Vaticano"
+
+        "it" :: _ ->
+            Just "italiano"
+
+        "ja" :: _ ->
+            Just "日本語"
+
+        "jv" :: _ ->
+            Just "Jawa"
+
+        "ka" :: _ ->
+            Just "ქართული"
+
+        "km" :: _ ->
+            Just "ខ្មែរ"
+
+        "kn" :: _ ->
+            Just "ಕನ್ನಡ"
+
+        "ko" :: "KP" :: _ ->
+            Just "한국어 - 조선민주주의인민공화국"
+
+        "ko" :: _ ->
+            Just "한국어"
+
+        "kok" :: _ ->
+            Just "कोंकणी"
+
+        "ky" :: _ ->
+            Just "кыргызча"
+
+        "lo" :: _ ->
+            Just "ລາວ"
+
+        "lt" :: _ ->
+            Just "lietuvių"
+
+        "lv" :: _ ->
+            Just "latviešu"
+
+        "mk" :: _ ->
+            Just "македонски"
+
+        "ml" :: _ ->
+            Just "മലയാളം"
+
+        "mn" :: _ ->
+            Just "монгол"
+
+        "mr" :: _ ->
+            Just "मराठी"
+
+        "ms" :: "BN" :: _ ->
+            Just "Melayu - Brunei"
+
+        "ms" :: "ID" :: _ ->
+            Just "Melayu - Indonesia"
+
+        "ms" :: "SG" :: _ ->
+            Just "Melayu - Singapura"
+
+        "ms" :: _ ->
+            Just "Melayu"
+
+        "my" :: _ ->
+            Just "မြန်မာ"
+
+        "ne" :: "IN" :: _ ->
+            Just "नेपाली - भारत"
+
+        "ne" :: _ ->
+            Just "नेपाली"
+
+        "nl" :: "AW" :: _ ->
+            Just "Nederlands - Aruba"
+
+        "nl" :: "BE" :: _ ->
+            Just "Nederlands - België"
+
+        "nl" :: "BQ" :: _ ->
+            Just "Nederlands - Caribisch Nederland"
+
+        "nl" :: "CW" :: _ ->
+            Just "Nederlands - Curaçao"
+
+        "nl" :: "SR" :: _ ->
+            Just "Nederlands - Suriname"
+
+        "nl" :: "SX" :: _ ->
+            Just "Nederlands - Sint-Maarten"
+
+        "nl" :: _ ->
+            Just "Nederlands"
+
+        "no" :: _ ->
+            Just "norsk"
+
+        "or" :: _ ->
+            Just "ଓଡ଼ିଆ"
+
+        "pa" :: "Guru" :: _ ->
+            Just "ਪੰਜਾਬੀ (ਗੁਰਮੁਖੀ)"
+
+        "pa" :: _ ->
+            Just "ਪੰਜਾਬੀ"
+
+        "pl" :: _ ->
+            Just "polski"
+
+        "ps" :: "PK" :: _ ->
+            Just "پښتو - پاکستان"
+
+        "ps" :: _ ->
+            Just "پښتو"
+
+        "pt" :: "AO" :: _ ->
+            Just "português - Angola"
+
+        "pt" :: "CH" :: _ ->
+            Just "português - Suíça"
+
+        "pt" :: "CV" :: _ ->
+            Just "português - Cabo Verde"
+
+        "pt" :: "GQ" :: _ ->
+            Just "português - Guiné Equatorial"
+
+        "pt" :: "GW" :: _ ->
+            Just "português - Guiné-Bissau"
+
+        "pt" :: "LU" :: _ ->
+            Just "português - Luxemburgo"
+
+        "pt" :: "MO" :: _ ->
+            Just "português - Macau"
+
+        "pt" :: "MZ" :: _ ->
+            Just "português - Moçambique"
+
+        "pt" :: "PT" :: _ ->
+            Just "português - Portugal"
+
+        "pt" :: "ST" :: _ ->
+            Just "português - São Tomé e Príncipe"
+
+        "pt" :: "TL" :: _ ->
+            Just "português - República Democrática de Timor-Leste"
+
+        "pt" :: _ ->
+            Just "português"
+
+        "ro" :: "MD" :: _ ->
+            Just "română - Republica Moldova"
+
+        "ro" :: _ ->
+            Just "română"
+
+        "ru" :: "BY" :: _ ->
+            Just "русский - Беларусь"
+
+        "ru" :: "KG" :: _ ->
+            Just "русский - Киргизия"
+
+        "ru" :: "KZ" :: _ ->
+            Just "русский - Казахстан"
+
+        "ru" :: "MD" :: _ ->
+            Just "русский - Молдова"
+
+        "ru" :: "UA" :: _ ->
+            Just "русский - Украина"
+
+        "ru" :: _ ->
+            Just "русский"
+
+        "sd" :: "Arab" :: _ ->
+            Just "سنڌي (عربي)"
+
+        "sd" :: _ ->
+            Just "سنڌي"
+
+        "si" :: _ ->
+            Just "සිංහල"
+
+        "sk" :: _ ->
+            Just "slovenčina"
+
+        "sl" :: _ ->
+            Just "slovenščina"
+
+        "so" :: "DJ" :: _ ->
+            Just "Soomaali - Jabuuti"
+
+        "so" :: "ET" :: _ ->
+            Just "Soomaali - Itoobiya"
+
+        "so" :: "KE" :: _ ->
+            Just "Soomaali - Kenya"
+
+        "so" :: _ ->
+            Just "Soomaali"
+
+        "sq" :: "MK" :: _ ->
+            Just "shqip - Maqedonia e Veriut"
+
+        "sq" :: "XK" :: _ ->
+            Just "shqip - Kosovë"
+
+        "sq" :: _ ->
+            Just "shqip"
+
+        "sr" :: "Cyrl" :: "BA" :: _ ->
+            Just "српски (ћирилица) - Босна и Херцеговина"
+
+        "sr" :: "Cyrl" :: "ME" :: _ ->
+            Just "српски (ћирилица) - Црна Гора"
+
+        "sr" :: "Cyrl" :: "XK" :: _ ->
+            Just "српски (ћирилица) - Косово"
+
+        "sr" :: "Cyrl" :: _ ->
+            Just "српски (ћирилица)"
+
+        "sr" :: "Latn" :: "BA" :: _ ->
+            Just "srpski (latinica) - Bosna i Hercegovina"
+
+        "sr" :: "Latn" :: "ME" :: _ ->
+            Just "srpski (latinica) - Crna Gora"
+
+        "sr" :: "Latn" :: "XK" :: _ ->
+            Just "srpski (latinica) - Kosovo"
+
+        "sr" :: "Latn" :: _ ->
+            Just "srpski (latinica)"
+
+        "sr" :: _ ->
+            Just "српски"
+
+        "sv" :: "AX" :: _ ->
+            Just "svenska - Åland"
+
+        "sv" :: "FI" :: _ ->
+            Just "svenska - Finland"
+
+        "sv" :: _ ->
+            Just "svenska"
+
+        "sw" :: "CD" :: _ ->
+            Just "Kiswahili - Kongo (DRC)"
+
+        "sw" :: "KE" :: _ ->
+            Just "Kiswahili - Kenya"
+
+        "sw" :: "UG" :: _ ->
+            Just "Kiswahili - Uganda"
+
+        "sw" :: _ ->
+            Just "Kiswahili"
+
+        "ta" :: "LK" :: _ ->
+            Just "தமிழ் - இலங்கை"
+
+        "ta" :: "MY" :: _ ->
+            Just "தமிழ் - மலேசியா"
+
+        "ta" :: "SG" :: _ ->
+            Just "தமிழ் - சிங்கப்பூர்"
+
+        "ta" :: _ ->
+            Just "தமிழ்"
+
+        "te" :: _ ->
+            Just "తెలుగు"
+
+        "th" :: _ ->
+            Just "ไทย"
+
+        "tr" :: "CY" :: _ ->
+            Just "Türkçe - Kıbrıs"
+
+        "tr" :: _ ->
+            Just "Türkçe"
+
+        "uk" :: _ ->
+            Just "українська"
+
+        "ur" :: "IN" :: _ ->
+            Just "اردو - بھارت"
+
+        "ur" :: _ ->
+            Just "اردو"
+
+        "uz" :: "Latn" :: _ ->
+            Just "o‘zbek (lotin)"
+
+        "uz" :: _ ->
+            Just "o‘zbek"
+
+        "yue" :: "Hans" :: _ ->
+            Just "粤语 (简体)"
+
+        "yue" :: "Hant" :: _ ->
+            Just "粵語 (繁體)"
+
+        "yue" :: _ ->
+            Just "粵語"
+
+        "zh" :: "Hans" :: "HK" :: _ ->
+            Just "中文 (简体) - 香港"
+
+        "zh" :: "Hans" :: "MO" :: _ ->
+            Just "中文 (简体) - 澳门"
+
+        "zh" :: "Hans" :: "SG" :: _ ->
+            Just "中文 (简体) - 新加坡"
+
+        "zh" :: "Hans" :: _ ->
+            Just "中文 (简体)"
+
+        "zh" :: "Hant" :: "HK" :: _ ->
+            Just "中文 (繁體字) - 香港"
+
+        "zh" :: "Hant" :: "MO" :: _ ->
+            Just "中文 (繁體字) - 澳門"
+
+        "zh" :: "Hant" :: _ ->
+            Just "中文 (繁體)"
+
+        "zh" :: _ ->
+            Just "中文"
+
+        "zu" :: _ ->
+            Just "isiZulu"
 
         _ ->
             Nothing
