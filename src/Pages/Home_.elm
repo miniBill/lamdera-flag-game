@@ -172,29 +172,33 @@ changingLocalePopup screen maybeInput =
                                 |> Just
 
                         Nothing ->
-                            if alpha2 == "001" then
-                                image
-                                    [ Border.shadow
-                                        { offset = ( 5, 5 )
-                                        , size = 5
-                                        , blur = 5
-                                        , color = rgba 0 0 0 0.15
+                            let
+                                unsafeFlag : ( Int, Int ) -> Maybe (Element msg)
+                                unsafeFlag aspectRatio =
+                                    Theme.viewFlagUnsafe
+                                        []
+                                        { filename = String.toLower alpha2
+                                        , aspectRatio = aspectRatio
+                                        , width = flagWidth
                                         }
-                                    , width <| px (flagWidth * 2 // 3)
-                                    , height <| px (flagWidth * 2 // 3)
-                                    , centerX
-                                    , centerY
-                                    ]
-                                    { src = "/favicon.svg"
-                                    , description = "The world symbol"
-                                    }
-                                    |> Just
+                                        |> Just
+                            in
+                            case alpha2 of
+                                "001" ->
+                                    unsafeFlag ( 1, 1 )
 
-                            else if String.isEmpty cutName then
-                                Nothing
+                                "GB-WLS" ->
+                                    unsafeFlag ( 5, 3 )
 
-                            else
-                                Theme.textInvariant cutName |> Just
+                                "GB-SCT" ->
+                                    unsafeFlag ( 5, 3 )
+
+                                _ ->
+                                    if String.isEmpty cutName then
+                                        Nothing
+
+                                    else
+                                        Theme.textInvariant cutName |> Just
 
                 Nothing ->
                     if String.isEmpty cutName then
@@ -302,15 +306,17 @@ changingLocalePopup screen maybeInput =
         columnWidth =
             500
 
-        localeColumn : List { locale : String, nativeName : String } -> Element Msg
-        localeColumn locales =
+        localeColumn : List (Attribute Msg) -> List { locale : String, nativeName : String } -> Element Msg
+        localeColumn attrs locales =
             locales
                 |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
                 |> List.map viewGroup
                 |> Theme.column
-                    [ centerX
-                    , width <| Element.maximum columnWidth shrink
-                    ]
+                    ([ centerX
+                     , width <| Element.maximum columnWidth shrink
+                     ]
+                        ++ attrs
+                    )
     in
     case maybeInput of
         Nothing ->
@@ -370,11 +376,11 @@ changingLocalePopup screen maybeInput =
                                             else
                                                 1
                                 )
-                            |> List.map (\( head, tail ) -> localeColumn (head :: tail))
+                            |> List.map (\( head, tail ) -> localeColumn [] (head :: tail))
                             |> Theme.row []
 
                       else
-                        localeColumn filteredLocales
+                        localeColumn [ Theme.padding ] filteredLocales
                     ]
 
 
@@ -387,14 +393,22 @@ localeToCountry locale =
                 |> LanguageTag.Parser.parseBcp47
                 |> Maybe.andThen (\( _, { region } ) -> Maybe.map LanguageTag.Country.toCodeString region)
     in
-    locale
-        |> extractCountry
-        |> Maybe.Extra.orElseLazy
-            (\_ ->
-                locale
-                    |> Cldr.likelySubtags
-                    |> Maybe.andThen extractCountry
-            )
+    case locale of
+        "cy" ->
+            Just "GB-WLS"
+
+        "gd" ->
+            Just "GB-SCT"
+
+        _ ->
+            locale
+                |> extractCountry
+                |> Maybe.Extra.orElseLazy
+                    (\_ ->
+                        locale
+                            |> Cldr.likelySubtags
+                            |> Maybe.andThen extractCountry
+                    )
 
 
 view : Shared.Model -> Model -> View Msg

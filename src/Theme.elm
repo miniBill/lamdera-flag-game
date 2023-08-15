@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, localeToLanguage, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, wrappedRow)
+module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, localeToLanguage, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, viewFlagUnsafe, wrappedRow)
 
 import AspectRatios
 import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, rgba, shrink, width)
@@ -196,13 +196,29 @@ viewFlag :
     -> { country : Country, width : Int }
     -> Element msg
 viewFlag attrs config =
+    viewFlagUnsafe attrs
+        { filename = countryToAlpha2 config.country
+        , aspectRatio = AspectRatios.getAspectRatio config.country
+        , width = config.width
+        }
+
+
+viewFlagUnsafe :
+    List (Attribute msg)
+    ->
+        { filename : String
+        , aspectRatio : ( Int, Int )
+        , width : Int
+        }
+    -> Element msg
+viewFlagUnsafe attrs config =
     let
         src : String
         src =
-            "/" ++ countryToAlpha2 config.country ++ ".svg"
+            "/" ++ config.filename ++ ".svg"
 
         ( aspectRatioWidth, aspectRatioHeight ) =
-            AspectRatios.getAspectRatio config.country
+            config.aspectRatio
 
         -- arw / arh = w / h
         -- w < config.width
