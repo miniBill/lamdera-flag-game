@@ -26,7 +26,7 @@ import Cldr.Burmese
 import Cldr.Cantonese
 import Cldr.Cantonese.Simplified
 import Cldr.Catalan
-import Cldr.Catalan.Spain.Valencia
+import Cldr.Catalan.Spain.Valencian
 import Cldr.Chinese
 import Cldr.Chinese.Traditional
 import Cldr.Chinese.Traditional.HongKong
@@ -190,7 +190,7 @@ countryCodeToName locale countryCode =
             Just (Cldr.Bosnian.countryCodeToName countryCode)
 
         "ca" :: "ES" :: "valencia" :: _ ->
-            Just (Cldr.Catalan.Spain.Valencia.countryCodeToName countryCode)
+            Just (Cldr.Catalan.Spain.Valencian.countryCodeToName countryCode)
 
         "ca" :: _ ->
             Just (Cldr.Catalan.countryCodeToName countryCode)

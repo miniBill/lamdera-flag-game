@@ -1,4 +1,4 @@
-module Cldr.Catalan.Spain.Valencia exposing (countryCodeToName)
+module Cldr.Catalan.Spain.Valencian exposing (countryCodeToName)
 
 {-| 
 @docs countryCodeToName
@@ -8,7 +8,7 @@ module Cldr.Catalan.Spain.Valencia exposing (countryCodeToName)
 import Cldr
 
 
-{-| Name for `CountryCode` in Catalan - Spain (Valencia).
+{-| Name for `CountryCode` in Catalan - Spain (Valencian).
 
     AD Andorra
     AE Emirats Àrabs Units

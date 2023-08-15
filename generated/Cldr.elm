@@ -905,7 +905,7 @@ localeToEnglishName locale =
             Just "Azerbaijani"
 
         "be" :: "tarask" :: _ ->
-            Just "Belarusian (Taraškievica)"
+            Just "Belarusian (Taraskievica orthography)"
 
         "be" :: _ ->
             Just "Belarusian"
@@ -929,7 +929,7 @@ localeToEnglishName locale =
             Just "Catalan - Andorra"
 
         "ca" :: "ES" :: "valencia" :: _ ->
-            Just "Catalan - Spain (Valencia)"
+            Just "Catalan - Spain (Valencian)"
 
         "ca" :: "FR" :: _ ->
             Just "Catalan - France"
