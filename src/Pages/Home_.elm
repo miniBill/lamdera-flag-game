@@ -2,7 +2,7 @@ module Pages.Home_ exposing (Model, Msg(..), page)
 
 import Cldr
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, image, inFront, px, rgb, rgb255, rgba, shrink, width)
+import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, image, inFront, px, rgb, rgb255, rgba, scrollbarY, shrink, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
@@ -112,7 +112,6 @@ changingLocalePopup maybeInput =
         nonButton attrs label =
             el
                 ([ alignTop
-                 , height <| Element.minimum 52 shrink
                  , Border.rounded 40
                  , Border.width 1
                  , Border.color <| rgb255 0x98 0x78 0x50
@@ -123,21 +122,14 @@ changingLocalePopup maybeInput =
                 )
                 label
 
-        localeButton : Maybe String -> Element Msg -> Element Msg
-        localeButton maybeLocale label =
-            case maybeLocale of
-                Just locale ->
-                    Theme.button
-                        [ alignTop
-                        , height <| Element.minimum 52 shrink
-                        ]
-                        { background = Theme.colors.buttonBackground
-                        , label = label
-                        , onPress = Just <| Locale locale
-                        }
-
-                Nothing ->
-                    nonButton [] label
+        localeButton : String -> List (Attribute Msg) -> Element Msg -> Element Msg
+        localeButton locale attrs label =
+            Theme.button
+                (alignTop :: attrs)
+                { background = Theme.colors.buttonBackground
+                , label = label
+                , onPress = Just <| Locale locale
+                }
 
         flagLabel : String -> { locale : String, nativeName : String } -> Maybe (Element msg)
         flagLabel title { locale, nativeName } =
@@ -158,7 +150,7 @@ changingLocalePopup maybeInput =
                             Theme.row
                                 [ centerX
                                 , centerY
-                                , height <| px 26
+                                , height <| Element.minimum 26 shrink
                                 ]
                                 [ Theme.viewFlag [ centerX, centerY ]
                                     { country = Iso3166 countryCode
@@ -235,106 +227,121 @@ changingLocalePopup maybeInput =
                     |> List.head
                     |> Maybe.withDefault ""
                     |> String.trim
+
+        viewGroup : ( { locale : String, nativeName : String }, List { locale : String, nativeName : String } ) -> Element Msg
+        viewGroup ( first, rest ) =
+            let
+                title : String
+                title =
+                    nativeNameToTitle first.nativeName
+
+                group : List { locale : String, nativeName : String }
+                group =
+                    first :: rest
+            in
+            case
+                List.partition
+                    (\{ nativeName } -> nativeName == title)
+                    group
+            of
+                ( [ pair ], [] ) ->
+                    localeButton pair.locale
+                        [ width fill ]
+                        (Theme.row [ centerY ]
+                            [ Theme.textInvariant title
+                            , flagLabel title pair
+                                |> Maybe.map (nonButton [ centerX ])
+                                |> Maybe.withDefault Element.none
+                            ]
+                        )
+
+                ( mains, others ) ->
+                    let
+                        flagsFirst : { a | locale : String } -> number
+                        flagsFirst { locale } =
+                            if
+                                (localeToCountry locale
+                                    |> Maybe.andThen Cldr.fromAlpha2
+                                )
+                                    == Nothing
+                            then
+                                1
+
+                            else
+                                0
+
+                        count : Int
+                        count =
+                            1 + List.length others
+
+                        otherItems : Element Msg
+                        otherItems =
+                            (mains ++ List.sortBy flagsFirst others)
+                                |> List.map
+                                    (\pair ->
+                                        localeButton pair.locale
+                                            []
+                                            (Maybe.withDefault Element.none <| flagLabel title pair)
+                                    )
+                                |> Theme.wrappedRow [ width fill ]
+                    in
+                    nonButton [ width fill ]
+                        ((if count <= 2 then
+                            Theme.row
+
+                          else
+                            Theme.column
+                         )
+                            [ width fill ]
+                            [ Theme.textInvariant title
+                            , otherItems
+                            ]
+                        )
     in
     case maybeInput of
         Nothing ->
             Element.none
 
         Just input ->
-            Theme.column
-                [ Theme.padding
-                , width fill
+            el
+                [ width fill
                 , height fill
+                , scrollbarY
                 , Theme.gradient Theme.colors.buttonBackground
                 ]
-                [ Input.text []
-                    { onChange = ChangingLocale
-                    , text = input
-                    , placeholder = Nothing
-                    , label = Input.labelAbove [] <| Theme.text Translations.search
-                    }
-                , Cldr.allNontrivialLocales
-                    |> List.filterMap
-                        (\locale ->
-                            Maybe.map
-                                (\nativeName ->
-                                    { locale = locale
-                                    , nativeName = String.Extra.toSentenceCase nativeName
-                                    }
-                                )
-                                (Cldr.localeToNativeName locale)
-                        )
-                    |> List.filter
-                        (\{ nativeName } ->
-                            String.contains (String.toLower input) (String.toLower nativeName)
-                        )
-                    |> List.sortBy .nativeName
-                    |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
-                    |> List.concatMap
-                        (\( first, rest ) ->
-                            let
-                                title : String
-                                title =
-                                    nativeNameToTitle first.nativeName
-
-                                group : List { locale : String, nativeName : String }
-                                group =
-                                    first :: rest
-                            in
-                            case
-                                List.partition
-                                    (\{ nativeName } -> nativeName == title)
-                                    group
-                            of
-                                ( [ pair ], [] ) ->
-                                    [ localeButton (Just pair.locale)
-                                        (Theme.column []
-                                            [ Theme.textInvariant title
-                                            , flagLabel title pair
-                                                |> Maybe.map (nonButton [ centerX ])
-                                                |> Maybe.withDefault Element.none
-                                            ]
-                                        )
-                                    ]
-
-                                ( mains, others ) ->
-                                    let
-                                        flagsFirst : { a | locale : String } -> number
-                                        flagsFirst { locale } =
-                                            if
-                                                (localeToCountry locale
-                                                    |> Maybe.andThen Cldr.fromAlpha2
-                                                )
-                                                    == Nothing
-                                            then
-                                                1
-
-                                            else
-                                                0
-
-                                        otherRows : List (Element Msg)
-                                        otherRows =
-                                            (mains ++ List.sortBy flagsFirst others)
-                                                |> List.map
-                                                    (\pair ->
-                                                        localeButton
-                                                            (Just pair.locale)
-                                                            (Maybe.withDefault Element.none <| flagLabel title pair)
-                                                    )
-                                                -- This is actually just for Spanish
-                                                |> List.Extra.greedyGroupsOf 13
-                                                |> List.concatMap (List.Extra.greedyGroupsOf 7)
-                                                |> List.map (Theme.row [])
-                                    in
-                                    [ localeButton Nothing
-                                        (Theme.column [] <|
-                                            Theme.textInvariant title
-                                                :: otherRows
-                                        )
-                                    ]
-                        )
-                    |> Theme.wrappedRow []
-                ]
+            <|
+                Theme.column
+                    [ Theme.padding
+                    , centerX
+                    , height fill
+                    , width <| Element.maximum 500 fill
+                    ]
+                    [ Input.text [ width fill ]
+                        { onChange = ChangingLocale
+                        , text = input
+                        , placeholder = Nothing
+                        , label = Input.labelAbove [] <| Theme.text Translations.search
+                        }
+                    , Cldr.allNontrivialLocales
+                        |> List.filterMap
+                            (\locale ->
+                                Maybe.map
+                                    (\nativeName ->
+                                        { locale = locale
+                                        , nativeName = String.Extra.toSentenceCase nativeName
+                                        }
+                                    )
+                                    (Cldr.localeToNativeName locale)
+                            )
+                        |> List.filter
+                            (\{ nativeName } ->
+                                String.contains (String.toLower input) (String.toLower nativeName)
+                            )
+                        |> List.sortBy .nativeName
+                        |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
+                        |> List.map viewGroup
+                        |> Theme.column [ centerX ]
+                    ]
 
 
 localeToCountry : String -> Maybe String
