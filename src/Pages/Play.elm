@@ -153,7 +153,7 @@ view shared maybeModel =
                             viewFlagClue model
                     , case model.current.guessTo of
                         Name ->
-                            viewNameAnswers model
+                            viewNameAnswers shared model
 
                         Flag ->
                             viewFlagAnswers model
@@ -193,33 +193,39 @@ viewFlagAnswers ({ current } as model) =
             }
 
 
-viewNameAnswers : InnerModel -> Element Msg
-viewNameAnswers ({ current } as model) =
-    Element.table [ width fill, Theme.spacing ]
-        { data =
-            current.answers
-                |> List.map (viewNameButton model)
-                |> List.Extra.greedyGroupsOf 2
-        , columns =
-            [ { header = Element.none
-              , view =
-                    \lst ->
-                        lst
-                            |> List.head
-                            |> Maybe.withDefault Element.none
-              , width = fill
-              }
-            , { header = Element.none
-              , view =
-                    \lst ->
-                        lst
-                            |> List.drop 1
-                            |> List.head
-                            |> Maybe.withDefault Element.none
-              , width = fill
-              }
-            ]
-        }
+viewNameAnswers : Shared.Model -> InnerModel -> Element Msg
+viewNameAnswers shared ({ current } as model) =
+    if shared.screen.width > 500 then
+        Element.table [ width fill, Theme.spacing ]
+            { data =
+                current.answers
+                    |> List.map (viewNameButton model)
+                    |> List.Extra.greedyGroupsOf 2
+            , columns =
+                [ { header = Element.none
+                  , view =
+                        \lst ->
+                            lst
+                                |> List.head
+                                |> Maybe.withDefault Element.none
+                  , width = fill
+                  }
+                , { header = Element.none
+                  , view =
+                        \lst ->
+                            lst
+                                |> List.drop 1
+                                |> List.head
+                                |> Maybe.withDefault Element.none
+                  , width = fill
+                  }
+                ]
+            }
+
+    else
+        current.answers
+            |> List.map (viewNameButton model)
+            |> Theme.column [ width fill ]
 
 
 nextButton : { a | picked : Maybe Country } -> Element Msg
@@ -246,7 +252,7 @@ viewNameButton { current, picked } country =
     let
         attrs : List (Attribute msg)
         attrs =
-            [ width <| Element.maximum 200 fill
+            [ width fill
             , height fill
             , Font.center
             , if green then
