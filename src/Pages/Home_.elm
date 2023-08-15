@@ -409,6 +409,7 @@ view shared model =
             [ centerX
             , centerY
             , Theme.padding
+            , scrollbarY
             ]
         <|
             if shared.screen.width > 500 + Theme.rythm * 2 then
