@@ -2,7 +2,7 @@ module Pages.Home_ exposing (Model, Msg(..), page)
 
 import Cldr
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, image, inFront, px, rgb, rgb255, rgba, scrollbarY, shrink, width)
+import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, rgb, rgb255, scrollbarY, shrink, width)
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
