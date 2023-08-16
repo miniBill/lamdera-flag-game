@@ -468,11 +468,19 @@ view shared model =
             , scrollbarY
             ]
         <|
-            if shared.screen.width > 500 + Theme.rythm * 2 then
-                Theme.grid []
+            if shared.screen.width > 750 then
+                Theme.grid [ width fill ]
                     { elements =
                         mainMenuRows shared.options
-                            |> List.map (\( label, options ) -> [ label, Theme.row [] options ])
+                            |> List.map
+                                (\( label, options ) ->
+                                    [ label
+                                    , options
+                                        |> List.Extra.greedyGroupsOf 3
+                                        |> List.map (Theme.row [ width fill ])
+                                        |> Theme.column [ width fill ]
+                                    ]
+                                )
                     , widths = [ shrink ]
                     }
 
