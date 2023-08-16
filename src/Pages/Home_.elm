@@ -142,9 +142,43 @@ changingLocalePopup screen maybeInput =
                 flagWidth : number
                 flagWidth =
                     40
+
+                parensContent : Element msg
+                parensContent =
+                    if
+                        String.contains "(" cutName
+                            && not (String.contains "DRC" cutName)
+                    then
+                        cutName
+                            |> String.Extra.leftOfBack ")"
+                            |> String.Extra.rightOf "("
+                            |> String.Extra.toSentenceCase
+                            |> Theme.textInvariant
+
+                    else
+                        Element.none
+
+                unsafeFlag : String -> ( Int, Int ) -> Element msg
+                unsafeFlag alpha2 aspectRatio =
+                    Theme.row
+                        [ centerX
+                        , centerY
+                        , height <| Element.minimum 26 shrink
+                        ]
+                        [ Theme.viewFlagUnsafe
+                            []
+                            { filename = String.toLower alpha2
+                            , aspectRatio = aspectRatio
+                            , width = flagWidth
+                            }
+                        , parensContent
+                        ]
             in
             case localeToCountry locale of
-                Just alpha2 ->
+                FoundCountry "001" ->
+                    Just <| unsafeFlag "001" ( 1, 1 )
+
+                FoundCountry alpha2 ->
                     case Cldr.fromAlpha2 alpha2 of
                         Just countryCode ->
                             Theme.row
@@ -156,52 +190,41 @@ changingLocalePopup screen maybeInput =
                                     { country = Iso3166 countryCode
                                     , width = flagWidth
                                     }
-                                , if
-                                    String.contains "(" cutName
-                                        && not (String.contains "DRC" cutName)
-                                  then
-                                    cutName
-                                        |> String.Extra.leftOfBack ")"
-                                        |> String.Extra.rightOf "("
-                                        |> String.Extra.toSentenceCase
-                                        |> Theme.textInvariant
-
-                                  else
-                                    Element.none
+                                , parensContent
                                 ]
                                 |> Just
 
                         Nothing ->
-                            let
-                                unsafeFlag : ( Int, Int ) -> Maybe (Element msg)
-                                unsafeFlag aspectRatio =
-                                    Theme.viewFlagUnsafe
-                                        []
-                                        { filename = String.toLower alpha2
-                                        , aspectRatio = aspectRatio
-                                        , width = flagWidth
-                                        }
-                                        |> Just
-                            in
-                            case alpha2 of
-                                "001" ->
-                                    unsafeFlag ( 1, 1 )
+                            if alpha2 == "419" then
+                                Nothing
 
-                                "GB-WLS" ->
-                                    unsafeFlag ( 5, 3 )
+                            else if String.isEmpty cutName then
+                                -- let _ = Debug.log "ALPHA2 NOT FOUND" { alpha2 = alpha2, locale = locale } in
+                                Nothing
 
-                                "GB-SCT" ->
-                                    unsafeFlag ( 5, 3 )
+                            else
+                                Theme.textInvariant cutName |> Just
 
-                                _ ->
-                                    if String.isEmpty cutName then
-                                        Nothing
+                FoundRegion "GB-WLS" ->
+                    Just <| unsafeFlag "GB-WLS" ( 5, 3 )
 
-                                    else
-                                        Theme.textInvariant cutName |> Just
+                FoundRegion "GB-SCT" ->
+                    Just <| unsafeFlag "GB-SCT" ( 5, 3 )
 
-                Nothing ->
+                FoundRegion "ES-EA" ->
+                    Element.row []
+                        [ unsafeFlag "ES-EA-CEUTA" ( 3, 2 )
+                        , Theme.textInvariant " / "
+                        , unsafeFlag "ES-EA-MELILLA" ( 3, 2 )
+                        ]
+                        |> Just
+
+                FoundRegion alpha2 ->
+                    Just <| unsafeFlag alpha2 ( 3, 2 )
+
+                NotFound ->
                     if String.isEmpty cutName then
+                        -- let _ = Debug.log "ALPHA2 NOT FOUND" { locale = locale } in
                         Nothing
 
                     else if Just nativeName == Cldr.localeToNativeName "el-polyton" then
@@ -263,16 +286,19 @@ changingLocalePopup screen maybeInput =
                     let
                         flagsFirst : { a | locale : String } -> number
                         flagsFirst { locale } =
-                            if
-                                (localeToCountry locale
-                                    |> Maybe.andThen Cldr.fromAlpha2
-                                )
-                                    == Nothing
-                            then
-                                1
+                            case localeToCountry locale of
+                                FoundCountry alpha2 ->
+                                    if Cldr.fromAlpha2 alpha2 == Nothing then
+                                        1
 
-                            else
-                                0
+                                    else
+                                        0
+
+                                FoundRegion _ ->
+                                    0
+
+                                NotFound ->
+                                    1
 
                         count : Int
                         count =
@@ -281,11 +307,11 @@ changingLocalePopup screen maybeInput =
                         otherItems : Element Msg
                         otherItems =
                             (mains ++ List.sortBy flagsFirst others)
-                                |> List.map
+                                |> List.filterMap
                                     (\pair ->
-                                        localeButton pair.locale
-                                            []
-                                            (Maybe.withDefault Element.none <| flagLabel title pair)
+                                        flagLabel title pair
+                                            |> Maybe.map
+                                                (localeButton pair.locale [])
                                     )
                                 |> Theme.wrappedRow [ width fill ]
                     in
@@ -384,31 +410,47 @@ changingLocalePopup screen maybeInput =
                     ]
 
 
-localeToCountry : String -> Maybe String
+type MaybeCountry
+    = FoundCountry String
+    | FoundRegion String
+    | NotFound
+
+
+localeToCountry : String -> MaybeCountry
 localeToCountry locale =
     let
-        extractCountry : String -> Maybe String
+        extractCountry : String -> Maybe MaybeCountry
         extractCountry input =
             input
                 |> LanguageTag.Parser.parseBcp47
                 |> Maybe.andThen (\( _, { region } ) -> Maybe.map LanguageTag.Country.toCodeString region)
+                |> Maybe.map FoundCountry
     in
-    case locale of
-        "cy" ->
-            Just "GB-WLS"
+    case String.split "-" locale of
+        "cy" :: _ ->
+            FoundRegion "GB-WLS"
 
-        "gd" ->
-            Just "GB-SCT"
+        "gd" :: _ ->
+            FoundRegion "GB-SCT"
+
+        "ca" :: _ ->
+            FoundRegion "ES-CT"
+
+        "es" :: "IC" :: _ ->
+            FoundRegion "ES-IC"
+
+        "es" :: "EA" :: _ ->
+            FoundRegion "ES-EA"
 
         _ ->
-            locale
-                |> extractCountry
+            extractCountry locale
                 |> Maybe.Extra.orElseLazy
                     (\_ ->
                         locale
                             |> Cldr.likelySubtags
                             |> Maybe.andThen extractCountry
                     )
+                |> Maybe.withDefault NotFound
 
 
 view : Shared.Model -> Model -> View Msg
