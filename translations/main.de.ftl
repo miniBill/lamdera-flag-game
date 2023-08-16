@@ -1,4 +1,3 @@
-# fallback-language: en
 title = Flaggenspiel
 
 search = Suche
@@ -23,9 +22,19 @@ gameLength = Spiellänge
 gameLanguage = Spielsprache
 change = Ändern
 
+continents = Kontinente
+africa = Afrika
+antarctica = Antarktis
+asia = Asien
+europe = Europa
+northAmerica = Nordamerika
+oceania = Ozeanien
+southAmerica = Südamerika
+
 play = Spielen
 
 score = Punktestand: {$score}
+playAgain = Nochmal abspielen
 next = Weiter
 
 finalScore = Finaler Punktestand: {$points}/{$total}

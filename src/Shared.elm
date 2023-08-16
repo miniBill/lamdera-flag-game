@@ -162,13 +162,13 @@ gameOptionsCodec =
 continentCodec : Codec Continent
 continentCodec =
     Codec.custom
-        (\fAfrica fAntartica fAsia fEurope fNorthAmerica fOceania fSouthAmerica value ->
+        (\fAfrica fAntarctica fAsia fEurope fNorthAmerica fOceania fSouthAmerica value ->
             case value of
                 Africa ->
                     fAfrica
 
-                Antartica ->
-                    fAntartica
+                Antarctica ->
+                    fAntarctica
 
                 Asia ->
                     fAsia
@@ -186,7 +186,7 @@ continentCodec =
                     fSouthAmerica
         )
         |> Codec.variant0 "Africa" Africa
-        |> Codec.variant0 "Antartica" Antartica
+        |> Codec.variant0 "Antarctica" Antarctica
         |> Codec.variant0 "Asia" Asia
         |> Codec.variant0 "Europe" Europe
         |> Codec.variant0 "NorthAmerica" NorthAmerica
@@ -234,9 +234,9 @@ difficultyCodec =
 fixOptions : GameOptions -> GameOptions
 fixOptions options =
     let
-        withoutAntartica : List Continent
-        withoutAntartica =
-            List.Extra.remove Antartica options.continents
+        withoutAntarctica : List Continent
+        withoutAntarctica =
+            List.Extra.remove Antarctica options.continents
 
         almostAll : Int
         almostAll =
@@ -247,13 +247,13 @@ fixOptions options =
             { options
                 | continents =
                     if
-                        List.isEmpty withoutAntartica
-                            || (List.length withoutAntartica == almostAll)
+                        List.isEmpty withoutAntarctica
+                            || (List.length withoutAntarctica == almostAll)
                     then
                         Shared.Model.allContinents
 
                     else
-                        withoutAntartica
+                        withoutAntarctica
             }
     in
     -- TODO: FIX THIS

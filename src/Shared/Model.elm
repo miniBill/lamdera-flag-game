@@ -85,7 +85,7 @@ type alias GameOptions =
 
 type Continent
     = Africa
-    | Antartica
+    | Antarctica
     | Asia
     | Europe
     | NorthAmerica
@@ -119,7 +119,7 @@ allGuessPatterns =
 allContinents : List Continent
 allContinents =
     [ Africa
-    , Antartica
+    , Antarctica
     , Asia
     , Europe
     , NorthAmerica

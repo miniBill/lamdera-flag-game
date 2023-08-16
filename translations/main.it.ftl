@@ -1,4 +1,3 @@
-# fallback-language: en
 title = Indovina la bandiera
 
 search = Cerca
@@ -25,7 +24,7 @@ change = Cambia
 
 continents = Continenti
 africa = Africa
-antartica = Antartide
+antarctica = Antartide
 asia = Asia
 europe = Europa
 northAmerica = Nord America

@@ -24,7 +24,7 @@ change = Change
 
 continents = Continents
 africa = Africa
-antartica = Antartica
+antarctica = Antarctica
 asia = Asia
 europe = Europe
 northAmerica = North America

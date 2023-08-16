@@ -554,8 +554,8 @@ mainMenuRows options =
                     Africa ->
                         Translations.africa
 
-                    Antartica ->
-                        Translations.antartica
+                    Antarctica ->
+                        Translations.antarctica
 
                     Asia ->
                         Translations.asia

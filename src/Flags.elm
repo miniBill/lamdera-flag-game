@@ -166,8 +166,8 @@ continentToString continent =
         Africa ->
             "Africa"
 
-        Antartica ->
-            "Antartica"
+        Antarctica ->
+            "Antarctica"
 
         Asia ->
             "Asia"
@@ -218,7 +218,7 @@ toContinent country =
                     Africa
 
                 AQ ->
-                    Antartica
+                    Antarctica
 
                 AR ->
                     SouthAmerica
@@ -293,7 +293,7 @@ toContinent country =
                     Asia
 
                 BV ->
-                    Antartica
+                    Antarctica
 
                 BW ->
                     Africa
@@ -461,7 +461,7 @@ toContinent country =
                     Europe
 
                 GS ->
-                    Antartica
+                    Antarctica
 
                 GT_ ->
                     NorthAmerica
@@ -479,7 +479,7 @@ toContinent country =
                     Asia
 
                 HM ->
-                    Antartica
+                    Antarctica
 
                 HN ->
                     NorthAmerica
@@ -839,7 +839,7 @@ toContinent country =
                     Africa
 
                 TF ->
-                    Antartica
+                    Antarctica
 
                 TG ->
                     Africa
