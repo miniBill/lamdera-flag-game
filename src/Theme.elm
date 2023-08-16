@@ -1,7 +1,7 @@
 module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, localeToLanguage, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, viewFlagUnsafe, wrappedRow)
 
 import AspectRatios
-import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, rgba, shrink, width)
+import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, shrink, width)
 import Element.WithContext.Background as Background
 import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
@@ -35,6 +35,14 @@ padding =
     Element.padding rythm
 
 
+shadow : Attribute msg
+shadow =
+    Html.Attributes.style
+        "filter"
+        "drop-shadow(5px 5px 2.5px rgba(0,0,0,0.15)) drop-shadow(2.5px 2.5px 0px rgba(0,0,0,0.15))"
+        |> Element.htmlAttribute
+
+
 button :
     List (Attribute msg)
     ->
@@ -50,12 +58,7 @@ button attrs config =
             :: gradient config.background
             :: Font.color (rgb 1 1 1)
             :: Element.mouseOver [ Background.color <| rgb255 0x9B 0x9B 0xFB ]
-            :: Border.shadow
-                { offset = ( 2.5, 2.5 )
-                , size = 2.5
-                , blur = 2.5
-                , color = rgba 0 0 0 0.15
-                }
+            :: shadow
             :: attrs
         )
         { label = config.label
@@ -237,12 +240,7 @@ viewFlagUnsafe attrs config =
             w * aspectRatioHeight // aspectRatioWidth
     in
     image
-        ([ Border.shadow
-            { offset = ( 5, 5 )
-            , size = 5
-            , blur = 5
-            , color = rgba 0 0 0 0.15
-            }
+        ([ shadow
          , width <| px w
          , height <| px h
          ]
