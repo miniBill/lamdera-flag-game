@@ -1,17 +1,16 @@
 module Effect exposing
     ( Effect
     , none, batch
-    , sendCmd, changeOptions, locale, play, finished, seed, loadLocalStorage, saveToLocalStorage, loadLocale
+    , sendCmd, changeOptions, locale, play, finished, seed, loadLocalStorage, saveToLocalStorage, loadLocale, measureScreen
     , pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
     , map, toCmd
-    , measureScreen
     )
 
 {-|
 
 @docs Effect
 @docs none, batch
-@docs sendCmd, changeOptions, locale, play, finished, seed, loadLocalStorage, saveToLocalStorage, loadLocale
+@docs sendCmd, changeOptions, locale, play, finished, seed, loadLocalStorage, saveToLocalStorage, loadLocale, measureScreen
 @docs pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
 
 @docs map, toCmd
