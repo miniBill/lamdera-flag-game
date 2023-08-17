@@ -244,6 +244,9 @@ changingLocalePopup screen maybeInput =
             if Just nativeName == Cldr.localeToNativeName "el-polyton" then
                 Maybe.withDefault "" (Cldr.localeToNativeName "el")
 
+            else if nativeName == "Српски" then
+                "Српски (ћирилица)"
+
             else
                 nativeName
                     |> String.split "-"
