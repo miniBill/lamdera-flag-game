@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, localeToLanguage, padding, row, rythm, selectableButton, spacing, text, textInvariant, viewFlag, viewFlagUnsafe, wrappedRow)
+module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, localeToLanguage, padding, row, rythm, selectableButton, spacing, text, textInvariant, titleAttribute, viewFlag, viewFlagUnsafe, wrappedRow)
 
 import AspectRatios
 import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, shrink, width)
@@ -301,3 +301,8 @@ selectableButton attrs config =
         , label = text config.label
         , onPress = Just config.onPress
         }
+
+
+titleAttribute : String -> Attribute msg
+titleAttribute arg =
+    Element.htmlAttribute <| Html.Attributes.title arg

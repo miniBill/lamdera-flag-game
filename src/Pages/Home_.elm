@@ -131,7 +131,7 @@ changingLocalePopup screen maybeInput =
                 , onPress = Just <| Locale locale
                 }
 
-        flagLabel : String -> { locale : String, nativeName : String } -> Maybe (Element msg)
+        flagLabel : String -> { locale : String, nativeName : String, englishName : String } -> Maybe (Element msg)
         flagLabel title { locale, nativeName } =
             let
                 cutName : String
@@ -166,7 +166,7 @@ changingLocalePopup screen maybeInput =
                         , height <| Element.minimum 26 shrink
                         ]
                         [ Theme.viewFlagUnsafe
-                            []
+                            [ Theme.titleAttribute alpha2 ]
                             { filename = String.toLower alpha2
                             , aspectRatio = aspectRatio
                             , width = flagWidth
@@ -186,7 +186,11 @@ changingLocalePopup screen maybeInput =
                                 , centerY
                                 , height <| Element.minimum 26 shrink
                                 ]
-                                [ Theme.viewFlag [ centerX, centerY ]
+                                [ Theme.viewFlag
+                                    [ centerX
+                                    , centerY
+                                    , Theme.titleAttribute alpha2
+                                    ]
                                     { country = Iso3166 countryCode
                                     , width = flagWidth
                                     }
@@ -210,14 +214,6 @@ changingLocalePopup screen maybeInput =
 
                 FoundRegion "GB-SCT" ->
                     Just <| unsafeFlag "GB-SCT" ( 5, 3 )
-
-                FoundRegion "ES-EA" ->
-                    Element.row []
-                        [ unsafeFlag "ES-EA-CEUTA" ( 3, 2 )
-                        , Theme.textInvariant " / "
-                        , unsafeFlag "ES-EA-MELILLA" ( 3, 2 )
-                        ]
-                        |> Just
 
                 FoundRegion alpha2 ->
                     Just <| unsafeFlag alpha2 ( 3, 2 )
@@ -255,14 +251,18 @@ changingLocalePopup screen maybeInput =
                     |> Maybe.withDefault ""
                     |> String.trim
 
-        viewGroup : ( { locale : String, nativeName : String }, List { locale : String, nativeName : String } ) -> Element Msg
+        viewGroup :
+            ( { locale : String, nativeName : String, englishName : String }
+            , List { locale : String, nativeName : String, englishName : String }
+            )
+            -> Element Msg
         viewGroup ( first, rest ) =
             let
                 title : String
                 title =
                     nativeNameToTitle first.nativeName
 
-                group : List { locale : String, nativeName : String }
+                group : List { locale : String, nativeName : String, englishName : String }
                 group =
                     first :: rest
             in
@@ -273,7 +273,14 @@ changingLocalePopup screen maybeInput =
             of
                 ( [ pair ], [] ) ->
                     localeButton pair.locale
-                        [ width fill ]
+                        [ width fill
+                        , Theme.titleAttribute <|
+                            if title == pair.englishName then
+                                title
+
+                            else
+                                title ++ " (" ++ pair.englishName ++ ")"
+                        ]
                         (Theme.row [ centerY ]
                             [ Theme.textInvariant title
                             , flagLabel title pair
@@ -315,7 +322,15 @@ changingLocalePopup screen maybeInput =
                                     )
                                 |> Theme.wrappedRow [ width fill ]
                     in
-                    nonButton [ width fill ]
+                    nonButton
+                        [ width fill
+                        , Theme.titleAttribute <|
+                            if title == first.englishName then
+                                title
+
+                            else
+                                title ++ " (" ++ first.englishName ++ ")"
+                        ]
                         ((if count <= 2 then
                             Theme.row
 
@@ -332,7 +347,7 @@ changingLocalePopup screen maybeInput =
         columnWidth =
             500
 
-        localeColumn : List (Attribute Msg) -> List { locale : String, nativeName : String } -> Element Msg
+        localeColumn : List (Attribute Msg) -> List { locale : String, nativeName : String, englishName : String } -> Element Msg
         localeColumn attrs locales =
             locales
                 |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
@@ -350,18 +365,20 @@ changingLocalePopup screen maybeInput =
 
         Just input ->
             let
-                filteredLocales : List { locale : String, nativeName : String }
+                filteredLocales : List { locale : String, nativeName : String, englishName : String }
                 filteredLocales =
                     Cldr.allNontrivialLocales
                         |> List.filterMap
                             (\locale ->
-                                Maybe.map
-                                    (\nativeName ->
+                                Maybe.map2
+                                    (\nativeName englishName ->
                                         { locale = locale
                                         , nativeName = String.Extra.toSentenceCase nativeName
+                                        , englishName = String.Extra.toSentenceCase englishName
                                         }
                                     )
                                     (Cldr.localeToNativeName locale)
+                                    (Cldr.localeToEnglishName locale)
                             )
                         |> List.filter
                             (\{ nativeName } ->
@@ -435,12 +452,6 @@ localeToCountry locale =
 
         "ca" :: _ ->
             FoundRegion "ES-CT"
-
-        "es" :: "IC" :: _ ->
-            FoundRegion "ES-IC"
-
-        "es" :: "EA" :: _ ->
-            FoundRegion "ES-EA"
 
         _ ->
             extractCountry locale
