@@ -402,7 +402,7 @@ changingLocalePopup screen maybeInput =
                                             else
                                                 1
                                 )
-                            |> List.map (\( head, tail ) -> localeColumn [] (head :: tail))
+                            |> List.map (\( head, tail ) -> localeColumn [ alignTop ] (head :: tail))
                             |> Theme.row []
 
                       else
