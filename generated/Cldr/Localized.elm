@@ -113,20 +113,11 @@ import Cldr.Slovenian
 import Cldr.Somali
 import Cldr.Spanish
 import Cldr.Spanish.Argentina
-import Cldr.Spanish.Belize
 import Cldr.Spanish.Brazil
-import Cldr.Spanish.CanaryIslands
-import Cldr.Spanish.CeutaAndMelilla
 import Cldr.Spanish.Chile
-import Cldr.Spanish.Cuba
-import Cldr.Spanish.ElSalvador
-import Cldr.Spanish.EquatorialGuinea
-import Cldr.Spanish.LatinAmerica
 import Cldr.Spanish.Mexico
-import Cldr.Spanish.Philippines
 import Cldr.Spanish.PuertoRico
 import Cldr.Spanish.UnitedStates
-import Cldr.Spanish.Uruguay
 import Cldr.Swahili
 import Cldr.Swahili.CongoDRC
 import Cldr.Swahili.Kenya
@@ -508,7 +499,7 @@ countryCodeToName locale countryCode =
             Just (Cldr.English.countryCodeToName countryCode)
 
         "es" :: "419" :: _ ->
-            Just (Cldr.Spanish.LatinAmerica.countryCodeToName countryCode)
+            Just (Cldr.Spanish.Brazil.countryCodeToName countryCode)
 
         "es" :: "AR" :: _ ->
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
@@ -520,7 +511,7 @@ countryCodeToName locale countryCode =
             Just (Cldr.Spanish.Brazil.countryCodeToName countryCode)
 
         "es" :: "BZ" :: _ ->
-            Just (Cldr.Spanish.Belize.countryCodeToName countryCode)
+            Just (Cldr.Spanish.Brazil.countryCodeToName countryCode)
 
         "es" :: "CL" :: _ ->
             Just (Cldr.Spanish.Chile.countryCodeToName countryCode)
@@ -532,28 +523,19 @@ countryCodeToName locale countryCode =
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
 
         "es" :: "CU" :: _ ->
-            Just (Cldr.Spanish.Cuba.countryCodeToName countryCode)
+            Just (Cldr.Spanish.Brazil.countryCodeToName countryCode)
 
         "es" :: "DO" :: _ ->
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
 
-        "es" :: "EA" :: _ ->
-            Just (Cldr.Spanish.CeutaAndMelilla.countryCodeToName countryCode)
-
         "es" :: "EC" :: _ ->
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
-
-        "es" :: "GQ" :: _ ->
-            Just (Cldr.Spanish.EquatorialGuinea.countryCodeToName countryCode)
 
         "es" :: "GT" :: _ ->
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
 
         "es" :: "HN" :: _ ->
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
-
-        "es" :: "IC" :: _ ->
-            Just (Cldr.Spanish.CanaryIslands.countryCodeToName countryCode)
 
         "es" :: "MX" :: _ ->
             Just (Cldr.Spanish.Mexico.countryCodeToName countryCode)
@@ -567,9 +549,6 @@ countryCodeToName locale countryCode =
         "es" :: "PE" :: _ ->
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
 
-        "es" :: "PH" :: _ ->
-            Just (Cldr.Spanish.Philippines.countryCodeToName countryCode)
-
         "es" :: "PR" :: _ ->
             Just (Cldr.Spanish.PuertoRico.countryCodeToName countryCode)
 
@@ -577,13 +556,13 @@ countryCodeToName locale countryCode =
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
 
         "es" :: "SV" :: _ ->
-            Just (Cldr.Spanish.ElSalvador.countryCodeToName countryCode)
+            Just (Cldr.Spanish.PuertoRico.countryCodeToName countryCode)
 
         "es" :: "US" :: _ ->
             Just (Cldr.Spanish.UnitedStates.countryCodeToName countryCode)
 
         "es" :: "UY" :: _ ->
-            Just (Cldr.Spanish.Uruguay.countryCodeToName countryCode)
+            Just (Cldr.Spanish.Brazil.countryCodeToName countryCode)
 
         "es" :: "VE" :: _ ->
             Just (Cldr.Spanish.Argentina.countryCodeToName countryCode)
