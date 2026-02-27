@@ -1,11 +1,11 @@
 {
   "license": "MIT",
   "devDependencies": {
-    "elm-codegen": "^0.5.3",
+    "elm-codegen": "^0.6.3",
     "elm-land": "^0.20.1",
-    "elm-review": "^2.11.1",
-    "svgo": "^3.2.0",
-    "travelm-agency": "^3.4.1"
+    "elm-review": "^2.13.5",
+    "svgo": "^4.0.0",
+    "travelm-agency": "^3.8.0"
   },
   "resolutions": {
     "**/wrap-ansi": "^7.0.0"
