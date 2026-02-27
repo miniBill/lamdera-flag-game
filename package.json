@@ -8,6 +8,9 @@
     "travelm-agency": "^3.8.0"
   },
   "resolutions": {
-    "**/wrap-ansi": "^7.0.0"
+    "**/wrap-ansi": "^7.0.0",
+    "cross-spawn": "6.0.6",
+    "minimatch": "3.1.4",
+    "vite": "5.4.21"
   }
 }
