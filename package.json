@@ -11,6 +11,7 @@
     "**/wrap-ansi": "^7.0.0",
     "cross-spawn": "6.0.6",
     "minimatch": "3.1.4",
-    "vite": "5.4.21"
+    "vite": "5.4.21",
+    "esbuild": "0.25.0"
   }
 }
