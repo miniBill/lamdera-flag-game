@@ -98,7 +98,7 @@ update msg model =
                         |> List.map (List.Extra.remove countryCode)
                         |> (::) []
                         |> List.Extra.updateAt index ((::) countryCode)
-                        |> List.Extra.filterNot List.isEmpty
+                        |> List.Extra.removeWhen List.isEmpty
                         |> List.sortBy List.length
                         |> List.map (List.sortBy countryToAlpha2)
               }
