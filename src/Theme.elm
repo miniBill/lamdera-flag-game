@@ -172,13 +172,10 @@ grid attrs { widths, elements } =
                 , view : List (Element msg) -> Element msg
                 }
         columns =
-            List.map
-                (\i ->
+            List.map2
+                (\i width ->
                     { header = Element.none
-                    , width =
-                        widths
-                            |> List.Extra.getAt i
-                            |> Maybe.withDefault shrink
+                    , width = width
                     , view =
                         \elementsRow ->
                             elementsRow
@@ -187,6 +184,7 @@ grid attrs { widths, elements } =
                     }
                 )
                 (List.range 0 (columnCount - 1))
+                (widths ++ List.repeat (columnCount - List.length widths) shrink)
     in
     Element.table (spacing :: attrs)
         { data = elements
