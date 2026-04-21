@@ -15,6 +15,7 @@ module View exposing
 import Browser
 import Element.WithContext as Element exposing (Element, fill, height, rgb255, scrollbarY, width)
 import Element.WithContext.Font as Font
+import Html.Attributes
 import Route exposing (Route)
 import Shared.Model exposing (Context)
 import Theme
@@ -50,6 +51,7 @@ toBrowserDocument { shared, view } =
                 ]
             , scrollbarY
             , Font.family [ Font.typeface "urbane-rounded", Font.sansSerif ]
+            , Element.htmlAttribute (Html.Attributes.lang shared.context.locale)
             ]
             view
         ]
