@@ -19,7 +19,7 @@
             "ianmackenzie/elm-units": "2.10.0",
             "lamdera/codecs": "1.0.0",
             "lamdera/core": "1.0.0",
-            "miniBill/elm-codec": "2.3.0",
+            "miniBill/elm-codec": "2.3.1",
             "miniBill/elm-ui-with-context": "2.0.0"
         },
         "indirect": {
