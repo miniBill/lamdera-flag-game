@@ -51,10 +51,15 @@ button attrs config =
     Html.button
         (case config.onPress of
             Just msg ->
-                gradient
-                    (Maybe.withDefault colors.buttonBackground config.background)
-                    :: Events.onClick msg
-                    :: attrs
+                case config.background of
+                    Nothing ->
+                        Events.onClick msg
+                            :: attrs
+
+                    Just background ->
+                        gradient background
+                            :: Events.onClick msg
+                            :: attrs
 
             Nothing ->
                 gradient [ ( 0, Color.rgb 0.7 0.7 0.7 ) ]
@@ -109,6 +114,7 @@ column attrs children =
         (spacing
             :: Attributes.style "display" "flex"
             :: Attributes.style "flex-direction" "column"
+            :: Attributes.style "align-items" "center"
             :: attrs
         )
         children
@@ -120,6 +126,7 @@ row attrs children =
         (spacing
             :: Attributes.style "display" "flex"
             :: Attributes.style "flex-direction" "row"
+            :: Attributes.style "align-items" "center"
             :: attrs
         )
         children
@@ -131,6 +138,7 @@ wrappedRow attrs children =
         (spacing
             :: Attributes.style "display" "flex"
             :: Attributes.style "flex-wrap" "wrap"
+            :: Attributes.style "align-items" "center"
             :: attrs
         )
         children

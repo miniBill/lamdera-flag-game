@@ -106,17 +106,13 @@ propertyToString property =
 changingLocalePopup : String -> Html Msg
 changingLocalePopup input =
     let
-        nonButton : List (Attribute msg) -> Html msg -> Html msg
-        nonButton attrs label =
-            Html.div
-                ([ Attributes.style "border-radius" "40px"
-                 , Attributes.style "border" "1px solid #987850"
-                 , Attributes.style "color" "white"
-                 , Theme.padding
-                 ]
-                    ++ attrs
-                )
-                [ label ]
+        nonButton : List (Attribute msg)
+        nonButton =
+            [ Attributes.style "border-radius" "40px"
+            , Attributes.style "border" "1px solid #987850"
+            , Attributes.style "color" "white"
+            , Theme.padding
+            ]
 
         localeButton : String -> List (Attribute Msg) -> Html Msg -> Html Msg
         localeButton locale attrs label =
@@ -255,83 +251,80 @@ changingLocalePopup input =
                 title =
                     nativeNameToTitle first.nativeName
 
-                group : List { locale : String, nativeName : String, englishName : String }
-                group =
-                    first :: rest
+                mainTitle : String
+                mainTitle =
+                    if title == first.englishName then
+                        title
+
+                    else
+                        title ++ " (" ++ first.englishName ++ ")"
             in
-            case
-                List.partition (\{ nativeName } -> nativeName == title) group
-            of
-                ( [ pair ], [] ) ->
-                    localeButton pair.locale
-                        [ Attributes.title <|
-                            if title == pair.englishName then
-                                title
-
-                            else
-                                title ++ " (" ++ pair.englishName ++ ")"
+            if List.isEmpty rest then
+                localeButton first.locale
+                    [ Attributes.title mainTitle
+                    ]
+                    (Theme.column
+                        [ Attributes.lang first.locale
                         ]
-                        (Theme.column
-                            [ Attributes.lang pair.locale
-                            ]
-                            (case flagLabel title pair of
-                                Nothing ->
-                                    [ Theme.textInvariant title
-                                    ]
+                        (case flagLabel title first of
+                            Nothing ->
+                                [ Theme.textInvariant title ]
 
-                                Just label ->
-                                    [ Theme.textInvariant title
-                                    , label |> nonButton []
-                                    ]
-                            )
+                            Just label ->
+                                [ Theme.textInvariant title
+                                , Html.div nonButton [ label ]
+                                ]
                         )
+                    )
 
-                ( mains, others ) ->
-                    let
-                        flagsFirst : { a | locale : String } -> number
-                        flagsFirst { locale } =
-                            case localeToCountry locale of
-                                FoundCountry alpha2 ->
-                                    if Cldr.fromAlpha2 alpha2 == Nothing then
-                                        1
+            else
+                let
+                    group : List { locale : String, nativeName : String, englishName : String }
+                    group =
+                        first :: rest
 
-                                    else
-                                        0
+                    ( mains, others ) =
+                        List.partition (\{ nativeName } -> nativeName == title) group
 
-                                FoundRegion _ ->
-                                    0
-
-                                NotFound ->
+                    flagsFirst : { a | locale : String } -> number
+                    flagsFirst { locale } =
+                        case localeToCountry locale of
+                            FoundCountry alpha2 ->
+                                if Cldr.fromAlpha2 alpha2 == Nothing then
                                     1
 
-                        otherItems : Html Msg
-                        otherItems =
-                            (mains ++ List.sortBy flagsFirst others)
-                                |> List.filterMap
-                                    (\pair ->
-                                        flagLabel title pair
-                                            |> Maybe.map
-                                                (localeButton pair.locale [])
-                                    )
-                                |> Theme.wrappedRow []
-                    in
-                    nonButton
-                        [ Attributes.title <|
-                            if title == first.englishName then
-                                title
+                                else
+                                    0
 
-                            else
-                                title ++ " (" ++ first.englishName ++ ")"
-                        ]
-                        (Theme.column
-                            [ Attributes.lang first.locale ]
-                            [ Theme.textInvariant title
-                            , otherItems
-                            ]
-                        )
+                            FoundRegion _ ->
+                                0
+
+                            NotFound ->
+                                1
+
+                    otherItems : List (Html Msg)
+                    otherItems =
+                        (mains ++ List.sortBy flagsFirst others)
+                            |> List.filterMap
+                                (\pair ->
+                                    flagLabel title pair
+                                        |> Maybe.map
+                                            (localeButton pair.locale
+                                                [ Attributes.style "align-self" "center" ]
+                                            )
+                                )
+                in
+                Theme.column
+                    (Attributes.title mainTitle
+                        :: Attributes.lang first.locale
+                        :: nonButton
+                    )
+                    [ Theme.textInvariant title
+                    , Theme.wrappedRow [] otherItems
+                    ]
     in
     Theme.column
-        [ Theme.padding ]
+        [ Theme.padding, Attributes.style "background" "#C79D69" ]
         [ Html.label
             [ Attributes.style "display" "flex"
             , Attributes.style "flex-wrap" "wrap"
