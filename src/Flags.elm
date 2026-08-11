@@ -4,7 +4,7 @@ import Cldr exposing (CountryCode(..))
 import List.Extra
 import Random
 import Random.List
-import Shared.Model exposing (Card, Continent(..), Country(..), Difficulty(..), GameOptions, Property(..))
+import Shared.Model exposing (Card, Continent(..), Country(..), Difficulty(..), GameOptions, PartiallyRecognized(..), Property(..))
 
 
 allCards : GameOptions -> Random.Seed -> ( List Card, Random.Seed )
@@ -31,17 +31,18 @@ allCards options seed =
 
 similarityGroups : List (List Country)
 similarityGroups =
-    [ [ Iso3166 AD, Iso3166 MD, Iso3166 RO, Iso3166 TD ]
+    [ [ PartiallyRecognized Abkhazia, Iso3166 LR, Iso3166 MY, Iso3166 TO, Iso3166 TW, Iso3166 UM, Iso3166 US, Iso3166 WS ]
+    , [ Iso3166 AD, Iso3166 MD, Iso3166 RO, Iso3166 TD ]
     , [ Iso3166 AE, Iso3166 EH, Iso3166 JO, Iso3166 KW, Iso3166 PS, Iso3166 SD, Iso3166 SS ]
-    , [ Iso3166 AF, Iso3166 AG, Iso3166 AO, Iso3166 AQ, Iso3166 AW, Iso3166 BB, Iso3166 BN, Iso3166 BR, Iso3166 BZ, Iso3166 CA, Iso3166 CC, Iso3166 CF, Iso3166 CH, Iso3166 CN, Iso3166 CX, Iso3166 CY, Iso3166 ER, Iso3166 ES, Iso3166 GB, Iso3166 GE, Iso3166 GI, Iso3166 GL, Iso3166 GR, Iso3166 HK, Iso3166 IL, Iso3166 IM, Iso3166 IN, Iso3166 JE, Iso3166 JM, Iso3166 JP, Iso3166 KE, Iso3166 KH, Iso3166 KM, Iso3166 KR, Iso3166 LB, Iso3166 LC, Iso3166 LI, Iso3166 LS, Iso3166 MK, Iso3166 MN, Iso3166 MO, Iso3166 MW, Iso3166 MZ, Iso3166 OM, Iso3166 PA, Iso3166 PG, Iso3166 PH, Iso3166 PT, Iso3166 SA, Iso3166 SB, Iso3166 SC, Iso3166 SM, Iso3166 SX, Iso3166 SZ, Iso3166 TF, Iso3166 TK, Iso3166 UG, Iso3166 VA, Iso3166 VC, Iso3166 VI, Iso3166 VU, Iso3166 WF, Iso3166 XK, Iso3166 ZA, Iso3166 ZM ]
+    , [ Iso3166 AF, Iso3166 AG, Iso3166 AO, Iso3166 AQ, Iso3166 AW, Iso3166 BB, Iso3166 BN, Iso3166 BR, Iso3166 BZ, Iso3166 CA, Iso3166 CC, Iso3166 CF, Iso3166 CH, Iso3166 CN, Iso3166 CX, Iso3166 CY, Iso3166 ER, Iso3166 ES, Iso3166 GB, Iso3166 GE, Iso3166 GI, Iso3166 GL, Iso3166 GR, Iso3166 HK, Iso3166 IL, Iso3166 IM, Iso3166 IN, Iso3166 JE, Iso3166 JM, Iso3166 JP, Iso3166 KE, Iso3166 KH, Iso3166 KM, Iso3166 KR, Iso3166 LB, Iso3166 LC, Iso3166 LI, Iso3166 LS, Iso3166 MK, Iso3166 MN, Iso3166 MO, Iso3166 MW, Iso3166 MZ, Iso3166 OM, Iso3166 PA, Iso3166 PG, Iso3166 PH, Iso3166 PT, Iso3166 SA, Iso3166 SB, Iso3166 SC, Iso3166 SM, PartiallyRecognized Somaliland, Iso3166 SX, Iso3166 SZ, Iso3166 TF, Iso3166 TK, PartiallyRecognized Transnistria, Iso3166 UG, Iso3166 VA, Iso3166 VC, Iso3166 VI, Iso3166 VU, Iso3166 WF, Iso3166 XK, Iso3166 ZA, Iso3166 ZM ]
     , [ Iso3166 AI, Iso3166 AU, Iso3166 BM, Iso3166 CK, Iso3166 FJ, Iso3166 FK, Iso3166 GS, Iso3166 HM, Iso3166 IO, Iso3166 KY, Iso3166 MS, Iso3166 NU, Iso3166 NZ, Iso3166 PN, Iso3166 SH, Iso3166 TC, Iso3166 TV, Iso3166 VG ]
     , [ Iso3166 AL, Iso3166 BA, Iso3166 BQ, Iso3166 CZ, Iso3166 HR, Iso3166 LU, Iso3166 ME, Iso3166 NL, Iso3166 RS, Iso3166 RU, Iso3166 SI, Iso3166 SK ]
-    , [ Iso3166 AM, Iso3166 BE, Iso3166 BW, Iso3166 DE, Iso3166 EE, Iso3166 GA, Iso3166 GM, Iso3166 LT_, Iso3166 MG, Iso3166 MU, Iso3166 NG, Iso3166 SL, Iso3166 TH, Iso3166 UA ]
+    , [ Iso3166 AM, Iso3166 BE, Iso3166 BW, Iso3166 DE, Iso3166 EE, Iso3166 GA, Iso3166 GM, Iso3166 LT_, Iso3166 MG, Iso3166 MU, Iso3166 NG, Iso3166 SL, PartiallyRecognized SouthOssetia, Iso3166 TH, Iso3166 UA ]
     , [ Iso3166 AR, Iso3166 BO, Iso3166 CL, Iso3166 CO, Iso3166 EC, Iso3166 PE, Iso3166 PY, Iso3166 UY, Iso3166 VE ]
     , [ Iso3166 AS, Iso3166 CR, Iso3166 CV, Iso3166 CW, Iso3166 DM, Iso3166 DO, Iso3166 FM, Iso3166 GQ, Iso3166 GU, Iso3166 HT, Iso3166 KI, Iso3166 MH, Iso3166 MP, Iso3166 NF, Iso3166 NR, Iso3166 PF, Iso3166 PW ]
     , [ Iso3166 AT, Iso3166 ID, Iso3166 LV, Iso3166 MC, Iso3166 MT, Iso3166 PL, Iso3166 SG ]
     , [ Iso3166 AX, Iso3166 BV, Iso3166 DK, Iso3166 FI, Iso3166 FO, Iso3166 GG, Iso3166 IS, Iso3166 NO, Iso3166 SE, Iso3166 SJ ]
-    , [ Iso3166 AZ, Iso3166 DZ, Iso3166 LY, Iso3166 MR, Iso3166 MV, Iso3166 PK, Iso3166 TN, Iso3166 TR ]
+    , [ Iso3166 AZ, Iso3166 DZ, Iso3166 LY, Iso3166 MR, Iso3166 MV, PartiallyRecognized NorthernCyprus, Iso3166 PK, Iso3166 TN, Iso3166 TR ]
     , [ Iso3166 BD, Iso3166 BS, Iso3166 CD, Iso3166 DJ, Iso3166 GY, Iso3166 KN, Iso3166 LA, Iso3166 NA, Iso3166 NE, Iso3166 RW, Iso3166 TL, Iso3166 TT, Iso3166 TZ ]
     , [ Iso3166 BF, Iso3166 BI, Iso3166 BJ, Iso3166 CG, Iso3166 CM, Iso3166 ET, Iso3166 GD, Iso3166 GH, Iso3166 GN, Iso3166 GW, Iso3166 ML, Iso3166 SN, Iso3166 SR, Iso3166 ST, Iso3166 TG, Iso3166 ZW ]
     , [ Iso3166 BG, Iso3166 BY, Iso3166 CI, Iso3166 HU, Iso3166 IE, Iso3166 IT, Iso3166 MX ]
@@ -52,7 +53,6 @@ similarityGroups =
     , [ Iso3166 EG, Iso3166 IQ, Iso3166 IR, Iso3166 SY, Iso3166 YE ]
     , [ Iso3166 GT_, Iso3166 HN, Iso3166 NI, Iso3166 SV ]
     , [ Iso3166 KP, Iso3166 MA, Iso3166 MM, Iso3166 SO, Iso3166 VN ]
-    , [ Iso3166 LR, Iso3166 MY, Iso3166 TO, Iso3166 TW, Iso3166 UM, Iso3166 US, Iso3166 WS ]
     ]
 
 
@@ -201,9 +201,6 @@ continentToString continent =
 toContinent : Country -> Continent
 toContinent country =
     case country of
-        PartiallyRecognized ever ->
-            never ever
-
         Iso3166 countryCode ->
             case countryCode of
                 AD ->
@@ -955,6 +952,21 @@ toContinent country =
 
                 ZW ->
                     Africa
+
+        PartiallyRecognized Abkhazia ->
+            Asia
+
+        PartiallyRecognized NorthernCyprus ->
+            Europe
+
+        PartiallyRecognized Somaliland ->
+            Africa
+
+        PartiallyRecognized SouthOssetia ->
+            Asia
+
+        PartiallyRecognized Transnistria ->
+            Europe
 
 
 type Sovereignty
@@ -1975,10 +1987,17 @@ toSovereignty country =
 all : { a | sovereignOnly : Bool, continents : List Continent } -> List Country
 all { sovereignOnly, continents } =
     let
+        iso3166 : List Country
+        iso3166 =
+            List.map Iso3166 Cldr.allCountryCodes
+
+        others : List Country
+        others =
+            List.map PartiallyRecognized Shared.Model.partiallyRecognized
+
         continentFiltered : List Country
         continentFiltered =
-            Cldr.allCountryCodes
-                |> List.map Iso3166
+            (iso3166 ++ others)
                 |> List.filter (\country -> List.member (toContinent country) continents)
     in
     if sovereignOnly then

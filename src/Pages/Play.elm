@@ -12,7 +12,7 @@ import List.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
-import Shared.Model exposing (Card, Country(..), Property(..))
+import Shared.Model exposing (Card, Country(..), PartiallyRecognized(..), Property(..))
 import Theme exposing (Attribute, Element, Gradient, column, text, textInvariant, viewFlag)
 import Translations
 import View exposing (View)
@@ -392,9 +392,6 @@ viewScore shared model =
 viewCountryName : Country -> Element msg
 viewCountryName country =
     case country of
-        PartiallyRecognized ever ->
-            never ever
-
         Iso3166 countryCode ->
             Element.withContext <|
                 \{ locale } ->
@@ -404,3 +401,23 @@ viewCountryName country =
 
                         Nothing ->
                             Theme.textInvariant (Cldr.English.countryCodeToName countryCode)
+
+        PartiallyRecognized Abkhazia ->
+            -- TODO: translate
+            Theme.textInvariant "Abkhazia"
+
+        PartiallyRecognized NorthernCyprus ->
+            -- TODO: translate
+            Theme.textInvariant "Northern Cyprus"
+
+        PartiallyRecognized Somaliland ->
+            -- TODO: translate
+            Theme.textInvariant "Somaliland"
+
+        PartiallyRecognized SouthOssetia ->
+            -- TODO: translate
+            Theme.textInvariant "South Ossetia"
+
+        PartiallyRecognized Transnistria ->
+            -- TODO: translate
+            Theme.textInvariant "Transnistria"

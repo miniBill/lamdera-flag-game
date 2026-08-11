@@ -764,5 +764,19 @@ getAspectRatio country =
                 Cldr.ZW ->
                     ( 2, 1 )
     
-        Shared.Model.PartiallyRecognized basicsNever ->
-            Basics.never basicsNever
+        Shared.Model.PartiallyRecognized sharedModelPartiallyRecognized ->
+            case sharedModelPartiallyRecognized of
+                Shared.Model.Abkhazia ->
+                    ( 2, 1 )
+            
+                Shared.Model.NorthernCyprus ->
+                    ( 3, 2 )
+            
+                Shared.Model.Somaliland ->
+                    ( 2, 1 )
+            
+                Shared.Model.SouthOssetia ->
+                    ( 2, 1 )
+            
+                Shared.Model.Transnistria ->
+                    ( 2, 1 )

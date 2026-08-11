@@ -1,4 +1,4 @@
-module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, Property(..), Screen, allContinents, allGuessPatterns, countryToAlpha2, defaultGameLength, defaultGameOptions)
+module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, PartiallyRecognized(..), Property(..), Screen, allContinents, allGuessPatterns, countryToAlpha2, defaultGameLength, defaultGameOptions, partiallyRecognized)
 
 {-| -}
 
@@ -56,7 +56,25 @@ type alias Card =
 
 type Country
     = Iso3166 Cldr.CountryCode
-    | PartiallyRecognized Never
+    | PartiallyRecognized PartiallyRecognized
+
+
+type PartiallyRecognized
+    = Abkhazia
+    | NorthernCyprus
+    | Somaliland
+    | SouthOssetia
+    | Transnistria
+
+
+partiallyRecognized : List PartiallyRecognized
+partiallyRecognized =
+    [ Abkhazia
+    , NorthernCyprus
+    , Somaliland
+    , SouthOssetia
+    , Transnistria
+    ]
 
 
 countryToAlpha2 : Country -> String
@@ -65,8 +83,20 @@ countryToAlpha2 country =
         Iso3166 countryCode ->
             Cldr.toAlpha2 countryCode
 
-        PartiallyRecognized ever ->
-            never ever
+        PartiallyRecognized Abkhazia ->
+            "abkhazia"
+
+        PartiallyRecognized NorthernCyprus ->
+            "northern-cyprus"
+
+        PartiallyRecognized Somaliland ->
+            "somaliland"
+
+        PartiallyRecognized SouthOssetia ->
+            "south-ossetia"
+
+        PartiallyRecognized Transnistria ->
+            "transnistria"
 
 
 

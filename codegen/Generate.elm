@@ -302,7 +302,14 @@ file (Generate.Directory { files }) =
                         , zW = get "zw"
                         }
             , partiallyRecognized =
-                \ever -> Gen.Basics.never ever
+                \countryName ->
+                    Gen.Shared.Model.caseOf_.partiallyRecognized countryName
+                        { abkhazia = get "abkhazia"
+                        , northernCyprus = get "northern-cyprus"
+                        , somaliland = get "somaliland"
+                        , southOssetia = get "south-ossetia"
+                        , transnistria = get "transnistria"
+                        }
             }
             |> Elm.withType (Annotation.tuple Annotation.int Annotation.int)
     )
@@ -459,7 +466,7 @@ alpha2Parser =
         |= Parser.getChompedString
             (Parser.succeed ()
                 |. Parser.chompIf Char.isAlpha
-                |. Parser.chompIf Char.isAlpha
+                |. Parser.chompWhile (\c -> Char.isAlpha c || c == '-')
             )
         |. Parser.symbol ".svg"
         |. Parser.end
