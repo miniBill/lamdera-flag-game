@@ -417,6 +417,34 @@ view shared model =
                     mainMenuRows shared.options
                         |> List.concatMap
                             (\( label, options ) ->
+                                let
+                                    elements =
+                                        case List.length options |> modBy 3 of
+                                            2 ->
+                                                let
+                                                    ( lasts, previous ) =
+                                                        options
+                                                            |> List.reverse
+                                                            |> List.Extra.splitAt 2
+                                                            |> Tuple.mapBoth List.reverse List.reverse
+                                                in
+                                                List.map (\f -> f 2) previous
+                                                    ++ List.map (\f -> f 3) lasts
+
+                                            1 ->
+                                                let
+                                                    ( lasts, previous ) =
+                                                        options
+                                                            |> List.reverse
+                                                            |> List.Extra.splitAt 4
+                                                            |> Tuple.mapBoth List.reverse List.reverse
+                                                in
+                                                List.map (\f -> f 2) previous
+                                                    ++ List.map (\f -> f 3) lasts
+
+                                            _ ->
+                                                List.map (\f -> f 2) options
+                                in
                                 [ Html.div
                                     [ Attributes.style "align-self" "center"
                                     , if shared.screen.width > 750 then
@@ -428,11 +456,8 @@ view shared model =
                                     [ label ]
                                 , Theme.grid
                                     [ Attributes.style "justify-self" "stretch" ]
-                                    { widths =
-                                        List.repeat
-                                            (min (List.length options) 3)
-                                            "auto"
-                                    , elements = options
+                                    { widths = List.repeat 6 "auto"
+                                    , elements = elements
                                     }
                                 ]
                             )
@@ -448,7 +473,7 @@ view shared model =
 
 mainMenuRows :
     GameOptions
-    -> List ( Html Msg, List (Html Msg) )
+    -> List ( Html Msg, List (Int -> Html Msg) )
 mainMenuRows options =
     [ radios Translations.difficulty
         { toLabel = difficultyToString
@@ -507,23 +532,27 @@ mainMenuRows options =
         }
     , ( Translations.gameLanguage
       , \_ ->
-            [ Html.withContext
-                (\context ->
-                    Theme.selectableButton []
-                        { selected = True
-                        , label =
-                            \_ ->
-                                Cldr.localeToNativeName context.locale
-                                    |> Maybe.withDefault "English"
-                                    |> String.Extra.toSentenceCase
-                        , onPress = Locale context.locale
-                        }
-                )
-            , Theme.selectableButton []
-                { selected = False
-                , label = Translations.change
-                , onPress = ChangingLocale ""
-                }
+            [ \span ->
+                Html.withContext
+                    (\context ->
+                        Theme.selectableButton
+                            [ Attributes.style "grid-column-end" ("span " ++ String.fromInt span) ]
+                            { selected = True
+                            , label =
+                                \_ ->
+                                    Cldr.localeToNativeName context.locale
+                                        |> Maybe.withDefault "English"
+                                        |> String.Extra.toSentenceCase
+                            , onPress = Locale context.locale
+                            }
+                    )
+            , \span ->
+                Theme.selectableButton
+                    [ Attributes.style "grid-column-end" ("span " ++ String.fromInt span) ]
+                    { selected = False
+                    , label = Translations.change
+                    , onPress = ChangingLocale ""
+                    }
             ]
       )
     , checkboxes Translations.continents
@@ -556,10 +585,11 @@ mainMenuRows options =
         }
     , ( \_ -> ""
       , let
-            filler : Html msg
-            filler =
+            filler : Int -> Html msg
+            filler span =
                 Theme.button
                     [ Attributes.style "visibility" "hidden"
+                    , Attributes.style "grid-column-end" ("span " ++ String.fromInt span)
                     ]
                     { background = Nothing
                     , label = Theme.textInvariant ""
@@ -568,11 +598,12 @@ mainMenuRows options =
         in
         \_ ->
             [ filler
-            , Theme.button []
-                { background = Nothing
-                , label = text Translations.play
-                , onPress = Just Play
-                }
+            , \span ->
+                Theme.button [ Attributes.style "grid-column-end" ("span " ++ String.fromInt span) ]
+                    { background = Nothing
+                    , label = text Translations.play
+                    , onPress = Just Play
+                    }
             , filler
             ]
       )
@@ -595,7 +626,7 @@ checkboxes :
         }
     ->
         ( I18n -> String
-        , GameOptions -> List (Html Msg)
+        , GameOptions -> List (Int -> Html Msg)
         )
 checkboxes label config =
     ( label
@@ -605,14 +636,14 @@ checkboxes label config =
             current =
                 config.get options
 
-            toButton : v -> Html Msg
-            toButton value =
+            toButton : v -> Int -> Html Msg
+            toButton value span =
                 let
                     selected : Bool
                     selected =
                         List.member value current
                 in
-                Theme.selectableButton []
+                Theme.selectableButton [ Attributes.style "grid-column-end" ("span " ++ String.fromInt span) ]
                     { label = config.toLabel value
                     , selected = selected
                     , onPress =
@@ -637,7 +668,7 @@ radios :
         , set : v -> GameOptions
         , all : List v
         }
-    -> ( I18n -> String, GameOptions -> List (Html Msg) )
+    -> ( I18n -> String, GameOptions -> List (Int -> Html Msg) )
 radios label config =
     ( label
     , \options ->
@@ -647,13 +678,14 @@ radios label config =
                 config.get options
         in
         List.map
-            (\value ->
+            (\value span ->
                 let
                     selected : Bool
                     selected =
                         value == current
                 in
-                Theme.selectableButton []
+                Theme.selectableButton
+                    [ Attributes.style "grid-column-end" ("span " ++ String.fromInt span) ]
                     { label = config.toLabel value
                     , selected = selected
                     , onPress = ChangeOptions <| config.set value
