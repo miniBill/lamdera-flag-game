@@ -13,9 +13,9 @@ module View exposing
 -}
 
 import Browser
-import Element.WithContext as Element exposing (Element, fill, height, rgb255, scrollbarY, width)
-import Element.WithContext.Font as Font
-import Html.Attributes
+import Color
+import Html.WithContext
+import Html.WithContext.Attributes exposing (style)
 import Route exposing (Route)
 import Shared.Model exposing (Context)
 import Theme
@@ -23,7 +23,7 @@ import Translations
 
 
 type alias View msg =
-    Element Context msg
+    List (Html.WithContext.Html Context msg)
 
 
 {-| Used internally by Elm Land to create your application
@@ -41,19 +41,24 @@ toBrowserDocument { shared, view } =
             Translations.init <|
                 Theme.localeToLanguage shared.context.locale
     , body =
-        [ Element.layout
+        [ Html.WithContext.toHtml
             shared.context
-            [ width fill
-            , height fill
-            , Theme.gradient
-                [ ( 20, rgb255 0xFD 0xED 0xD6 )
-                , ( 100, rgb255 0x9F 0x88 0x67 )
+            (Theme.column
+                [ style "width" "100%"
+                , style "min-height" "100dvh"
+                , style "align-items" "center"
+                , style "justify-items" "center"
+                , style "gap" (String.fromInt (2 * Theme.rhythm) ++ "px")
+                , Theme.gradient
+                    [ ( 20, Color.rgb255 0xFD 0xED 0xD6 )
+                    , ( 100, Color.rgb255 0x9F 0x88 0x67 )
+                    ]
+                , style "overflow-y" "scroll"
+                , style "font-family" "\"urbane-rounded\", sans-serif"
+                , Html.WithContext.Attributes.lang shared.context.locale
                 ]
-            , scrollbarY
-            , Font.family [ Font.typeface "urbane-rounded", Font.sansSerif ]
-            , Element.htmlAttribute (Html.Attributes.lang shared.context.locale)
-            ]
-            view
+                view
+            )
         ]
     }
 
@@ -62,7 +67,7 @@ toBrowserDocument { shared, view } =
 -}
 map : (msg1 -> msg2) -> View msg1 -> View msg2
 map fn view =
-    Element.map fn view
+    List.map (Html.WithContext.map fn) view
 
 
 {-| Used internally by Elm Land whenever transitioning between
@@ -70,7 +75,7 @@ authenticated pages.
 -}
 none : View msg
 none =
-    Element.none
+    []
 
 
 {-| If you customize the `View` module, anytime you run `elm-land add page`,
@@ -82,4 +87,4 @@ the new page working in the web browser!
 -}
 fromString : String -> View msg
 fromString moduleName =
-    Theme.textInvariant moduleName
+    [ Theme.textInvariant moduleName ]

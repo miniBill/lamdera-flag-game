@@ -2,12 +2,11 @@ module Pages.Home_ exposing (Model, Msg, page)
 
 import Cldr
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (alignTop, centerX, centerY, el, fill, height, inFront, rgb, rgb255, scrollbarY, shrink, width)
-import Element.WithContext.Border as Border
-import Element.WithContext.Font as Font
-import Element.WithContext.Input as Input
 import Flags
 import Html.Attributes
+import Html.WithContext as Html
+import Html.WithContext.Attributes as Attributes
+import Html.WithContext.Events as Events
 import LanguageTag.Parser
 import LanguageTag.Region
 import List.Extra
@@ -17,7 +16,7 @@ import Route exposing (Route)
 import Shared
 import Shared.Model exposing (Category(..), Continent(..), Country(..), Difficulty(..), GameOptions, Property(..), Screen)
 import String.Extra
-import Theme exposing (Attribute, Element, text)
+import Theme exposing (Attribute, Html, text)
 import Translations exposing (I18n)
 import View exposing (View)
 
@@ -105,33 +104,31 @@ propertyToString property =
             Translations.flag
 
 
-changingLocalePopup : Screen -> Maybe String -> Element Msg
-changingLocalePopup screen maybeInput =
+changingLocalePopup : Screen -> String -> Html Msg
+changingLocalePopup screen input =
     let
-        nonButton : List (Attribute msg) -> Element msg -> Element msg
+        nonButton : List (Attribute msg) -> Html msg -> Html msg
         nonButton attrs label =
-            el
-                ([ alignTop
-                 , Border.rounded 40
-                 , Border.width 1
-                 , Border.color <| rgb255 0x98 0x78 0x50
-                 , Font.color (rgb 1 1 1)
+            Html.div
+                ([ Attributes.style "border-radius" "40px"
+                 , Attributes.style "border" "1px solid #987850"
+                 , Attributes.style "color" "white"
                  , Theme.padding
                  ]
                     ++ attrs
                 )
-                label
+                [ label ]
 
-        localeButton : String -> List (Attribute Msg) -> Element Msg -> Element Msg
+        localeButton : String -> List (Attribute Msg) -> Html Msg -> Html Msg
         localeButton locale attrs label =
             Theme.button
-                (alignTop :: attrs)
-                { background = Theme.colors.buttonBackground
+                attrs
+                { background = Nothing
                 , label = label
                 , onPress = Just <| Locale locale
                 }
 
-        flagLabel : String -> { locale : String, nativeName : String, englishName : String } -> Maybe (Element msg)
+        flagLabel : String -> { locale : String, nativeName : String, englishName : String } -> Maybe (Html msg)
         flagLabel title { locale, nativeName } =
             let
                 cutName : String
@@ -143,7 +140,7 @@ changingLocalePopup screen maybeInput =
                 flagWidth =
                     40
 
-                parensContent : Element msg
+                parensContent : Html msg
                 parensContent =
                     if
                         String.contains "(" cutName
@@ -156,17 +153,15 @@ changingLocalePopup screen maybeInput =
                             |> Theme.textInvariant
 
                     else
-                        Element.none
+                        Theme.textInvariant ""
 
-                unsafeFlag : String -> ( Int, Int ) -> Element msg
+                unsafeFlag : String -> ( Int, Int ) -> Html msg
                 unsafeFlag alpha2 aspectRatio =
                     Theme.row
-                        [ centerX
-                        , centerY
-                        , height <| Element.minimum 26 shrink
+                        [ Attributes.style "min-height" "26px"
                         ]
                         [ Theme.viewFlagUnsafe
-                            [ Theme.titleAttribute alpha2 ]
+                            [ Attributes.title alpha2 ]
                             { filename = String.toLower alpha2
                             , aspectRatio = aspectRatio
                             , width = flagWidth
@@ -182,14 +177,10 @@ changingLocalePopup screen maybeInput =
                     case Cldr.fromAlpha2 alpha2 of
                         Just countryCode ->
                             Theme.row
-                                [ centerX
-                                , centerY
-                                , height <| Element.minimum 26 shrink
+                                [ Attributes.style "min-height" "26px"
                                 ]
                                 [ Theme.viewFlag
-                                    [ centerX
-                                    , centerY
-                                    , Theme.titleAttribute alpha2
+                                    [ Attributes.title alpha2
                                     ]
                                     { country = Iso3166 countryCode
                                     , width = flagWidth
@@ -228,10 +219,8 @@ changingLocalePopup screen maybeInput =
 
                     else if Just nativeName == Cldr.localeToNativeName "el-polyton" then
                         Theme.row
-                            [ centerX
-                            , centerY
-                            ]
-                            [ Theme.viewFlag [ centerX, centerY ]
+                            []
+                            [ Theme.viewFlag []
                                 { country = Iso3166 Cldr.GR
                                 , width = flagWidth
                                 }
@@ -261,7 +250,7 @@ changingLocalePopup screen maybeInput =
             ( { locale : String, nativeName : String, englishName : String }
             , List { locale : String, nativeName : String, englishName : String }
             )
-            -> Element Msg
+            -> Html Msg
         viewGroup ( first, rest ) =
             let
                 title : String
@@ -279,8 +268,7 @@ changingLocalePopup screen maybeInput =
             of
                 ( [ pair ], [] ) ->
                     localeButton pair.locale
-                        [ width fill
-                        , Theme.titleAttribute <|
+                        [ Attributes.title <|
                             if title == pair.englishName then
                                 title
 
@@ -288,14 +276,18 @@ changingLocalePopup screen maybeInput =
                                 title ++ " (" ++ pair.englishName ++ ")"
                         ]
                         (Theme.row
-                            [ centerY
-                            , Element.htmlAttribute (Html.Attributes.lang pair.locale)
+                            [ Attributes.lang pair.locale
                             ]
-                            [ Theme.textInvariant title
-                            , flagLabel title pair
-                                |> Maybe.map (nonButton [ centerX ])
-                                |> Maybe.withDefault Element.none
-                            ]
+                            (case flagLabel title pair of
+                                Nothing ->
+                                    [ Theme.textInvariant title
+                                    ]
+
+                                Just label ->
+                                    [ Theme.textInvariant title
+                                    , label |> nonButton []
+                                    ]
+                            )
                         )
 
                 ( mains, others ) ->
@@ -320,7 +312,7 @@ changingLocalePopup screen maybeInput =
                         count =
                             1 + List.length others
 
-                        otherItems : Element Msg
+                        otherItems : Html Msg
                         otherItems =
                             (mains ++ List.sortBy flagsFirst others)
                                 |> List.filterMap
@@ -329,11 +321,10 @@ changingLocalePopup screen maybeInput =
                                             |> Maybe.map
                                                 (localeButton pair.locale [])
                                     )
-                                |> Theme.wrappedRow [ width fill ]
+                                |> Theme.wrappedRow []
                     in
                     nonButton
-                        [ width fill
-                        , Theme.titleAttribute <|
+                        [ Attributes.title <|
                             if title == first.englishName then
                                 title
 
@@ -346,7 +337,7 @@ changingLocalePopup screen maybeInput =
                           else
                             Theme.column
                          )
-                            [ width fill ]
+                            []
                             [ Theme.textInvariant title
                             , otherItems
                             ]
@@ -356,84 +347,76 @@ changingLocalePopup screen maybeInput =
         columnWidth =
             500
 
-        localeColumn : List (Attribute Msg) -> List { locale : String, nativeName : String, englishName : String } -> Element Msg
+        localeColumn : List (Attribute Msg) -> List { locale : String, nativeName : String, englishName : String } -> Html Msg
         localeColumn attrs locales =
             locales
                 |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
                 |> List.map viewGroup
                 |> Theme.column
-                    ([ centerX
-                     , width <| Element.maximum columnWidth shrink
-                     ]
-                        ++ attrs
+                    (Attributes.style "max-width" (String.fromInt columnWidth ++ "px")
+                        :: attrs
                     )
+
+        filteredLocales : List { locale : String, nativeName : String, englishName : String }
+        filteredLocales =
+            Cldr.allNontrivialLocales
+                |> List.filterMap
+                    (\locale ->
+                        Maybe.map2
+                            (\nativeName englishName ->
+                                { locale = locale
+                                , nativeName = String.Extra.toSentenceCase nativeName
+                                , englishName = String.Extra.toSentenceCase englishName
+                                }
+                            )
+                            (Cldr.localeToNativeName locale)
+                            (Cldr.localeToEnglishName locale)
+                    )
+                |> List.filter
+                    (\{ nativeName } ->
+                        String.contains (String.toLower input) (String.toLower nativeName)
+                    )
+                |> List.sortBy .nativeName
     in
-    case maybeInput of
-        Nothing ->
-            Element.none
-
-        Just input ->
-            let
-                filteredLocales : List { locale : String, nativeName : String, englishName : String }
-                filteredLocales =
-                    Cldr.allNontrivialLocales
-                        |> List.filterMap
-                            (\locale ->
-                                Maybe.map2
-                                    (\nativeName englishName ->
-                                        { locale = locale
-                                        , nativeName = String.Extra.toSentenceCase nativeName
-                                        , englishName = String.Extra.toSentenceCase englishName
-                                        }
-                                    )
-                                    (Cldr.localeToNativeName locale)
-                                    (Cldr.localeToEnglishName locale)
-                            )
-                        |> List.filter
-                            (\{ nativeName } ->
-                                String.contains (String.toLower input) (String.toLower nativeName)
-                            )
-                        |> List.sortBy .nativeName
-            in
-            el
-                [ width fill
-                , height fill
-                , scrollbarY
-                , Theme.gradient Theme.colors.buttonBackground
+    Html.div
+        [ Theme.gradient Theme.colors.buttonBackground
+        ]
+        [ Theme.column
+            [ Theme.padding
+            ]
+            [ Html.label
+                [ Attributes.style "display" "flex"
+                , Attributes.style "flex-wrap" "wrap"
                 ]
-            <|
-                Theme.column
-                    [ Theme.padding
-                    , centerX
-                    , height fill
+                [ Theme.text Translations.search
+                , Html.input
+                    [ Events.onInput ChangingLocale
+                    , Attributes.value input
                     ]
-                    [ Input.text [ width fill ]
-                        { onChange = ChangingLocale
-                        , text = input
-                        , placeholder = Nothing
-                        , label = Input.labelAbove [] <| Theme.text Translations.search
-                        }
-                    , if screen.width > columnWidth * 2 + Theme.rythm * 3 then
-                        filteredLocales
-                            |> List.Extra.gatherEqualsBy
-                                (\{ nativeName } ->
-                                    case String.uncons nativeName of
-                                        Nothing ->
-                                            1
+                    []
+                ]
+            , if screen.width > columnWidth * 2 + Theme.rhythm * 3 then
+                filteredLocales
+                    |> List.Extra.gatherEqualsBy
+                        (\{ nativeName } ->
+                            case String.uncons nativeName of
+                                Nothing ->
+                                    1
 
-                                        Just ( h, _ ) ->
-                                            if Char.isAlpha h then
-                                                0
+                                Just ( h, _ ) ->
+                                    if Char.isAlpha h then
+                                        0
 
-                                            else
-                                                1
-                                )
-                            |> List.map (\( head, tail ) -> localeColumn [ alignTop ] (head :: tail))
-                            |> Theme.row []
+                                    else
+                                        1
+                        )
+                    |> List.map (\( head, tail ) -> localeColumn [] (head :: tail))
+                    |> Theme.row []
 
-                      else
-                        localeColumn [ Theme.padding ] filteredLocales
-                    ]
+              else
+                localeColumn [ Theme.padding ] filteredLocales
+            ]
+        ]
 
 
 type MaybeCountry
@@ -481,24 +464,16 @@ localeToCountry locale =
 
 view : Shared.Model -> Model -> View Msg
 view shared model =
-    el
-        [ width fill
-        , height fill
-        , inFront <| changingLocalePopup shared.screen model.changingLocale
-        ]
-    <|
-        el
-            [ centerX
-            , centerY
-            , Theme.padding
-            , scrollbarY
-            ]
-        <|
+    [ case model.changingLocale of
+        Just changing ->
+            changingLocalePopup shared.screen changing
+
+        Nothing ->
             if shared.screen.width > 750 then
-                Theme.grid [ width fill ]
+                Theme.grid []
                     { elements =
                         mainMenuRows shared.options
-                            |> List.map
+                            |> List.concatMap
                                 (\( label, options ) ->
                                     [ label
                                     , case List.length options |> modBy 3 of
@@ -516,28 +491,29 @@ view shared model =
                                                         |> List.Extra.greedyGroupsOf 2
                                                    )
                                             )
-                                                |> List.map (Theme.row [ width fill ])
-                                                |> Theme.column [ width fill ]
+                                                |> List.map (Theme.row [])
+                                                |> Theme.column []
 
                                         _ ->
                                             options
                                                 |> List.Extra.greedyGroupsOf 3
-                                                |> List.map (Theme.row [ width fill ])
-                                                |> Theme.column [ width fill ]
+                                                |> List.map (Theme.row [])
+                                                |> Theme.column []
                                     ]
                                 )
-                    , widths = [ shrink ]
+                    , widths = [ "auto 1fr" ]
                     }
 
             else
                 mainMenuRows shared.options
-                    |> List.concatMap (\( label, options ) -> [ label, Theme.wrappedRow [ width fill ] options ])
+                    |> List.concatMap (\( label, options ) -> [ label, Theme.wrappedRow [] options ])
                     |> Theme.column []
+    ]
 
 
 mainMenuRows :
     GameOptions
-    -> List ( Element Msg, List (Element Msg) )
+    -> List ( Html Msg, List (Html Msg) )
 mainMenuRows options =
     [ radios Translations.difficulty
         { toLabel = difficultyToString
@@ -596,9 +572,9 @@ mainMenuRows options =
         }
     , ( Translations.gameLanguage
       , \_ ->
-            [ Element.withContext
+            [ Html.withContext
                 (\context ->
-                    Theme.selectableButton [ Font.center, width fill ]
+                    Theme.selectableButton []
                         { selected = True
                         , label =
                             \_ ->
@@ -608,7 +584,7 @@ mainMenuRows options =
                         , onPress = Locale context.locale
                         }
                 )
-            , Theme.selectableButton [ Font.center, width fill ]
+            , Theme.selectableButton []
                 { selected = False
                 , label = Translations.change
                 , onPress = ChangingLocale ""
@@ -645,18 +621,20 @@ mainMenuRows options =
         }
     , ( \_ -> ""
       , let
-            filler : Element msg
+            filler : Html msg
             filler =
                 Theme.button
-                    [ width fill
-                    , Element.htmlAttribute <| Html.Attributes.style "visibility" "hidden"
+                    [ Attributes.style "visibility" "hidden"
                     ]
-                    { background = [], label = Element.none, onPress = Nothing }
+                    { background = Nothing
+                    , label = Theme.textInvariant ""
+                    , onPress = Nothing
+                    }
         in
         \_ ->
             [ filler
-            , Theme.button [ width fill, Font.center ]
-                { background = Theme.colors.buttonBackground
+            , Theme.button []
+                { background = Nothing
                 , label = text Translations.play
                 , onPress = Just Play
                 }
@@ -666,7 +644,7 @@ mainMenuRows options =
     ]
         |> List.map
             (\( label, cells ) ->
-                ( el [ centerY ] (text label)
+                ( Html.p [] [ text label ]
                 , cells options
                 )
             )
@@ -682,7 +660,7 @@ checkboxes :
         }
     ->
         ( I18n -> String
-        , GameOptions -> List (Element Msg)
+        , GameOptions -> List (Html Msg)
         )
 checkboxes label config =
     ( label
@@ -692,14 +670,14 @@ checkboxes label config =
             current =
                 config.get options
 
-            toButton : v -> Element Msg
+            toButton : v -> Html Msg
             toButton value =
                 let
                     selected : Bool
                     selected =
                         List.member value current
                 in
-                Theme.selectableButton [ Font.center, width fill ]
+                Theme.selectableButton []
                     { label = config.toLabel value
                     , selected = selected
                     , onPress =
@@ -724,7 +702,7 @@ radios :
         , set : v -> GameOptions
         , all : List v
         }
-    -> ( I18n -> String, GameOptions -> List (Element Msg) )
+    -> ( I18n -> String, GameOptions -> List (Html Msg) )
 radios label config =
     ( label
     , \options ->
@@ -740,7 +718,7 @@ radios label config =
                     selected =
                         value == current
                 in
-                Theme.selectableButton [ Font.center, width fill ]
+                Theme.selectableButton []
                     { label = config.toLabel value
                     , selected = selected
                     , onPress = ChangeOptions <| config.set value

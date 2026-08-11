@@ -1,8 +1,8 @@
 module Pages.Finished exposing (Model, Msg, page)
 
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (centerX, centerY, el, fill, width)
-import Element.WithContext.Font as Font
+import Html.WithContext as Html
+import Html.WithContext.Attributes as Attributes
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
@@ -71,23 +71,19 @@ view : Shared.Model -> Model -> View Msg
 view shared maybeModel =
     case maybeModel of
         Nothing ->
-            Element.none
+            []
 
         Just model ->
-            Theme.column
-                [ centerX
-                , centerY
-                , Element.spacing <| 2 * Theme.rythm
+            [ Html.p [ Attributes.style "text-align" "center" ]
+                [ Theme.text <|
+                    Translations.finalScore
+                        { points = String.fromInt model.score
+                        , total = String.fromInt shared.options.gameLength
+                        }
                 ]
-                [ el [ width fill, Font.center ] <|
-                    text <|
-                        Translations.finalScore
-                            { points = String.fromInt model.score
-                            , total = String.fromInt shared.options.gameLength
-                            }
-                , Theme.button [ centerX ]
-                    { background = Theme.colors.buttonBackground
-                    , label = text Translations.playAgain
-                    , onPress = Just Play
-                    }
-                ]
+            , Theme.button []
+                { background = Nothing
+                , label = text Translations.playAgain
+                , onPress = Just Play
+                }
+            ]

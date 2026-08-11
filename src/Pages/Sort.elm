@@ -2,18 +2,16 @@ module Pages.Sort exposing (Model, Msg, page)
 
 import Cldr exposing (CountryCode(..))
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (alignTop, centerX, el, fill, height, px, width)
-import Element.WithContext.Border as Border
-import Element.WithContext.Font as Font
-import Element.WithContext.Input as Input
 import Flags
+import Html.WithContext as Html
+import Html.WithContext.Attributes as Attributes
 import List.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Set
 import Shared
 import Shared.Model exposing (Country(..), countryToAlpha2)
-import Theme exposing (Element, textInvariant)
+import Theme exposing (Html, textInvariant)
 import View exposing (View)
 
 
@@ -120,17 +118,18 @@ subscriptions _ =
 
 view : Model -> View Msg
 view ({ groups } as model) =
-    Theme.column [ Theme.padding ]
-        (List.indexedMap (viewGroup model) ([] :: groups) ++ [ toText groups ])
+    List.indexedMap (viewGroup model) ([] :: groups) ++ [ toText groups ]
 
 
-viewGroup : Model -> Int -> List Country -> Element Msg
+viewGroup : Model -> Int -> List Country -> Html Msg
 viewGroup { selected } index codes =
     let
-        inner : Element Msg
+        inner : Html Msg
         inner =
             if List.isEmpty codes then
-                el [ height <| px 40 ] <| textInvariant "<new>"
+                Html.div
+                    [ Attributes.style "height" "40px" ]
+                    [ Theme.textInvariant "<new>" ]
 
             else
                 codes
@@ -139,58 +138,44 @@ viewGroup { selected } index codes =
                     |> List.map
                         (\( first, rest ) ->
                             Theme.column
-                                [ alignTop
-                                , width fill
-                                ]
+                                []
                                 [ textInvariant <| Flags.continentToString <| Flags.toContinent first
                                 , Theme.wrappedRow [] <| List.map viewFlag (first :: rest)
                                 ]
                         )
                     |> Theme.row []
     in
-    case selected of
-        Nothing ->
-            Input.button
-                [ Border.width 1
-                , Theme.padding
-                , width fill
-                , alignTop
-                ]
-                { label = inner
-                , onPress = Nothing
-                }
+    Theme.button []
+        { label = inner
+        , onPress =
+            case selected of
+                Nothing ->
+                    Nothing
 
-        Just countryCode ->
-            Theme.button
-                [ width fill
-                , alignTop
-                ]
-                { background = Theme.colors.buttonBackground
-                , label = inner
-                , onPress = Just <| Move countryCode index
-                }
+                Just countryCode ->
+                    Just <| Move countryCode index
+        , background = Nothing
+        }
 
 
-viewFlag : Country -> Element Msg
+viewFlag : Country -> Html Msg
 viewFlag country =
     Theme.button []
-        { background = Theme.colors.buttonBackground
+        { background = Nothing
         , label =
             Theme.column
-                [ width fill
-                , Font.center
-                ]
-                [ Theme.viewFlag [ centerX ]
+                []
+                [ Theme.viewFlag []
                     { country = country
                     , width = 50
                     }
-                , el [ Font.center, width fill ] <| textInvariant <| countryToAlpha2 country
+                , Html.p [] [ Theme.textInvariant <| countryToAlpha2 country ]
                 ]
         , onPress = Just <| SelectForMove country
         }
 
 
-toText : List (List Country) -> Element Msg
+toText : List (List Country) -> Html Msg
 toText groups =
     let
         content : String
@@ -209,8 +194,7 @@ toText groups =
                             ++ " ]"
                    )
     in
-    Element.paragraph [ Font.family [ Font.monospace ] ]
-        [ Element.text content ]
+    Html.pre [] [ Html.text content ]
 
 
 groupToText : List Country -> String

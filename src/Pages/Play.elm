@@ -2,18 +2,16 @@ module Pages.Play exposing (InnerModel, Model, Msg, page)
 
 import Cldr.English
 import Cldr.Localized
+import Color exposing (Color)
 import Effect exposing (Effect)
-import Element.WithContext as Element exposing (Color, alignRight, alignTop, centerX, centerY, el, fill, height, inFront, paddingXY, paragraph, px, rgb, rgba, shrink, width)
-import Element.WithContext.Border as Border
-import Element.WithContext.Font as Font
-import Element.WithContext.Input as Input
 import Flags
-import List.Extra
+import Html.WithContext as Html
+import Html.WithContext.Attributes as Attributes
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
 import Shared.Model exposing (Card, Country(..), NonIso3166(..), Property(..))
-import Theme exposing (Attribute, Element, Gradient, column, text, textInvariant, viewFlag)
+import Theme exposing (Attribute, Gradient, Html, column, text, textInvariant, viewFlag)
 import Translations
 import View exposing (View)
 
@@ -131,19 +129,14 @@ view : Shared.Model -> Model -> View Msg
 view shared maybeModel =
     case maybeModel of
         Nothing ->
-            Element.none
+            []
 
         Just model ->
-            Theme.row
-                [ width fill
-                , height fill
-                , inFront <| viewScore shared model
-                ]
-                [ Theme.column
-                    [ centerX
-                    , centerY
-                    , Theme.padding
-                    , Element.spacing (Theme.rythm * 5 // 2)
+            [ Theme.row []
+                [ viewScore shared model
+                , Theme.column
+                    [ Theme.padding
+                    , Attributes.style "gap" (String.fromInt (Theme.rhythm * 5 // 2) ++ "px")
                     ]
                     [ case model.current.guessFrom of
                         Name ->
@@ -160,83 +153,49 @@ view shared maybeModel =
                     , nextButton model
                     ]
                 ]
+            ]
 
 
-viewFlagClue : { a | current : Card } -> Element msg
+viewFlagClue : { a | current : Card } -> Html msg
 viewFlagClue { current } =
-    viewFlag [ centerX ]
+    viewFlag []
         { country = current.guessing
         , width = 240
         }
 
 
-viewNameClue : { a | current : Card } -> Element msg
+viewNameClue : { a | current : Card } -> Html msg
 viewNameClue { current } =
-    paragraph
-        [ Font.center
-        , width fill
-        , Font.size 50
-        ]
+    Html.p []
         [ viewCountryName current.guessing ]
 
 
-viewFlagAnswers : InnerModel -> Element Msg
+viewFlagAnswers : InnerModel -> Html Msg
 viewFlagAnswers ({ current } as model) =
-    el [ centerX ] <|
-        Theme.grid [ width fill ]
-            { elements =
-                current.answers
-                    |> List.map (viewFlagButton model)
-                    |> List.Extra.greedyGroupsOf 2
-                    |> List.concatMap List.Extra.transpose
-            , widths = [ shrink, shrink ]
-            }
+    Theme.grid []
+        { elements = List.map (viewFlagButton model) current.answers
+        , widths = [ "auto", "auto" ]
+        }
 
 
-viewNameAnswers : Shared.Model -> InnerModel -> Element Msg
+viewNameAnswers : Shared.Model -> InnerModel -> Html Msg
 viewNameAnswers shared ({ current } as model) =
-    if shared.screen.width > 500 then
-        Element.table [ width fill, Theme.spacing ]
-            { data =
-                current.answers
-                    |> List.map (viewNameButton model)
-                    |> List.Extra.greedyGroupsOf 2
-            , columns =
-                [ { header = Element.none
-                  , view =
-                        \lst ->
-                            lst
-                                |> List.head
-                                |> Maybe.withDefault Element.none
-                  , width = fill
-                  }
-                , { header = Element.none
-                  , view =
-                        \lst ->
-                            lst
-                                |> List.drop 1
-                                |> List.head
-                                |> Maybe.withDefault Element.none
-                  , width = fill
-                  }
-                ]
-            }
-
-    else
-        current.answers
-            |> List.map (viewNameButton model)
-            |> Theme.column [ width fill ]
-
-
-nextButton : { a | picked : Maybe Country } -> Element Msg
-nextButton { picked } =
-    Theme.button [ centerX ]
-        { background =
-            if picked == Nothing then
-                [ ( 0, rgb 0.7 0.7 0.7 ) ]
+    Theme.grid []
+        { widths =
+            if shared.screen.width > 500 then
+                [ "auto", "auto" ]
 
             else
-                Theme.colors.buttonBackground
+                [ "auto" ]
+        , elements =
+            List.map (viewNameButton model) current.answers
+        }
+
+
+nextButton : { a | picked : Maybe Country } -> Html Msg
+nextButton { picked } =
+    Theme.button []
+        { background = Nothing
         , label = text Translations.next
         , onPress =
             if picked == Nothing then
@@ -247,19 +206,16 @@ nextButton { picked } =
         }
 
 
-viewNameButton : InnerModel -> Country -> Element Msg
+viewNameButton : InnerModel -> Country -> Html Msg
 viewNameButton { current, picked } country =
     let
         attrs : List (Attribute msg)
         attrs =
-            [ width fill
-            , height fill
-            , Font.center
-            , if green then
-                Font.color Theme.colors.black
+            [ if green then
+                Attributes.style "color" "black"
 
               else
-                Font.color Theme.colors.white
+                Attributes.style "color" "white"
             ]
 
         green : Bool
@@ -270,13 +226,13 @@ viewNameButton { current, picked } country =
         attrs
         { background =
             if green then
-                Theme.colors.greenButtonBackground
+                Just Theme.colors.greenButtonBackground
 
             else if Just country == picked then
-                Theme.colors.redButtonBackground
+                Just Theme.colors.redButtonBackground
 
             else
-                Theme.colors.buttonBackground
+                Nothing
         , onPress =
             if picked == Nothing then
                 Just <| Pick country
@@ -284,122 +240,118 @@ viewNameButton { current, picked } country =
             else
                 Nothing
         , label =
-            paragraph []
+            Html.p []
                 [ viewCountryName country ]
         }
 
 
-viewFlagButton : InnerModel -> Country -> List (Element Msg)
+viewFlagButton : InnerModel -> Country -> Html Msg
 viewFlagButton { picked, current } country =
     let
-        badge : String -> Color -> Gradient -> List (Element msg)
+        badge : String -> Color -> Gradient -> List (Html msg)
         badge label font gradient =
-            [ el
+            [ Html.div
                 (if picked == Nothing then
-                    [ Border.rounded 9999
-                    , paddingXY 6 2
+                    [ Attributes.style "border-radius" "9999px"
+                    , Attributes.style "padding" "6px 2px"
                     ]
 
                  else
-                    [ Font.color font
+                    [ Attributes.style "color" (Color.toCssString font)
                     , Theme.gradient gradient
-                    , Border.rounded 9999
-                    , paddingXY 6 2
+                    , Attributes.style "border-radius" "9999px"
+                    , Attributes.style "padding" "6px 2px"
                     ]
                 )
-                (textInvariant label)
+                [ textInvariant label ]
             , textInvariant " "
             ]
 
-        maybeBadge : List (Element msg)
+        maybeBadge : List (Html msg)
         maybeBadge =
             if country == current.guessing then
-                badge "✓" Theme.colors.black Theme.colors.greenButtonBackground
+                badge "✓" Color.black Theme.colors.greenButtonBackground
 
             else if Just country == picked then
-                badge "✗" Theme.colors.white Theme.colors.redButtonBackground
+                badge "✗" Color.white Theme.colors.redButtonBackground
 
             else
-                badge "-" Theme.colors.white Theme.colors.buttonBackground
+                badge "-" Color.white Theme.colors.buttonBackground
 
-        nameAndBadge : Element msg
+        nameAndBadge : Html msg
         nameAndBadge =
-            paragraph
+            Html.p
                 (if picked == Nothing then
-                    [ Font.center
-                    , centerX
-                    , Font.color <| rgba 0 0 0 0
-                    , width <| Element.maximum 150 fill
+                    [ Attributes.style "color" "black"
+                    , Attributes.style "max-width" "150px"
                     ]
 
                  else
-                    [ Font.center
-                    , centerX
-                    , width <| Element.maximum 150 fill
+                    [ Attributes.style "max-width" "150px"
                     ]
                 )
                 (maybeBadge
                     ++ [ viewCountryName country ]
                 )
 
-        flag : Element msg
+        flag : Html msg
         flag =
-            viewFlag [ centerX ]
+            viewFlag []
                 { country = country
                 , width = 150
                 }
     in
     case picked of
         Nothing ->
-            [ Input.button [ width fill, centerY ]
-                { onPress = Just <| Pick country
-                , label = flag
-                }
-            , nameAndBadge
-            ]
+            Theme.column []
+                [ Theme.button []
+                    { onPress = Just <| Pick country
+                    , label = flag
+                    , background = Nothing
+                    }
+                , nameAndBadge
+                ]
 
         Just _ ->
-            [ el [ width fill, centerY ]
-                flag
-            , nameAndBadge
-            ]
+            Theme.column []
+                [ Html.div [] [ flag ]
+                , nameAndBadge
+                ]
 
 
-viewScore : Shared.Model -> InnerModel -> Element msg
+viewScore : Shared.Model -> InnerModel -> Html msg
 viewScore shared model =
-    column
-        [ alignTop
-        , alignRight
-        , Theme.padding
+    Theme.column
+        [ Theme.padding
+        , Attributes.style "position" "absolute"
         ]
-        [ el
+        [ Html.div
             [ Theme.gradient Theme.colors.greenButtonBackground
-            , Border.rounded 999
-            , width <| px 100
-            , height <| px 100
-            , centerX
+            , Attributes.style "border-radius" "999px"
+            , Attributes.style "width" "100px"
+            , Attributes.style "height" "100px"
             ]
-            (el [ centerX, centerY ] <|
-                textInvariant <|
-                    String.fromInt (shared.options.gameLength - List.length model.queue)
-                        ++ "/"
-                        ++ String.fromInt shared.options.gameLength
-            )
-        , paragraph [ Font.center ] [ text <| Translations.score <| String.fromInt model.score ]
+            [ Theme.textInvariant <|
+                String.fromInt (shared.options.gameLength - List.length model.queue)
+                    ++ "/"
+                    ++ String.fromInt shared.options.gameLength
+            ]
+        , Html.p [] [ text <| Translations.score <| String.fromInt model.score ]
         ]
 
 
-viewCountryName : Country -> Element msg
+viewCountryName : Country -> Html msg
 viewCountryName country =
     case country of
         Iso3166 countryCode ->
-            Element.withContext <| \{ locale } ->
-            case Cldr.Localized.countryCodeToName locale countryCode of
-                Just name ->
-                    Theme.textInvariant name
+            Html.withContext <|
+                \{ locale } ->
+                    case Cldr.Localized.countryCodeToName locale countryCode of
+                        Just name ->
+                            Theme.textInvariant name
 
-                Nothing ->
-                    Theme.textInvariant (Cldr.English.countryCodeToName countryCode)
+                        Nothing ->
+                            Theme.textInvariant (Cldr.English.countryCodeToName countryCode)
 
         NonIso3166 Abkhazia ->
             -- TODO: translate

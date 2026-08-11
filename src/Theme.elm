@@ -1,69 +1,67 @@
-module Theme exposing (Attribute, Element, Gradient, button, colors, column, gradient, grid, localeToLanguage, padding, row, rythm, selectableButton, spacing, text, textInvariant, titleAttribute, viewFlag, viewFlagUnsafe, wrappedRow)
+module Theme exposing (Attribute, Gradient, Html, button, colors, column, gradient, grid, localeToLanguage, padding, rhythm, row, selectableButton, spacing, text, textInvariant, viewFlag, viewFlagUnsafe, wrappedRow)
 
 import AspectRatios
-import Element.WithContext as Element exposing (Color, Length, height, image, px, rgb, rgb255, shrink, width)
-import Element.WithContext.Background as Background
-import Element.WithContext.Border as Border
-import Element.WithContext.Font as Font
-import Element.WithContext.Input as Input
-import Html.Attributes
-import List.Extra
+import Color exposing (Color)
+import Html.WithContext as Html
+import Html.WithContext.Attributes as Attributes
+import Html.WithContext.Events as Events
 import Shared.Model exposing (Context, Country, countryToAlpha2)
 import Translations exposing (I18n)
 
 
-type alias Element msg =
-    Element.Element Context msg
+type alias Html msg =
+    Html.Html Context msg
 
 
 type alias Attribute msg =
-    Element.Attribute Context msg
+    Html.Attribute Context msg
 
 
-rythm : number
-rythm =
+rhythm : number
+rhythm =
     16
 
 
 spacing : Attribute msg
 spacing =
-    Element.spacing rythm
+    Attributes.style "gap" (String.fromInt rhythm ++ "px")
 
 
 padding : Attribute msg
 padding =
-    Element.padding rythm
+    Attributes.style "padding" (String.fromInt rhythm ++ "px")
 
 
 shadow : Attribute msg
 shadow =
-    Html.Attributes.style
+    Attributes.style
         "filter"
         "drop-shadow(5px 5px 2.5px rgba(0,0,0,0.15)) drop-shadow(2.5px 2.5px 0px rgba(0,0,0,0.15))"
-        |> Element.htmlAttribute
 
 
 button :
     List (Attribute msg)
     ->
-        { background : List ( Int, Color )
-        , label : Element msg
+        { background : Maybe (List ( Int, Color ))
+        , label : Html msg
         , onPress : Maybe msg
         }
-    -> Element msg
+    -> Html msg
 button attrs config =
-    Input.button
-        (padding
-            :: Border.rounded 40
-            :: gradient config.background
-            :: Font.color (rgb 1 1 1)
-            :: Element.mouseOver [ Background.color <| rgb255 0x9B 0x9B 0xFB ]
-            :: shadow
-            :: attrs
+    Html.button
+        (case config.onPress of
+            Just msg ->
+                gradient
+                    (Maybe.withDefault colors.buttonBackground config.background)
+                    :: Events.onClick msg
+                    :: attrs
+
+            Nothing ->
+                gradient [ ( 0, Color.rgb 0.7 0.7 0.7 ) ]
+                    :: Attributes.disabled True
+                    :: attrs
         )
-        { label = config.label
-        , onPress = config.onPress
-        }
+        [ config.label ]
 
 
 gradient : Gradient -> Attribute msg
@@ -72,38 +70,12 @@ gradient stops =
         ++ String.join ", " (List.map stopToCss stops)
         ++ ")"
     )
-        |> Html.Attributes.style "background"
-        |> Element.htmlAttribute
+        |> Attributes.style "background"
 
 
 stopToCss : ( Int, Color ) -> String
 stopToCss ( at, color ) =
-    colorToCss color ++ " " ++ String.fromInt at ++ "%"
-
-
-colorToCss : Color -> String
-colorToCss color =
-    let
-        { red, green, blue, alpha } =
-            Element.toRgb color
-
-        colorString : String
-        colorString =
-            [ red
-            , green
-            , blue
-            ]
-                |> List.map
-                    (\f ->
-                        String.fromInt <| round (f * 255)
-                    )
-                |> String.join " "
-    in
-    if alpha == 1 then
-        "rgb(" ++ colorString ++ ")"
-
-    else
-        "rgb(" ++ colorString ++ " / " ++ String.fromFloat alpha ++ ")"
+    Color.toCssString color ++ " " ++ String.fromInt at ++ "%"
 
 
 type alias Gradient =
@@ -114,88 +86,75 @@ colors :
     { buttonBackground : Gradient
     , greenButtonBackground : Gradient
     , redButtonBackground : Gradient
-    , black : Color
-    , white : Color
     }
 colors =
     { buttonBackground =
-        [ ( 40, rgb255 0xC7 0x9D 0x69 )
-        , ( 100, rgb255 0x98 0x78 0x50 )
+        [ ( 40, Color.rgb255 0xC7 0x9D 0x69 )
+        , ( 100, Color.rgb255 0x98 0x78 0x50 )
         ]
     , greenButtonBackground =
-        [ ( 40, rgb255 0x8B 0xD1 0x78 )
-        , ( 100, rgb255 0x72 0xB0 0x61 )
+        [ ( 40, Color.rgb255 0x8B 0xD1 0x78 )
+        , ( 100, Color.rgb255 0x72 0xB0 0x61 )
         ]
     , redButtonBackground =
-        [ ( 40, rgb255 0xDC 0x4E 0x3B )
-        , ( 100, rgb255 0xAB 0x3A 0x2B )
+        [ ( 40, Color.rgb255 0xDC 0x4E 0x3B )
+        , ( 100, Color.rgb255 0xAB 0x3A 0x2B )
         ]
-    , black = rgb 0 0 0
-    , white = rgb 1 1 1
     }
 
 
-column : List (Attribute msg) -> List (Element msg) -> Element msg
+column : List (Attribute msg) -> List (Html msg) -> Html msg
 column attrs children =
-    Element.column (spacing :: attrs) children
+    Html.div
+        (spacing
+            :: Attributes.style "display" "flex"
+            :: Attributes.style "flex-direction" "column"
+            :: attrs
+        )
+        children
 
 
-row : List (Attribute msg) -> List (Element msg) -> Element msg
+row : List (Attribute msg) -> List (Html msg) -> Html msg
 row attrs children =
-    Element.row (spacing :: attrs) children
+    Html.div
+        (spacing
+            :: Attributes.style "display" "flex"
+            :: attrs
+        )
+        children
 
 
-wrappedRow : List (Attribute msg) -> List (Element msg) -> Element msg
+wrappedRow : List (Attribute msg) -> List (Html msg) -> Html msg
 wrappedRow attrs children =
-    Element.wrappedRow (spacing :: attrs) children
+    Html.div
+        (spacing
+            :: Attributes.style "display" "flex"
+            :: Attributes.style "flex-wrap" "wrap"
+            :: attrs
+        )
+        children
 
 
 grid :
     List (Attribute msg)
     ->
-        { widths : List Length
-        , elements : List (List (Element msg))
+        { widths : List String
+        , elements : List (Html msg)
         }
-    -> Element msg
+    -> Html msg
 grid attrs { widths, elements } =
-    let
-        columnCount : Int
-        columnCount =
-            List.map List.length elements
-                |> List.maximum
-                |> Maybe.withDefault 0
-
-        columns :
-            List
-                { header : Element msg
-                , width : Length
-                , view : List (Element msg) -> Element msg
-                }
-        columns =
-            List.map2
-                (\i width ->
-                    { header = Element.none
-                    , width = width
-                    , view =
-                        \elementsRow ->
-                            elementsRow
-                                |> List.Extra.getAt i
-                                |> Maybe.withDefault Element.none
-                    }
-                )
-                (List.range 0 (columnCount - 1))
-                (widths ++ List.repeat (columnCount - List.length widths) shrink)
-    in
-    Element.table (spacing :: attrs)
-        { data = elements
-        , columns = columns
-        }
+    Html.div
+        [ Attributes.style "display" "grid"
+        , Attributes.style "grid-template-columns" (String.join " " widths)
+        , Attributes.style "gap" (String.fromInt rhythm ++ "px")
+        ]
+        elements
 
 
 viewFlag :
     List (Attribute msg)
     -> { country : Country, width : Int }
-    -> Element msg
+    -> Html msg
 viewFlag attrs config =
     viewFlagUnsafe attrs
         { filename = countryToAlpha2 config.country
@@ -211,7 +170,7 @@ viewFlagUnsafe :
         , aspectRatio : ( Int, Int )
         , width : Int
         }
-    -> Element msg
+    -> Html msg
 viewFlagUnsafe attrs config =
     let
         src : String
@@ -237,23 +196,22 @@ viewFlagUnsafe attrs config =
         h =
             w * aspectRatioHeight // aspectRatioWidth
     in
-    image
-        ([ shadow
-         , width <| px w
-         , height <| px h
-         ]
-            ++ attrs
+    Html.img
+        (shadow
+            :: Attributes.style "width" (String.fromInt w ++ "px")
+            :: Attributes.style "height" (String.fromInt h ++ "px")
+            :: Attributes.src src
+            :: Attributes.title "A country flag"
+            :: attrs
         )
-        { src = src
-        , description = "A country flag"
-        }
+        []
 
 
-text : (I18n -> String) -> Element msg
+text : (I18n -> String) -> Html msg
 text f =
-    Element.withContext <|
+    Html.withContext <|
         \{ locale } ->
-            Element.text <| f <| Translations.init <| localeToLanguage locale
+            Html.text <| f <| Translations.init <| localeToLanguage locale
 
 
 localeToLanguage : String -> Translations.Language
@@ -263,9 +221,9 @@ localeToLanguage locale =
         |> Maybe.withDefault Translations.En
 
 
-textInvariant : String -> Element msg
+textInvariant : String -> Html msg
 textInvariant msg =
-    Element.text msg
+    Html.text msg
 
 
 selectableButton :
@@ -275,26 +233,21 @@ selectableButton :
         , selected : Bool
         , onPress : msg
         }
-    -> Element msg
+    -> Html msg
 selectableButton attrs config =
     button
         (if config.selected then
-            Font.color colors.black :: attrs
+            Attributes.style "color" "black" :: attrs
 
          else
-            Font.color colors.white :: attrs
+            Attributes.style "color" "white" :: attrs
         )
         { background =
             if config.selected then
-                colors.greenButtonBackground
+                Just colors.greenButtonBackground
 
             else
-                colors.buttonBackground
+                Nothing
         , label = text config.label
         , onPress = Just config.onPress
         }
-
-
-titleAttribute : String -> Attribute msg
-titleAttribute arg =
-    Element.htmlAttribute <| Html.Attributes.title arg
