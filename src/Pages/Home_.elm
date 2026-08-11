@@ -418,6 +418,7 @@ view shared model =
                         |> List.concatMap
                             (\( label, options ) ->
                                 let
+                                    elements : List (Html Msg)
                                     elements =
                                         case List.length options |> modBy 3 of
                                             2 ->
