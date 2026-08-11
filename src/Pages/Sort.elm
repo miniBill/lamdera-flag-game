@@ -1,4 +1,4 @@
-module Pages.Sort exposing (Model, Msg(..), page)
+module Pages.Sort exposing (Model, Msg, page)
 
 import Cldr exposing (CountryCode(..))
 import Effect exposing (Effect)
@@ -7,7 +7,6 @@ import Element.WithContext.Border as Border
 import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags
-import Html
 import List.Extra
 import Page exposing (Page)
 import Route exposing (Route)

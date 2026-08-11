@@ -1,4 +1,4 @@
-module Pages.Play exposing (InnerModel, Model, Msg(..), page)
+module Pages.Play exposing (InnerModel, Model, Msg, page)
 
 import Cldr.English
 import Cldr.Localized
@@ -393,14 +393,13 @@ viewCountryName : Country -> Element msg
 viewCountryName country =
     case country of
         Iso3166 countryCode ->
-            Element.withContext <|
-                \{ locale } ->
-                    case Cldr.Localized.countryCodeToName locale countryCode of
-                        Just name ->
-                            Theme.textInvariant name
+            Element.withContext <| \{ locale } ->
+            case Cldr.Localized.countryCodeToName locale countryCode of
+                Just name ->
+                    Theme.textInvariant name
 
-                        Nothing ->
-                            Theme.textInvariant (Cldr.English.countryCodeToName countryCode)
+                Nothing ->
+                    Theme.textInvariant (Cldr.English.countryCodeToName countryCode)
 
         NonIso3166 Abkhazia ->
             -- TODO: translate
