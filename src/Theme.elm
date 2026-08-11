@@ -216,7 +216,7 @@ viewFlagUnsafe attrs config =
     let
         src : String
         src =
-            "/" ++ config.filename ++ ".svg"
+            "/flags/" ++ config.filename ++ ".svg"
 
         ( aspectRatioWidth, aspectRatioHeight ) =
             config.aspectRatio
