@@ -132,26 +132,24 @@ view shared maybeModel =
             []
 
         Just model ->
-            [ Theme.row []
-                [ viewScore shared model
-                , Theme.column
-                    [ Theme.padding
-                    , Attributes.style "gap" (String.fromInt (Theme.rhythm * 5 // 2) ++ "px")
-                    ]
-                    [ case model.current.guessFrom of
-                        Name ->
-                            viewNameClue model
+            [ viewScore shared model
+            , Theme.column
+                [ Theme.padding
+                , Attributes.style "gap" Theme.rhythmDouble
+                ]
+                [ case model.current.guessFrom of
+                    Name ->
+                        viewNameClue model
 
-                        Flag ->
-                            viewFlagClue model
-                    , case model.current.guessTo of
-                        Name ->
-                            viewNameAnswers shared model
+                    Flag ->
+                        viewFlagClue model
+                , case model.current.guessTo of
+                    Name ->
+                        viewNameAnswers shared model
 
-                        Flag ->
-                            viewFlagAnswers model
-                    , nextButton model
-                    ]
+                    Flag ->
+                        viewFlagAnswers model
+                , nextButton model
                 ]
             ]
 
@@ -324,12 +322,18 @@ viewScore shared model =
     Theme.column
         [ Theme.padding
         , Attributes.style "position" "absolute"
+        , Attributes.style "top" Theme.rhythm
+        , Attributes.style "right" Theme.rhythm
         ]
         [ Html.div
             [ Theme.gradient Theme.colors.greenButtonBackground
             , Attributes.style "border-radius" "999px"
             , Attributes.style "width" "100px"
             , Attributes.style "height" "100px"
+            , Attributes.style "display" "flex"
+            , Attributes.style "flex-direction" "column"
+            , Attributes.style "place-content" "center"
+            , Attributes.style "text-align" "center"
             ]
             [ Theme.textInvariant <|
                 String.fromInt (shared.options.gameLength - List.length model.queue)

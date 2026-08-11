@@ -1,4 +1,4 @@
-module Theme exposing (Attribute, Gradient, Html, button, colors, column, gradient, grid, localeToLanguage, padding, rhythm, row, selectableButton, spacing, text, textInvariant, viewFlag, viewFlagUnsafe, wrappedRow)
+module Theme exposing (Attribute, Gradient, Html, button, colors, column, gradient, grid, localeToLanguage, padding, rhythm, rhythmDouble, row, selectableButton, spacing, text, textInvariant, viewFlag, viewFlagUnsafe, wrappedRow)
 
 import AspectRatios
 import Color exposing (Color)
@@ -17,19 +17,24 @@ type alias Attribute msg =
     Html.Attribute Context msg
 
 
-rhythm : number
+rhythm : String
 rhythm =
-    16
+    "16px"
+
+
+rhythmDouble : String
+rhythmDouble =
+    "32px"
 
 
 spacing : Attribute msg
 spacing =
-    Attributes.style "gap" (String.fromInt rhythm ++ "px")
+    Attributes.style "gap" rhythm
 
 
 padding : Attribute msg
 padding =
-    Attributes.style "padding" (String.fromInt rhythm ++ "px")
+    Attributes.style "padding" rhythm
 
 
 shadow : Attribute msg

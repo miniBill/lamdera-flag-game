@@ -47,7 +47,7 @@ toBrowserDocument { shared, view } =
                 [ style "width" "100%"
                 , style "min-height" "100dvh"
                 , style "justify-content" "center"
-                , style "gap" (String.fromInt (2 * Theme.rhythm) ++ "px")
+                , style "gap" Theme.rhythmDouble
                 , Theme.gradient
                     [ ( 20, Color.rgb255 0xFD 0xED 0xD6 )
                     , ( 100, Color.rgb255 0x9F 0x88 0x67 )
