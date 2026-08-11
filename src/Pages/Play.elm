@@ -7,6 +7,7 @@ import Effect exposing (Effect)
 import Flags
 import Html.WithContext as Html
 import Html.WithContext.Attributes as Attributes
+import Html.WithContext.Events as Events
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
@@ -164,8 +165,7 @@ viewFlagClue { current } =
 
 viewNameClue : { a | current : Card } -> Html msg
 viewNameClue { current } =
-    Html.p []
-        [ viewCountryName current.guessing ]
+    Html.p [] [ viewCountryName current.guessing ]
 
 
 viewFlagAnswers : InnerModel -> Html Msg
@@ -230,7 +230,7 @@ viewNameButton { current, picked } country =
                 Just Theme.colors.redButtonBackground
 
             else
-                Nothing
+                Just Theme.colors.buttonBackground
         , onPress =
             if picked == Nothing then
                 Just <| Pick country
@@ -246,12 +246,15 @@ viewNameButton { current, picked } country =
 viewFlagButton : InnerModel -> Country -> Html Msg
 viewFlagButton { picked, current } country =
     let
-        badge : String -> Color -> Gradient -> List (Html msg)
+        badge : String -> Color -> Gradient -> Html msg
         badge label font gradient =
-            [ Html.div
+            Html.div
                 (if picked == Nothing then
                     [ Attributes.style "border-radius" "9999px"
                     , Attributes.style "padding" "6px 2px"
+                    , Attributes.style "width" "30px"
+                    , Attributes.style "height" "30px"
+                    , Attributes.style "text-align" "center"
                     ]
 
                  else
@@ -259,13 +262,14 @@ viewFlagButton { picked, current } country =
                     , Theme.gradient gradient
                     , Attributes.style "border-radius" "9999px"
                     , Attributes.style "padding" "6px 2px"
+                    , Attributes.style "width" "30px"
+                    , Attributes.style "height" "30px"
+                    , Attributes.style "text-align" "center"
                     ]
                 )
                 [ textInvariant label ]
-            , textInvariant " "
-            ]
 
-        maybeBadge : List (Html msg)
+        maybeBadge : Html msg
         maybeBadge =
             if country == current.guessing then
                 badge "✓" Color.black Theme.colors.greenButtonBackground
@@ -278,43 +282,35 @@ viewFlagButton { picked, current } country =
 
         nameAndBadge : Html msg
         nameAndBadge =
-            Html.p
+            Theme.row
                 (if picked == Nothing then
-                    [ Attributes.style "color" "black"
+                    [ Attributes.style "opacity" "0"
                     , Attributes.style "max-width" "150px"
                     ]
 
                  else
-                    [ Attributes.style "max-width" "150px"
+                    [ Attributes.style "color" "black"
+                    , Attributes.style "max-width" "150px"
                     ]
                 )
-                (maybeBadge
-                    ++ [ viewCountryName country ]
-                )
+                [ maybeBadge, viewCountryName country ]
 
-        flag : Html msg
-        flag =
-            viewFlag []
+        flag : List (Attribute msg) -> Html msg
+        flag attrs =
+            viewFlag attrs
                 { country = country
                 , width = 150
                 }
     in
-    case picked of
-        Nothing ->
-            Theme.column []
-                [ Theme.button []
-                    { onPress = Just <| Pick country
-                    , label = flag
-                    , background = Nothing
-                    }
-                , nameAndBadge
-                ]
+    Theme.column []
+        [ case picked of
+            Nothing ->
+                flag [ Events.onClick (Pick country) ]
 
-        Just _ ->
-            Theme.column []
-                [ Html.div [] [ flag ]
-                , nameAndBadge
-                ]
+            Just _ ->
+                flag []
+        , nameAndBadge
+        ]
 
 
 viewScore : Shared.Model -> InnerModel -> Html msg

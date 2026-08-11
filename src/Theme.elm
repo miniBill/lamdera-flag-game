@@ -54,22 +54,28 @@ button :
     -> Html msg
 button attrs config =
     Html.button
-        (case config.onPress of
-            Just msg ->
-                case config.background of
-                    Nothing ->
+        (case config.background of
+            Nothing ->
+                case config.onPress of
+                    Just msg ->
                         Events.onClick msg
                             :: attrs
 
-                    Just background ->
+                    Nothing ->
+                        gradient [ ( 0, Color.rgb 0.7 0.7 0.7 ) ]
+                            :: Attributes.disabled True
+                            :: attrs
+
+            Just background ->
+                case config.onPress of
+                    Just msg ->
                         gradient background
                             :: Events.onClick msg
                             :: attrs
 
-            Nothing ->
-                gradient [ ( 0, Color.rgb 0.7 0.7 0.7 ) ]
-                    :: Attributes.disabled True
-                    :: attrs
+                    Nothing ->
+                        gradient background
+                            :: attrs
         )
         [ config.label ]
 
