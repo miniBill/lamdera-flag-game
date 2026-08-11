@@ -462,11 +462,11 @@ localeToCountry locale =
         "eu" :: _ ->
             FoundRegion "ES-EU"
 
-        "ga" :: _ ->
-            FoundRegion "ES-GA"
-
         "gd" :: _ ->
             FoundRegion "GB-SCT"
+
+        "gl" :: _ ->
+            FoundRegion "ES-GA"
 
         _ ->
             extractCountry locale
