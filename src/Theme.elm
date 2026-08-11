@@ -258,18 +258,9 @@ text f =
 
 localeToLanguage : String -> Translations.Language
 localeToLanguage locale =
-    case String.split "-" locale of
-        "de" :: _ ->
-            Translations.De
-
-        "it" :: _ ->
-            Translations.It
-
-        "nl" :: _ ->
-            Translations.Nl
-
-        _ ->
-            Translations.En
+    locale
+        |> Translations.languageFromString
+        |> Maybe.withDefault Translations.En
 
 
 textInvariant : String -> Element msg
