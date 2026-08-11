@@ -1,5 +1,3 @@
-# fallback-language: en
-
 title = Flaggspel
 
 search = Sök
@@ -18,6 +16,8 @@ possibleAnswers = Svarsalternativ
 include = Inkludera
 states = Länder
 territories = Territorium
+partiallyRecognized = Delvis erkända stater
+historical = Historisk
 
 gameLength = Spellängd
 
