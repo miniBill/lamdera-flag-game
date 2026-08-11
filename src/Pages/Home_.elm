@@ -456,6 +456,9 @@ localeToCountry locale =
         "ca" :: _ ->
             FoundRegion "ES-CT"
 
+        "eu" :: _ ->
+            FoundRegion "ES-EU"
+
         _ ->
             extractCountry locale
                 |> Maybe.Extra.orElseLazy
