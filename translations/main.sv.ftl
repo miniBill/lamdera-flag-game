@@ -11,7 +11,7 @@ guess = Gissa
 flag = Flagga
 name = Namn
 
-possibleAnswers = Möjliga svar
+possibleAnswers = Svarsalternativ
 
 include = Inkludera
 states = Länder
@@ -19,10 +19,10 @@ statesAndTerritories = Länder och Territorium
 
 gameLength = Spellängd
 
-gameLanguage = Spelspråk
-change = Byt
+gameLanguage = Språk
+change = Ändra
 
-continents = Kontinenter
+continents = Världsdelar
 africa = Afrika
 antarctica = Antarktis
 asia = Asien

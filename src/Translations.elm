@@ -109,7 +109,7 @@ change (I18n lang) =
             "Aanpassen"
 
         Sv ->
-            "Byt"
+            "Ändra"
 
 
 continents : I18n -> String
@@ -128,7 +128,7 @@ continents (I18n lang) =
             "Continenten"
 
         Sv ->
-            "Kontinenter"
+            "Världsdelar"
 
 
 difficulty : I18n -> String
@@ -242,7 +242,7 @@ gameLanguage (I18n lang) =
             "Spel Taal"
 
         Sv ->
-            "Spelspråk"
+            "Språk"
 
 
 gameLength : I18n -> String
@@ -470,7 +470,7 @@ possibleAnswers (I18n lang) =
             "Mogelijke antwoorden"
 
         Sv ->
-            "Möjliga svar"
+            "Svarsalternativ"
 
 
 score : String -> I18n -> String
