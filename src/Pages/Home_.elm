@@ -582,7 +582,15 @@ mainMenuRows options =
         }
     , radios Translations.gameLength
         { toLabel = \i _ -> String.fromInt i
-        , all = [ Shared.Model.defaultGameLength, 100, List.length <| Flags.all options ]
+        , all =
+            let
+                maxLength : Int
+                maxLength =
+                    List.length <| Flags.all options
+            in
+            [ Shared.Model.defaultGameLength, 100, maxLength ]
+                |> List.map (min maxLength)
+                |> List.Extra.unique
         , get = .gameLength
         , set = \v -> { options | gameLength = v }
         }
