@@ -73,33 +73,23 @@ toCard :
     -> ( Card, Random.Seed )
 toCard options country seed =
     let
-        continent : Continent
-        continent =
-            toContinent country
-
-        similar : List Country
-        similar =
-            getSimilarFlags options country
-
-        count : Int
-        count =
-            options.answersPerCard
-
         listGenerator : Random.Generator (List Country)
         listGenerator =
-            case options.difficulty of
-                Easy ->
-                    all options
-                        |> List.filter
-                            (\option ->
-                                (option /= country)
-                                    && not (List.member option similar)
-                                    && (continent /= toContinent option)
-                            )
-                        |> Random.List.choices (count - 1)
-                        |> Random.map Tuple.first
+            let
+                continent : Continent
+                continent =
+                    toContinent country
 
-                Normal ->
+                count : Int
+                count =
+                    options.answersPerCard
+
+                similar : List Country
+                similar =
+                    getSimilarFlags options country
+
+                normalOptions : Random.Generator (List Country)
+                normalOptions =
                     all options
                         |> List.filter
                             (\option ->
@@ -109,23 +99,44 @@ toCard options country seed =
                             )
                         |> Random.List.choices (count - 1)
                         |> Random.map Tuple.first
-
-                Hard ->
-                    if List.length similar < (count - 1) then
-                        all options
+            in
+            case options.difficulty of
+                Easy ->
+                    Random.map2 (\easy normal -> List.take count (easy ++ normal))
+                        (all options
                             |> List.filter
                                 (\option ->
                                     (option /= country)
                                         && not (List.member option similar)
-                                        && (continent == toContinent option)
+                                        && (continent /= toContinent option)
                                 )
-                            |> Random.List.choices (count - 1 - List.length similar)
-                            |> Random.map (\( picked, _ ) -> similar ++ picked)
-
-                    else
-                        similar
                             |> Random.List.choices (count - 1)
                             |> Random.map Tuple.first
+                        )
+                        normalOptions
+
+                Normal ->
+                    normalOptions
+
+                Hard ->
+                    Random.map2 (\hard normal -> List.take count (hard ++ normal))
+                        (if List.length similar < (count - 1) then
+                            all options
+                                |> List.filter
+                                    (\option ->
+                                        (option /= country)
+                                            && not (List.member option similar)
+                                            && (continent == toContinent option)
+                                    )
+                                |> Random.List.choices (count - 1 - List.length similar)
+                                |> Random.map (\( picked, _ ) -> similar ++ picked)
+
+                         else
+                            similar
+                                |> Random.List.choices (count - 1)
+                                |> Random.map Tuple.first
+                        )
+                        normalOptions
 
         generator : Random.Generator Card
         generator =
