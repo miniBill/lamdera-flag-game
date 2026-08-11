@@ -453,17 +453,20 @@ localeToCountry locale =
                 |> Maybe.map FoundCountry
     in
     case String.split "-" locale of
-        "cy" :: _ ->
-            FoundRegion "GB-WLS"
-
-        "gd" :: _ ->
-            FoundRegion "GB-SCT"
-
         "ca" :: _ ->
             FoundRegion "ES-CT"
 
+        "cy" :: _ ->
+            FoundRegion "GB-WLS"
+
         "eu" :: _ ->
             FoundRegion "ES-EU"
+
+        "ga" :: _ ->
+            FoundRegion "ES-GA"
+
+        "gd" :: _ ->
+            FoundRegion "GB-SCT"
 
         _ ->
             extractCountry locale
