@@ -5,6 +5,7 @@ module Generate exposing (main)
 import Dict exposing (Dict)
 import Elm
 import Elm.Annotation as Annotation
+import Elm.Arg
 import Gen.Basics
 import Gen.Cldr
 import Gen.CodeGen.Generate as Generate
@@ -299,7 +300,7 @@ file (Generate.Directory { files }) =
             }
             |> Elm.withType (Annotation.tuple Annotation.int Annotation.int)
     )
-        |> Elm.fn ( "country", Just Gen.Shared.Model.annotation_.country )
+        |> Elm.fn (Elm.Arg.varWith "country" Gen.Shared.Model.annotation_.country)
         |> Elm.declaration "getAspectRatio"
         |> Elm.expose
         |> List.singleton

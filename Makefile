@@ -1,16 +1,16 @@
-YARN_RUN = node_modules/.bin/travelm-agency
+BUN_RUN = node_modules/.bin/travelm-agency
 
 .PHONY:all
 all: generated/AspectRatios.elm src/Translations.elm
 
-src/Translations.elm: $(wildcard translations/*.ftl) $(YARN_RUN)
-	yarn travelm-agency --inline translations
+src/Translations.elm: $(wildcard translations/*.ftl) $(BUN_RUN)
+	bun run travelm-agency --inline translations
 
-$(YARN_RUN): package.json yarn.lock
-	yarn && touch $@
+$(BUN_RUN): package.json bun.lock
+	bun install && touch $@
 
-codegen/Gen/Basics.elm: codegen/elm.codegen.json $(YARN_RUN)
-	yarn elm-codegen install
+codegen/Gen/Basics.elm: codegen/elm.codegen.json $(BUN_RUN)
+	bun run elm-codegen install
 
-generated/AspectRatios.elm: codegen/Generate.elm codegen/elm.json codegen/Gen/Basics.elm $(YARN_RUN)
-	yarn elm-codegen run --flags-from public
+generated/AspectRatios.elm: codegen/Generate.elm codegen/elm.json codegen/Gen/Basics.elm $(BUN_RUN)
+	bun run elm-codegen run --flags-from public
