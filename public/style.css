@@ -20,8 +20,21 @@ img {
     height: auto;
 }
 
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+    appearance: button;
+}
+
 /* Application style */
 button {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+
     border: none;
     font-size: inherit;
     padding: 10px 16px;
