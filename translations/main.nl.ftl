@@ -31,7 +31,7 @@ northAmerica = Noord Amerika
 oceania = Oceanië
 southAmerica = Zuid Amerika
 
-play = Speel
+play = Start
 
 score = Score: {$score}
 playAgain = Speel opnieuw

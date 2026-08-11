@@ -369,7 +369,7 @@ play (I18n lang) =
             "Gioca"
 
         Nl ->
-            "Speel"
+            "Start"
 
 
 playAgain : I18n -> String
