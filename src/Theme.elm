@@ -19,7 +19,7 @@ type alias Attribute msg =
 
 rhythm : number
 rhythm =
-    16
+    8
 
 
 spacing : Attribute msg
@@ -119,6 +119,7 @@ row attrs children =
     Html.div
         (spacing
             :: Attributes.style "display" "flex"
+            :: Attributes.style "flex-direction" "row"
             :: attrs
         )
         children
@@ -144,10 +145,11 @@ grid :
     -> Html msg
 grid attrs { widths, elements } =
     Html.div
-        [ Attributes.style "display" "grid"
-        , Attributes.style "grid-template-columns" (String.join " " widths)
-        , Attributes.style "gap" (String.fromInt rhythm ++ "px")
-        ]
+        (Attributes.style "display" "grid"
+            :: Attributes.style "grid-template-columns" (String.join " " widths)
+            :: spacing
+            :: attrs
+        )
         elements
 
 

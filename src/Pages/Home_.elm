@@ -104,8 +104,8 @@ propertyToString property =
             Translations.flag
 
 
-changingLocalePopup : Screen -> String -> Html Msg
-changingLocalePopup screen input =
+changingLocalePopup : String -> Html Msg
+changingLocalePopup input =
     let
         nonButton : List (Attribute msg) -> Html msg -> Html msg
         nonButton attrs label =
@@ -121,8 +121,7 @@ changingLocalePopup screen input =
 
         localeButton : String -> List (Attribute Msg) -> Html Msg -> Html Msg
         localeButton locale attrs label =
-            Theme.button
-                attrs
+            Theme.button attrs
                 { background = Nothing
                 , label = label
                 , onPress = Just <| Locale locale
@@ -262,9 +261,7 @@ changingLocalePopup screen input =
                     first :: rest
             in
             case
-                List.partition
-                    (\{ nativeName } -> nativeName == title)
-                    group
+                List.partition (\{ nativeName } -> nativeName == title) group
             of
                 ( [ pair ], [] ) ->
                     localeButton pair.locale
@@ -275,7 +272,7 @@ changingLocalePopup screen input =
                             else
                                 title ++ " (" ++ pair.englishName ++ ")"
                         ]
-                        (Theme.row
+                        (Theme.column
                             [ Attributes.lang pair.locale
                             ]
                             (case flagLabel title pair of
@@ -308,10 +305,6 @@ changingLocalePopup screen input =
                                 NotFound ->
                                     1
 
-                        count : Int
-                        count =
-                            1 + List.length others
-
                         otherItems : Html Msg
                         otherItems =
                             (mains ++ List.sortBy flagsFirst others)
@@ -331,31 +324,19 @@ changingLocalePopup screen input =
                             else
                                 title ++ " (" ++ first.englishName ++ ")"
                         ]
-                        ((if count <= 2 then
-                            Theme.row
-
-                          else
-                            Theme.column
-                         )
-                            []
+                        (Theme.column
+                            [ Attributes.lang first.locale ]
                             [ Theme.textInvariant title
                             , otherItems
                             ]
                         )
-
-        columnWidth : number
-        columnWidth =
-            500
 
         localeColumn : List (Attribute Msg) -> List { locale : String, nativeName : String, englishName : String } -> Html Msg
         localeColumn attrs locales =
             locales
                 |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
                 |> List.map viewGroup
-                |> Theme.column
-                    (Attributes.style "max-width" (String.fromInt columnWidth ++ "px")
-                        :: attrs
-                    )
+                |> Theme.wrappedRow attrs
 
         filteredLocales : List { locale : String, nativeName : String, englishName : String }
         filteredLocales =
@@ -378,44 +359,22 @@ changingLocalePopup screen input =
                     )
                 |> List.sortBy .nativeName
     in
-    Html.div
-        [ Theme.gradient Theme.colors.buttonBackground
-        ]
-        [ Theme.column
-            [ Theme.padding
+    Theme.column
+        [ Theme.padding ]
+        [ Html.label
+            [ Attributes.style "display" "flex"
+            , Attributes.style "flex-wrap" "wrap"
+            , Theme.spacing
             ]
-            [ Html.label
-                [ Attributes.style "display" "flex"
-                , Attributes.style "flex-wrap" "wrap"
+            [ Theme.text Translations.search
+            , Html.input
+                [ Events.onInput ChangingLocale
+                , Attributes.value input
+                , Attributes.style "flex" "1 0"
                 ]
-                [ Theme.text Translations.search
-                , Html.input
-                    [ Events.onInput ChangingLocale
-                    , Attributes.value input
-                    ]
-                    []
-                ]
-            , if screen.width > columnWidth * 2 + Theme.rhythm * 3 then
-                filteredLocales
-                    |> List.Extra.gatherEqualsBy
-                        (\{ nativeName } ->
-                            case String.uncons nativeName of
-                                Nothing ->
-                                    1
-
-                                Just ( h, _ ) ->
-                                    if Char.isAlpha h then
-                                        0
-
-                                    else
-                                        1
-                        )
-                    |> List.map (\( head, tail ) -> localeColumn [] (head :: tail))
-                    |> Theme.row []
-
-              else
-                localeColumn [ Theme.padding ] filteredLocales
+                []
             ]
+        , localeColumn [ Theme.padding ] filteredLocales
         ]
 
 
@@ -466,7 +425,7 @@ view : Shared.Model -> Model -> View Msg
 view shared model =
     [ case model.changingLocale of
         Just changing ->
-            changingLocalePopup shared.screen changing
+            changingLocalePopup changing
 
         Nothing ->
             if shared.screen.width > 750 then
