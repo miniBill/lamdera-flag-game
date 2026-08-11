@@ -1,3 +1,5 @@
+# fallback-language: en
+
 title = Vlaggenspel
 
 search = Zoeken
@@ -15,7 +17,7 @@ possibleAnswers = Mogelijke antwoorden
 
 include = Categorieën
 states = Staten
-statesAndTerritories = Staten en territoria
+territories = Territoria
 
 gameLength = Spel Lengte
 

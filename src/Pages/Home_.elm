@@ -15,7 +15,7 @@ import Maybe.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
-import Shared.Model exposing (Continent(..), Country(..), Difficulty(..), GameOptions, Property(..), Screen)
+import Shared.Model exposing (Continent(..), Country(..), Difficulty(..), GameOptions, Property(..), Screen, Sovereignty(..))
 import String.Extra
 import Theme exposing (Attribute, Element, text)
 import Translations exposing (I18n)
@@ -542,17 +542,21 @@ mainMenuRows options =
         , get = .answersPerCard
         , set = \v -> { options | answersPerCard = v }
         }
-    , radios Translations.include
+    , checkboxes Translations.include
         { toLabel =
-            \sovereignOnly ->
-                if sovereignOnly then
-                    Translations.states
+            \sovereignty ->
+                case sovereignty of
+                    Sovereign ->
+                        Translations.states
 
-                else
-                    Translations.statesAndTerritories
-        , all = [ True, False ]
-        , get = .sovereignOnly
-        , set = \v -> { options | sovereignOnly = v }
+                    NotSovereign ->
+                        Translations.territories
+
+                    PartiallyRecognized ->
+                        Translations.partiallyRecognized
+        , all = Shared.Model.allSovereignties
+        , get = .sovereignty
+        , set = \v -> { options | sovereignty = v }
         }
     , radios Translations.gameLength
         { toLabel = \i _ -> String.fromInt i

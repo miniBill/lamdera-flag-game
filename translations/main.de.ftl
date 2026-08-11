@@ -1,3 +1,5 @@
+# fallback-language: en
+
 title = Flaggenspiel
 
 search = Suche
@@ -15,7 +17,7 @@ possibleAnswers = Mögliche Antworten
 
 include = Inkludiere
 states = Staaten
-statesAndTerritories = Staaten und Territorien
+territories = Territorien
 
 gameLength = Spiellänge
 

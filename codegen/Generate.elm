@@ -301,9 +301,9 @@ file (Generate.Directory { files }) =
                         , zM = get "zm"
                         , zW = get "zw"
                         }
-            , partiallyRecognized =
+            , nonIso3166 =
                 \countryName ->
-                    Gen.Shared.Model.caseOf_.partiallyRecognized countryName
+                    Gen.Shared.Model.caseOf_.nonIso3166 countryName
                         { abkhazia = get "abkhazia"
                         , northernCyprus = get "northern-cyprus"
                         , somaliland = get "somaliland"

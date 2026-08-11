@@ -1,4 +1,4 @@
-module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, PartiallyRecognized(..), Property(..), Screen, allContinents, allGuessPatterns, countryToAlpha2, defaultGameLength, defaultGameOptions, partiallyRecognized)
+module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, NonIso3166(..), Property(..), Screen, Sovereignty(..), allContinents, allGuessPatterns, allSovereignties, countryToAlpha2, defaultGameLength, defaultGameOptions, nonIso3166)
 
 {-| -}
 
@@ -56,10 +56,10 @@ type alias Card =
 
 type Country
     = Iso3166 Cldr.CountryCode
-    | PartiallyRecognized PartiallyRecognized
+    | NonIso3166 NonIso3166
 
 
-type PartiallyRecognized
+type NonIso3166
     = Abkhazia
     | NorthernCyprus
     | Somaliland
@@ -67,8 +67,8 @@ type PartiallyRecognized
     | Transnistria
 
 
-partiallyRecognized : List PartiallyRecognized
-partiallyRecognized =
+nonIso3166 : List NonIso3166
+nonIso3166 =
     [ Abkhazia
     , NorthernCyprus
     , Somaliland
@@ -83,20 +83,26 @@ countryToAlpha2 country =
         Iso3166 countryCode ->
             Cldr.toAlpha2 countryCode
 
-        PartiallyRecognized Abkhazia ->
+        NonIso3166 Abkhazia ->
             "abkhazia"
 
-        PartiallyRecognized NorthernCyprus ->
+        NonIso3166 NorthernCyprus ->
             "northern-cyprus"
 
-        PartiallyRecognized Somaliland ->
+        NonIso3166 Somaliland ->
             "somaliland"
 
-        PartiallyRecognized SouthOssetia ->
+        NonIso3166 SouthOssetia ->
             "south-ossetia"
 
-        PartiallyRecognized Transnistria ->
+        NonIso3166 Transnistria ->
             "transnistria"
+
+
+type Sovereignty
+    = Sovereign
+    | NotSovereign
+    | PartiallyRecognized
 
 
 
@@ -108,7 +114,7 @@ type alias GameOptions =
     , difficulty : Difficulty
     , answersPerCard : Int
     , guessPatterns : List ( Property, Property )
-    , sovereignOnly : Bool
+    , sovereignty : List Sovereignty
     , continents : List Continent
     }
 
@@ -134,7 +140,7 @@ defaultGameOptions =
     , difficulty = Normal
     , answersPerCard = 6
     , guessPatterns = allGuessPatterns
-    , sovereignOnly = True
+    , sovereignty = [ Sovereign ]
     , continents = allContinents
     }
 
@@ -155,4 +161,12 @@ allContinents =
     , NorthAmerica
     , Oceania
     , SouthAmerica
+    ]
+
+
+allSovereignties : List Sovereignty
+allSovereignties =
+    [ Sovereign
+    , NotSovereign
+    , PartiallyRecognized
     ]

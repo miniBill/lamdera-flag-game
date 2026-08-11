@@ -23,7 +23,7 @@ import PkgPorts
 import Random
 import Route exposing (Route)
 import Route.Path
-import Shared.Model exposing (Context, Continent(..), Difficulty(..), GameOptions, Model, Property(..))
+import Shared.Model exposing (Context, Continent(..), Difficulty(..), GameOptions, Model, Property(..), Sovereignty)
 import Shared.Msg exposing (Msg)
 
 
@@ -140,12 +140,12 @@ update _ msg model =
 gameOptionsCodec : Codec GameOptions
 gameOptionsCodec =
     Codec.object
-        (\gameLength difficulty answersPerCard guessPatterns sovereignOnly continents ->
+        (\gameLength difficulty answersPerCard guessPatterns sovereignty continents ->
             { gameLength = gameLength
             , difficulty = difficulty
             , answersPerCard = answersPerCard
             , guessPatterns = guessPatterns
-            , sovereignOnly = sovereignOnly
+            , sovereignty = sovereignty
             , continents = Maybe.withDefault [] continents
             }
                 |> fixOptions
@@ -154,45 +154,27 @@ gameOptionsCodec =
         |> Codec.field "difficulty" .difficulty difficultyCodec
         |> Codec.field "answersPerCard" .answersPerCard Codec.int
         |> Codec.field "guessPatterns" .guessPatterns (Codec.list (Codec.tuple propertyCodec propertyCodec))
-        |> Codec.field "sovereignOnly" .sovereignOnly Codec.bool
+        |> Codec.field "sovereignty" .sovereignty (Codec.list sovereigntyCodec)
         |> Codec.maybeField "continents" (.continents >> Just) (Codec.list continentCodec)
         |> Codec.buildObject
 
 
+sovereigntyCodec : Codec Sovereignty
+sovereigntyCodec =
+    Codec.enum Codec.string
+        (List.map
+            (\sovereignty -> ( Flags.sovereigntyToString sovereignty, sovereignty ))
+            Shared.Model.allSovereignties
+        )
+
+
 continentCodec : Codec Continent
 continentCodec =
-    Codec.custom
-        (\fAfrica fAntarctica fAsia fEurope fNorthAmerica fOceania fSouthAmerica value ->
-            case value of
-                Africa ->
-                    fAfrica
-
-                Antarctica ->
-                    fAntarctica
-
-                Asia ->
-                    fAsia
-
-                Europe ->
-                    fEurope
-
-                NorthAmerica ->
-                    fNorthAmerica
-
-                Oceania ->
-                    fOceania
-
-                SouthAmerica ->
-                    fSouthAmerica
+    Codec.enum Codec.string
+        (List.map
+            (\continent -> ( Flags.continentToString continent, continent ))
+            Shared.Model.allContinents
         )
-        |> Codec.variant0 "Africa" Africa
-        |> Codec.variant0 "Antarctica" Antarctica
-        |> Codec.variant0 "Asia" Asia
-        |> Codec.variant0 "Europe" Europe
-        |> Codec.variant0 "NorthAmerica" NorthAmerica
-        |> Codec.variant0 "Oceania" Oceania
-        |> Codec.variant0 "SouthAmerica" SouthAmerica
-        |> Codec.buildCustom
 
 
 propertyCodec : Codec Property

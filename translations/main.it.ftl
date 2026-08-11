@@ -15,7 +15,8 @@ possibleAnswers = Opzioni
 
 include = Includi
 states = Nazioni
-statesAndTerritories = Nazioni e territori
+territories = Territori
+partiallyRecognized = Parzialmente riconosciuti
 
 gameLength = Lunghezza partita
 

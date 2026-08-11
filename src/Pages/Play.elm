@@ -12,7 +12,7 @@ import List.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
-import Shared.Model exposing (Card, Country(..), PartiallyRecognized(..), Property(..))
+import Shared.Model exposing (Card, Country(..), NonIso3166(..), Property(..))
 import Theme exposing (Attribute, Element, Gradient, column, text, textInvariant, viewFlag)
 import Translations
 import View exposing (View)
@@ -402,22 +402,22 @@ viewCountryName country =
                         Nothing ->
                             Theme.textInvariant (Cldr.English.countryCodeToName countryCode)
 
-        PartiallyRecognized Abkhazia ->
+        NonIso3166 Abkhazia ->
             -- TODO: translate
             Theme.textInvariant "Abkhazia"
 
-        PartiallyRecognized NorthernCyprus ->
+        NonIso3166 NorthernCyprus ->
             -- TODO: translate
             Theme.textInvariant "Northern Cyprus"
 
-        PartiallyRecognized Somaliland ->
+        NonIso3166 Somaliland ->
             -- TODO: translate
             Theme.textInvariant "Somaliland"
 
-        PartiallyRecognized SouthOssetia ->
+        NonIso3166 SouthOssetia ->
             -- TODO: translate
             Theme.textInvariant "South Ossetia"
 
-        PartiallyRecognized Transnistria ->
+        NonIso3166 Transnistria ->
             -- TODO: translate
             Theme.textInvariant "Transnistria"

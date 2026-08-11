@@ -1,3 +1,5 @@
+# fallback-language: en
+
 title = Flaggspel
 
 search = Sök
@@ -15,7 +17,7 @@ possibleAnswers = Svarsalternativ
 
 include = Inkludera
 states = Länder
-statesAndTerritories = Länder och Territorium
+territories = Territorium
 
 gameLength = Spellängd
 

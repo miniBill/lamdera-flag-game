@@ -764,8 +764,8 @@ getAspectRatio country =
                 Cldr.ZW ->
                     ( 2, 1 )
     
-        Shared.Model.PartiallyRecognized sharedModelPartiallyRecognized ->
-            case sharedModelPartiallyRecognized of
+        Shared.Model.NonIso3166 sharedModelNonIso3166 ->
+            case sharedModelNonIso3166 of
                 Shared.Model.Abkhazia ->
                     ( 2, 1 )
             

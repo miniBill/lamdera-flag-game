@@ -15,7 +15,8 @@ possibleAnswers = Possible answers
 
 include = Include
 states = States
-statesAndTerritories = States and territories
+territories = Territories
+partiallyRecognized = Partially Recognized
 
 gameLength = Game Length
 
