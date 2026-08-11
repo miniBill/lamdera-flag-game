@@ -265,6 +265,9 @@ localeToLanguage locale =
         "it" :: _ ->
             Translations.It
 
+        "nl" :: _ ->
+            Translations.Nl
+
         _ ->
             Translations.En
 
