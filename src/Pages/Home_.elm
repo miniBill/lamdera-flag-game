@@ -412,45 +412,37 @@ view shared model =
             changingLocalePopup changing
 
         Nothing ->
-            if shared.screen.width > 750 then
-                Theme.grid []
-                    { elements =
-                        mainMenuRows shared.options
-                            |> List.concatMap
-                                (\( label, options ) ->
-                                    [ label
-                                    , case List.length options |> modBy 3 of
-                                        1 ->
-                                            let
-                                                ( lasts, firsts ) =
-                                                    options
-                                                        |> List.reverse
-                                                        |> List.Extra.splitAt 4
-                                            in
-                                            ((List.reverse firsts
-                                                |> List.Extra.greedyGroupsOf 3
-                                             )
-                                                ++ (List.reverse lasts
-                                                        |> List.Extra.greedyGroupsOf 2
-                                                   )
-                                            )
-                                                |> List.map (Theme.row [])
-                                                |> Theme.column []
+            Theme.grid [ Theme.padding ]
+                { elements =
+                    mainMenuRows shared.options
+                        |> List.concatMap
+                            (\( label, options ) ->
+                                [ Html.div
+                                    [ Attributes.style "align-self" "center"
+                                    , if shared.screen.width > 750 then
+                                        Attributes.style "justify-self" "start"
 
-                                        _ ->
-                                            options
-                                                |> List.Extra.greedyGroupsOf 3
-                                                |> List.map (Theme.row [])
-                                                |> Theme.column []
+                                      else
+                                        Attributes.style "justify-self" "center"
                                     ]
-                                )
-                    , widths = [ "auto 1fr" ]
-                    }
+                                    [ label ]
+                                , Theme.grid
+                                    [ Attributes.style "justify-self" "stretch" ]
+                                    { widths =
+                                        List.repeat
+                                            (min (List.length options) 3)
+                                            "auto"
+                                    , elements = options
+                                    }
+                                ]
+                            )
+                , widths =
+                    if shared.screen.width > 750 then
+                        [ "auto 1fr" ]
 
-            else
-                mainMenuRows shared.options
-                    |> List.concatMap (\( label, options ) -> [ label, Theme.wrappedRow [] options ])
-                    |> Theme.column []
+                    else
+                        [ "1fr" ]
+                }
     ]
 
 
