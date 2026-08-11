@@ -318,7 +318,7 @@ historical (I18n lang) =
             "Historical"
 
         Sv ->
-            "Historical"
+            "Historisk"
 
 
 include : I18n -> String
@@ -451,7 +451,7 @@ partiallyRecognized (I18n lang) =
             "Partially Recognized"
 
         Sv ->
-            "Partially Recognized"
+            "Delvis erkända stater"
 
 
 play : I18n -> String
