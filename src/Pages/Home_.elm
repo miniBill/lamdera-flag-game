@@ -501,10 +501,29 @@ view shared model =
                             |> List.map
                                 (\( label, options ) ->
                                     [ label
-                                    , options
-                                        |> List.Extra.greedyGroupsOf 3
-                                        |> List.map (Theme.row [ width fill ])
-                                        |> Theme.column [ width fill ]
+                                    , case List.length options |> modBy 3 of
+                                        1 ->
+                                            let
+                                                ( lasts, firsts ) =
+                                                    options
+                                                        |> List.reverse
+                                                        |> List.Extra.splitAt 4
+                                            in
+                                            ((List.reverse firsts
+                                                |> List.Extra.greedyGroupsOf 3
+                                             )
+                                                ++ (List.reverse lasts
+                                                        |> List.Extra.greedyGroupsOf 2
+                                                   )
+                                            )
+                                                |> List.map (Theme.row [ width fill ])
+                                                |> Theme.column [ width fill ]
+
+                                        _ ->
+                                            options
+                                                |> List.Extra.greedyGroupsOf 3
+                                                |> List.map (Theme.row [ width fill ])
+                                                |> Theme.column [ width fill ]
                                     ]
                                 )
                     , widths = [ shrink ]
