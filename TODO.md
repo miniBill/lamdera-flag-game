@@ -5,6 +5,7 @@
   - Azerbaijiani (Latin)
 - Sovereign note
 - Better difficulty behavior
+- Alignment in grid with different name lengths
 
 ## Tweaks
 
