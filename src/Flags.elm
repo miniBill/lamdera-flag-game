@@ -1,4 +1,4 @@
-module Flags exposing (Sovereignity, all, allCards, continentToString, getSimilarFlags, toContinent)
+module Flags exposing (Sovereignty, all, allCards, continentToString, getSimilarFlags, toContinent)
 
 import Cldr exposing (CountryCode(..))
 import List.Extra
@@ -944,13 +944,13 @@ toContinent country =
                     Africa
 
 
-type Sovereignity
+type Sovereignty
     = Sovereign
     | NotSovereign
 
 
-toSovereignity : Country -> Sovereignity
-toSovereignity country =
+toSovereignty : Country -> Sovereignty
+toSovereignty country =
     case country of
         PartiallyRecognized ever ->
             never ever
@@ -1976,4 +1976,4 @@ all { sovereignOnly, continents } =
 
 isSovereign : Country -> Bool
 isSovereign country =
-    toSovereignity country == Sovereign
+    toSovereignty country == Sovereign
