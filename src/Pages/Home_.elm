@@ -287,7 +287,10 @@ changingLocalePopup screen maybeInput =
                             else
                                 title ++ " (" ++ pair.englishName ++ ")"
                         ]
-                        (Theme.row [ centerY ]
+                        (Theme.row
+                            [ centerY
+                            , Element.htmlAttribute (Html.Attributes.lang pair.locale)
+                            ]
                             [ Theme.textInvariant title
                             , flagLabel title pair
                                 |> Maybe.map (nonButton [ centerX ])
