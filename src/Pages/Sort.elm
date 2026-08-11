@@ -8,6 +8,7 @@ import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags
 import Html
+import Html.Attributes
 import List.Extra
 import Page exposing (Page)
 import Route exposing (Route)
@@ -203,17 +204,15 @@ toText groups =
                         << List.head
                     )
                 |> List.map groupToText
-                |> String.join "\n    , "
+                |> String.join ", "
                 |> (\l ->
-                        "similarityGroups =\n    ["
+                        "similarityGroups = [ "
                             ++ l
-                            ++ "\n    ]"
+                            ++ " ]"
                    )
     in
-    Html.pre []
-        [ Html.text content ]
-        |> Element.html
-        |> el []
+    Element.paragraph [ Font.family [ Font.monospace ] ]
+        [ Element.text content ]
 
 
 groupToText : List Country -> String
