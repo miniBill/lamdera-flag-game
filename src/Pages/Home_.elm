@@ -215,6 +215,9 @@ changingLocalePopup screen maybeInput =
                 FoundRegion "GB-SCT" ->
                     Just <| unsafeFlag "GB-SCT" ( 5, 3 )
 
+                FoundRegion "ES-EU" ->
+                    Just <| unsafeFlag "ES-EU" ( 25, 14 )
+
                 FoundRegion alpha2 ->
                     Just <| unsafeFlag alpha2 ( 3, 2 )
 
