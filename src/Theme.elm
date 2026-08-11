@@ -19,7 +19,7 @@ type alias Attribute msg =
 
 rhythm : number
 rhythm =
-    8
+    16
 
 
 spacing : Attribute msg

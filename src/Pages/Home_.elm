@@ -3,7 +3,6 @@ module Pages.Home_ exposing (Model, Msg, page)
 import Cldr
 import Effect exposing (Effect)
 import Flags
-import Html.Attributes
 import Html.WithContext as Html
 import Html.WithContext.Attributes as Attributes
 import Html.WithContext.Events as Events
@@ -330,34 +329,6 @@ changingLocalePopup input =
                             , otherItems
                             ]
                         )
-
-        localeColumn : List (Attribute Msg) -> List { locale : String, nativeName : String, englishName : String } -> Html Msg
-        localeColumn attrs locales =
-            locales
-                |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
-                |> List.map viewGroup
-                |> Theme.wrappedRow attrs
-
-        filteredLocales : List { locale : String, nativeName : String, englishName : String }
-        filteredLocales =
-            Cldr.allNontrivialLocales
-                |> List.filterMap
-                    (\locale ->
-                        Maybe.map2
-                            (\nativeName englishName ->
-                                { locale = locale
-                                , nativeName = String.Extra.toSentenceCase nativeName
-                                , englishName = String.Extra.toSentenceCase englishName
-                                }
-                            )
-                            (Cldr.localeToNativeName locale)
-                            (Cldr.localeToEnglishName locale)
-                    )
-                |> List.filter
-                    (\{ nativeName } ->
-                        String.contains (String.toLower input) (String.toLower nativeName)
-                    )
-                |> List.sortBy .nativeName
     in
     Theme.column
         [ Theme.padding ]
@@ -374,7 +345,27 @@ changingLocalePopup input =
                 ]
                 []
             ]
-        , localeColumn [ Theme.padding ] filteredLocales
+        , Cldr.allNontrivialLocales
+            |> List.filterMap
+                (\locale ->
+                    Maybe.map2
+                        (\nativeName englishName ->
+                            { locale = locale
+                            , nativeName = String.Extra.toSentenceCase nativeName
+                            , englishName = String.Extra.toSentenceCase englishName
+                            }
+                        )
+                        (Cldr.localeToNativeName locale)
+                        (Cldr.localeToEnglishName locale)
+                )
+            |> List.filter
+                (\{ nativeName } ->
+                    String.contains (String.toLower input) (String.toLower nativeName)
+                )
+            |> List.sortBy .nativeName
+            |> List.Extra.gatherEqualsBy (\{ nativeName } -> nativeNameToTitle nativeName)
+            |> List.map viewGroup
+            |> Theme.wrappedRow [ Theme.padding ]
         ]
 
 
