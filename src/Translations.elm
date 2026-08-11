@@ -51,6 +51,9 @@ africa (I18n lang) =
         Nl ->
             "Afrika"
 
+        Sv ->
+            "Afrika"
+
 
 antarctica : I18n -> String
 antarctica (I18n lang) =
@@ -66,6 +69,9 @@ antarctica (I18n lang) =
 
         Nl ->
             "Antarctica"
+
+        Sv ->
+            "Antarktis"
 
 
 asia : I18n -> String
@@ -83,6 +89,9 @@ asia (I18n lang) =
         Nl ->
             "Azië"
 
+        Sv ->
+            "Asien"
+
 
 change : I18n -> String
 change (I18n lang) =
@@ -98,6 +107,9 @@ change (I18n lang) =
 
         Nl ->
             "Aanpassen"
+
+        Sv ->
+            "Ändra"
 
 
 continents : I18n -> String
@@ -115,6 +127,9 @@ continents (I18n lang) =
         Nl ->
             "Continenten"
 
+        Sv ->
+            "Världsdelar"
+
 
 difficulty : I18n -> String
 difficulty (I18n lang) =
@@ -130,6 +145,9 @@ difficulty (I18n lang) =
 
         Nl ->
             "Moeilijkheid"
+
+        Sv ->
+            "Svårighetsgrad"
 
 
 easy : I18n -> String
@@ -147,6 +165,9 @@ easy (I18n lang) =
         Nl ->
             "Makkelijk"
 
+        Sv ->
+            "Lätt"
+
 
 europe : I18n -> String
 europe (I18n lang) =
@@ -161,6 +182,9 @@ europe (I18n lang) =
             "Europa"
 
         Nl ->
+            "Europa"
+
+        Sv ->
             "Europa"
 
 
@@ -179,6 +203,9 @@ finalScore data (I18n lang) =
         Nl ->
             "Eind score: " ++ data.points ++ "/" ++ data.total
 
+        Sv ->
+            "Slutresultat: " ++ data.points ++ "/" ++ data.total
+
 
 flag : I18n -> String
 flag (I18n lang) =
@@ -194,6 +221,9 @@ flag (I18n lang) =
 
         Nl ->
             "Vlag"
+
+        Sv ->
+            "Flagga"
 
 
 gameLanguage : I18n -> String
@@ -211,6 +241,9 @@ gameLanguage (I18n lang) =
         Nl ->
             "Spel Taal"
 
+        Sv ->
+            "Språk"
+
 
 gameLength : I18n -> String
 gameLength (I18n lang) =
@@ -226,6 +259,9 @@ gameLength (I18n lang) =
 
         Nl ->
             "Spel Lengte"
+
+        Sv ->
+            "Spellängd"
 
 
 guess : I18n -> String
@@ -243,6 +279,9 @@ guess (I18n lang) =
         Nl ->
             "Raden"
 
+        Sv ->
+            "Gissa"
+
 
 hard : I18n -> String
 hard (I18n lang) =
@@ -258,6 +297,9 @@ hard (I18n lang) =
 
         Nl ->
             "Moeilijk"
+
+        Sv ->
+            "Svår"
 
 
 include : I18n -> String
@@ -275,6 +317,9 @@ include (I18n lang) =
         Nl ->
             "Categorieën"
 
+        Sv ->
+            "Inkludera"
+
 
 name : I18n -> String
 name (I18n lang) =
@@ -290,6 +335,9 @@ name (I18n lang) =
 
         Nl ->
             "Naam"
+
+        Sv ->
+            "Namn"
 
 
 next : I18n -> String
@@ -307,6 +355,9 @@ next (I18n lang) =
         Nl ->
             "Volgende"
 
+        Sv ->
+            "Nästa"
+
 
 normal : I18n -> String
 normal (I18n lang) =
@@ -322,6 +373,9 @@ normal (I18n lang) =
 
         Nl ->
             "Normaal"
+
+        Sv ->
+            "Normal"
 
 
 northAmerica : I18n -> String
@@ -339,6 +393,9 @@ northAmerica (I18n lang) =
         Nl ->
             "Noord Amerika"
 
+        Sv ->
+            "Nordamerika"
+
 
 oceania : I18n -> String
 oceania (I18n lang) =
@@ -354,6 +411,9 @@ oceania (I18n lang) =
 
         Nl ->
             "Oceanië"
+
+        Sv ->
+            "Oceanien"
 
 
 play : I18n -> String
@@ -371,6 +431,9 @@ play (I18n lang) =
         Nl ->
             "Start"
 
+        Sv ->
+            "Spela"
+
 
 playAgain : I18n -> String
 playAgain (I18n lang) =
@@ -386,6 +449,9 @@ playAgain (I18n lang) =
 
         Nl ->
             "Speel opnieuw"
+
+        Sv ->
+            "Spela igen"
 
 
 possibleAnswers : I18n -> String
@@ -403,6 +469,9 @@ possibleAnswers (I18n lang) =
         Nl ->
             "Mogelijke antwoorden"
 
+        Sv ->
+            "Svarsalternativ"
+
 
 score : String -> I18n -> String
 score score__ (I18n lang) =
@@ -418,6 +487,9 @@ score score__ (I18n lang) =
 
         Nl ->
             "Score: " ++ score__
+
+        Sv ->
+            "Poäng: " ++ score__
 
 
 search : I18n -> String
@@ -435,6 +507,9 @@ search (I18n lang) =
         Nl ->
             "Zoeken"
 
+        Sv ->
+            "Sök"
+
 
 southAmerica : I18n -> String
 southAmerica (I18n lang) =
@@ -450,6 +525,9 @@ southAmerica (I18n lang) =
 
         Nl ->
             "Zuid Amerika"
+
+        Sv ->
+            "Sydamerika"
 
 
 states : I18n -> String
@@ -467,6 +545,9 @@ states (I18n lang) =
         Nl ->
             "Staten"
 
+        Sv ->
+            "Länder"
+
 
 statesAndTerritories : I18n -> String
 statesAndTerritories (I18n lang) =
@@ -482,6 +563,9 @@ statesAndTerritories (I18n lang) =
 
         Nl ->
             "Staten en territoria"
+
+        Sv ->
+            "Länder och Territorium"
 
 
 title : I18n -> String
@@ -499,6 +583,9 @@ title (I18n lang) =
         Nl ->
             "Vlaggenspel"
 
+        Sv ->
+            "Flaggspel"
+
 
 {-| Enumeration of the supported languages
 -}
@@ -507,13 +594,14 @@ type Language
     | En
     | It
     | Nl
+    | Sv
 
 
 {-| A list containing all `Language`s. The list is sorted alphabetically.
 -}
 languages : List Language
 languages =
-    [ De, En, It, Nl ]
+    [ De, En, It, Nl, Sv ]
 
 
 {-| Convert a `Language` to its `String` representation.
@@ -532,6 +620,9 @@ languageToString lang =
 
         Nl ->
             "nl"
+
+        Sv ->
+            "sv"
 
 
 {-| Maybe parse a `Language` from a `String`.
