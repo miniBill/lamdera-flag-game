@@ -12,7 +12,7 @@ import Page exposing (Page)
 import Route exposing (Route)
 import Set
 import Shared
-import Shared.Model exposing (Category(..), Country(..), countryToAlpha2)
+import Shared.Model exposing (Country(..), countryToAlpha2)
 import Theme exposing (Element, textInvariant)
 import View exposing (View)
 
