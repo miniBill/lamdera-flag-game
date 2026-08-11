@@ -23,7 +23,7 @@ import PkgPorts
 import Random
 import Route exposing (Route)
 import Route.Path
-import Shared.Model exposing (Context, Continent(..), Difficulty(..), GameOptions, Model, Property(..), Sovereignty)
+import Shared.Model exposing (Category, Context, Continent(..), Difficulty(..), GameOptions, Model, Property(..))
 import Shared.Msg exposing (Msg)
 
 
@@ -140,12 +140,12 @@ update _ msg model =
 gameOptionsCodec : Codec GameOptions
 gameOptionsCodec =
     Codec.object
-        (\gameLength difficulty answersPerCard guessPatterns sovereignty continents ->
+        (\gameLength difficulty answersPerCard guessPatterns categories continents ->
             { gameLength = gameLength
             , difficulty = difficulty
             , answersPerCard = answersPerCard
             , guessPatterns = guessPatterns
-            , sovereignty = sovereignty
+            , categories = categories
             , continents = Maybe.withDefault [] continents
             }
                 |> fixOptions
@@ -154,17 +154,17 @@ gameOptionsCodec =
         |> Codec.field "difficulty" .difficulty difficultyCodec
         |> Codec.field "answersPerCard" .answersPerCard Codec.int
         |> Codec.field "guessPatterns" .guessPatterns (Codec.list (Codec.tuple propertyCodec propertyCodec))
-        |> Codec.field "sovereignty" .sovereignty (Codec.list sovereigntyCodec)
+        |> Codec.field "categories" .categories (Codec.list categoryCodec)
         |> Codec.maybeField "continents" (.continents >> Just) (Codec.list continentCodec)
         |> Codec.buildObject
 
 
-sovereigntyCodec : Codec Sovereignty
-sovereigntyCodec =
+categoryCodec : Codec Category
+categoryCodec =
     Codec.enum Codec.string
         (List.map
-            (\sovereignty -> ( Flags.sovereigntyToString sovereignty, sovereignty ))
-            Shared.Model.allSovereignties
+            (\category -> ( Flags.categoryToString category, category ))
+            Shared.Model.allCategories
         )
 
 

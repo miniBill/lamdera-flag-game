@@ -17,6 +17,7 @@ include = Includi
 states = Nazioni
 territories = Territori
 partiallyRecognized = Parzialmente riconosciuti
+historical = Storiche
 
 gameLength = Lunghezza partita
 

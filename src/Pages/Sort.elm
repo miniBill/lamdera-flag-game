@@ -13,7 +13,7 @@ import Page exposing (Page)
 import Route exposing (Route)
 import Set
 import Shared
-import Shared.Model exposing (Country(..), Sovereignty(..), countryToAlpha2)
+import Shared.Model exposing (Category(..), Country(..), countryToAlpha2)
 import Theme exposing (Element, textInvariant)
 import View exposing (View)
 
@@ -42,7 +42,7 @@ init : () -> ( Model, Effect Msg )
 init () =
     ( { groups =
             Flags.all
-                { sovereignty = [ Sovereign, NotSovereign, PartiallyRecognized ]
+                { categories = Shared.Model.allCategories
                 , continents = Shared.Model.allContinents
                 }
                 |> List.foldl
@@ -54,7 +54,7 @@ init () =
                             let
                                 similar : List Country
                                 similar =
-                                    Flags.getSimilarFlags { sovereignty = Shared.Model.allSovereignties } country
+                                    Flags.getSimilarFlags { categories = Shared.Model.allCategories } country
                             in
                             ( (country :: similar) :: acc
                             , (country :: similar)

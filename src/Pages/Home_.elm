@@ -15,7 +15,7 @@ import Maybe.Extra
 import Page exposing (Page)
 import Route exposing (Route)
 import Shared
-import Shared.Model exposing (Continent(..), Country(..), Difficulty(..), GameOptions, Property(..), Screen, Sovereignty(..))
+import Shared.Model exposing (Category(..), Continent(..), Country(..), Difficulty(..), GameOptions, Property(..), Screen)
 import String.Extra
 import Theme exposing (Attribute, Element, text)
 import Translations exposing (I18n)
@@ -546,17 +546,20 @@ mainMenuRows options =
         { toLabel =
             \sovereignty ->
                 case sovereignty of
-                    Sovereign ->
+                    State ->
                         Translations.states
 
-                    NotSovereign ->
+                    Territory ->
                         Translations.territories
 
                     PartiallyRecognized ->
                         Translations.partiallyRecognized
-        , all = Shared.Model.allSovereignties
-        , get = .sovereignty
-        , set = \v -> { options | sovereignty = v }
+
+                    Historical ->
+                        Translations.historical
+        , all = Shared.Model.allCategories
+        , get = .categories
+        , set = \v -> { options | categories = v }
         }
     , radios Translations.gameLength
         { toLabel = \i _ -> String.fromInt i

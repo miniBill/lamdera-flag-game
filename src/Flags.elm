@@ -1,10 +1,10 @@
-module Flags exposing (all, allCards, continentToString, getSimilarFlags, sovereigntyToString, toContinent)
+module Flags exposing (all, allCards, categoryToString, continentToString, getSimilarFlags, toContinent)
 
 import Cldr exposing (CountryCode(..))
 import List.Extra
 import Random
 import Random.List
-import Shared.Model exposing (Card, Continent(..), Country(..), Difficulty(..), GameOptions, NonIso3166(..), Property(..), Sovereignty(..))
+import Shared.Model exposing (Card, Category(..), Continent(..), Country(..), Difficulty(..), GameOptions, NonIso3166(..), Property(..))
 
 
 allCards : GameOptions -> Random.Seed -> ( List Card, Random.Seed )
@@ -56,15 +56,15 @@ similarityGroups =
     ]
 
 
-getSimilarFlags : { a | sovereignty : List Sovereignty } -> Country -> List Country
-getSimilarFlags { sovereignty } countryCode =
+getSimilarFlags : { a | categories : List Category } -> Country -> List Country
+getSimilarFlags { categories } countryCode =
     similarityGroups
         |> List.Extra.find (\g -> List.member countryCode g)
         |> Maybe.withDefault []
         |> List.filter
             (\cc ->
                 (cc /= countryCode)
-                    && List.member (toSovereignty cc) sovereignty
+                    && List.member (toCategory cc) categories
             )
 
 
@@ -999,8 +999,8 @@ toContinent country =
             Europe
 
 
-toSovereignty : Country -> Sovereignty
-toSovereignty country =
+toCategory : Country -> Category
+toCategory country =
     case country of
         NonIso3166 _ ->
             PartiallyRecognized
@@ -1009,987 +1009,987 @@ toSovereignty country =
             case countryCode of
                 -- Afghanistan
                 AF ->
-                    Sovereign
+                    State
 
                 -- Åland Islands
                 AX ->
-                    NotSovereign
+                    Territory
 
                 -- Albania
                 AL ->
-                    Sovereign
+                    State
 
                 -- Algeria
                 DZ ->
-                    Sovereign
+                    State
 
                 -- American Samoa
                 AS ->
-                    NotSovereign
+                    Territory
 
                 -- Andorra
                 AD ->
-                    Sovereign
+                    State
 
                 -- Angola
                 AO ->
-                    Sovereign
+                    State
 
                 -- Anguilla
                 AI ->
-                    NotSovereign
+                    Territory
 
                 -- Antarctica
                 AQ ->
-                    NotSovereign
+                    Territory
 
                 -- Antigua and Barbuda
                 AG ->
-                    Sovereign
+                    State
 
                 -- Argentina
                 AR ->
-                    Sovereign
+                    State
 
                 -- Armenia
                 AM ->
-                    Sovereign
+                    State
 
                 -- Aruba
                 AW ->
-                    NotSovereign
+                    Territory
 
                 -- Australia
                 AU ->
-                    Sovereign
+                    State
 
                 -- Austria
                 AT ->
-                    Sovereign
+                    State
 
                 -- Azerbaijan
                 AZ ->
-                    Sovereign
+                    State
 
                 -- Bahamas
                 BS ->
-                    Sovereign
+                    State
 
                 -- Bahrain
                 BH ->
-                    Sovereign
+                    State
 
                 -- Bangladesh
                 BD ->
-                    Sovereign
+                    State
 
                 -- Barbados
                 BB ->
-                    Sovereign
+                    State
 
                 -- Belarus
                 BY ->
-                    Sovereign
+                    State
 
                 -- Belgium
                 BE ->
-                    Sovereign
+                    State
 
                 -- Belize
                 BZ ->
-                    Sovereign
+                    State
 
                 -- Benin
                 BJ ->
-                    Sovereign
+                    State
 
                 -- Bermuda
                 BM ->
-                    NotSovereign
+                    Territory
 
                 -- Bhutan
                 BT ->
-                    Sovereign
+                    State
 
                 -- Bolivia (Plurinational State of)
                 BO ->
-                    Sovereign
+                    State
 
                 -- Bonaire, Sint Eustatius and Saba
                 BQ ->
-                    NotSovereign
+                    Territory
 
                 -- Bosnia and Herzegovina
                 BA ->
-                    Sovereign
+                    State
 
                 -- Botswana
                 BW ->
-                    Sovereign
+                    State
 
                 -- Bouvet Island
                 BV ->
-                    NotSovereign
+                    Territory
 
                 -- Brazil
                 BR ->
-                    Sovereign
+                    State
 
                 -- British Indian Ocean Territory
                 IO ->
-                    NotSovereign
+                    Territory
 
                 -- Brunei Darussalam
                 BN ->
-                    Sovereign
+                    State
 
                 -- Bulgaria
                 BG ->
-                    Sovereign
+                    State
 
                 -- Burkina Faso
                 BF ->
-                    Sovereign
+                    State
 
                 -- Burundi
                 BI ->
-                    Sovereign
+                    State
 
                 -- Cabo Verde
                 CV ->
-                    Sovereign
+                    State
 
                 -- Cambodia
                 KH ->
-                    Sovereign
+                    State
 
                 -- Cameroon
                 CM ->
-                    Sovereign
+                    State
 
                 -- Canada
                 CA ->
-                    Sovereign
+                    State
 
                 -- Cayman Islands
                 KY ->
-                    NotSovereign
+                    Territory
 
                 -- Central African Republic
                 CF ->
-                    Sovereign
+                    State
 
                 -- Chad
                 TD ->
-                    Sovereign
+                    State
 
                 -- Chile
                 CL ->
-                    Sovereign
+                    State
 
                 -- China
                 CN ->
-                    Sovereign
+                    State
 
                 -- Christmas Island
                 CX ->
-                    NotSovereign
+                    Territory
 
                 -- Cocos (Keeling) Islands
                 CC ->
-                    NotSovereign
+                    Territory
 
                 -- Colombia
                 CO ->
-                    Sovereign
+                    State
 
                 -- Comoros
                 KM ->
-                    Sovereign
+                    State
 
                 -- Congo, Democratic Republic of the
                 CD ->
-                    Sovereign
+                    State
 
                 -- Congo
                 CG ->
-                    Sovereign
+                    State
 
                 -- Cook Islands
                 CK ->
-                    NotSovereign
+                    Territory
 
                 -- Costa Rica
                 CR ->
-                    Sovereign
+                    State
 
                 -- Côte d'Ivoire
                 CI ->
-                    Sovereign
+                    State
 
                 -- Croatia
                 HR ->
-                    Sovereign
+                    State
 
                 -- Cuba
                 CU ->
-                    Sovereign
+                    State
 
                 -- Curaçao
                 CW ->
-                    NotSovereign
+                    Territory
 
                 -- Cyprus
                 CY ->
-                    Sovereign
+                    State
 
                 -- Czechia
                 CZ ->
-                    Sovereign
+                    State
 
                 -- Denmark
                 DK ->
-                    Sovereign
+                    State
 
                 -- Djibouti
                 DJ ->
-                    Sovereign
+                    State
 
                 -- Dominica
                 DM ->
-                    Sovereign
+                    State
 
                 -- Dominican Republic
                 DO ->
-                    Sovereign
+                    State
 
                 -- Ecuador
                 EC ->
-                    Sovereign
+                    State
 
                 -- Egypt
                 EG ->
-                    Sovereign
+                    State
 
                 -- El Salvador
                 SV ->
-                    Sovereign
+                    State
 
                 -- Equatorial Guinea
                 GQ ->
-                    Sovereign
+                    State
 
                 -- Eritrea
                 ER ->
-                    Sovereign
+                    State
 
                 -- Estonia
                 EE ->
-                    Sovereign
+                    State
 
                 -- Eswatini
                 SZ ->
-                    Sovereign
+                    State
 
                 -- Ethiopia
                 ET ->
-                    Sovereign
+                    State
 
                 -- Falkland Islands (Malvinas)
                 FK ->
-                    NotSovereign
+                    Territory
 
                 -- Faroe Islands
                 FO ->
-                    NotSovereign
+                    Territory
 
                 -- Fiji
                 FJ ->
-                    Sovereign
+                    State
 
                 -- Finland
                 FI ->
-                    Sovereign
+                    State
 
                 -- France
                 FR ->
-                    Sovereign
+                    State
 
                 -- French Guiana
                 GF ->
-                    NotSovereign
+                    Territory
 
                 -- French Polynesia
                 PF ->
-                    NotSovereign
+                    Territory
 
                 -- French Southern Territories
                 TF ->
-                    NotSovereign
+                    Territory
 
                 -- Gabon
                 GA ->
-                    Sovereign
+                    State
 
                 -- Gambia
                 GM ->
-                    Sovereign
+                    State
 
                 -- Georgia
                 GE ->
-                    Sovereign
+                    State
 
                 -- Germany
                 DE ->
-                    Sovereign
+                    State
 
                 -- Ghana
                 GH ->
-                    Sovereign
+                    State
 
                 -- Gibraltar
                 GI ->
-                    NotSovereign
+                    Territory
 
                 -- Greece
                 GR ->
-                    Sovereign
+                    State
 
                 -- Greenland
                 GL ->
-                    NotSovereign
+                    Territory
 
                 -- Grenada
                 GD ->
-                    Sovereign
+                    State
 
                 -- Guadeloupe
                 GP ->
-                    NotSovereign
+                    Territory
 
                 -- Guam
                 GU ->
-                    NotSovereign
+                    Territory
 
                 --Guatemala
                 GT_ ->
-                    Sovereign
+                    State
 
                 -- Guernsey
                 GG ->
-                    NotSovereign
+                    Territory
 
                 -- Guinea-Bissau
                 GW ->
-                    Sovereign
+                    State
 
                 -- Guinea
                 GN ->
-                    Sovereign
+                    State
 
                 -- Guyana
                 GY ->
-                    Sovereign
+                    State
 
                 -- Haiti
                 HT ->
-                    Sovereign
+                    State
 
                 -- Heard Island and McDonald Islands
                 HM ->
-                    NotSovereign
+                    Territory
 
                 -- Holy See
                 VA ->
-                    Sovereign
+                    State
 
                 -- Honduras
                 HN ->
-                    Sovereign
+                    State
 
                 -- Hong Kong
                 HK ->
-                    NotSovereign
+                    Territory
 
                 -- Hungary
                 HU ->
-                    Sovereign
+                    State
 
                 -- Iceland
                 IS ->
-                    Sovereign
+                    State
 
                 -- India
                 IN ->
-                    Sovereign
+                    State
 
                 -- Indonesia
                 ID ->
-                    Sovereign
+                    State
 
                 -- Iran (Islamic Republic of)
                 IR ->
-                    Sovereign
+                    State
 
                 -- Iraq
                 IQ ->
-                    Sovereign
+                    State
 
                 -- Ireland
                 IE ->
-                    Sovereign
+                    State
 
                 -- Isle of Man
                 IM ->
-                    NotSovereign
+                    Territory
 
                 -- Israel
                 IL ->
-                    Sovereign
+                    State
 
                 -- Italy
                 IT ->
-                    Sovereign
+                    State
 
                 -- Jamaica
                 JM ->
-                    Sovereign
+                    State
 
                 -- Japan
                 JP ->
-                    Sovereign
+                    State
 
                 -- Jersey
                 JE ->
-                    NotSovereign
+                    Territory
 
                 -- Jordan
                 JO ->
-                    Sovereign
+                    State
 
                 -- Kazakhstan
                 KZ ->
-                    Sovereign
+                    State
 
                 -- Kenya
                 KE ->
-                    Sovereign
+                    State
 
                 -- Kiribati
                 KI ->
-                    Sovereign
+                    State
 
                 -- Korea (Democratic People's Republic of)
                 KP ->
-                    Sovereign
+                    State
 
                 -- Korea, Republic of
                 KR ->
-                    Sovereign
+                    State
 
                 -- Kosovo
                 XK ->
-                    Sovereign
+                    State
 
                 -- Kuwait
                 KW ->
-                    Sovereign
+                    State
 
                 -- Kyrgyzstan
                 KG ->
-                    Sovereign
+                    State
 
                 -- Lao People's Democratic Republic
                 LA ->
-                    Sovereign
+                    State
 
                 -- Latvia
                 LV ->
-                    Sovereign
+                    State
 
                 -- Lebanon
                 LB ->
-                    Sovereign
+                    State
 
                 -- Lesotho
                 LS ->
-                    Sovereign
+                    State
 
                 -- Liberia
                 LR ->
-                    Sovereign
+                    State
 
                 -- Libya
                 LY ->
-                    Sovereign
+                    State
 
                 -- Liechtenstein
                 LI ->
-                    Sovereign
+                    State
 
                 -- Lithuania
                 LT_ ->
-                    Sovereign
+                    State
 
                 -- Luxembourg
                 LU ->
-                    Sovereign
+                    State
 
                 -- Macao
                 MO ->
-                    NotSovereign
+                    Territory
 
                 -- Madagascar
                 MG ->
-                    Sovereign
+                    State
 
                 -- Malawi
                 MW ->
-                    Sovereign
+                    State
 
                 -- Malaysia
                 MY ->
-                    Sovereign
+                    State
 
                 -- Maldives
                 MV ->
-                    Sovereign
+                    State
 
                 -- Mali
                 ML ->
-                    Sovereign
+                    State
 
                 -- Malta
                 MT ->
-                    Sovereign
+                    State
 
                 -- Marshall Islands
                 MH ->
-                    Sovereign
+                    State
 
                 -- Martinique
                 MQ ->
-                    NotSovereign
+                    Territory
 
                 -- Mauritania
                 MR ->
-                    Sovereign
+                    State
 
                 -- Mauritius
                 MU ->
-                    Sovereign
+                    State
 
                 -- Mayotte
                 YT ->
-                    NotSovereign
+                    Territory
 
                 -- Mexico
                 MX ->
-                    Sovereign
+                    State
 
                 -- Micronesia (Federated States of)
                 FM ->
-                    Sovereign
+                    State
 
                 -- Moldova, Republic of
                 MD ->
-                    Sovereign
+                    State
 
                 -- Monaco
                 MC ->
-                    Sovereign
+                    State
 
                 -- Mongolia
                 MN ->
-                    Sovereign
+                    State
 
                 -- Montenegro
                 ME ->
-                    Sovereign
+                    State
 
                 -- Montserrat
                 MS ->
-                    NotSovereign
+                    Territory
 
                 -- Morocco
                 MA ->
-                    Sovereign
+                    State
 
                 -- Mozambique
                 MZ ->
-                    Sovereign
+                    State
 
                 -- Myanmar
                 MM ->
-                    Sovereign
+                    State
 
                 -- Namibia
                 NA ->
-                    Sovereign
+                    State
 
                 -- Nauru
                 NR ->
-                    Sovereign
+                    State
 
                 -- Nepal
                 NP ->
-                    Sovereign
+                    State
 
                 -- Netherlands
                 NL ->
-                    Sovereign
+                    State
 
                 -- New Caledonia
                 NC ->
-                    NotSovereign
+                    Territory
 
                 -- New Zealand
                 NZ ->
-                    Sovereign
+                    State
 
                 -- Nicaragua
                 NI ->
-                    Sovereign
+                    State
 
                 -- Niger
                 NE ->
-                    Sovereign
+                    State
 
                 -- Nigeria
                 NG ->
-                    Sovereign
+                    State
 
                 -- Niue
                 NU ->
-                    NotSovereign
+                    Territory
 
                 -- Norfolk Island
                 NF ->
-                    NotSovereign
+                    Territory
 
                 -- North Macedonia
                 MK ->
-                    Sovereign
+                    State
 
                 -- Northern Mariana Islands
                 MP ->
-                    NotSovereign
+                    Territory
 
                 -- Norway
                 NO ->
-                    Sovereign
+                    State
 
                 -- Oman
                 OM ->
-                    Sovereign
+                    State
 
                 -- Pakistan
                 PK ->
-                    Sovereign
+                    State
 
                 -- Palau
                 PW ->
-                    Sovereign
+                    State
 
                 -- Palestine, State of
                 PS ->
-                    Sovereign
+                    State
 
                 -- Panama
                 PA ->
-                    Sovereign
+                    State
 
                 -- Papua New Guinea
                 PG ->
-                    Sovereign
+                    State
 
                 -- Paraguay
                 PY ->
-                    Sovereign
+                    State
 
                 -- Peru
                 PE ->
-                    Sovereign
+                    State
 
                 -- Philippines
                 PH ->
-                    Sovereign
+                    State
 
                 -- Pitcairn
                 PN ->
-                    NotSovereign
+                    Territory
 
                 -- Poland
                 PL ->
-                    Sovereign
+                    State
 
                 -- Portugal
                 PT ->
-                    Sovereign
+                    State
 
                 -- Puerto Rico
                 PR ->
-                    NotSovereign
+                    Territory
 
                 -- Qatar
                 QA ->
-                    Sovereign
+                    State
 
                 -- Réunion
                 RE ->
-                    NotSovereign
+                    Territory
 
                 -- Romania
                 RO ->
-                    Sovereign
+                    State
 
                 -- Russian Federation
                 RU ->
-                    Sovereign
+                    State
 
                 -- Rwanda
                 RW ->
-                    Sovereign
+                    State
 
                 -- Saint Barthélemy
                 BL ->
-                    NotSovereign
+                    Territory
 
                 -- Saint Helena, Ascension and Tristan da Cunha
                 SH ->
-                    NotSovereign
+                    Territory
 
                 -- Saint Kitts and Nevis
                 KN ->
-                    Sovereign
+                    State
 
                 -- Saint Lucia
                 LC ->
-                    Sovereign
+                    State
 
                 -- Saint Martin (French part)
                 MF ->
-                    NotSovereign
+                    Territory
 
                 -- Saint Pierre and Miquelon
                 PM ->
-                    NotSovereign
+                    Territory
 
                 -- Saint Vincent and the Grenadines
                 VC ->
-                    Sovereign
+                    State
 
                 -- Samoa
                 WS ->
-                    Sovereign
+                    State
 
                 -- San Marino
                 SM ->
-                    Sovereign
+                    State
 
                 -- Sao Tome and Principe
                 ST ->
-                    Sovereign
+                    State
 
                 -- Saudi Arabia
                 SA ->
-                    Sovereign
+                    State
 
                 -- Senegal
                 SN ->
-                    Sovereign
+                    State
 
                 -- Serbia
                 RS ->
-                    Sovereign
+                    State
 
                 -- Seychelles
                 SC ->
-                    Sovereign
+                    State
 
                 -- Sierra Leone
                 SL ->
-                    Sovereign
+                    State
 
                 -- Singapore
                 SG ->
-                    Sovereign
+                    State
 
                 -- Sint Maarten (Dutch part)
                 SX ->
-                    NotSovereign
+                    Territory
 
                 -- Slovakia
                 SK ->
-                    Sovereign
+                    State
 
                 -- Slovenia
                 SI ->
-                    Sovereign
+                    State
 
                 -- Solomon Islands
                 SB ->
-                    Sovereign
+                    State
 
                 -- Somalia
                 SO ->
-                    Sovereign
+                    State
 
                 -- South Africa
                 ZA ->
-                    Sovereign
+                    State
 
                 -- South Georgia and the South Sandwich Islands
                 GS ->
-                    NotSovereign
+                    Territory
 
                 -- South Sudan
                 SS ->
-                    Sovereign
+                    State
 
                 -- Spain
                 ES ->
-                    Sovereign
+                    State
 
                 -- Sri Lanka
                 LK ->
-                    Sovereign
+                    State
 
                 -- Sudan
                 SD ->
-                    Sovereign
+                    State
 
                 -- Suriname
                 SR ->
-                    Sovereign
+                    State
 
                 -- Svalbard and Jan Mayen
                 SJ ->
-                    NotSovereign
+                    Territory
 
                 -- Sweden
                 SE ->
-                    Sovereign
+                    State
 
                 -- Switzerland
                 CH ->
-                    Sovereign
+                    State
 
                 -- Syrian Arab Republic
                 SY ->
-                    Sovereign
+                    State
 
                 -- Taiwan, Province of China
                 TW ->
-                    Sovereign
+                    State
 
                 -- Tajikistan
                 TJ ->
-                    Sovereign
+                    State
 
                 -- Tanzania, United Republic of
                 TZ ->
-                    Sovereign
+                    State
 
                 -- Thailand
                 TH ->
-                    Sovereign
+                    State
 
                 -- Timor-Leste
                 TL ->
-                    Sovereign
+                    State
 
                 -- Togo
                 TG ->
-                    Sovereign
+                    State
 
                 -- Tokelau
                 TK ->
-                    NotSovereign
+                    Territory
 
                 -- Tonga
                 TO ->
-                    Sovereign
+                    State
 
                 -- Trinidad and Tobago
                 TT ->
-                    Sovereign
+                    State
 
                 -- Tunisia
                 TN ->
-                    Sovereign
+                    State
 
                 -- Türkiye
                 TR ->
-                    Sovereign
+                    State
 
                 -- Turkmenistan
                 TM ->
-                    Sovereign
+                    State
 
                 -- Turks and Caicos Islands
                 TC ->
-                    NotSovereign
+                    Territory
 
                 -- Tuvalu
                 TV ->
-                    Sovereign
+                    State
 
                 -- Uganda
                 UG ->
-                    Sovereign
+                    State
 
                 -- Ukraine
                 UA ->
-                    Sovereign
+                    State
 
                 -- United Arab Emirates
                 AE ->
-                    Sovereign
+                    State
 
                 -- United Kingdom of Great Britain and Northern Ireland
                 GB ->
-                    Sovereign
+                    State
 
                 -- United States Minor Outlying Islands
                 UM ->
-                    NotSovereign
+                    Territory
 
                 -- United States of America
                 US ->
-                    Sovereign
+                    State
 
                 -- Uruguay
                 UY ->
-                    Sovereign
+                    State
 
                 -- Uzbekistan
                 UZ ->
-                    Sovereign
+                    State
 
                 -- Vanuatu
                 VU ->
-                    Sovereign
+                    State
 
                 -- Venezuela (Bolivarian Republic of)
                 VE ->
-                    Sovereign
+                    State
 
                 -- Viet Nam
                 VN ->
-                    Sovereign
+                    State
 
                 -- Virgin Islands (British)
                 VG ->
-                    NotSovereign
+                    Territory
 
                 -- Virgin Islands (U.S.)
                 VI ->
-                    NotSovereign
+                    Territory
 
                 -- Wallis and Futuna
                 WF ->
-                    NotSovereign
+                    Territory
 
                 -- Western Sahara
                 EH ->
@@ -1997,19 +1997,19 @@ toSovereignty country =
 
                 -- Yemen
                 YE ->
-                    Sovereign
+                    State
 
                 -- Zambia
                 ZM ->
-                    Sovereign
+                    State
 
                 -- Zimbabwe
                 ZW ->
-                    Sovereign
+                    State
 
 
-all : { a | sovereignty : List Sovereignty, continents : List Continent } -> List Country
-all { sovereignty, continents } =
+all : { a | categories : List Category, continents : List Continent } -> List Country
+all { categories, continents } =
     let
         iso3166 : List Country
         iso3166 =
@@ -2023,18 +2023,21 @@ all { sovereignty, continents } =
         |> List.filter
             (\country ->
                 List.member (toContinent country) continents
-                    && List.member (toSovereignty country) sovereignty
+                    && List.member (toCategory country) categories
             )
 
 
-sovereigntyToString : Sovereignty -> String
-sovereigntyToString sovereignty =
-    case sovereignty of
-        Sovereign ->
-            "Sovereign"
+categoryToString : Category -> String
+categoryToString category =
+    case category of
+        State ->
+            "State"
 
-        NotSovereign ->
-            "Not sovereign"
+        Territory ->
+            "Territory"
 
         PartiallyRecognized ->
             "Partially recognized"
+
+        Historical ->
+            "Historical"

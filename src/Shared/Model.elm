@@ -1,4 +1,4 @@
-module Shared.Model exposing (Card, Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, NonIso3166(..), Property(..), Screen, Sovereignty(..), allContinents, allGuessPatterns, allSovereignties, countryToAlpha2, defaultGameLength, defaultGameOptions, nonIso3166)
+module Shared.Model exposing (Card, Category(..), Context, Continent(..), Country(..), Difficulty(..), GameOptions, Model, NonIso3166(..), Property(..), Screen, allCategories, allContinents, allGuessPatterns, countryToAlpha2, defaultGameLength, defaultGameOptions, nonIso3166)
 
 {-| -}
 
@@ -99,10 +99,11 @@ countryToAlpha2 country =
             "transnistria"
 
 
-type Sovereignty
-    = Sovereign
-    | NotSovereign
+type Category
+    = State
+    | Territory
     | PartiallyRecognized
+    | Historical
 
 
 
@@ -114,7 +115,7 @@ type alias GameOptions =
     , difficulty : Difficulty
     , answersPerCard : Int
     , guessPatterns : List ( Property, Property )
-    , sovereignty : List Sovereignty
+    , categories : List Category
     , continents : List Continent
     }
 
@@ -140,7 +141,7 @@ defaultGameOptions =
     , difficulty = Normal
     , answersPerCard = 6
     , guessPatterns = allGuessPatterns
-    , sovereignty = [ Sovereign ]
+    , categories = [ State ]
     , continents = allContinents
     }
 
@@ -164,9 +165,9 @@ allContinents =
     ]
 
 
-allSovereignties : List Sovereignty
-allSovereignties =
-    [ Sovereign
-    , NotSovereign
+allCategories : List Category
+allCategories =
+    [ State
+    , Territory
     , PartiallyRecognized
     ]

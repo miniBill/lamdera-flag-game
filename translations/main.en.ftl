@@ -17,6 +17,7 @@ include = Include
 states = States
 territories = Territories
 partiallyRecognized = Partially Recognized
+historical = Historical
 
 gameLength = Game Length
 
