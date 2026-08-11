@@ -21,7 +21,13 @@ import XmlParser
 main : Program Json.Encode.Value () ()
 main =
     Generate.fromDirectory <|
-        \directory -> [ file directory ]
+        \(Generate.Directory directory) ->
+            case Dict.get "flags" directory.directories of
+                Just flags ->
+                    [ file flags ]
+
+                Nothing ->
+                    []
 
 
 file : Generate.Directory -> Elm.File
