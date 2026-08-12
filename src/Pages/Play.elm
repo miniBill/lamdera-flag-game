@@ -257,6 +257,10 @@ viewFlagButton { picked, current } country =
                         , Attributes.style "padding" "6px 2px"
                         , Attributes.style "width" "30px"
                         , Attributes.style "height" "30px"
+                        , Attributes.style "flex-shrink" "0"
+                        , Attributes.style "display" "flex"
+                        , Attributes.style "flex-direction" "column"
+                        , Attributes.style "place-items" "center"
                         , Attributes.style "text-align" "center"
                         ]
 
@@ -267,6 +271,10 @@ viewFlagButton { picked, current } country =
                         , Attributes.style "padding" "6px 2px"
                         , Attributes.style "width" "30px"
                         , Attributes.style "height" "30px"
+                        , Attributes.style "flex-shrink" "0"
+                        , Attributes.style "display" "flex"
+                        , Attributes.style "flex-direction" "column"
+                        , Attributes.style "place-items" "center"
                         , Attributes.style "text-align" "center"
                         ]
                 )
