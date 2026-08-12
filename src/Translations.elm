@@ -315,7 +315,7 @@ historical (I18n lang) =
             "Storiche"
 
         Nl ->
-            "Historical"
+            "Historisch"
 
         Sv ->
             "Historisk"
@@ -448,7 +448,7 @@ partiallyRecognized (I18n lang) =
             "Parzialmente riconosciuti"
 
         Nl ->
-            "Partially Recognized"
+            "Betwiste gebieden"
 
         Sv ->
             "Delvis erkända stater"

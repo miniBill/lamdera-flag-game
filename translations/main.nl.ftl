@@ -18,6 +18,8 @@ possibleAnswers = Mogelijke antwoorden
 include = Categorieën
 states = Staten
 territories = Territoria
+historical = Historisch
+partiallyRecognized = Betwiste gebieden
 
 gameLength = Spel Lengte
 
