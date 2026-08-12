@@ -8,8 +8,8 @@ import Element.WithContext.Font as Font
 import Element.WithContext.Input as Input
 import Flags
 import Html.Attributes
-import LanguageTag.Country
 import LanguageTag.Parser
+import LanguageTag.Region
 import List.Extra
 import Maybe.Extra
 import Page exposing (Page)
@@ -449,7 +449,7 @@ localeToCountry locale =
         extractCountry input =
             input
                 |> LanguageTag.Parser.parseBcp47
-                |> Maybe.andThen (\( _, { region } ) -> Maybe.map LanguageTag.Country.toCodeString region)
+                |> Maybe.andThen (\( _, { region } ) -> Maybe.map LanguageTag.Region.toCodeString region)
                 |> Maybe.map FoundCountry
     in
     case String.split "-" locale of
