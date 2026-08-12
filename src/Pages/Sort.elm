@@ -129,7 +129,7 @@ viewGroup { selected } index codes =
             if List.isEmpty codes then
                 Html.div
                     [ Attributes.style "height" "40px" ]
-                    [ Theme.textInvariant "<new>" ]
+                    [ textInvariant "<new>" ]
 
             else
                 codes
@@ -169,7 +169,7 @@ viewFlag country =
                     { country = country
                     , width = 50
                     }
-                , Html.p [] [ Theme.textInvariant <| countryToAlpha2 country ]
+                , Html.p [] [ textInvariant <| countryToAlpha2 country ]
                 ]
         , onPress = Just <| SelectForMove country
         }

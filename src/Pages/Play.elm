@@ -12,7 +12,7 @@ import Page exposing (Page)
 import Route exposing (Route)
 import Shared
 import Shared.Model exposing (Card, Country(..), NonIso3166(..), Property(..))
-import Theme exposing (Attribute, Gradient, Html, column, text, textInvariant, viewFlag)
+import Theme exposing (Attribute, Gradient, Html, text, textInvariant, viewFlag)
 import Translations
 import View exposing (View)
 
@@ -196,11 +196,12 @@ nextButton { picked } =
         { background = Nothing
         , label = text Translations.next
         , onPress =
-            if picked == Nothing then
-                Nothing
+            case picked of
+                Nothing ->
+                    Nothing
 
-            else
-                Just Next
+                Just _ ->
+                    Just Next
         }
 
 
@@ -232,11 +233,12 @@ viewNameButton { current, picked } country =
             else
                 Just Theme.colors.buttonBackground
         , onPress =
-            if picked == Nothing then
-                Just <| Pick country
+            case picked of
+                Nothing ->
+                    Just <| Pick country
 
-            else
-                Nothing
+                Just _ ->
+                    Nothing
         , label =
             Html.p []
                 [ viewCountryName country ]
@@ -249,23 +251,24 @@ viewFlagButton { picked, current } country =
         badge : String -> Color -> Gradient -> Html msg
         badge label font gradient =
             Html.div
-                (if picked == Nothing then
-                    [ Attributes.style "border-radius" "9999px"
-                    , Attributes.style "padding" "6px 2px"
-                    , Attributes.style "width" "30px"
-                    , Attributes.style "height" "30px"
-                    , Attributes.style "text-align" "center"
-                    ]
+                (case picked of
+                    Nothing ->
+                        [ Attributes.style "border-radius" "9999px"
+                        , Attributes.style "padding" "6px 2px"
+                        , Attributes.style "width" "30px"
+                        , Attributes.style "height" "30px"
+                        , Attributes.style "text-align" "center"
+                        ]
 
-                 else
-                    [ Attributes.style "color" (Color.toCssString font)
-                    , Theme.gradient gradient
-                    , Attributes.style "border-radius" "9999px"
-                    , Attributes.style "padding" "6px 2px"
-                    , Attributes.style "width" "30px"
-                    , Attributes.style "height" "30px"
-                    , Attributes.style "text-align" "center"
-                    ]
+                    Just _ ->
+                        [ Attributes.style "color" (Color.toCssString font)
+                        , Theme.gradient gradient
+                        , Attributes.style "border-radius" "9999px"
+                        , Attributes.style "padding" "6px 2px"
+                        , Attributes.style "width" "30px"
+                        , Attributes.style "height" "30px"
+                        , Attributes.style "text-align" "center"
+                        ]
                 )
                 [ textInvariant label ]
 
@@ -283,15 +286,16 @@ viewFlagButton { picked, current } country =
         nameAndBadge : Html msg
         nameAndBadge =
             Theme.row
-                (if picked == Nothing then
-                    [ Attributes.style "opacity" "0"
-                    , Attributes.style "max-width" "150px"
-                    ]
+                (case picked of
+                    Nothing ->
+                        [ Attributes.style "opacity" "0"
+                        , Attributes.style "max-width" "150px"
+                        ]
 
-                 else
-                    [ Attributes.style "color" "black"
-                    , Attributes.style "max-width" "150px"
-                    ]
+                    Just _ ->
+                        [ Attributes.style "color" "black"
+                        , Attributes.style "max-width" "150px"
+                        ]
                 )
                 [ maybeBadge, viewCountryName country ]
 
