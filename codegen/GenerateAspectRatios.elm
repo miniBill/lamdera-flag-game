@@ -11,6 +11,7 @@ import Gen.Cldr
 import Gen.CodeGen.Generate as Generate
 import Gen.Debug
 import Gen.Shared.Model
+import Json.Decode
 import Json.Encode
 import List.Extra
 import Maybe.Extra
@@ -20,14 +21,37 @@ import XmlParser
 
 main : Program Json.Encode.Value () ()
 main =
-    Generate.fromDirectory <|
-        \(Generate.Directory directory) ->
-            case Dict.get "flags" directory.directories of
-                Just flags ->
-                    [ file flags ]
+    Platform.worker
+        { init =
+            \appFlags ->
+                case Json.Decode.decodeValue Generate.directoryDecoder appFlags of
+                    Ok (Generate.Directory directory) ->
+                        ( ()
+                        , case Dict.get "flags" directory.directories of
+                            Just flags ->
+                                Generate.files [ file flags ]
 
-                Nothing ->
-                    []
+                            Nothing ->
+                                Generate.error
+                                    [ { title = "No flags folder in input"
+                                      , description = "Found: " ++ String.join ", " (Dict.keys directory.directories)
+                                      }
+                                    ]
+                        )
+
+                    Err e ->
+                        ( ()
+                        , Generate.error
+                            [ { title = "Error decoding flags"
+                              , description = Json.Decode.errorToString e
+                              }
+                            ]
+                        )
+        , update =
+            \_ model ->
+                ( model, Cmd.none )
+        , subscriptions = \_ -> Sub.none
+        }
 
 
 file : Generate.Directory -> Elm.File
