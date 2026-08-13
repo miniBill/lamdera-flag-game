@@ -12,5 +12,5 @@ $(BUN_RUN): package.json bun.lock
 codegen/Gen/Basics.elm: codegen/elm.codegen.json $(BUN_RUN)
 	bun run elm-codegen install
 
-generated/AspectRatios.elm: codegen/Generate.elm codegen/elm.json codegen/Gen/Basics.elm $(BUN_RUN)
-	bun run elm-codegen run --flags-from public
+generated/AspectRatios.elm: codegen/GenerateAspectRatios.elm codegen/elm.json codegen/Gen/Basics.elm $(BUN_RUN)
+	bun run elm-codegen run --flags-from public $<
