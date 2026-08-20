@@ -1,8 +1,9 @@
 module Pages.Play exposing (InnerModel, Model, Msg, page)
 
+import Cldr
 import Cldr.English
-import Cldr.Localized
 import Color exposing (Color)
+import Dict
 import Effect exposing (Effect)
 import Flags
 import Html.WithContext as Html
@@ -357,8 +358,12 @@ viewCountryName country =
     case country of
         Iso3166 countryCode ->
             Html.withContext <|
-                \{ locale } ->
-                    case Cldr.Localized.countryCodeToName locale countryCode of
+                \{ countryNames } ->
+                    case
+                        Dict.get
+                            (String.toUpper (Cldr.toAlpha2 countryCode))
+                            countryNames
+                    of
                         Just name ->
                             Theme.textInvariant name
 

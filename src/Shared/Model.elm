@@ -3,6 +3,7 @@ module Shared.Model exposing (Card, Category(..), Context, Continent(..), Countr
 {-| -}
 
 import Cldr
+import Dict exposing (Dict)
 import Random
 
 
@@ -28,7 +29,9 @@ type alias Screen =
 
 
 type alias Context =
-    { locale : String }
+    { locale : String
+    , countryNames : Dict String String
+    }
 
 
 type Property
@@ -170,4 +173,5 @@ allCategories =
     [ State
     , Territory
     , PartiallyRecognized
+    , Historical
     ]

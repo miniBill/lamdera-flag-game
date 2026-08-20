@@ -53,7 +53,9 @@ init _ _ =
     let
         context : Context
         context =
-            { locale = "en-US" }
+            { locale = "en-US"
+            , countryNames = Dict.empty
+            }
 
         model : Model
         model =
@@ -97,11 +99,19 @@ update _ msg model =
             )
 
         Shared.Msg.Locale locale ->
-            ( { model | context = { locale = locale } }
-            , Effect.saveToLocalStorage
-                { key = storageKeys.locale
-                , value = Codec.encodeToValue Codec.string locale
-                }
+            let
+                context : Context
+                context =
+                    model.context
+            in
+            ( { model | context = { context | locale = locale } }
+            , Effect.batch
+                [ Effect.saveToLocalStorage
+                    { key = storageKeys.locale
+                    , value = Codec.encodeToValue Codec.string locale
+                    }
+                , Effect.loadTranslationsFor locale Shared.Msg.LoadedTranslations
+                ]
             )
 
         Shared.Msg.ChangeOptions options ->
@@ -135,6 +145,23 @@ update _ msg model =
 
         Shared.Msg.Resized width height ->
             ( { model | screen = { width = width, height = height } }, Effect.none )
+
+        Shared.Msg.LoadedTranslations (Err e) ->
+            let
+                _ =
+                    Debug.log "Error loading translations" e
+            in
+            ( model, Effect.none )
+
+        Shared.Msg.LoadedTranslations (Ok translations) ->
+            let
+                context : Context
+                context =
+                    model.context
+            in
+            ( { model | context = { context | countryNames = translations } }
+            , Effect.none
+            )
 
 
 gameOptionsCodec : Codec GameOptions

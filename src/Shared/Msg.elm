@@ -2,6 +2,8 @@ module Shared.Msg exposing (Msg(..))
 
 {-| -}
 
+import Dict exposing (Dict)
+import Http
 import Random
 import Shared.Model exposing (GameOptions)
 
@@ -21,3 +23,4 @@ type Msg
     | Finished { score : Int }
     | Nop
     | Resized Int Int
+    | LoadedTranslations (Result Http.Error (Dict String String))

@@ -4,6 +4,7 @@ module Effect exposing
     , sendCmd, changeOptions, locale, play, finished, seed, loadLocalStorage, saveToLocalStorage, loadLocale, measureScreen
     , pushRoute, replaceRoute, goBack, goHome, loadExternalUrl
     , map, toCmd
+    , loadTranslationsFor
     )
 
 {-|
@@ -20,7 +21,10 @@ module Effect exposing
 import Browser.Dom
 import Browser.Navigation
 import Dict exposing (Dict)
+import Http
+import Json.Decode
 import Json.Encode
+import Lamdera.Json as Json
 import PkgPorts
 import Random exposing (Seed)
 import Route
@@ -29,6 +33,7 @@ import Shared.Model
 import Shared.Msg
 import Task
 import Url exposing (Url)
+import Url.Builder
 
 
 type Effect msg
@@ -47,10 +52,8 @@ type Effect msg
     | SaveToLocalStorage { key : String, value : Json.Encode.Value }
     | LoadLocale String
     | MeasureScreen
-
-
-
--- BASICS
+      -- BASICS
+    | LoadTranslationsFor String (Result Http.Error (Dict String String) -> msg)
 
 
 {-| Don't send any effect.
@@ -129,6 +132,11 @@ loadLocalStorage key =
 measureScreen : Effect msg
 measureScreen =
     MeasureScreen
+
+
+loadTranslationsFor : String -> (Result Http.Error (Dict String String) -> msg) -> Effect msg
+loadTranslationsFor localeName toMsg =
+    LoadTranslationsFor localeName toMsg
 
 
 
@@ -213,6 +221,9 @@ map fn effect =
         MeasureScreen ->
             MeasureScreen
 
+        LoadTranslationsFor localeName toMsg ->
+            LoadTranslationsFor localeName (\d -> d |> toMsg |> fn)
+
 
 {-| Elm Land depends on this function to perform your effects.
 -}
@@ -271,3 +282,27 @@ toCmd options effect =
                                 (floor viewport.width)
                                 (floor viewport.height)
                     )
+
+        LoadTranslationsFor localeName toMsg ->
+            Http.get
+                { url =
+                    Url.Builder.absolute
+                        [ "media"
+                        , "cldr"
+                        , localeName
+                        , "territories.json"
+                        ]
+                        []
+                , expect = Http.expectJson toMsg (territoriesDecoder localeName)
+                }
+
+
+territoriesDecoder : String -> Json.Decode.Decoder (Dict String String)
+territoriesDecoder localeName =
+    Json.Decode.at
+        [ "main"
+        , localeName
+        , "localeDisplayNames"
+        , "territories"
+        ]
+        (Json.Decode.dict Json.Decode.string)
