@@ -287,8 +287,7 @@ toCmd options effect =
             Http.get
                 { url =
                     Url.Builder.absolute
-                        [ "media"
-                        , "cldr"
+                        [ "cldr"
                         , localeName
                         , "territories.json"
                         ]
